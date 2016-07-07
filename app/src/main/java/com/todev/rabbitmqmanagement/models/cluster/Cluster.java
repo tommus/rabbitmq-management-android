@@ -26,6 +26,10 @@ public class Cluster {
 
   @JsonProperty("name") protected String name;
 
+  public Cluster(String name) {
+    this.name = name;
+  }
+
   public String getName() {
     return name;
   }

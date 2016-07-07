@@ -21,49 +21,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.services.RabbitMqService;
-import java.io.IOException;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class TestActivity extends AppCompatActivity {
 
   protected static final String TAG = TestActivity.class.getSimpleName();
 
-  protected RabbitMqService rabbitMqService;
+  protected RabbitMqService rabbitMqService = RabbitMqService.Json.createService();
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test);
-
-    initRabbitMqService();
-  }
-
-  protected void initRabbitMqService() {
-    final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
-    final Retrofit.Builder builder = new Retrofit.Builder().baseUrl(RabbitMqService.TEST_URL)
-        .addConverterFactory(JacksonConverterFactory.create());
-
-    httpClient.addInterceptor(new Interceptor() {
-      @Override public okhttp3.Response intercept(Chain chain) throws IOException {
-        final Request original = chain.request();
-
-        final Request.Builder requestBuilder = original.newBuilder()
-            .header("Authorization", RabbitMqService.TEST_CREDENTIALS)
-            .header("Accept", "application/json")
-            .method(original.method(), original.body());
-
-        return chain.proceed(requestBuilder.build());
-      }
-    });
-
-    final OkHttpClient client = httpClient.build();
-
-    final Retrofit retrofit = builder.client(client).build();
-
-    this.rabbitMqService = retrofit.create(RabbitMqService.class);
   }
 }

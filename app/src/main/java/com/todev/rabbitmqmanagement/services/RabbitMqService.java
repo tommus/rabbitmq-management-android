@@ -29,22 +29,31 @@ import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
 import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
 import com.todev.rabbitmqmanagement.models.vhosts.ExtendedVhost;
+import com.todev.rabbitmqmanagement.services.interceptors.AuthorizationInterceptor;
+import com.todev.rabbitmqmanagement.services.interceptors.ContentTypeInterceptor;
 import java.util.List;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RabbitMqService {
 
+  String CONTENT_TYPE = "application/json";
+
   String TEST_URL = "http://192.168.1.129:15672/api/";
 
-  String TEST_CREDENTIALS = "Basic Z3Vlc3Q6Z3Vlc3Q=";
+  String TEST_TOKEN = "Basic dG9tbXVzOnRvbW11cw==";
 
   @GET("overview") Call<Overview> getOverview();
 
-  // TODO: Add PUT /cluster-name.
-
   @GET("cluster-name") Call<Cluster> getClusterName();
+
+  @PUT("cluster-name") Call<Void> updateClusterName(@Body Cluster cluster);
 
   @GET("nodes") Call<List<Node>> getNodes();
 
@@ -205,4 +214,20 @@ public interface RabbitMqService {
   // TODO: Add GET /healthchecks/node.
 
   // TODO: Add GET /healthchecks/node/{node}.
+
+  class Json {
+    public static RabbitMqService createService() {
+      OkHttpClient httpClient =
+          new OkHttpClient.Builder().addInterceptor(new AuthorizationInterceptor(TEST_TOKEN))
+              .addInterceptor(new ContentTypeInterceptor(CONTENT_TYPE))
+              .build();
+
+      Retrofit retrofit = new Retrofit.Builder().baseUrl(TEST_URL)
+          .addConverterFactory(JacksonConverterFactory.create())
+          .client(httpClient)
+          .build();
+
+      return retrofit.create(RabbitMqService.class);
+    }
+  }
 }
