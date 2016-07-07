@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,31 +21,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChannelDetails {
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    @JsonProperty("peer_host")
-    protected String mPeerHost;
+  @JsonProperty("peer_host") protected String peerHost;
 
-    @JsonProperty("peer_port")
-    protected int mPeerPort;
+  @JsonProperty("peer_port") protected int peerPort;
 
-    public String getName() {
+  public String getName() {
+    return name;
+  }
 
-        return mName;
-    }
+  public String getPeerHost() {
+    return peerHost;
+  }
 
-    public String getPeerHost() {
-
-        return mPeerHost;
-    }
-
-    public int getPeerPort() {
-
-        return mPeerPort;
-    }
+  public int getPeerPort() {
+    return peerPort;
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,47 +21,36 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Permission {
 
-    @JsonProperty("configure")
-    protected String mConfigure;
+  @JsonProperty("configure") protected String configure;
 
-    @JsonProperty("read")
-    protected String mRead;
+  @JsonProperty("read") protected String read;
 
-    @JsonProperty("user")
-    protected String mUser;
+  @JsonProperty("user") protected String user;
 
-    @JsonProperty("vhost")
-    protected String mVhost;
+  @JsonProperty("vhost") protected String vhost;
 
-    @JsonProperty("write")
-    protected String mWrite;
+  @JsonProperty("write") protected String write;
 
-    public String getConfigure() {
+  public String getConfigure() {
+    return configure;
+  }
 
-        return mConfigure;
-    }
+  public String getRead() {
+    return read;
+  }
 
-    public String getRead() {
+  public String getUser() {
+    return user;
+  }
 
-        return mRead;
-    }
+  public String getVhost() {
+    return vhost;
+  }
 
-    public String getUser() {
-
-        return mUser;
-    }
-
-    public String getVhost() {
-
-        return mVhost;
-    }
-
-    public String getWrite() {
-
-        return mWrite;
-    }
+  public String getWrite() {
+    return write;
+  }
 }

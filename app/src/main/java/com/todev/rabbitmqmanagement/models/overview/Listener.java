@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,39 +21,30 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Listener {
 
-    @JsonProperty("ip_address")
-    protected String mIpAddress;
+  @JsonProperty("ip_address") protected String ipAddress;
 
-    @JsonProperty("node")
-    protected String mNode;
+  @JsonProperty("node") protected String node;
 
-    @JsonProperty("port")
-    protected Integer mPort;
+  @JsonProperty("port") protected Integer port;
 
-    @JsonProperty("protocol")
-    protected String mProtocol;
+  @JsonProperty("protocol") protected String protocol;
 
-    public String getIpAddress() {
+  public String getIpAddress() {
+    return ipAddress;
+  }
 
-        return mIpAddress;
-    }
+  public String getNode() {
+    return node;
+  }
 
-    public String getNode() {
+  public Integer getPort() {
+    return port;
+  }
 
-        return mNode;
-    }
-
-    public Integer getPort() {
-
-        return mPort;
-    }
-
-    public String getProtocol() {
-
-        return mProtocol;
-    }
+  public String getProtocol() {
+    return protocol;
+  }
 }

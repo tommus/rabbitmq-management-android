@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,55 +21,42 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Policy {
 
-    @JsonProperty("apply-to")
-    protected String mApplyTo;
+  @JsonProperty("apply-to") protected String applyTo;
 
-    @JsonProperty("definition")
-    protected Definition mDefinition;
+  @JsonProperty("definition") protected Definition definition;
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    @JsonProperty("pattern")
-    protected String mPattern;
+  @JsonProperty("pattern") protected String pattern;
 
-    @JsonProperty("priority")
-    protected int mPriority;
+  @JsonProperty("priority") protected int priority;
 
-    @JsonProperty("vhost")
-    protected String mVhost;
+  @JsonProperty("vhost") protected String vhost;
 
-    public String getApplyTo() {
+  public String getApplyTo() {
+    return applyTo;
+  }
 
-        return mApplyTo;
-    }
+  public Definition getDefinition() {
+    return definition;
+  }
 
-    public Definition getDefinition() {
+  public String getName() {
+    return name;
+  }
 
-        return mDefinition;
-    }
+  public String getPattern() {
+    return pattern;
+  }
 
-    public String getName() {
+  public int getPriority() {
+    return priority;
+  }
 
-        return mName;
-    }
-
-    public String getPattern() {
-
-        return mPattern;
-    }
-
-    public int getPriority() {
-
-        return mPriority;
-    }
-
-    public String getVhost() {
-
-        return mVhost;
-    }
+  public String getVhost() {
+    return vhost;
+  }
 }

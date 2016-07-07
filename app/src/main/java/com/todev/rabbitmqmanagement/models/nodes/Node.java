@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -23,599 +23,452 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Context;
 import com.todev.rabbitmqmanagement.models.Description;
 import com.todev.rabbitmqmanagement.models.Details;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Node {
 
-    @JsonProperty("applications")
-    protected List<Application> mApplications = new ArrayList<>();
+  @JsonProperty("applications") protected List<Application> applications = new ArrayList<>();
 
-    @JsonProperty("auth_mechanisms")
-    protected List<Description> mAuthMechanisms = new ArrayList<>();
+  @JsonProperty("auth_mechanisms") protected List<Description> authMechanisms = new ArrayList<>();
 
-    // TODO: Cluster links should be corrected.
+  // TODO: Cluster links should be corrected.
 
-    @JsonProperty("cluster_links")
-    protected List<Object> mClusterLinks = new ArrayList<>();
+  @JsonProperty("cluster_links") protected List<Object> clusterLinks = new ArrayList<>();
 
-    @JsonProperty("config_files")
-    protected List<String> mConfigFiles = new ArrayList<>();
+  @JsonProperty("config_files") protected List<String> configFiles = new ArrayList<>();
 
-    @JsonProperty("contexts")
-    protected List<Context> mContexts = new ArrayList<>();
+  @JsonProperty("contexts") protected List<Context> contexts = new ArrayList<>();
 
-    @JsonProperty("db_dir")
-    protected String mDbDir;
+  @JsonProperty("db_dir") protected String dbDir;
 
-    @JsonProperty("disk_free")
-    protected long mDiskFree;
+  @JsonProperty("disk_free") protected long diskFree;
 
-    @JsonProperty("disk_free_alarm")
-    protected boolean mDiskFreeAlarm;
+  @JsonProperty("disk_free_alarm") protected boolean diskFreeAlarm;
 
-    @JsonProperty("disk_free_details")
-    protected Details mDiskFreeDetails;
+  @JsonProperty("disk_free_details") protected Details diskFreeDetails;
 
-    @JsonProperty("disk_free_limit")
-    protected long mDiskFreeLimit;
+  @JsonProperty("disk_free_limit") protected long diskFreeLimit;
 
-    @JsonProperty("enabled_plugins")
-    protected List<String> mEnabledPlugins = new ArrayList<>();
+  @JsonProperty("enabled_plugins") protected List<String> enabledPlugins = new ArrayList<>();
 
-    @JsonProperty("exchange_types")
-    protected List<Description> mExchangeTypes = new ArrayList<>();
+  @JsonProperty("exchange_types") protected List<Description> exchangeTypes = new ArrayList<>();
 
-    @JsonProperty("fd_total")
-    protected int mFdTotal;
+  @JsonProperty("fd_total") protected int fdTotal;
 
-    @JsonProperty("fd_used")
-    protected int mFdUsed;
+  @JsonProperty("fd_used") protected int fdUsed;
 
-    @JsonProperty("fd_used_details")
-    protected Details mFdUsedDetails;
+  @JsonProperty("fd_used_details") protected Details fdUsedDetails;
 
-    @JsonProperty("io_read_avg_time")
-    protected float mIoReadAvgTime;
+  @JsonProperty("io_read_avg_time") protected float ioReadAvgTime;
 
-    @JsonProperty("io_read_avg_time_details")
-    protected Details mIoReadAvgTimeDetails;
+  @JsonProperty("io_read_avg_time_details") protected Details ioReadAvgTimeDetails;
 
-    @JsonProperty("io_read_bytes")
-    protected int mIoReadBytes;
+  @JsonProperty("io_read_bytes") protected int ioReadBytes;
 
-    @JsonProperty("io_read_bytes_details")
-    protected Details mIoReadBytesDetails;
+  @JsonProperty("io_read_bytes_details") protected Details ioReadBytesDetails;
 
-    @JsonProperty("io_read_count")
-    protected int mIoReadCount;
+  @JsonProperty("io_read_count") protected int ioReadCount;
 
-    @JsonProperty("io_read_count_details")
-    protected Details mIoReadCountDetails;
+  @JsonProperty("io_read_count_details") protected Details ioReadCountDetails;
 
-    @JsonProperty("io_reopen_count")
-    protected int mIoReopenCount;
+  @JsonProperty("io_reopen_count") protected int ioReopenCount;
 
-    @JsonProperty("io_reopen_count_details")
-    protected Details mIoReopenCountDetails;
+  @JsonProperty("io_reopen_count_details") protected Details ioReopenCountDetails;
 
-    @JsonProperty("io_seek_avg_time")
-    protected float mIoSeekAvgTime;
+  @JsonProperty("io_seek_avg_time") protected float ioSeekAvgTime;
 
-    @JsonProperty("io_seek_avg_time_details")
-    protected Details mIoSeekAvgTimeDetails;
+  @JsonProperty("io_seek_avg_time_details") protected Details ioSeekAvgTimeDetails;
 
-    @JsonProperty("io_seek_count")
-    protected int mIoSeekCount;
+  @JsonProperty("io_seek_count") protected int ioSeekCount;
 
-    @JsonProperty("io_seek_count_details")
-    protected Details mIoSeekCountDetails;
+  @JsonProperty("io_seek_count_details") protected Details ioSeekCountDetails;
 
-    @JsonProperty("io_sync_avg_time")
-    protected float mIoSyncAvgTime;
+  @JsonProperty("io_sync_avg_time") protected float ioSyncAvgTime;
 
-    @JsonProperty("io_sync_avg_time_details")
-    protected Details mIoSyncAvgTimeDetails;
+  @JsonProperty("io_sync_avg_time_details") protected Details ioSyncAvgTimeDetails;
 
-    @JsonProperty("io_sync_count")
-    protected int mIoSyncCount;
+  @JsonProperty("io_sync_count") protected int ioSyncCount;
 
-    @JsonProperty("io_sync_count_details")
-    protected Details mIoSyncCountDetails;
+  @JsonProperty("io_sync_count_details") protected Details ioSyncCountDetails;
 
-    @JsonProperty("io_write_avg_time")
-    protected float mIoWriteAvgTime;
+  @JsonProperty("io_write_avg_time") protected float ioWriteAvgTime;
 
-    @JsonProperty("io_write_avg_time_details")
-    protected Details mIoWriteAvgTimeDetails;
+  @JsonProperty("io_write_avg_time_details") protected Details ioWriteAvgTimeDetails;
 
-    @JsonProperty("io_write_bytes")
-    protected long mIoWriteBytes;
+  @JsonProperty("io_write_bytes") protected long ioWriteBytes;
 
-    @JsonProperty("io_write_bytes_details")
-    protected Details mIoWriteBytesDetails;
+  @JsonProperty("io_write_bytes_details") protected Details ioWriteBytesDetails;
 
-    @JsonProperty("io_write_count")
-    protected int mIoWriteCount;
+  @JsonProperty("io_write_count") protected int ioWriteCount;
 
-    @JsonProperty("io_write_count_details")
-    protected Details mIoWriteCountDetails;
+  @JsonProperty("io_write_count_details") protected Details ioWriteCountDetails;
 
-    @JsonProperty("log_file")
-    protected String mLogFile;
+  @JsonProperty("log_file") protected String logFile;
 
-    @JsonProperty("mem_alarm")
-    protected boolean mMemAlarm;
+  @JsonProperty("mem_alarm") protected boolean memAlarm;
 
-    @JsonProperty("mem_limit")
-    protected long mMemLimit;
+  @JsonProperty("mem_limit") protected long memLimit;
 
-    @JsonProperty("mem_used")
-    protected long mMemUsed;
+  @JsonProperty("mem_used") protected long memUsed;
 
-    @JsonProperty("mem_used_details")
-    protected Details mMemUsedDetails;
+  @JsonProperty("mem_used_details") protected Details memUsedDetails;
 
-    @JsonProperty("mnesia_disk_tx_count")
-    protected int mMnesiaDiskTxCount;
+  @JsonProperty("mnesia_disk_tx_count") protected int mnesiaDiskTxCount;
 
-    @JsonProperty("mnesia_disk_tx_count_details")
-    protected Details mMnesiaDiskTxCountDetails;
+  @JsonProperty("mnesia_disk_tx_count_details") protected Details mnesiaDiskTxCountDetails;
 
-    @JsonProperty("mnesia_ram_tx_count")
-    protected int mMnesiaRamTxCount;
+  @JsonProperty("mnesia_ram_tx_count") protected int mnesiaRamTxCount;
 
-    @JsonProperty("mnesia_ram_tx_count_details")
-    protected Details mMnesiaRamTxCountDetails;
+  @JsonProperty("mnesia_ram_tx_count_details") protected Details mnesiaRamTxCountDetails;
 
-    @JsonProperty("msg_store_read_count")
-    protected int mMsgStoreReadCount;
+  @JsonProperty("msg_store_read_count") protected int msgStoreReadCount;
 
-    @JsonProperty("msg_store_read_count_details")
-    protected Details mMsgStoreReadCountDetails;
+  @JsonProperty("msg_store_read_count_details") protected Details msgStoreReadCountDetails;
 
-    @JsonProperty("msg_store_write_count")
-    protected int mMsgStoreWriteCount;
+  @JsonProperty("msg_store_write_count") protected int msgStoreWriteCount;
 
-    @JsonProperty("msg_store_write_count_details")
-    protected Details mMsgStoreWriteCountDetails;
+  @JsonProperty("msg_store_write_count_details") protected Details msgStoreWriteCountDetails;
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    @JsonProperty("net_ticktime")
-    protected int mNetTicktime;
+  @JsonProperty("net_ticktime") protected int netTicktime;
 
-    @JsonProperty("os_pid")
-    protected String mOsPid;
+  @JsonProperty("os_pid") protected String osPid;
 
-    // TODO: Partitions should be corrected.
+  // TODO: Partitions should be corrected.
 
-    @JsonProperty("partitions")
-    protected List<Object> mPartitions = new ArrayList<>();
+  @JsonProperty("partitions") protected List<Object> partitions = new ArrayList<>();
 
-    @JsonProperty("proc_total")
-    protected int mProcTotal;
+  @JsonProperty("proc_total") protected int procTotal;
 
-    @JsonProperty("proc_used")
-    protected int mProcUsed;
+  @JsonProperty("proc_used") protected int procUsed;
 
-    @JsonProperty("proc_used_details")
-    protected Details mProcUsedDetails;
+  @JsonProperty("proc_used_details") protected Details procUsedDetails;
 
-    @JsonProperty("processors")
-    protected int mProcessors;
+  @JsonProperty("processors") protected int processors;
 
-    @JsonProperty("queue_index_journal_write_count")
-    protected int mQueueIndexJournalWriteCount;
+  @JsonProperty("queue_index_journal_write_count") protected int queueIndexJournalWriteCount;
 
-    @JsonProperty("queue_index_journal_write_count_details")
-    protected Details mQueueIndexJournalWriteCountDetails;
+  @JsonProperty("queue_index_journal_write_count_details") protected Details
+      queueIndexJournalWriteCountDetails;
 
-    @JsonProperty("queue_index_read_count")
-    protected int mQueueIndexReadCount;
+  @JsonProperty("queue_index_read_count") protected int queueIndexReadCount;
 
-    @JsonProperty("queue_index_read_count_details")
-    protected Details mQueueIndexReadCountDetails;
+  @JsonProperty("queue_index_read_count_details") protected Details queueIndexReadCountDetails;
 
-    @JsonProperty("queue_index_write_count")
-    protected int mQueueIndexWriteCount;
+  @JsonProperty("queue_index_write_count") protected int queueIndexWriteCount;
 
-    @JsonProperty("queue_index_write_count_details")
-    protected Details mQueueIndexWriteCountDetails;
+  @JsonProperty("queue_index_write_count_details") protected Details queueIndexWriteCountDetails;
 
-    @JsonProperty("rates_mode")
-    protected String mRatesMode;
+  @JsonProperty("rates_mode") protected String ratesMode;
 
-    @JsonProperty("run_queue")
-    protected int mRunQueue;
+  @JsonProperty("run_queue") protected int runQueue;
 
-    @JsonProperty("running")
-    protected boolean mRunning;
+  @JsonProperty("running") protected boolean running;
 
-    @JsonProperty("sasl_log_file")
-    protected String mSaslLogFile;
+  @JsonProperty("sasl_log_file") protected String saslLogFile;
 
-    @JsonProperty("sockets_total")
-    protected int mSocketsTotal;
+  @JsonProperty("sockets_total") protected int socketsTotal;
 
-    @JsonProperty("sockets_used")
-    protected int mSocketsUsed;
+  @JsonProperty("sockets_used") protected int socketsUsed;
 
-    @JsonProperty("sockets_used_details")
-    protected Details mSocketsUsedDetails;
+  @JsonProperty("sockets_used_details") protected Details socketsUsedDetails;
 
-    @JsonProperty("type")
-    protected String mType;
+  @JsonProperty("type") protected String type;
 
-    @JsonProperty("uptime")
-    protected int mUptime;
+  @JsonProperty("uptime") protected int uptime;
 
-    public List<Application> getApplications() {
+  public List<Application> getApplications() {
+    return applications;
+  }
 
-        return mApplications;
-    }
+  public List<Description> getAuthMechanisms() {
+    return authMechanisms;
+  }
 
-    public List<Description> getAuthMechanisms() {
+  public List<Object> getClusterLinks() {
+    return clusterLinks;
+  }
 
-        return mAuthMechanisms;
-    }
+  public List<String> getConfigFiles() {
+    return configFiles;
+  }
 
-    public List<Object> getClusterLinks() {
+  public List<Context> getContexts() {
+    return contexts;
+  }
 
-        return mClusterLinks;
-    }
+  public String getDbDir() {
+    return dbDir;
+  }
 
-    public List<String> getConfigFiles() {
+  public long getDiskFree() {
+    return diskFree;
+  }
 
-        return mConfigFiles;
-    }
+  public boolean isDiskFreeAlarm() {
+    return diskFreeAlarm;
+  }
 
-    public List<Context> getContexts() {
+  public Details getDiskFreeDetails() {
+    return diskFreeDetails;
+  }
 
-        return mContexts;
-    }
+  public long getDiskFreeLimit() {
+    return diskFreeLimit;
+  }
 
-    public String getDbDir() {
+  public List<String> getEnabledPlugins() {
+    return enabledPlugins;
+  }
 
-        return mDbDir;
-    }
+  public List<Description> getExchangeTypes() {
+    return exchangeTypes;
+  }
 
-    public long getDiskFree() {
+  public int getFdTotal() {
+    return fdTotal;
+  }
 
-        return mDiskFree;
-    }
+  public int getFdUsed() {
+    return fdUsed;
+  }
 
-    public boolean isDiskFreeAlarm() {
+  public Details getFdUsedDetails() {
+    return fdUsedDetails;
+  }
 
-        return mDiskFreeAlarm;
-    }
+  public float getIoReadAvgTime() {
+    return ioReadAvgTime;
+  }
 
-    public Details getDiskFreeDetails() {
+  public Details getIoReadAvgTimeDetails() {
+    return ioReadAvgTimeDetails;
+  }
 
-        return mDiskFreeDetails;
-    }
+  public int getIoReadBytes() {
+    return ioReadBytes;
+  }
 
-    public long getDiskFreeLimit() {
+  public Details getIoReadBytesDetails() {
+    return ioReadBytesDetails;
+  }
 
-        return mDiskFreeLimit;
-    }
+  public int getIoReadCount() {
+    return ioReadCount;
+  }
 
-    public List<String> getEnabledPlugins() {
+  public Details getIoReadCountDetails() {
+    return ioReadCountDetails;
+  }
 
-        return mEnabledPlugins;
-    }
+  public int getIoReopenCount() {
+    return ioReopenCount;
+  }
 
-    public List<Description> getExchangeTypes() {
+  public Details getIoReopenCountDetails() {
+    return ioReopenCountDetails;
+  }
 
-        return mExchangeTypes;
-    }
+  public float getIoSeekAvgTime() {
+    return ioSeekAvgTime;
+  }
 
-    public int getFdTotal() {
+  public Details getIoSeekAvgTimeDetails() {
+    return ioSeekAvgTimeDetails;
+  }
 
-        return mFdTotal;
-    }
+  public int getIoSeekCount() {
+    return ioSeekCount;
+  }
 
-    public int getFdUsed() {
+  public Details getIoSeekCountDetails() {
+    return ioSeekCountDetails;
+  }
 
-        return mFdUsed;
-    }
+  public float getIoSyncAvgTime() {
+    return ioSyncAvgTime;
+  }
 
-    public Details getFdUsedDetails() {
+  public Details getIoSyncAvgTimeDetails() {
+    return ioSyncAvgTimeDetails;
+  }
 
-        return mFdUsedDetails;
-    }
+  public int getIoSyncCount() {
+    return ioSyncCount;
+  }
 
-    public float getIoReadAvgTime() {
+  public Details getIoSyncCountDetails() {
+    return ioSyncCountDetails;
+  }
 
-        return mIoReadAvgTime;
-    }
+  public float getIoWriteAvgTime() {
+    return ioWriteAvgTime;
+  }
 
-    public Details getIoReadAvgTimeDetails() {
+  public Details getIoWriteAvgTimeDetails() {
+    return ioWriteAvgTimeDetails;
+  }
 
-        return mIoReadAvgTimeDetails;
-    }
+  public long getIoWriteBytes() {
+    return ioWriteBytes;
+  }
 
-    public int getIoReadBytes() {
+  public Details getIoWriteBytesDetails() {
+    return ioWriteBytesDetails;
+  }
 
-        return mIoReadBytes;
-    }
+  public int getIoWriteCount() {
+    return ioWriteCount;
+  }
 
-    public Details getIoReadBytesDetails() {
+  public Details getIoWriteCountDetails() {
+    return ioWriteCountDetails;
+  }
 
-        return mIoReadBytesDetails;
-    }
+  public String getLogFile() {
+    return logFile;
+  }
 
-    public int getIoReadCount() {
+  public boolean isMemAlarm() {
+    return memAlarm;
+  }
 
-        return mIoReadCount;
-    }
+  public long getMemLimit() {
+    return memLimit;
+  }
 
-    public Details getIoReadCountDetails() {
+  public long getMemUsed() {
+    return memUsed;
+  }
 
-        return mIoReadCountDetails;
-    }
+  public Details getMemUsedDetails() {
+    return memUsedDetails;
+  }
 
-    public int getIoReopenCount() {
+  public int getMnesiaDiskTxCount() {
+    return mnesiaDiskTxCount;
+  }
 
-        return mIoReopenCount;
-    }
+  public Details getMnesiaDiskTxCountDetails() {
+    return mnesiaDiskTxCountDetails;
+  }
 
-    public Details getIoReopenCountDetails() {
+  public int getMnesiaRamTxCount() {
+    return mnesiaRamTxCount;
+  }
 
-        return mIoReopenCountDetails;
-    }
+  public Details getMnesiaRamTxCountDetails() {
+    return mnesiaRamTxCountDetails;
+  }
 
-    public float getIoSeekAvgTime() {
+  public int getMsgStoreReadCount() {
+    return msgStoreReadCount;
+  }
 
-        return mIoSeekAvgTime;
-    }
+  public Details getMsgStoreReadCountDetails() {
+    return msgStoreReadCountDetails;
+  }
 
-    public Details getIoSeekAvgTimeDetails() {
+  public int getMsgStoreWriteCount() {
+    return msgStoreWriteCount;
+  }
 
-        return mIoSeekAvgTimeDetails;
-    }
+  public Details getMsgStoreWriteCountDetails() {
+    return msgStoreWriteCountDetails;
+  }
 
-    public int getIoSeekCount() {
+  public String getName() {
+    return name;
+  }
 
-        return mIoSeekCount;
-    }
+  public int getNetTicktime() {
+    return netTicktime;
+  }
 
-    public Details getIoSeekCountDetails() {
+  public String getOsPid() {
+    return osPid;
+  }
 
-        return mIoSeekCountDetails;
-    }
+  public List<Object> getPartitions() {
+    return partitions;
+  }
 
-    public float getIoSyncAvgTime() {
+  public int getProcTotal() {
+    return procTotal;
+  }
 
-        return mIoSyncAvgTime;
-    }
+  public int getProcUsed() {
+    return procUsed;
+  }
 
-    public Details getIoSyncAvgTimeDetails() {
+  public Details getProcUsedDetails() {
+    return procUsedDetails;
+  }
 
-        return mIoSyncAvgTimeDetails;
-    }
+  public int getProcessors() {
+    return processors;
+  }
 
-    public int getIoSyncCount() {
+  public int getQueueIndexJournalWriteCount() {
+    return queueIndexJournalWriteCount;
+  }
 
-        return mIoSyncCount;
-    }
+  public Details getQueueIndexJournalWriteCountDetails() {
+    return queueIndexJournalWriteCountDetails;
+  }
 
-    public Details getIoSyncCountDetails() {
+  public int getQueueIndexReadCount() {
+    return queueIndexReadCount;
+  }
 
-        return mIoSyncCountDetails;
-    }
+  public Details getQueueIndexReadCountDetails() {
+    return queueIndexReadCountDetails;
+  }
 
-    public float getIoWriteAvgTime() {
+  public int getQueueIndexWriteCount() {
+    return queueIndexWriteCount;
+  }
 
-        return mIoWriteAvgTime;
-    }
+  public Details getQueueIndexWriteCountDetails() {
+    return queueIndexWriteCountDetails;
+  }
 
-    public Details getIoWriteAvgTimeDetails() {
+  public String getRatesMode() {
+    return ratesMode;
+  }
 
-        return mIoWriteAvgTimeDetails;
-    }
+  public int getRunQueue() {
+    return runQueue;
+  }
 
-    public long getIoWriteBytes() {
+  public boolean isRunning() {
+    return running;
+  }
 
-        return mIoWriteBytes;
-    }
+  public String getSaslLogFile() {
+    return saslLogFile;
+  }
 
-    public Details getIoWriteBytesDetails() {
+  public int getSocketsTotal() {
+    return socketsTotal;
+  }
 
-        return mIoWriteBytesDetails;
-    }
+  public int getSocketsUsed() {
+    return socketsUsed;
+  }
 
-    public int getIoWriteCount() {
+  public Details getSocketsUsedDetails() {
+    return socketsUsedDetails;
+  }
 
-        return mIoWriteCount;
-    }
+  public String getType() {
+    return type;
+  }
 
-    public Details getIoWriteCountDetails() {
-
-        return mIoWriteCountDetails;
-    }
-
-    public String getLogFile() {
-
-        return mLogFile;
-    }
-
-    public boolean isMemAlarm() {
-
-        return mMemAlarm;
-    }
-
-    public long getMemLimit() {
-
-        return mMemLimit;
-    }
-
-    public long getMemUsed() {
-
-        return mMemUsed;
-    }
-
-    public Details getMemUsedDetails() {
-
-        return mMemUsedDetails;
-    }
-
-    public int getMnesiaDiskTxCount() {
-
-        return mMnesiaDiskTxCount;
-    }
-
-    public Details getMnesiaDiskTxCountDetails() {
-
-        return mMnesiaDiskTxCountDetails;
-    }
-
-    public int getMnesiaRamTxCount() {
-
-        return mMnesiaRamTxCount;
-    }
-
-    public Details getMnesiaRamTxCountDetails() {
-
-        return mMnesiaRamTxCountDetails;
-    }
-
-    public int getMsgStoreReadCount() {
-
-        return mMsgStoreReadCount;
-    }
-
-    public Details getMsgStoreReadCountDetails() {
-
-        return mMsgStoreReadCountDetails;
-    }
-
-    public int getMsgStoreWriteCount() {
-
-        return mMsgStoreWriteCount;
-    }
-
-    public Details getMsgStoreWriteCountDetails() {
-
-        return mMsgStoreWriteCountDetails;
-    }
-
-    public String getName() {
-
-        return mName;
-    }
-
-    public int getNetTicktime() {
-
-        return mNetTicktime;
-    }
-
-    public String getOsPid() {
-
-        return mOsPid;
-    }
-
-    public List<Object> getPartitions() {
-
-        return mPartitions;
-    }
-
-    public int getProcTotal() {
-
-        return mProcTotal;
-    }
-
-    public int getProcUsed() {
-
-        return mProcUsed;
-    }
-
-    public Details getProcUsedDetails() {
-
-        return mProcUsedDetails;
-    }
-
-    public int getProcessors() {
-
-        return mProcessors;
-    }
-
-    public int getQueueIndexJournalWriteCount() {
-
-        return mQueueIndexJournalWriteCount;
-    }
-
-    public Details getQueueIndexJournalWriteCountDetails() {
-
-        return mQueueIndexJournalWriteCountDetails;
-    }
-
-    public int getQueueIndexReadCount() {
-
-        return mQueueIndexReadCount;
-    }
-
-    public Details getQueueIndexReadCountDetails() {
-
-        return mQueueIndexReadCountDetails;
-    }
-
-    public int getQueueIndexWriteCount() {
-
-        return mQueueIndexWriteCount;
-    }
-
-    public Details getQueueIndexWriteCountDetails() {
-
-        return mQueueIndexWriteCountDetails;
-    }
-
-    public String getRatesMode() {
-
-        return mRatesMode;
-    }
-
-    public int getRunQueue() {
-
-        return mRunQueue;
-    }
-
-    public boolean isRunning() {
-
-        return mRunning;
-    }
-
-    public String getSaslLogFile() {
-
-        return mSaslLogFile;
-    }
-
-    public int getSocketsTotal() {
-
-        return mSocketsTotal;
-    }
-
-    public int getSocketsUsed() {
-
-        return mSocketsUsed;
-    }
-
-    public Details getSocketsUsedDetails() {
-
-        return mSocketsUsedDetails;
-    }
-
-    public String getType() {
-
-        return mType;
-    }
-
-    public int getUptime() {
-
-        return mUptime;
-    }
+  public int getUptime() {
+    return uptime;
+  }
 }

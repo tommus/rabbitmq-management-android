@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,139 +21,102 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Tomasz Dzieniak
- * @since 09.06.16.
- */
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MessageStats {
 
-    @JsonProperty("ack")
-    protected int mAck;
+  @JsonProperty("ack") protected int ack;
 
-    @JsonProperty("ack_details")
-    protected Details mAckDetails;
+  @JsonProperty("ack_details") protected Details ackDetails;
 
-    @JsonProperty("confirm")
-    protected int mConfirm;
+  @JsonProperty("confirm") protected int confirm;
 
-    @JsonProperty("confirm_details")
-    protected Details mConfirmDetails;
+  @JsonProperty("confirm_details") protected Details confirmDetails;
 
-    @JsonProperty("deliver_get")
-    protected int mDeliverGet;
+  @JsonProperty("deliver_get") protected int deliverGet;
 
-    @JsonProperty("deliver_get_details")
-    protected Details mDeliverGetDetails;
+  @JsonProperty("deliver_get_details") protected Details deliverGetDetails;
 
-    @JsonProperty("publish")
-    protected int mPublish;
+  @JsonProperty("publish") protected int publish;
 
-    @JsonProperty("publish_details")
-    protected Details mPublishDetails;
+  @JsonProperty("publish_details") protected Details publishDetails;
 
-    @JsonProperty("publish_in")
-    protected int mPublishIn;
+  @JsonProperty("publish_in") protected int publishIn;
 
-    @JsonProperty("publish_in_details")
-    protected Details mPublishInDetails;
+  @JsonProperty("publish_in_details") protected Details publishInDetails;
 
-    @JsonProperty("publish_out")
-    protected int mPublishOut;
+  @JsonProperty("publish_out") protected int publishOut;
 
-    @JsonProperty("publish_out_details")
-    protected Details mPublishOutDetails;
+  @JsonProperty("publish_out_details") protected Details publishOutDetails;
 
-    @JsonProperty("redeliver")
-    protected int mRedeliver;
+  @JsonProperty("redeliver") protected int redeliver;
 
-    @JsonProperty("redeliver_details")
-    protected Details mRedeliverDetails;
+  @JsonProperty("redeliver_details") protected Details redeliverDetails;
 
-    @JsonProperty("return_unroutable")
-    protected int mReturnUnroutable;
+  @JsonProperty("return_unroutable") protected int returnUnroutable;
 
-    @JsonProperty("return_unroutable_details")
-    protected Details mReturnUnroutableDetails;
+  @JsonProperty("return_unroutable_details") protected Details returnUnroutableDetails;
 
-    public int getAck() {
+  public int getAck() {
+    return ack;
+  }
 
-        return mAck;
-    }
+  public Details getAckDetails() {
+    return ackDetails;
+  }
 
-    public Details getAckDetails() {
+  public int getConfirm() {
+    return confirm;
+  }
 
-        return mAckDetails;
-    }
+  public Details getConfirmDetails() {
+    return confirmDetails;
+  }
 
-    public int getConfirm() {
+  public int getDeliverGet() {
+    return deliverGet;
+  }
 
-        return mConfirm;
-    }
+  public Details getDeliverGetDetails() {
+    return deliverGetDetails;
+  }
 
-    public Details getConfirmDetails() {
+  public int getPublish() {
+    return publish;
+  }
 
-        return mConfirmDetails;
-    }
+  public Details getPublishDetails() {
+    return publishDetails;
+  }
 
-    public int getDeliverGet() {
+  public int getPublishIn() {
+    return publishIn;
+  }
 
-        return mDeliverGet;
-    }
+  public Details getPublishInDetails() {
+    return publishInDetails;
+  }
 
-    public Details getDeliverGetDetails() {
+  public int getPublishOut() {
+    return publishOut;
+  }
 
-        return mDeliverGetDetails;
-    }
+  public Details getPublishOutDetails() {
+    return publishOutDetails;
+  }
 
-    public int getPublish() {
+  public int getRedeliver() {
+    return redeliver;
+  }
 
-        return mPublish;
-    }
+  public Details getRedeliverDetails() {
+    return redeliverDetails;
+  }
 
-    public Details getPublishDetails() {
+  public int getReturnUnroutable() {
+    return returnUnroutable;
+  }
 
-        return mPublishDetails;
-    }
-
-    public int getPublishIn() {
-
-        return mPublishIn;
-    }
-
-    public Details getPublishInDetails() {
-
-        return mPublishInDetails;
-    }
-
-    public int getPublishOut() {
-
-        return mPublishOut;
-    }
-
-    public Details getPublishOutDetails() {
-
-        return mPublishOutDetails;
-    }
-
-    public int getRedeliver() {
-
-        return mRedeliver;
-    }
-
-    public Details getRedeliverDetails() {
-
-        return mRedeliverDetails;
-    }
-
-    public int getReturnUnroutable() {
-
-        return mReturnUnroutable;
-    }
-
-    public Details getReturnUnroutableDetails() {
-
-        return mReturnUnroutableDetails;
-    }
+  public Details getReturnUnroutableDetails() {
+    return returnUnroutableDetails;
+  }
 }

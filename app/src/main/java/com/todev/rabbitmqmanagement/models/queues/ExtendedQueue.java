@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -24,255 +24,192 @@ import com.todev.rabbitmqmanagement.models.Details;
 import com.todev.rabbitmqmanagement.models.MessageStats;
 import com.todev.rabbitmqmanagement.models.definitions.Policy;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExtendedQueue extends Queue {
 
-    @JsonProperty("backing_queue_status")
-    protected BackingQueueStatus mBackingQueueStatus;
+  @JsonProperty("backing_queue_status") protected BackingQueueStatus backingQueueStatus;
 
-    @JsonProperty("consumer_utilisation")
-    protected Object mConsumerUtilisation;
+  @JsonProperty("consumer_utilisation") protected Object consumerUtilisation;
 
-    @JsonProperty("consumers")
-    protected int mConsumers;
+  @JsonProperty("consumers") protected int consumers;
 
-    @JsonProperty("disk_reads")
-    protected int mDiskReads;
+  @JsonProperty("disk_reads") protected int diskReads;
 
-    @JsonProperty("disk_writes")
-    protected int mDiskWrites;
+  @JsonProperty("disk_writes") protected int diskWrites;
 
-    @JsonProperty("exclusive")
-    protected boolean mExclusive;
+  @JsonProperty("exclusive") protected boolean exclusive;
 
-    @JsonProperty("exclusive_consumer_tag")
-    protected Object mExclusiveConsumerTag;
+  @JsonProperty("exclusive_consumer_tag") protected Object exclusiveConsumerTag;
 
-    @JsonProperty("head_message_timestamp")
-    protected Object mHeadMessageTimestamp;
+  @JsonProperty("head_message_timestamp") protected Object headMessageTimestamp;
 
-    @JsonProperty("idle_since")
-    protected String mIdleSince;
+  @JsonProperty("idle_since") protected String idleSince;
 
-    @JsonProperty("memory")
-    protected long mMemory;
+  @JsonProperty("memory") protected long memory;
 
-    @JsonProperty("message_bytes")
-    protected long mMessageBytes;
+  @JsonProperty("message_bytes") protected long messageBytes;
 
-    @JsonProperty("message_bytes_persistent")
-    protected long mMessageBytesPersistent;
+  @JsonProperty("message_bytes_persistent") protected long messageBytesPersistent;
 
-    @JsonProperty("message_bytes_ram")
-    protected long mMessageBytesRam;
+  @JsonProperty("message_bytes_ram") protected long messageBytesRam;
 
-    @JsonProperty("message_bytes_ready")
-    protected long mMessageBytesReady;
+  @JsonProperty("message_bytes_ready") protected long messageBytesReady;
 
-    @JsonProperty("message_bytes_unacknowledged")
-    protected long mMessageBytesUnacknowledged;
+  @JsonProperty("message_bytes_unacknowledged") protected long messageBytesUnacknowledged;
 
-    @JsonProperty("message_stats")
-    protected MessageStats mMessageStats;
+  @JsonProperty("message_stats") protected MessageStats messageStats;
 
-    @JsonProperty("messages")
-    protected int mMessages;
+  @JsonProperty("messages") protected int messages;
 
-    @JsonProperty("messages_details")
-    protected Details mMessagesDetails;
+  @JsonProperty("messages_details") protected Details messagesDetails;
 
-    @JsonProperty("messages_persistent")
-    protected int mMessagesPersistent;
+  @JsonProperty("messages_persistent") protected int messagesPersistent;
 
-    @JsonProperty("messages_ram")
-    protected long mMessagesRam;
+  @JsonProperty("messages_ram") protected long messagesRam;
 
-    @JsonProperty("messages_ready")
-    protected int mMessagesReady;
+  @JsonProperty("messages_ready") protected int messagesReady;
 
-    @JsonProperty("messages_ready_details")
-    protected Details mMessagesReadyDetails;
+  @JsonProperty("messages_ready_details") protected Details messagesReadyDetails;
 
-    @JsonProperty("messages_ready_ram")
-    protected long mMessagesReadyRam;
+  @JsonProperty("messages_ready_ram") protected long messagesReadyRam;
 
-    @JsonProperty("messages_unacknowledged")
-    protected int mMessagesUnacknowledged;
+  @JsonProperty("messages_unacknowledged") protected int messagesUnacknowledged;
 
-    @JsonProperty("messages_unacknowledged_details")
-    protected Details mMessagesUnacknowledgedDetails;
+  @JsonProperty("messages_unacknowledged_details") protected Details messagesUnacknowledgedDetails;
 
-    @JsonProperty("messages_unacknowledged_ram")
-    protected long mMessagesUnacknowledgedRam;
+  @JsonProperty("messages_unacknowledged_ram") protected long messagesUnacknowledgedRam;
 
-    @JsonProperty("node")
-    protected String mNode;
+  @JsonProperty("node") protected String node;
 
-    @JsonProperty("policy")
-    protected Policy mPolicy;
+  @JsonProperty("policy") protected Policy policy;
 
-    @JsonProperty("recoverable_slaves")
-    protected Object mRecoverableSlaves;
+  @JsonProperty("recoverable_slaves") protected Object recoverableSlaves;
 
-    @JsonProperty("state")
-    protected String mState;
+  @JsonProperty("state") protected String state;
 
-    @JsonProperty("vhost")
-    protected String mVhost;
+  @JsonProperty("vhost") protected String vhost;
 
-    public BackingQueueStatus getBackingQueueStatus() {
+  public BackingQueueStatus getBackingQueueStatus() {
+    return backingQueueStatus;
+  }
 
-        return mBackingQueueStatus;
-    }
+  public Object getConsumerUtilisation() {
+    return consumerUtilisation;
+  }
 
-    public Object getConsumerUtilisation() {
+  public int getConsumers() {
+    return consumers;
+  }
 
-        return mConsumerUtilisation;
-    }
+  public int getDiskReads() {
+    return diskReads;
+  }
 
-    public int getConsumers() {
+  public int getDiskWrites() {
+    return diskWrites;
+  }
 
-        return mConsumers;
-    }
+  public boolean isExclusive() {
+    return exclusive;
+  }
 
-    public int getDiskReads() {
+  public Object getExclusiveConsumerTag() {
+    return exclusiveConsumerTag;
+  }
 
-        return mDiskReads;
-    }
+  public Object getHeadMessageTimestamp() {
+    return headMessageTimestamp;
+  }
 
-    public int getDiskWrites() {
+  public String getIdleSince() {
+    return idleSince;
+  }
 
-        return mDiskWrites;
-    }
-
-    public boolean isExclusive() {
-
-        return mExclusive;
-    }
-
-    public Object getExclusiveConsumerTag() {
-
-        return mExclusiveConsumerTag;
-    }
-
-    public Object getHeadMessageTimestamp() {
-
-        return mHeadMessageTimestamp;
-    }
-
-    public String getIdleSince() {
-
-        return mIdleSince;
-    }
-
-    public long getMemory() {
-
-        return mMemory;
-    }
-
-    public long getMessageBytes() {
-
-        return mMessageBytes;
-    }
-
-    public long getMessageBytesPersistent() {
-
-        return mMessageBytesPersistent;
-    }
-
-    public long getMessageBytesRam() {
-
-        return mMessageBytesRam;
-    }
-
-    public long getMessageBytesReady() {
-
-        return mMessageBytesReady;
-    }
-
-    public long getMessageBytesUnacknowledged() {
-
-        return mMessageBytesUnacknowledged;
-    }
-
-    public MessageStats getMessageStats() {
-
-        return mMessageStats;
-    }
-
-    public int getMessages() {
-
-        return mMessages;
-    }
-
-    public Details getMessagesDetails() {
-
-        return mMessagesDetails;
-    }
-
-    public int getMessagesPersistent() {
-
-        return mMessagesPersistent;
-    }
-
-    public long getMessagesRam() {
-
-        return mMessagesRam;
-    }
-
-    public int getMessagesReady() {
-
-        return mMessagesReady;
-    }
-
-    public Details getMessagesReadyDetails() {
-
-        return mMessagesReadyDetails;
-    }
-
-    public long getMessagesReadyRam() {
-
-        return mMessagesReadyRam;
-    }
-
-    public int getMessagesUnacknowledged() {
-
-        return mMessagesUnacknowledged;
-    }
-
-    public Details getMessagesUnacknowledgedDetails() {
-
-        return mMessagesUnacknowledgedDetails;
-    }
-
-    public long getMessagesUnacknowledgedRam() {
-
-        return mMessagesUnacknowledgedRam;
-    }
-
-    public String getNode() {
-
-        return mNode;
-    }
-
-    public Policy getPolicy() {
-
-        return mPolicy;
-    }
-
-    public Object getRecoverableSlaves() {
-
-        return mRecoverableSlaves;
-    }
-
-    public String getState() {
-
-        return mState;
-    }
-
-    public String getVhost() {
-
-        return mVhost;
-    }
+  public long getMemory() {
+    return memory;
+  }
+
+  public long getMessageBytes() {
+    return messageBytes;
+  }
+
+  public long getMessageBytesPersistent() {
+    return messageBytesPersistent;
+  }
+
+  public long getMessageBytesRam() {
+    return messageBytesRam;
+  }
+
+  public long getMessageBytesReady() {
+    return messageBytesReady;
+  }
+
+  public long getMessageBytesUnacknowledged() {
+    return messageBytesUnacknowledged;
+  }
+
+  public MessageStats getMessageStats() {
+    return messageStats;
+  }
+
+  public int getMessages() {
+    return messages;
+  }
+
+  public Details getMessagesDetails() {
+    return messagesDetails;
+  }
+
+  public int getMessagesPersistent() {
+    return messagesPersistent;
+  }
+
+  public long getMessagesRam() {
+    return messagesRam;
+  }
+
+  public int getMessagesReady() {
+    return messagesReady;
+  }
+
+  public Details getMessagesReadyDetails() {
+    return messagesReadyDetails;
+  }
+
+  public long getMessagesReadyRam() {
+    return messagesReadyRam;
+  }
+
+  public int getMessagesUnacknowledged() {
+    return messagesUnacknowledged;
+  }
+
+  public Details getMessagesUnacknowledgedDetails() {
+    return messagesUnacknowledgedDetails;
+  }
+
+  public long getMessagesUnacknowledgedRam() {
+    return messagesUnacknowledgedRam;
+  }
+
+  public String getNode() {
+    return node;
+  }
+
+  public Policy getPolicy() {
+    return policy;
+  }
+
+  public Object getRecoverableSlaves() {
+    return recoverableSlaves;
+  }
+
+  public String getState() {
+    return state;
+  }
+
+  public String getVhost() {
+    return vhost;
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,23 +21,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExtendedBinding extends Binding {
 
-    @JsonProperty("properties_key")
-    protected String mPropertiesKey;
+  @JsonProperty("properties_key") protected String propertiesKey;
 
-    @JsonProperty("vhost")
-    protected String mVhost;
+  @JsonProperty("vhost") protected String vhost;
 
-    public String getPropertiesKey() {
+  public String getPropertiesKey() {
+    return propertiesKey;
+  }
 
-        return mPropertiesKey;
-    }
-
-    public String getVhost() {
-
-        return mVhost;
-    }
+  public String getVhost() {
+    return vhost;
+  }
 }

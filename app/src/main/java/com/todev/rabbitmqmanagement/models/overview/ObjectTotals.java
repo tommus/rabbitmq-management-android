@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,47 +21,36 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ObjectTotals {
 
-    @JsonProperty("channels")
-    protected int mChannels;
+  @JsonProperty("channels") protected int channels;
 
-    @JsonProperty("connections")
-    protected int mConnections;
+  @JsonProperty("connections") protected int connections;
 
-    @JsonProperty("consumers")
-    protected int mConsumers;
+  @JsonProperty("consumers") protected int consumers;
 
-    @JsonProperty("exchanges")
-    protected int mExchanges;
+  @JsonProperty("exchanges") protected int exchanges;
 
-    @JsonProperty("queues")
-    protected int mQueues;
+  @JsonProperty("queues") protected int queues;
 
-    public int getChannels() {
+  public int getChannels() {
+    return channels;
+  }
 
-        return mChannels;
-    }
+  public int getConnections() {
+    return connections;
+  }
 
-    public int getConnections() {
+  public int getConsumers() {
+    return consumers;
+  }
 
-        return mConnections;
-    }
+  public int getExchanges() {
+    return exchanges;
+  }
 
-    public int getConsumers() {
-
-        return mConsumers;
-    }
-
-    public int getExchanges() {
-
-        return mExchanges;
-    }
-
-    public int getQueues() {
-
-        return mQueues;
-    }
+  public int getQueues() {
+    return queues;
+  }
 }

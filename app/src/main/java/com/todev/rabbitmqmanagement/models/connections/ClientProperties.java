@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,23 +21,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ClientProperties {
 
-    @JsonProperty("library")
-    protected String mLibrary;
+  @JsonProperty("library") protected String library;
 
-    @JsonProperty("library_version")
-    protected String mLibraryVersion;
+  @JsonProperty("library_version") protected String libraryVersion;
 
-    public String getLibrary() {
+  public String getLibrary() {
+    return library;
+  }
 
-        return mLibrary;
-    }
-
-    public String getLibraryVersion() {
-
-        return mLibraryVersion;
-    }
+  public String getLibraryVersion() {
+    return libraryVersion;
+  }
 }

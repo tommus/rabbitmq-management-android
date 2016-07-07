@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -24,85 +24,65 @@ import com.todev.rabbitmqmanagement.models.bindings.Binding;
 import com.todev.rabbitmqmanagement.models.exchanges.Exchange;
 import com.todev.rabbitmqmanagement.models.queues.Queue;
 import com.todev.rabbitmqmanagement.models.vhosts.Vhost;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Definitions {
 
-    @JsonProperty("bindings")
-    protected List<Binding> mBindings = new ArrayList<>();
+  @JsonProperty("bindings") protected List<Binding> bindings = new ArrayList<>();
 
-    @JsonProperty("exchanges")
-    protected List<Exchange> mExchanges = new ArrayList<>();
+  @JsonProperty("exchanges") protected List<Exchange> exchanges = new ArrayList<>();
 
-    // TODO: Parameters should be corrected.
+  // TODO: Parameters should be corrected.
 
-    @JsonProperty("parameters")
-    protected List<Object> mParameters = new ArrayList<>();
+  @JsonProperty("parameters") protected List<Object> parameters = new ArrayList<>();
 
-    @JsonProperty("permissions")
-    protected List<Permission> mPermissions = new ArrayList<>();
+  @JsonProperty("permissions") protected List<Permission> permissions = new ArrayList<>();
 
-    @JsonProperty("policies")
-    protected List<Policy> mPolicies = new ArrayList<>();
+  @JsonProperty("policies") protected List<Policy> policies = new ArrayList<>();
 
-    @JsonProperty("queues")
-    protected List<Queue> mQueues = new ArrayList<>();
+  @JsonProperty("queues") protected List<Queue> queues = new ArrayList<>();
 
-    @JsonProperty("rabbit_version")
-    protected String mRabbitVersion;
+  @JsonProperty("rabbit_version") protected String rabbitVersion;
 
-    @JsonProperty("users")
-    protected List<User> mUsers = new ArrayList<>();
+  @JsonProperty("users") protected List<User> users = new ArrayList<>();
 
-    @JsonProperty("vhosts")
-    protected List<Vhost> mVhosts = new ArrayList<>();
+  @JsonProperty("vhosts") protected List<Vhost> vhosts = new ArrayList<>();
 
-    public List<Binding> getBindings() {
+  public List<Binding> getBindings() {
+    return bindings;
+  }
 
-        return mBindings;
-    }
+  public List<Exchange> getExchanges() {
+    return exchanges;
+  }
 
-    public List<Exchange> getExchanges() {
+  public List<Object> getParameters() {
+    return parameters;
+  }
 
-        return mExchanges;
-    }
+  public List<Permission> getPermissions() {
+    return permissions;
+  }
 
-    public List<Object> getParameters() {
+  public List<Policy> getPolicies() {
+    return policies;
+  }
 
-        return mParameters;
-    }
+  public List<Queue> getQueues() {
+    return queues;
+  }
 
-    public List<Permission> getPermissions() {
+  public String getRabbitVersion() {
+    return rabbitVersion;
+  }
 
-        return mPermissions;
-    }
+  public List<User> getUsers() {
+    return users;
+  }
 
-    public List<Policy> getPolicies() {
-
-        return mPolicies;
-    }
-
-    public List<Queue> getQueues() {
-
-        return mQueues;
-    }
-
-    public String getRabbitVersion() {
-
-        return mRabbitVersion;
-    }
-
-    public List<User> getUsers() {
-
-        return mUsers;
-    }
-
-    public List<Vhost> getVhosts() {
-
-        return mVhosts;
-    }
+  public List<Vhost> getVhosts() {
+    return vhosts;
+  }
 }

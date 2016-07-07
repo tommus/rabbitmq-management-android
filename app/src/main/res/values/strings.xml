@@ -2,8 +2,8 @@
 
 <resources>
 
-    <eat-comment />
+  <eat-comment/>
 
-    <string name="app_name">RabbitMQ Management</string>
+  <string name="app_name">RabbitMQ Management</string>
 
 </resources>

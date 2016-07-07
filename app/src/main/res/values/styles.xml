@@ -2,14 +2,14 @@
 
 <resources>
 
-    <eat-comment />
+  <eat-comment/>
 
-    <style name="RabbitmqManagement" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="RabbitmqManagement" parent="Theme.AppCompat.Light.DarkActionBar">
 
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
 
-    </style>
+  </style>
 
 </resources>

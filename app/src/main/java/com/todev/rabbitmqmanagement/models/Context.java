@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,39 +21,30 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Context {
 
-    @JsonProperty("description")
-    protected String mDescription;
+  @JsonProperty("description") protected String description;
 
-    @JsonProperty("path")
-    protected String mPath;
+  @JsonProperty("path") protected String path;
 
-    @JsonProperty("port")
-    protected String mPort;
+  @JsonProperty("port") protected String port;
 
-    @JsonProperty("ssl")
-    protected String mSsl;
+  @JsonProperty("ssl") protected String ssl;
 
-    public String getDescription() {
+  public String getDescription() {
+    return description;
+  }
 
-        return mDescription;
-    }
+  public String getPath() {
+    return path;
+  }
 
-    public String getPath() {
+  public String getPort() {
+    return port;
+  }
 
-        return mPath;
-    }
-
-    public String getPort() {
-
-        return mPort;
-    }
-
-    public String getSsl() {
-
-        return mSsl;
-    }
+  public String getSsl() {
+    return ssl;
+  }
 }

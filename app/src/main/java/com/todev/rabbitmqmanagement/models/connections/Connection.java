@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,271 +22,204 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Details;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Connection {
 
-    @JsonProperty("auth_mechanism")
-    protected String mAuthMechanism;
+  @JsonProperty("auth_mechanism") protected String authMechanism;
 
-    @JsonProperty("channel_max")
-    protected int mChannelMax;
+  @JsonProperty("channel_max") protected int channelMax;
 
-    @JsonProperty("channels")
-    protected int mChannels;
+  @JsonProperty("channels") protected int channels;
 
-    @JsonProperty("client_properties")
-    protected ClientProperties mClientProperties;
+  @JsonProperty("client_properties") protected ClientProperties clientProperties;
 
-    @JsonProperty("connected_at")
-    protected long mConnectedAt;
+  @JsonProperty("connected_at") protected long connectedAt;
 
-    @JsonProperty("frame_max")
-    protected int mFrameMax;
+  @JsonProperty("frame_max") protected int frameMax;
 
-    @JsonProperty("host")
-    protected String mHost;
+  @JsonProperty("host") protected String host;
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    @JsonProperty("node")
-    protected String mNode;
+  @JsonProperty("node") protected String node;
 
-    @JsonProperty("peer_cert_issuer")
-    protected Object mPeerCertIssuer;
+  @JsonProperty("peer_cert_issuer") protected Object peerCertIssuer;
 
-    @JsonProperty("peer_cert_subject")
-    protected Object mPeerCertSubject;
+  @JsonProperty("peer_cert_subject") protected Object peerCertSubject;
 
-    @JsonProperty("peer_cert_validity")
-    protected Object mPeerCertValidity;
+  @JsonProperty("peer_cert_validity") protected Object peerCertValidity;
 
-    @JsonProperty("peer_host")
-    protected String mPeerHost;
+  @JsonProperty("peer_host") protected String peerHost;
 
-    @JsonProperty("peer_port")
-    protected int mPeerPort;
+  @JsonProperty("peer_port") protected int peerPort;
 
-    @JsonProperty("port")
-    protected int mPort;
+  @JsonProperty("port") protected int port;
 
-    @JsonProperty("protocol")
-    protected String mProtocol;
+  @JsonProperty("protocol") protected String protocol;
 
-    @JsonProperty("recv_cnt")
-    protected int mRecvCnt;
+  @JsonProperty("recv_cnt") protected int recvCnt;
 
-    @JsonProperty("recv_oct")
-    protected int mRecvOct;
+  @JsonProperty("recv_oct") protected int recvOct;
 
-    @JsonProperty("recv_oct_details")
-    protected Details mRecvOctDetails;
+  @JsonProperty("recv_oct_details") protected Details recvOctDetails;
 
-    @JsonProperty("send_cnt")
-    protected int mSendCnt;
+  @JsonProperty("send_cnt") protected int sendCnt;
 
-    @JsonProperty("send_oct")
-    protected int mSendOct;
+  @JsonProperty("send_oct") protected int sendOct;
 
-    @JsonProperty("send_oct_details")
-    protected Details mSendOctDetails;
+  @JsonProperty("send_oct_details") protected Details sendOctDetails;
 
-    @JsonProperty("send_pend")
-    protected int mSendPend;
+  @JsonProperty("send_pend") protected int sendPend;
 
-    @JsonProperty("ssl")
-    protected boolean mSsl;
+  @JsonProperty("ssl") protected boolean ssl;
 
-    @JsonProperty("ssl_cipher")
-    protected Object mSslCipher;
+  @JsonProperty("ssl_cipher") protected Object sslCipher;
 
-    @JsonProperty("ssl_hash")
-    protected Object mSslHash;
+  @JsonProperty("ssl_hash") protected Object sslHash;
 
-    @JsonProperty("ssl_key_exchange")
-    protected Object mSslKeyExchange;
+  @JsonProperty("ssl_key_exchange") protected Object sslKeyExchange;
 
-    @JsonProperty("ssl_protocol")
-    protected Object mSslProtocol;
+  @JsonProperty("ssl_protocol") protected Object sslProtocol;
 
-    @JsonProperty("state")
-    protected String mState;
+  @JsonProperty("state") protected String state;
 
-    @JsonProperty("timeout")
-    protected int mTimeout;
+  @JsonProperty("timeout") protected int timeout;
 
-    @JsonProperty("type")
-    protected String mType;
+  @JsonProperty("type") protected String type;
 
-    @JsonProperty("user")
-    protected String mUser;
+  @JsonProperty("user") protected String user;
 
-    @JsonProperty("vhost")
-    protected String mVhost;
+  @JsonProperty("vhost") protected String vhost;
 
-    public String getAuthMechanism() {
+  public String getAuthMechanism() {
+    return authMechanism;
+  }
 
-        return mAuthMechanism;
-    }
+  public int getChannelMax() {
+    return channelMax;
+  }
 
-    public int getChannelMax() {
+  public int getChannels() {
+    return channels;
+  }
 
-        return mChannelMax;
-    }
+  public ClientProperties getClientProperties() {
+    return clientProperties;
+  }
 
-    public int getChannels() {
+  public long getConnectedAt() {
+    return connectedAt;
+  }
 
-        return mChannels;
-    }
+  public int getFrameMax() {
+    return frameMax;
+  }
 
-    public ClientProperties getClientProperties() {
+  public String getHost() {
+    return host;
+  }
 
-        return mClientProperties;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public long getConnectedAt() {
-
-        return mConnectedAt;
-    }
-
-    public int getFrameMax() {
-
-        return mFrameMax;
-    }
-
-    public String getHost() {
-
-        return mHost;
-    }
-
-    public String getName() {
-
-        return mName;
-    }
-
-    public String getNode() {
-
-        return mNode;
-    }
-
-    public Object getPeerCertIssuer() {
-
-        return mPeerCertIssuer;
-    }
-
-    public Object getPeerCertSubject() {
-
-        return mPeerCertSubject;
-    }
-
-    public Object getPeerCertValidity() {
-
-        return mPeerCertValidity;
-    }
-
-    public String getPeerHost() {
-
-        return mPeerHost;
-    }
-
-    public int getPeerPort() {
-
-        return mPeerPort;
-    }
-
-    public int getPort() {
-
-        return mPort;
-    }
-
-    public String getProtocol() {
-
-        return mProtocol;
-    }
-
-    public int getRecvCnt() {
-
-        return mRecvCnt;
-    }
-
-    public int getRecvOct() {
-
-        return mRecvOct;
-    }
-
-    public Details getRecvOctDetails() {
-
-        return mRecvOctDetails;
-    }
-
-    public int getSendCnt() {
-
-        return mSendCnt;
-    }
-
-    public int getSendOct() {
-
-        return mSendOct;
-    }
-
-    public Details getSendOctDetails() {
-
-        return mSendOctDetails;
-    }
-
-    public int getSendPend() {
-
-        return mSendPend;
-    }
-
-    public boolean isSsl() {
-
-        return mSsl;
-    }
-
-    public Object getSslCipher() {
-
-        return mSslCipher;
-    }
-
-    public Object getSslHash() {
-
-        return mSslHash;
-    }
-
-    public Object getSslKeyExchange() {
-
-        return mSslKeyExchange;
-    }
-
-    public Object getSslProtocol() {
-
-        return mSslProtocol;
-    }
-
-    public String getState() {
-
-        return mState;
-    }
-
-    public int getTimeout() {
-
-        return mTimeout;
-    }
-
-    public String getType() {
-
-        return mType;
-    }
-
-    public String getUser() {
-
-        return mUser;
-    }
-
-    public String getVhost() {
-
-        return mVhost;
-    }
+  public String getNode() {
+    return node;
+  }
+
+  public Object getPeerCertIssuer() {
+    return peerCertIssuer;
+  }
+
+  public Object getPeerCertSubject() {
+    return peerCertSubject;
+  }
+
+  public Object getPeerCertValidity() {
+    return peerCertValidity;
+  }
+
+  public String getPeerHost() {
+    return peerHost;
+  }
+
+  public int getPeerPort() {
+    return peerPort;
+  }
+
+  public int getPort() {
+    return port;
+  }
+
+  public String getProtocol() {
+    return protocol;
+  }
+
+  public int getRecvCnt() {
+    return recvCnt;
+  }
+
+  public int getRecvOct() {
+    return recvOct;
+  }
+
+  public Details getRecvOctDetails() {
+    return recvOctDetails;
+  }
+
+  public int getSendCnt() {
+    return sendCnt;
+  }
+
+  public int getSendOct() {
+    return sendOct;
+  }
+
+  public Details getSendOctDetails() {
+    return sendOctDetails;
+  }
+
+  public int getSendPend() {
+    return sendPend;
+  }
+
+  public boolean isSsl() {
+    return ssl;
+  }
+
+  public Object getSslCipher() {
+    return sslCipher;
+  }
+
+  public Object getSslHash() {
+    return sslHash;
+  }
+
+  public Object getSslKeyExchange() {
+    return sslKeyExchange;
+  }
+
+  public Object getSslProtocol() {
+    return sslProtocol;
+  }
+
+  public String getState() {
+    return state;
+  }
+
+  public int getTimeout() {
+    return timeout;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public String getUser() {
+    return user;
+  }
+
+  public String getVhost() {
+    return vhost;
+  }
 }

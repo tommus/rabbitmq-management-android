@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,47 +21,36 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Binding {
 
-    @JsonProperty("arguments")
-    protected BindingArguments mBindingArguments;
+  @JsonProperty("arguments") protected BindingArguments bindingArguments;
 
-    @JsonProperty("destination")
-    protected String mDestination;
+  @JsonProperty("destination") protected String destination;
 
-    @JsonProperty("destination_type")
-    protected String mDestinationType;
+  @JsonProperty("destination_type") protected String destinationType;
 
-    @JsonProperty("routing_key")
-    protected String mRoutingKey;
+  @JsonProperty("routing_key") protected String routingKey;
 
-    @JsonProperty("source")
-    protected String mSource;
+  @JsonProperty("source") protected String source;
 
-    public BindingArguments getArguments() {
+  public BindingArguments getArguments() {
+    return bindingArguments;
+  }
 
-        return mBindingArguments;
-    }
+  public String getDestination() {
+    return destination;
+  }
 
-    public String getDestination() {
+  public String getDestinationType() {
+    return destinationType;
+  }
 
-        return mDestination;
-    }
+  public String getRoutingKey() {
+    return routingKey;
+  }
 
-    public String getDestinationType() {
-
-        return mDestinationType;
-    }
-
-    public String getRoutingKey() {
-
-        return mRoutingKey;
-    }
-
-    public String getSource() {
-
-        return mSource;
-    }
+  public String getSource() {
+    return source;
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,63 +22,48 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Details;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExtendedVhost extends Vhost {
 
-    @JsonProperty("messages")
-    protected int mMessages;
+  @JsonProperty("messages") protected int messages;
 
-    @JsonProperty("messages_details")
-    protected Details mMessagesDetails;
+  @JsonProperty("messages_details") protected Details messagesDetails;
 
-    @JsonProperty("messages_ready")
-    protected int mMessagesReady;
+  @JsonProperty("messages_ready") protected int messagesReady;
 
-    @JsonProperty("messages_ready_details")
-    protected Details mMessagesReadyDetails;
+  @JsonProperty("messages_ready_details") protected Details messagesReadyDetails;
 
-    @JsonProperty("messages_unacknowledged")
-    protected int mMessagesUnacknowledged;
+  @JsonProperty("messages_unacknowledged") protected int messagesUnacknowledged;
 
-    @JsonProperty("messages_unacknowledged_details")
-    protected Details mMessagesUnacknowledgedDetails;
+  @JsonProperty("messages_unacknowledged_details") protected Details messagesUnacknowledgedDetails;
 
-    @JsonProperty("tracing")
-    protected boolean mTracing;
+  @JsonProperty("tracing") protected boolean tracing;
 
-    public int getMessages() {
+  public int getMessages() {
+    return messages;
+  }
 
-        return mMessages;
-    }
+  public Details getMessagesDetails() {
+    return messagesDetails;
+  }
 
-    public Details getMessagesDetails() {
+  public int getMessagesReady() {
+    return messagesReady;
+  }
 
-        return mMessagesDetails;
-    }
+  public Details getMessagesReadyDetails() {
+    return messagesReadyDetails;
+  }
 
-    public int getMessagesReady() {
+  public int getMessagesUnacknowledged() {
+    return messagesUnacknowledged;
+  }
 
-        return mMessagesReady;
-    }
+  public Details getMessagesUnacknowledgedDetails() {
+    return messagesUnacknowledgedDetails;
+  }
 
-    public Details getMessagesReadyDetails() {
-
-        return mMessagesReadyDetails;
-    }
-
-    public int getMessagesUnacknowledged() {
-
-        return mMessagesUnacknowledged;
-    }
-
-    public Details getMessagesUnacknowledgedDetails() {
-
-        return mMessagesUnacknowledgedDetails;
-    }
-
-    public boolean isTracing() {
-
-        return mTracing;
-    }
+  public boolean isTracing() {
+    return tracing;
+  }
 }

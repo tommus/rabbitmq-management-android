@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -20,115 +20,87 @@ package com.todev.rabbitmqmanagement.models.queues;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BackingQueueStatus {
 
-    @JsonProperty("avg_ack_egress_rate")
-    protected float mAvgAckEgressRate;
+  @JsonProperty("avg_ack_egress_rate") protected float avgAckEgressRate;
 
-    @JsonProperty("avg_ack_ingress_rate")
-    protected float mAvgAckIngressRate;
+  @JsonProperty("avg_ack_ingress_rate") protected float avgAckIngressRate;
 
-    @JsonProperty("avg_egress_rate")
-    protected float mAvgEgressRate;
+  @JsonProperty("avg_egress_rate") protected float avgEgressRate;
 
-    @JsonProperty("avg_ingress_rate")
-    protected float mAvgIngressRate;
+  @JsonProperty("avg_ingress_rate") protected float avgIngressRate;
 
-    @JsonProperty("delta")
-    protected List<String> mDelta = new ArrayList<>();
+  @JsonProperty("delta") protected List<String> delta = new ArrayList<>();
 
-    @JsonProperty("len")
-    protected int mLen;
+  @JsonProperty("len") protected int len;
 
-    @JsonProperty("mode")
-    protected String mMode;
+  @JsonProperty("mode") protected String mode;
 
-    @JsonProperty("next_seq_id")
-    protected int mNextSeqId;
+  @JsonProperty("next_seq_id") protected int nextSeqId;
 
-    @JsonProperty("q1")
-    protected int mQ1;
+  @JsonProperty("q1") protected int q1;
 
-    @JsonProperty("q2")
-    protected int mQ2;
+  @JsonProperty("q2") protected int q2;
 
-    @JsonProperty("q3")
-    protected int mQ3;
+  @JsonProperty("q3") protected int q3;
 
-    @JsonProperty("q4")
-    protected int mQ4;
+  @JsonProperty("q4") protected int q4;
 
-    @JsonProperty("target_ram_count")
-    protected String mTargetRamCount;
+  @JsonProperty("target_ram_count") protected String targetRamCount;
 
-    public float getAvgAckEgressRate() {
+  public float getAvgAckEgressRate() {
+    return avgAckEgressRate;
+  }
 
-        return mAvgAckEgressRate;
-    }
+  public float getAvgAckIngressRate() {
+    return avgAckIngressRate;
+  }
 
-    public float getAvgAckIngressRate() {
+  public float getAvgEgressRate() {
+    return avgEgressRate;
+  }
 
-        return mAvgAckIngressRate;
-    }
+  public float getAvgIngressRate() {
+    return avgIngressRate;
+  }
 
-    public float getAvgEgressRate() {
+  public List<String> getDelta() {
+    return delta;
+  }
 
-        return mAvgEgressRate;
-    }
+  public int getLen() {
+    return len;
+  }
 
-    public float getAvgIngressRate() {
+  public String getMode() {
+    return mode;
+  }
 
-        return mAvgIngressRate;
-    }
+  public int getNextSeqId() {
+    return nextSeqId;
+  }
 
-    public List<String> getDelta() {
+  public int getQ1() {
+    return q1;
+  }
 
-        return mDelta;
-    }
+  public int getQ2() {
+    return q2;
+  }
 
-    public int getLen() {
+  public int getQ3() {
+    return q3;
+  }
 
-        return mLen;
-    }
+  public int getQ4() {
+    return q4;
+  }
 
-    public String getMode() {
-
-        return mMode;
-    }
-
-    public int getNextSeqId() {
-
-        return mNextSeqId;
-    }
-
-    public int getQ1() {
-
-        return mQ1;
-    }
-
-    public int getQ2() {
-
-        return mQ2;
-    }
-
-    public int getQ3() {
-
-        return mQ3;
-    }
-
-    public int getQ4() {
-
-        return mQ4;
-    }
-
-    public String getTargetRamCount() {
-
-        return mTargetRamCount;
-    }
+  public String getTargetRamCount() {
+    return targetRamCount;
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,31 +22,24 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.MessageStats;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExtendedExchange extends Exchange {
 
-    @JsonProperty("vhost")
-    protected String mVhost;
+  @JsonProperty("vhost") protected String vhost;
 
-    @JsonProperty("policy")
-    protected String mPolicy;
+  @JsonProperty("policy") protected String policy;
 
-    @JsonProperty("message_stats")
-    protected MessageStats mMessageStats;
+  @JsonProperty("message_stats") protected MessageStats messageStats;
 
-    public String getVhost() {
+  public String getVhost() {
+    return vhost;
+  }
 
-        return mVhost;
-    }
+  public String getPolicy() {
+    return policy;
+  }
 
-    public String getPolicy() {
-
-        return mPolicy;
-    }
-
-    public MessageStats getMessageStats() {
-
-        return mMessageStats;
-    }
+  public MessageStats getMessageStats() {
+    return messageStats;
+  }
 }

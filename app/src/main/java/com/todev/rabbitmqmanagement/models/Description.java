@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,31 +21,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Description {
 
-    @JsonProperty("description")
-    protected String mDescription;
+  @JsonProperty("description") protected String description;
 
-    @JsonProperty("enabled")
-    protected boolean mEnabled;
+  @JsonProperty("enabled") protected boolean enabled;
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    public String getDescription() {
+  public String getDescription() {
+    return description;
+  }
 
-        return mDescription;
-    }
+  public boolean getEnabled() {
+    return enabled;
+  }
 
-    public boolean getEnabled() {
-
-        return mEnabled;
-    }
-
-    public String getName() {
-
-        return mName;
-    }
+  public String getName() {
+    return name;
+  }
 }

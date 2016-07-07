@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,151 +22,114 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.MessageStats;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Channel {
 
-    @JsonProperty("acks_uncommitted")
-    protected int mAcksUncommitted;
+  @JsonProperty("acks_uncommitted") protected int acksUncommitted;
 
-    @JsonProperty("confirm")
-    protected boolean mConfirm;
+  @JsonProperty("confirm") protected boolean confirm;
 
-    @JsonProperty("connection_details")
-    protected ChannelDetails mConnectionDetails;
+  @JsonProperty("connection_details") protected ChannelDetails connectionDetails;
 
-    @JsonProperty("consumer_count")
-    protected int mConsumerCount;
+  @JsonProperty("consumer_count") protected int consumerCount;
 
-    @JsonProperty("global_prefetch_count")
-    protected int mGlobalPrefetchCount;
+  @JsonProperty("global_prefetch_count") protected int globalPrefetchCount;
 
-    @JsonProperty("idle_since")
-    protected String mIdleSince;
+  @JsonProperty("idle_since") protected String idleSince;
 
-    @JsonProperty("message_stats")
-    protected MessageStats mMessageStats;
+  @JsonProperty("message_stats") protected MessageStats messageStats;
 
-    @JsonProperty("messages_unacknowledged")
-    protected int mMessagesUnacknowledged;
+  @JsonProperty("messages_unacknowledged") protected int messagesUnacknowledged;
 
-    @JsonProperty("messages_uncommitted")
-    protected int mMessagesUncommitted;
+  @JsonProperty("messages_uncommitted") protected int messagesUncommitted;
 
-    @JsonProperty("messages_unconfirmed")
-    protected int mMessagesUnconfirmed;
+  @JsonProperty("messages_unconfirmed") protected int messagesUnconfirmed;
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    @JsonProperty("node")
-    protected String mNode;
+  @JsonProperty("node") protected String node;
 
-    @JsonProperty("number")
-    protected int mNumber;
+  @JsonProperty("number") protected int number;
 
-    @JsonProperty("prefetch_count")
-    protected int mPrefetchCount;
+  @JsonProperty("prefetch_count") protected int prefetchCount;
 
-    @JsonProperty("state")
-    protected String mState;
+  @JsonProperty("state") protected String state;
 
-    @JsonProperty("transactional")
-    protected boolean mTransactional;
+  @JsonProperty("transactional") protected boolean transactional;
 
-    @JsonProperty("user")
-    protected String mUser;
+  @JsonProperty("user") protected String user;
 
-    @JsonProperty("vhost")
-    protected String mVhost;
+  @JsonProperty("vhost") protected String vhost;
 
-    public int getAcksUncommitted() {
+  public int getAcksUncommitted() {
+    return acksUncommitted;
+  }
 
-        return mAcksUncommitted;
-    }
+  public boolean isConfirm() {
+    return confirm;
+  }
 
-    public boolean isConfirm() {
+  public ChannelDetails getConnectionDetails() {
+    return connectionDetails;
+  }
 
-        return mConfirm;
-    }
+  public int getConsumerCount() {
+    return consumerCount;
+  }
 
-    public ChannelDetails getConnectionDetails() {
+  public int getGlobalPrefetchCount() {
+    return globalPrefetchCount;
+  }
 
-        return mConnectionDetails;
-    }
+  public String getIdleSince() {
+    return idleSince;
+  }
 
-    public int getConsumerCount() {
+  public MessageStats getMessageStats() {
+    return messageStats;
+  }
 
-        return mConsumerCount;
-    }
+  public int getMessagesUnacknowledged() {
+    return messagesUnacknowledged;
+  }
 
-    public int getGlobalPrefetchCount() {
+  public int getMessagesUncommitted() {
+    return messagesUncommitted;
+  }
 
-        return mGlobalPrefetchCount;
-    }
+  public int getMessagesUnconfirmed() {
+    return messagesUnconfirmed;
+  }
 
-    public String getIdleSince() {
+  public String getName() {
+    return name;
+  }
 
-        return mIdleSince;
-    }
+  public String getNode() {
+    return node;
+  }
 
-    public MessageStats getMessageStats() {
+  public int getNumber() {
+    return number;
+  }
 
-        return mMessageStats;
-    }
+  public int getPrefetchCount() {
+    return prefetchCount;
+  }
 
-    public int getMessagesUnacknowledged() {
+  public String getState() {
+    return state;
+  }
 
-        return mMessagesUnacknowledged;
-    }
+  public boolean isTransactional() {
+    return transactional;
+  }
 
-    public int getMessagesUncommitted() {
+  public String getUser() {
+    return user;
+  }
 
-        return mMessagesUncommitted;
-    }
-
-    public int getMessagesUnconfirmed() {
-
-        return mMessagesUnconfirmed;
-    }
-
-    public String getName() {
-
-        return mName;
-    }
-
-    public String getNode() {
-
-        return mNode;
-    }
-
-    public int getNumber() {
-
-        return mNumber;
-    }
-
-    public int getPrefetchCount() {
-
-        return mPrefetchCount;
-    }
-
-    public String getState() {
-
-        return mState;
-    }
-
-    public boolean isTransactional() {
-
-        return mTransactional;
-    }
-
-    public String getUser() {
-
-        return mUser;
-    }
-
-    public String getVhost() {
-
-        return mVhost;
-    }
+  public String getVhost() {
+    return vhost;
+  }
 }

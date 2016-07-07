@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,39 +22,30 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Arguments;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Queue {
 
-    @JsonProperty("arguments")
-    protected Arguments mArguments;
+  @JsonProperty("arguments") protected Arguments arguments;
 
-    @JsonProperty("auto_delete")
-    protected boolean mAutoDelete;
+  @JsonProperty("auto_delete") protected boolean autoDelete;
 
-    @JsonProperty("durable")
-    protected boolean mDurable;
+  @JsonProperty("durable") protected boolean durable;
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    public Arguments getArguments() {
+  public Arguments getArguments() {
+    return arguments;
+  }
 
-        return mArguments;
-    }
+  public boolean isAutoDelete() {
+    return autoDelete;
+  }
 
-    public boolean isAutoDelete() {
+  public boolean isDurable() {
+    return durable;
+  }
 
-        return mAutoDelete;
-    }
-
-    public boolean isDurable() {
-
-        return mDurable;
-    }
-
-    public String getName() {
-
-        return mName;
-    }
+  public String getName() {
+    return name;
+  }
 }

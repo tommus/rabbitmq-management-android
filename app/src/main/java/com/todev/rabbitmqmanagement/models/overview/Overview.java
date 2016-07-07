@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -22,131 +22,99 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Description;
 import com.todev.rabbitmqmanagement.models.MessageStats;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Overview {
 
-    @JsonProperty("cluster_name")
-    protected String mClusterName;
+  @JsonProperty("cluster_name") protected String clusterName;
 
-    @JsonProperty("contexts")
-    protected List<OverviewContext> mContexts = new ArrayList<>();
+  @JsonProperty("contexts") protected List<OverviewContext> contexts = new ArrayList<>();
 
-    @JsonProperty("erlang_full_version")
-    protected String mErlangFullVersion;
+  @JsonProperty("erlang_full_version") protected String erlangFullVersion;
 
-    @JsonProperty("erlang_version")
-    protected String mErlangVersion;
+  @JsonProperty("erlang_version") protected String erlangVersion;
 
-    @JsonProperty("exchange_types")
-    protected List<Description> mExchangeTypes = new ArrayList<>();
+  @JsonProperty("exchange_types") protected List<Description> exchangeTypes = new ArrayList<>();
 
-    @JsonProperty("listeners")
-    protected List<Listener> mListeners = new ArrayList<>();
+  @JsonProperty("listeners") protected List<Listener> listeners = new ArrayList<>();
 
-    @JsonProperty("management_version")
-    protected String mManagementVersion;
+  @JsonProperty("management_version") protected String managementVersion;
 
-    @JsonProperty("message_stats")
-    protected MessageStats mMessageStats;
+  @JsonProperty("message_stats") protected MessageStats messageStats;
 
-    @JsonProperty("node")
-    protected String mNode;
+  @JsonProperty("node") protected String node;
 
-    @JsonProperty("object_totals")
-    protected ObjectTotals mObjectTotals;
+  @JsonProperty("object_totals") protected ObjectTotals objectTotals;
 
-    @JsonProperty("queue_totals")
-    protected QueueTotals mQueueTotals;
+  @JsonProperty("queue_totals") protected QueueTotals queueTotals;
 
-    @JsonProperty("rabbitmq_version")
-    protected String mRabbitmqVersion;
+  @JsonProperty("rabbitmq_version") protected String rabbitmqVersion;
 
-    @JsonProperty("rates_mode")
-    protected String mRatesMode;
+  @JsonProperty("rates_mode") protected String ratesMode;
 
-    @JsonProperty("statistics_db_event_queue")
-    protected int mStatisticsDbEventQueue;
+  @JsonProperty("statistics_db_event_queue") protected int statisticsDbEventQueue;
 
-    @JsonProperty("statistics_db_node")
-    protected String mStatisticsDbNode;
+  @JsonProperty("statistics_db_node") protected String statisticsDbNode;
 
-    public String getClusterName() {
+  public String getClusterName() {
+    return clusterName;
+  }
 
-        return mClusterName;
-    }
+  public List<OverviewContext> getContexts() {
+    return contexts;
+  }
 
-    public List<OverviewContext> getContexts() {
+  public String getErlangFullVersion() {
+    return erlangFullVersion;
+  }
 
-        return mContexts;
-    }
+  public String getErlangVersion() {
+    return erlangVersion;
+  }
 
-    public String getErlangFullVersion() {
+  public List<Description> getExchangeTypes() {
+    return exchangeTypes;
+  }
 
-        return mErlangFullVersion;
-    }
+  public List<Listener> getListeners() {
+    return listeners;
+  }
 
-    public String getErlangVersion() {
+  public String getManagementVersion() {
+    return managementVersion;
+  }
 
-        return mErlangVersion;
-    }
+  public MessageStats getMessageStats() {
+    return messageStats;
+  }
 
-    public List<Description> getExchangeTypes() {
+  public String getNode() {
+    return node;
+  }
 
-        return mExchangeTypes;
-    }
+  public ObjectTotals getObjectTotals() {
+    return objectTotals;
+  }
 
-    public List<Listener> getListeners() {
+  public QueueTotals getQueueTotals() {
+    return queueTotals;
+  }
 
-        return mListeners;
-    }
+  public String getRabbitmqVersion() {
+    return rabbitmqVersion;
+  }
 
-    public String getManagementVersion() {
+  public String getRatesMode() {
+    return ratesMode;
+  }
 
-        return mManagementVersion;
-    }
+  public Integer getStatisticsDbEventQueue() {
+    return statisticsDbEventQueue;
+  }
 
-    public MessageStats getMessageStats() {
-
-        return mMessageStats;
-    }
-
-    public String getNode() {
-
-        return mNode;
-    }
-
-    public ObjectTotals getObjectTotals() {
-
-        return mObjectTotals;
-    }
-
-    public QueueTotals getQueueTotals() {
-
-        return mQueueTotals;
-    }
-
-    public String getRabbitmqVersion() {
-
-        return mRabbitmqVersion;
-    }
-
-    public String getRatesMode() {
-
-        return mRatesMode;
-    }
-
-    public Integer getStatisticsDbEventQueue() {
-
-        return mStatisticsDbEventQueue;
-    }
-
-    public String getStatisticsDbNode() {
-
-        return mStatisticsDbNode;
-    }
+  public String getStatisticsDbNode() {
+    return statisticsDbNode;
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. to-dev.com.
+ * Copyright (c) 2016 to-dev.com.
  *
  * Licensed under the GNU GPL, Version 3 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,39 +21,30 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
-    @JsonProperty("hashing_algorithm")
-    protected String mHashingAlgorithm;
+  @JsonProperty("hashing_algorithm") protected String hashingAlgorithm;
 
-    @JsonProperty("name")
-    protected String mName;
+  @JsonProperty("name") protected String name;
 
-    @JsonProperty("password_hash")
-    protected String mPasswordHash;
+  @JsonProperty("password_hash") protected String passwordHash;
 
-    @JsonProperty("tags")
-    protected String mTags;
+  @JsonProperty("tags") protected String tags;
 
-    public String getHashingAlgorithm() {
+  public String getHashingAlgorithm() {
+    return hashingAlgorithm;
+  }
 
-        return mHashingAlgorithm;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getName() {
+  public String getPasswordHash() {
+    return passwordHash;
+  }
 
-        return mName;
-    }
-
-    public String getPasswordHash() {
-
-        return mPasswordHash;
-    }
-
-    public String getTags() {
-
-        return mTags;
-    }
+  public String getTags() {
+    return tags;
+  }
 }
