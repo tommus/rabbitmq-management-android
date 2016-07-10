@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models.definitions;
+package com.todev.rabbitmqmanagement.models.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -24,24 +24,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
-  @JsonProperty("hashing_algorithm") protected String hashingAlgorithm;
-
   @JsonProperty("name") protected String name;
-
-  @JsonProperty("password_hash") protected String passwordHash;
 
   @JsonProperty("tags") protected String tags;
 
-  public String getHashingAlgorithm() {
-    return hashingAlgorithm;
-  }
-
   public String getName() {
     return name;
-  }
-
-  public String getPasswordHash() {
-    return passwordHash;
   }
 
   public String getTags() {

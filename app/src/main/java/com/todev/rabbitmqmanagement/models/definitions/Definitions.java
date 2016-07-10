@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.bindings.Binding;
 import com.todev.rabbitmqmanagement.models.exchanges.Exchange;
 import com.todev.rabbitmqmanagement.models.queues.Queue;
+import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
 import com.todev.rabbitmqmanagement.models.vhosts.Vhost;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class Definitions {
 
   @JsonProperty("rabbit_version") protected String rabbitVersion;
 
-  @JsonProperty("users") protected List<User> users = new ArrayList<>();
+  @JsonProperty("users") protected List<ExtendedUser> users = new ArrayList<>();
 
   @JsonProperty("vhosts") protected List<Vhost> vhosts = new ArrayList<>();
 
@@ -78,7 +79,7 @@ public class Definitions {
     return rabbitVersion;
   }
 
-  public List<User> getUsers() {
+  public List<ExtendedUser> getUsers() {
     return users;
   }
 

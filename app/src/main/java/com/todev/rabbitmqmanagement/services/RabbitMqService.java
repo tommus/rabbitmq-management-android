@@ -31,6 +31,8 @@ import com.todev.rabbitmqmanagement.models.extensions.Extension;
 import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
 import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
+import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
+import com.todev.rabbitmqmanagement.models.users.User;
 import com.todev.rabbitmqmanagement.models.vhosts.ExtendedVhost;
 import com.todev.rabbitmqmanagement.services.interceptors.AuthorizationInterceptor;
 import com.todev.rabbitmqmanagement.services.interceptors.ContentTypeInterceptor;
@@ -45,6 +47,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RabbitMqService {
 
@@ -109,7 +112,9 @@ public interface RabbitMqService {
 
   // TODO: Add PUT /exchanges/{vhost}/{exchange}.
 
-  // TODO: Add DELETE /exchanges/{vhost}/{exchange}.
+  @DELETE("exchanges/{vhost}/{exchange}") Call<Void> deleteExchange(
+      @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
+      @Query("if-unused") boolean ifUnused);
 
   @GET("exchanges/{vhost}/{exchange}/bindings/source") Call<List<Binding>> getSourceBindings(
       @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange);
@@ -124,16 +129,20 @@ public interface RabbitMqService {
 
   @GET("queues/{vhost}") Call<List<ExtendedQueue>> getQueues(@Path("vhost") @NonNull String vhost);
 
-  // TODO: Add PUT /queues/{vhost}.
+  @GET("queues/{vhost}/{queue}") Call<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue);
 
-  // TODO: Add DELETE /queues/{vhost}.
+  // TODO: Add PUT /queues/{vhost}/{name}.
+
+  @DELETE("queues/{vhost}/{queue}") Call<Void> deleteQueue(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue);
 
   @GET("queues/{vhost}/{queue}/bindings") Call<List<Binding>> getQueueBindings(
       @Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
 
   // TODO: Add PUT /queues/{vhost}/{queue}/contents.
 
-  // TODO: Add DELETE /queues/{vhost}/{queue}/actions.
+  // TODO: Add POST /queues/{vhost}/{queue}/actions.
 
   // TODO: Add POST /queues/{vhost}/{queue}/get.
 
@@ -153,7 +162,7 @@ public interface RabbitMqService {
       @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
       @Path("props") @NonNull String propertiesKey);
 
-  // TODO: Add DELETE /bindings/{vhost}/e/{exchange}/q/{queue}/props.
+  // TODO: Add DELETE /bindings/{vhost}/e/{exchange}/q/{queue}/{props}.
 
   @GET("bindings/{vhost}/e/{source}/e/{destination}")
   Call<List<ExtendedBinding>> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
@@ -167,7 +176,7 @@ public interface RabbitMqService {
       @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
       @Path("props") @NonNull String propertiesKey);
 
-  // TODO: Add DELETE /bindings/{vhost}/e/{source}/e/{destination}/props.
+  // TODO: Add DELETE /bindings/{vhost}/e/{source}/e/{destination}/{props}.
 
   @GET("vhosts") Call<List<ExtendedVhost>> getVhosts();
 
@@ -175,21 +184,21 @@ public interface RabbitMqService {
 
   // TODO: Add PUT /vhosts/{name}.
 
-  // TODO: Add DELETE /vhosts/{name}.
+  @DELETE("vhosts/{name}") Call<Void> deleteHost(@Path("name") @NonNull String name);
 
   // TODO: Add GET /vhosts/{name}/permissions.
 
-  // TODO: Add GET /users.
+  @GET("users") Call<List<ExtendedUser>> getUsers();
 
-  // TODO: Add GET /users/{name}.
+  @GET("users/{name}") Call<ExtendedUser> getUser(@Path("name") @NonNull String name);
 
   // TODO: Add PUT /users/{name}.
 
-  // TODO: Add DELETE /users/{name}.
+  @DELETE("users/{name}") Call<Void> deleteUser(@Path("name") @NonNull String name);
 
   // TODO: Add GET /users/{name}/permissions.
 
-  // TODO: Add GET /whoami.
+  @GET("whoami") Call<User> whoAmI();
 
   // TODO: Add GET /permissions.
 
