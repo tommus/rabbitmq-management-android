@@ -19,6 +19,7 @@ package com.todev.rabbitmqmanagement.services;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.todev.rabbitmqmanagement.models.Check;
 import com.todev.rabbitmqmanagement.models.bindings.Binding;
 import com.todev.rabbitmqmanagement.models.bindings.ExtendedBinding;
 import com.todev.rabbitmqmanagement.models.channels.Channel;
@@ -230,11 +231,11 @@ public interface RabbitMqService {
 
   // TODO: Add DELETE /policies/{vhost}/{name}.
 
-  // TODO: Add GET /aliveness-test/{vhost}.
+  @GET("aliveness-test/{vhost}") Call<Check> checkAlive(@Path("vhost") @NonNull String vhost);
 
-  // TODO: Add GET /healthchecks/node.
+  @GET("healthchecks/node") Call<Check> checkHealth();
 
-  // TODO: Add GET /healthchecks/node/{node}.
+  @GET("healthchecks/node/{node}") Call<Check> checkHealth(@Path("node") @NonNull String node);
 
   class Headers {
     public static final String X_REASON = "X-Reason";
