@@ -24,6 +24,7 @@ import com.todev.rabbitmqmanagement.models.bindings.ExtendedBinding;
 import com.todev.rabbitmqmanagement.models.channels.Channel;
 import com.todev.rabbitmqmanagement.models.cluster.Cluster;
 import com.todev.rabbitmqmanagement.models.connections.Connection;
+import com.todev.rabbitmqmanagement.models.consumers.Consumer;
 import com.todev.rabbitmqmanagement.models.definitions.Definitions;
 import com.todev.rabbitmqmanagement.models.exchanges.ExtendedExchange;
 import com.todev.rabbitmqmanagement.models.extensions.Extension;
@@ -94,9 +95,9 @@ public interface RabbitMqService {
 
   @GET("channels/{name}") Call<Channel> getChannel(@Path("name") @NonNull String name);
 
-  // TODO: Add GET /consumers.
+  @GET("consumers") Call<List<Consumer>> getConsumers();
 
-  // TODO: Add GET /consumers/{vhost}.
+  @GET("consumers/{vhost}") Call<List<Consumer>> getConsumers(@Path("vhost") @NonNull String vhost);
 
   @GET("exchanges") Call<List<ExtendedExchange>> getExchanges();
 
