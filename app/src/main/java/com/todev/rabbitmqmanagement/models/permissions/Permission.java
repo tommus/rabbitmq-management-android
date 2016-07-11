@@ -15,8 +15,9 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models.definitions;
+package com.todev.rabbitmqmanagement.models.permissions;
 
+import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +34,16 @@ public class Permission {
   @JsonProperty("vhost") protected String vhost;
 
   @JsonProperty("write") protected String write;
+
+  public Permission() {
+    // Jackson requires presence of empty constructor.
+  }
+
+  public Permission(@NonNull String configure, @NonNull String read, @NonNull String write) {
+    this.configure = configure;
+    this.read = read;
+    this.write = write;
+  }
 
   public String getConfigure() {
     return configure;

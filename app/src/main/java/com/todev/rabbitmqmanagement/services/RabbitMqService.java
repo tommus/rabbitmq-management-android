@@ -31,6 +31,7 @@ import com.todev.rabbitmqmanagement.models.exchanges.ExtendedExchange;
 import com.todev.rabbitmqmanagement.models.extensions.Extension;
 import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
+import com.todev.rabbitmqmanagement.models.permissions.Permission;
 import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
 import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
 import com.todev.rabbitmqmanagement.models.users.User;
@@ -201,13 +202,16 @@ public interface RabbitMqService {
 
   @GET("whoami") Call<User> whoAmI();
 
-  // TODO: Add GET /permissions.
+  @GET("permissions") Call<List<Permission>> getPermissions();
 
-  // TODO: Add GET /permissions/{vhost}/{user}.
+  @GET("permissions/{vhost}/{user}") Call<Permission> getPermission(
+      @Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
 
-  // TODO: Add PUT /permissions/{vhost}/{user}.
+  @PUT("permissions/{vhost}/{user}") Call<Void> putPermission(@Path("vhost") @NonNull String vhost,
+      @Path("user") @NonNull String user, @Body @NonNull Permission body);
 
-  // TODO: Add DELETE /permissions/{vhost}/{user}.
+  @DELETE("permissions/{vhost}/{user}") Call<Void> deletePermission(
+      @Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
 
   // TODO: Add GET /parameters.
 

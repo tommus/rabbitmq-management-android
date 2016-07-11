@@ -17,6 +17,7 @@
  */
 package com.todev.rabbitmqmanagement.models.cluster;
 
+import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,7 +27,11 @@ public class Cluster {
 
   @JsonProperty("name") protected String name;
 
-  public Cluster(String name) {
+  public Cluster() {
+    // Jackson requires presence of empty constructor.
+  }
+
+  public Cluster(@NonNull String name) {
     this.name = name;
   }
 
