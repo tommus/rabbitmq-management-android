@@ -190,7 +190,8 @@ public interface RabbitMqService {
 
   @DELETE("vhosts/{name}") Call<Void> deleteHost(@Path("name") @NonNull String name);
 
-  // TODO: Add GET /vhosts/{name}/permissions.
+  @GET("vhosts/{vhost}/permissions") Call<List<Permission>> getVhostPermissions(
+      @Path("vhost") @NonNull String vhost);
 
   @GET("users") Call<List<ExtendedUser>> getUsers();
 
@@ -200,8 +201,8 @@ public interface RabbitMqService {
 
   @DELETE("users/{name}") Call<Void> deleteUser(@Path("name") @NonNull String name);
 
-  @GET("users/{name}/permissions") Call<List<Permission>> getUserPermissions(
-      @Path("name") @NonNull String name);
+  @GET("users/{user}/permissions") Call<List<Permission>> getUserPermissions(
+      @Path("user") @NonNull String user);
 
   @GET("whoami") Call<User> whoAmI();
 
