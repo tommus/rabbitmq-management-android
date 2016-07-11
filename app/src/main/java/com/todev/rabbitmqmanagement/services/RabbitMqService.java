@@ -200,7 +200,8 @@ public interface RabbitMqService {
 
   @DELETE("users/{name}") Call<Void> deleteUser(@Path("name") @NonNull String name);
 
-  // TODO: Add GET /users/{name}/permissions.
+  @GET("users/{name}/permissions") Call<List<Permission>> getUserPermissions(
+      @Path("name") @NonNull String name);
 
   @GET("whoami") Call<User> whoAmI();
 
