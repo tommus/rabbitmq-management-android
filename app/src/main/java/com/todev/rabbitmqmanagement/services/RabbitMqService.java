@@ -166,7 +166,10 @@ public interface RabbitMqService {
       @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
       @Path("props") @NonNull String propertiesKey);
 
-  // TODO: Add DELETE /bindings/{vhost}/e/{exchange}/q/{queue}/{props}.
+  @DELETE("bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
+  Call<ExtendedBinding> deleteBindingsBetweenExchangeAndQueue(@Path("vhost") String vhost,
+      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
+      @Path("props") @NonNull String propertiesKey);
 
   @GET("bindings/{vhost}/e/{source}/e/{destination}")
   Call<List<ExtendedBinding>> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
@@ -180,7 +183,10 @@ public interface RabbitMqService {
       @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
       @Path("props") @NonNull String propertiesKey);
 
-  // TODO: Add DELETE /bindings/{vhost}/e/{source}/e/{destination}/{props}.
+  @DELETE("bindings/{vhost}/e/{source}/e/{destination}/{props}")
+  Call<Void> deleteBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
+      @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
+      @Path("props") @NonNull String propertiesKey);
 
   @GET("vhosts") Call<List<ExtendedVhost>> getVhosts();
 
