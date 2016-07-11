@@ -31,6 +31,7 @@ import com.todev.rabbitmqmanagement.models.exchanges.ExtendedExchange;
 import com.todev.rabbitmqmanagement.models.extensions.Extension;
 import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
+import com.todev.rabbitmqmanagement.models.parameters.Parameter;
 import com.todev.rabbitmqmanagement.models.permissions.Permission;
 import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
 import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
@@ -213,17 +214,23 @@ public interface RabbitMqService {
   @DELETE("permissions/{vhost}/{user}") Call<Void> deletePermission(
       @Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
 
-  // TODO: Add GET /parameters.
+  @GET("parameters") Call<List<Parameter>> getParameters();
 
-  // TODO: Add GET /parameters/{component}.
+  @GET("parameters/{component}") Call<List<Parameter>> getParameters(
+      @Path("component") @NonNull String component);
 
-  // TODO: Add GET /parameters/{component}/{vhost}.
+  @GET("parameters/{component}/{vhost}") Call<List<Parameter>> getParameters(
+      @Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost);
 
-  // TODO: Add GET /parameters/{component}/{vhost}/{name}.
+  @GET("parameters/{component}/{vhost}/{parameter}") Call<Parameter> getParameter(
+      @Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
+      @Path("parameter") @NonNull String parameter);
 
   // TODO: Add PUT /parameters/{component}/{vhost}/{name}.
 
-  // TODO: Add DELETE /parameters/{component}/{vhost}/{name}.
+  @DELETE("parameters/{component}/{vhost}/{parameter}") Call<Void> deleteParameter(
+      @Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
+      @Path("parameter") @NonNull String parameter);
 
   // TODO: Add GET /policies.
 
