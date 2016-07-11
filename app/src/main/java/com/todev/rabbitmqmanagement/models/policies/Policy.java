@@ -15,18 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models.definitions;
+package com.todev.rabbitmqmanagement.models.policies;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.LinkedHashMap;
 
 @JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Policy {
 
   @JsonProperty("apply-to") protected String applyTo;
 
-  @JsonProperty("definition") protected Definition definition;
+  @JsonProperty("definition") protected LinkedHashMap<String, String> definition;
 
   @JsonProperty("name") protected String name;
 
@@ -40,7 +41,7 @@ public class Policy {
     return applyTo;
   }
 
-  public Definition getDefinition() {
+  public LinkedHashMap<String, String> getDefinition() {
     return definition;
   }
 

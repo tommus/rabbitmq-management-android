@@ -33,6 +33,7 @@ import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
 import com.todev.rabbitmqmanagement.models.parameters.Parameter;
 import com.todev.rabbitmqmanagement.models.permissions.Permission;
+import com.todev.rabbitmqmanagement.models.policies.Policy;
 import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
 import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
 import com.todev.rabbitmqmanagement.models.users.User;
@@ -232,15 +233,17 @@ public interface RabbitMqService {
       @Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
       @Path("parameter") @NonNull String parameter);
 
-  // TODO: Add GET /policies.
+  @GET("policies") Call<List<Policy>> getPolicies();
 
-  // TODO: Add GET /policies/{vhost}.
+  @GET("policies/{vhost}") Call<List<Policy>> getPolicies(@Path("vhost") @NonNull String vhost);
 
-  // TODO: Add GET /policies/{vhost}/{name}.
+  @GET("policies/{vhost}/{policy}") Call<Policy> getPolicy(@Path("vhost") @NonNull String vhost,
+      @Path("policy") @NonNull String policy);
 
   // TODO: Add PUT /policies/{vhost}/{name}.
 
-  // TODO: Add DELETE /policies/{vhost}/{name}.
+  @DELETE("policies/{vhost}/{policy}") Call<Void> deletePolicy(@Path("vhost") @NonNull String vhost,
+      @Path("policy") @NonNull String policy);
 
   @GET("aliveness-test/{vhost}") Call<Check> checkAlive(@Path("vhost") @NonNull String vhost);
 

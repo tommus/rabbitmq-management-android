@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Details;
 import com.todev.rabbitmqmanagement.models.MessageStats;
-import com.todev.rabbitmqmanagement.models.definitions.Policy;
+import com.todev.rabbitmqmanagement.models.policies.Policy;
 
 @JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExtendedQueue extends Queue {
