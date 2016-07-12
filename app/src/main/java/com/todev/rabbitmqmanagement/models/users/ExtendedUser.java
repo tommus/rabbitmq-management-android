@@ -17,9 +17,11 @@
  */
 package com.todev.rabbitmqmanagement.models.users;
 
+import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
@@ -31,11 +33,27 @@ public class ExtendedUser extends User {
   @JsonProperty("password_hash")
   protected String passwordHash;
 
+  @JsonProperty("password")
+  protected String password;
+
+  protected ExtendedUser() {
+    // Jackson requires presence of empty constructor.
+  }
+
+  public ExtendedUser(@NonNull String password, @NonNull List<Tag> tags) {
+    this.password = password;
+    this.tags = tags;
+  }
+
   public String getHashingAlgorithm() {
     return hashingAlgorithm;
   }
 
   public String getPasswordHash() {
     return passwordHash;
+  }
+
+  public String getPassword() {
+    return password;
   }
 }

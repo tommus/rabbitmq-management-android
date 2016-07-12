@@ -221,7 +221,8 @@ public interface RabbitMqService {
   @GET("vhosts/{name}")
   Call<ExtendedVhost> getVhost(@Path("name") @NonNull String name);
 
-  // TODO: Add PUT /vhosts/{name}.
+  @PUT("vhosts/{name}")
+  Call<Void> putVhost(@Path("name") @NonNull String name);
 
   @DELETE("vhosts/{name}")
   Call<Void> deleteHost(@Path("name") @NonNull String name);
@@ -235,7 +236,8 @@ public interface RabbitMqService {
   @GET("users/{name}")
   Call<ExtendedUser> getUser(@Path("name") @NonNull String name);
 
-  // TODO: Add PUT /users/{name}.
+  @PUT("users/{name}")
+  Call<Void> putUser(@Path("name") @NonNull String name, @NonNull @Body ExtendedUser body);
 
   @DELETE("users/{name}")
   Call<Void> deleteUser(@Path("name") @NonNull String name);

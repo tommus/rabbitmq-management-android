@@ -20,17 +20,34 @@ package com.todev.rabbitmqmanagement.services.serialization;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.todev.rabbitmqmanagement.models.exchanges.Exchange;
+import com.todev.rabbitmqmanagement.models.users.User;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
-public class ExchangeTypeDeserializer extends JsonDeserializer<Exchange.Type> {
+public class UserTagsDeserializer extends JsonDeserializer<List<User.Tag>> {
   @Override
-  public Exchange.Type deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+  public List<User.Tag> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
     String serialized = p.getText().trim();
-    try {
-      return Exchange.Type.valueOf(serialized.toUpperCase());
-    } catch (IllegalArgumentException e) {
-      return Exchange.Type.DIRECT;
+    StringTokenizer tokenizer = new StringTokenizer(serialized, ",");
+    List<User.Tag> result = new ArrayList<>();
+    User.Tag tag = User.Tag.NONE;
+
+    while (tokenizer.hasMoreElements()) {
+      String token = tokenizer.nextToken();
+
+      try {
+        tag = User.Tag.valueOf(token.toUpperCase());
+      } catch (IllegalArgumentException e) {
+        // Leave none type as default.
+      }
+
+      if (!result.contains(tag)) {
+        result.add(tag);
+      }
     }
+
+    return result;
   }
 }

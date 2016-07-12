@@ -50,13 +50,13 @@ public class Exchange {
   @JsonDeserialize(using = ExchangeTypeDeserializer.class)
   @JsonProperty("type")
   @JsonSerialize(using = ExchangeTypeSerializer.class)
-  protected ExchangeType type;
+  protected Type type;
 
   protected Exchange() {
     // Jackson requires presence of empty constructor.
   }
 
-  public Exchange(@NonNull ExchangeType type, boolean autoDelete, boolean durable, boolean internal,
+  public Exchange(@NonNull Type type, boolean autoDelete, boolean durable, boolean internal,
       @Nullable LinkedHashMap<String, String> arguments) {
     this.type = type;
     this.autoDelete = autoDelete;
@@ -85,7 +85,11 @@ public class Exchange {
     return name;
   }
 
-  public ExchangeType getType() {
+  public Type getType() {
     return type;
+  }
+
+  public enum Type {
+    DIRECT, FANOUT, HEADERS, TOPIC;
   }
 }

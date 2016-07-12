@@ -20,6 +20,11 @@ package com.todev.rabbitmqmanagement.models.users;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.todev.rabbitmqmanagement.services.serialization.UserTagsDeserializer;
+import com.todev.rabbitmqmanagement.services.serialization.UserTagsSerializer;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
@@ -28,14 +33,20 @@ public class User {
   @JsonProperty("name")
   protected String name;
 
+  @JsonDeserialize(using = UserTagsDeserializer.class)
   @JsonProperty("tags")
-  protected String tags;
+  @JsonSerialize(using = UserTagsSerializer.class)
+  protected List<Tag> tags;
 
   public String getName() {
     return name;
   }
 
-  public String getTags() {
+  public List<Tag> getTags() {
     return tags;
+  }
+
+  public enum Tag {
+    ADMINISTRATOR, MONITORING, POLICYMAKER, MANAGEMENT, NONE
   }
 }
