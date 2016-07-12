@@ -22,74 +22,108 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Details;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Connection {
 
-  @JsonProperty("auth_mechanism") protected String authMechanism;
+  @JsonProperty("auth_mechanism")
+  protected String authMechanism;
 
-  @JsonProperty("channel_max") protected int channelMax;
+  @JsonProperty("channel_max")
+  protected int channelMax;
 
-  @JsonProperty("channels") protected int channels;
+  @JsonProperty("channels")
+  protected int channels;
 
-  @JsonProperty("client_properties") protected ClientProperties clientProperties;
+  @JsonProperty("client_properties")
+  protected ClientProperties clientProperties;
 
-  @JsonProperty("connected_at") protected long connectedAt;
+  @JsonProperty("connected_at")
+  protected long connectedAt;
 
-  @JsonProperty("frame_max") protected int frameMax;
+  @JsonProperty("frame_max")
+  protected int frameMax;
 
-  @JsonProperty("host") protected String host;
+  @JsonProperty("host")
+  protected String host;
 
-  @JsonProperty("name") protected String name;
+  @JsonProperty("name")
+  protected String name;
 
-  @JsonProperty("node") protected String node;
+  @JsonProperty("node")
+  protected String node;
 
-  @JsonProperty("peer_cert_issuer") protected Object peerCertIssuer;
+  @JsonProperty("peer_cert_issuer")
+  protected Object peerCertIssuer;
 
-  @JsonProperty("peer_cert_subject") protected Object peerCertSubject;
+  @JsonProperty("peer_cert_subject")
+  protected Object peerCertSubject;
 
-  @JsonProperty("peer_cert_validity") protected Object peerCertValidity;
+  @JsonProperty("peer_cert_validity")
+  protected Object peerCertValidity;
 
-  @JsonProperty("peer_host") protected String peerHost;
+  @JsonProperty("peer_host")
+  protected String peerHost;
 
-  @JsonProperty("peer_port") protected int peerPort;
+  @JsonProperty("peer_port")
+  protected int peerPort;
 
-  @JsonProperty("port") protected int port;
+  @JsonProperty("port")
+  protected int port;
 
-  @JsonProperty("protocol") protected String protocol;
+  @JsonProperty("protocol")
+  protected String protocol;
 
-  @JsonProperty("recv_cnt") protected int recvCnt;
+  @JsonProperty("recv_cnt")
+  protected int recvCnt;
 
-  @JsonProperty("recv_oct") protected int recvOct;
+  @JsonProperty("recv_oct")
+  protected int recvOct;
 
-  @JsonProperty("recv_oct_details") protected Details recvOctDetails;
+  @JsonProperty("recv_oct_details")
+  protected Details recvOctDetails;
 
-  @JsonProperty("send_cnt") protected int sendCnt;
+  @JsonProperty("send_cnt")
+  protected int sendCnt;
 
-  @JsonProperty("send_oct") protected int sendOct;
+  @JsonProperty("send_oct")
+  protected int sendOct;
 
-  @JsonProperty("send_oct_details") protected Details sendOctDetails;
+  @JsonProperty("send_oct_details")
+  protected Details sendOctDetails;
 
-  @JsonProperty("send_pend") protected int sendPend;
+  @JsonProperty("send_pend")
+  protected int sendPend;
 
-  @JsonProperty("ssl") protected boolean ssl;
+  @JsonProperty("ssl")
+  protected boolean ssl;
 
-  @JsonProperty("ssl_cipher") protected Object sslCipher;
+  @JsonProperty("ssl_cipher")
+  protected Object sslCipher;
 
-  @JsonProperty("ssl_hash") protected Object sslHash;
+  @JsonProperty("ssl_hash")
+  protected Object sslHash;
 
-  @JsonProperty("ssl_key_exchange") protected Object sslKeyExchange;
+  @JsonProperty("ssl_key_exchange")
+  protected Object sslKeyExchange;
 
-  @JsonProperty("ssl_protocol") protected Object sslProtocol;
+  @JsonProperty("ssl_protocol")
+  protected Object sslProtocol;
 
-  @JsonProperty("state") protected String state;
+  @JsonProperty("state")
+  protected String state;
 
-  @JsonProperty("timeout") protected int timeout;
+  @JsonProperty("timeout")
+  protected int timeout;
 
-  @JsonProperty("type") protected String type;
+  @JsonProperty("type")
+  protected String type;
 
-  @JsonProperty("user") protected String user;
+  @JsonProperty("user")
+  protected String user;
 
-  @JsonProperty("vhost") protected String vhost;
+  @JsonProperty("vhost")
+  protected String vhost;
 
   public String getAuthMechanism() {
     return authMechanism;

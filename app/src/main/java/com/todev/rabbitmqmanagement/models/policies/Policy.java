@@ -22,20 +22,27 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.LinkedHashMap;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Policy {
 
-  @JsonProperty("apply-to") protected String applyTo;
+  @JsonProperty("apply-to")
+  protected String applyTo;
 
-  @JsonProperty("definition") protected LinkedHashMap<String, String> definition;
+  @JsonProperty("definition")
+  protected LinkedHashMap<String, String> definition;
 
-  @JsonProperty("name") protected String name;
+  @JsonProperty("name")
+  protected String name;
 
-  @JsonProperty("pattern") protected String pattern;
+  @JsonProperty("pattern")
+  protected String pattern;
 
-  @JsonProperty("priority") protected int priority;
+  @JsonProperty("priority")
+  protected int priority;
 
-  @JsonProperty("vhost") protected String vhost;
+  @JsonProperty("vhost")
+  protected String vhost;
 
   public String getApplyTo() {
     return applyTo;

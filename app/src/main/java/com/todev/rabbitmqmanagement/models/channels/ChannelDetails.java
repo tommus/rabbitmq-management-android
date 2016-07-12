@@ -21,14 +21,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ChannelDetails {
 
-  @JsonProperty("name") protected String name;
+  @JsonProperty("name")
+  protected String name;
 
-  @JsonProperty("peer_host") protected String peerHost;
+  @JsonProperty("peer_host")
+  protected String peerHost;
 
-  @JsonProperty("peer_port") protected int peerPort;
+  @JsonProperty("peer_port")
+  protected int peerPort;
 
   public String getName() {
     return name;

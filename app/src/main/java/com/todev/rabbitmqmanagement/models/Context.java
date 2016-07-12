@@ -21,16 +21,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Context {
 
-  @JsonProperty("description") protected String description;
+  @JsonProperty("description")
+  protected String description;
 
-  @JsonProperty("path") protected String path;
+  @JsonProperty("path")
+  protected String path;
 
-  @JsonProperty("port") protected String port;
+  @JsonProperty("port")
+  protected String port;
 
-  @JsonProperty("ssl") protected String ssl;
+  @JsonProperty("ssl")
+  protected String ssl;
 
   public String getDescription() {
     return description;

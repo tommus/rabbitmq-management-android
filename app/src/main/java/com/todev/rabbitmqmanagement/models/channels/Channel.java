@@ -22,44 +22,63 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.MessageStats;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Channel {
 
-  @JsonProperty("acks_uncommitted") protected int acksUncommitted;
+  @JsonProperty("acks_uncommitted")
+  protected int acksUncommitted;
 
-  @JsonProperty("confirm") protected boolean confirm;
+  @JsonProperty("confirm")
+  protected boolean confirm;
 
-  @JsonProperty("connection_details") protected ChannelDetails connectionDetails;
+  @JsonProperty("connection_details")
+  protected ChannelDetails connectionDetails;
 
-  @JsonProperty("consumer_count") protected int consumerCount;
+  @JsonProperty("consumer_count")
+  protected int consumerCount;
 
-  @JsonProperty("global_prefetch_count") protected int globalPrefetchCount;
+  @JsonProperty("global_prefetch_count")
+  protected int globalPrefetchCount;
 
-  @JsonProperty("idle_since") protected String idleSince;
+  @JsonProperty("idle_since")
+  protected String idleSince;
 
-  @JsonProperty("message_stats") protected MessageStats messageStats;
+  @JsonProperty("message_stats")
+  protected MessageStats messageStats;
 
-  @JsonProperty("messages_unacknowledged") protected int messagesUnacknowledged;
+  @JsonProperty("messages_unacknowledged")
+  protected int messagesUnacknowledged;
 
-  @JsonProperty("messages_uncommitted") protected int messagesUncommitted;
+  @JsonProperty("messages_uncommitted")
+  protected int messagesUncommitted;
 
-  @JsonProperty("messages_unconfirmed") protected int messagesUnconfirmed;
+  @JsonProperty("messages_unconfirmed")
+  protected int messagesUnconfirmed;
 
-  @JsonProperty("name") protected String name;
+  @JsonProperty("name")
+  protected String name;
 
-  @JsonProperty("node") protected String node;
+  @JsonProperty("node")
+  protected String node;
 
-  @JsonProperty("number") protected int number;
+  @JsonProperty("number")
+  protected int number;
 
-  @JsonProperty("prefetch_count") protected int prefetchCount;
+  @JsonProperty("prefetch_count")
+  protected int prefetchCount;
 
-  @JsonProperty("state") protected String state;
+  @JsonProperty("state")
+  protected String state;
 
-  @JsonProperty("transactional") protected boolean transactional;
+  @JsonProperty("transactional")
+  protected boolean transactional;
 
-  @JsonProperty("user") protected String user;
+  @JsonProperty("user")
+  protected String user;
 
-  @JsonProperty("vhost") protected String vhost;
+  @JsonProperty("vhost")
+  protected String vhost;
 
   public int getAcksUncommitted() {
     return acksUncommitted;

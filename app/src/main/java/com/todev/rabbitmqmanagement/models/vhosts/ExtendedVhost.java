@@ -22,22 +22,30 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.Details;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedVhost extends Vhost {
 
-  @JsonProperty("messages") protected int messages;
+  @JsonProperty("messages")
+  protected int messages;
 
-  @JsonProperty("messages_details") protected Details messagesDetails;
+  @JsonProperty("messages_details")
+  protected Details messagesDetails;
 
-  @JsonProperty("messages_ready") protected int messagesReady;
+  @JsonProperty("messages_ready")
+  protected int messagesReady;
 
-  @JsonProperty("messages_ready_details") protected Details messagesReadyDetails;
+  @JsonProperty("messages_ready_details")
+  protected Details messagesReadyDetails;
 
-  @JsonProperty("messages_unacknowledged") protected int messagesUnacknowledged;
+  @JsonProperty("messages_unacknowledged")
+  protected int messagesUnacknowledged;
 
-  @JsonProperty("messages_unacknowledged_details") protected Details messagesUnacknowledgedDetails;
+  @JsonProperty("messages_unacknowledged_details")
+  protected Details messagesUnacknowledgedDetails;
 
-  @JsonProperty("tracing") protected boolean tracing;
+  @JsonProperty("tracing")
+  protected boolean tracing;
 
   public int getMessages() {
     return messages;

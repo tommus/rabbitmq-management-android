@@ -22,18 +22,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Permission {
 
-  @JsonProperty("configure") protected String configure;
+  @JsonProperty("configure")
+  protected String configure;
 
-  @JsonProperty("read") protected String read;
+  @JsonProperty("read")
+  protected String read;
 
-  @JsonProperty("user") protected String user;
+  @JsonProperty("user")
+  protected String user;
 
-  @JsonProperty("vhost") protected String vhost;
+  @JsonProperty("vhost")
+  protected String vhost;
 
-  @JsonProperty("write") protected String write;
+  @JsonProperty("write")
+  protected String write;
 
   public Permission() {
     // Jackson requires presence of empty constructor.

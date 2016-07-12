@@ -21,16 +21,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Listener {
 
-  @JsonProperty("ip_address") protected String ipAddress;
+  @JsonProperty("ip_address")
+  protected String ipAddress;
 
-  @JsonProperty("node") protected String node;
+  @JsonProperty("node")
+  protected String node;
 
-  @JsonProperty("port") protected Integer port;
+  @JsonProperty("port")
+  protected Integer port;
 
-  @JsonProperty("protocol") protected String protocol;
+  @JsonProperty("protocol")
+  protected String protocol;
 
   public String getIpAddress() {
     return ipAddress;

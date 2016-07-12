@@ -20,29 +20,37 @@ package com.todev.rabbitmqmanagement.models.consumers;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.todev.rabbitmqmanagement.models.Arguments;
+import java.util.LinkedHashMap;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Consumer {
-  @JsonProperty("ack_required") protected boolean ackRequired;
+  @JsonProperty("ack_required")
+  protected boolean ackRequired;
 
-  @JsonProperty("arguments") protected Arguments arguments;
+  @JsonProperty("arguments")
+  protected LinkedHashMap<String, String> arguments;
 
-  @JsonProperty("channel_details") protected ConsumerChannelDetails channelDetails;
+  @JsonProperty("channel_details")
+  protected ConsumerChannelDetails channelDetails;
 
-  @JsonProperty("consumer_tag") protected String consumerTag;
+  @JsonProperty("consumer_tag")
+  protected String consumerTag;
 
-  @JsonProperty("exclusive") protected boolean exclusive;
+  @JsonProperty("exclusive")
+  protected boolean exclusive;
 
-  @JsonProperty("prefetch_count") protected int prefetchCount;
+  @JsonProperty("prefetch_count")
+  protected int prefetchCount;
 
-  @JsonProperty("queue") protected ConsumerQueue queue;
+  @JsonProperty("queue")
+  protected ConsumerQueue queue;
 
   public boolean isAckRequired() {
     return ackRequired;
   }
 
-  public Arguments getArguments() {
+  public LinkedHashMap<String, String> getArguments() {
     return arguments;
   }
 

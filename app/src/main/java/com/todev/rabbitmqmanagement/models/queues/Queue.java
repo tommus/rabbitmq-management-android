@@ -20,20 +20,25 @@ package com.todev.rabbitmqmanagement.models.queues;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.todev.rabbitmqmanagement.models.Arguments;
+import java.util.LinkedHashMap;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Queue {
 
-  @JsonProperty("arguments") protected Arguments arguments;
+  @JsonProperty("arguments")
+  protected LinkedHashMap<String, String> arguments;
 
-  @JsonProperty("auto_delete") protected boolean autoDelete;
+  @JsonProperty("auto_delete")
+  protected boolean autoDelete;
 
-  @JsonProperty("durable") protected boolean durable;
+  @JsonProperty("durable")
+  protected boolean durable;
 
-  @JsonProperty("name") protected String name;
+  @JsonProperty("name")
+  protected String name;
 
-  public Arguments getArguments() {
+  public LinkedHashMap<String, String> getArguments() {
     return arguments;
   }
 

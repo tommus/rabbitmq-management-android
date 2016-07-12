@@ -21,12 +21,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedUser extends User {
 
-  @JsonProperty("hashing_algorithm") protected String hashingAlgorithm;
+  @JsonProperty("hashing_algorithm")
+  protected String hashingAlgorithm;
 
-  @JsonProperty("password_hash") protected String passwordHash;
+  @JsonProperty("password_hash")
+  protected String passwordHash;
 
   public String getHashingAlgorithm() {
     return hashingAlgorithm;

@@ -17,27 +17,55 @@
  */
 package com.todev.rabbitmqmanagement.models.exchanges;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.todev.rabbitmqmanagement.models.Arguments;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.todev.rabbitmqmanagement.services.serialization.ExchangeTypeDeserializer;
+import com.todev.rabbitmqmanagement.services.serialization.ExchangeTypeSerializer;
+import java.util.LinkedHashMap;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Exchange {
 
-  @JsonProperty("arguments") protected Arguments arguments;
+  @JsonProperty("arguments")
+  protected LinkedHashMap<String, String> arguments;
 
-  @JsonProperty("auto_delete") protected boolean autoDelete;
+  @JsonProperty("auto_delete")
+  protected boolean autoDelete;
 
-  @JsonProperty("durable") protected boolean durable;
+  @JsonProperty("durable")
+  protected boolean durable;
 
-  @JsonProperty("internal") protected boolean internal;
+  @JsonProperty("internal")
+  protected boolean internal;
 
-  @JsonProperty("name") protected String name;
+  @JsonProperty("name")
+  protected String name;
 
-  @JsonProperty("type") protected String type;
+  @JsonDeserialize(using = ExchangeTypeDeserializer.class)
+  @JsonProperty("type")
+  @JsonSerialize(using = ExchangeTypeSerializer.class)
+  protected ExchangeType type;
 
-  public Arguments getArguments() {
+  protected Exchange() {
+    // Jackson requires presence of empty constructor.
+  }
+
+  public Exchange(@NonNull ExchangeType type, boolean autoDelete, boolean durable, boolean internal,
+      @Nullable LinkedHashMap<String, String> arguments) {
+    this.type = type;
+    this.autoDelete = autoDelete;
+    this.durable = durable;
+    this.internal = internal;
+    this.arguments = arguments;
+  }
+
+  public LinkedHashMap<String, String> getArguments() {
     return arguments;
   }
 
@@ -57,7 +85,7 @@ public class Exchange {
     return name;
   }
 
-  public String getType() {
+  public ExchangeType getType() {
     return type;
   }
 }

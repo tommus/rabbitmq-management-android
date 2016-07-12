@@ -21,40 +21,57 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class MessageStats {
 
-  @JsonProperty("ack") protected int ack;
+  @JsonProperty("ack")
+  protected int ack;
 
-  @JsonProperty("ack_details") protected Details ackDetails;
+  @JsonProperty("ack_details")
+  protected Details ackDetails;
 
-  @JsonProperty("confirm") protected int confirm;
+  @JsonProperty("confirm")
+  protected int confirm;
 
-  @JsonProperty("confirm_details") protected Details confirmDetails;
+  @JsonProperty("confirm_details")
+  protected Details confirmDetails;
 
-  @JsonProperty("deliver_get") protected int deliverGet;
+  @JsonProperty("deliver_get")
+  protected int deliverGet;
 
-  @JsonProperty("deliver_get_details") protected Details deliverGetDetails;
+  @JsonProperty("deliver_get_details")
+  protected Details deliverGetDetails;
 
-  @JsonProperty("publish") protected int publish;
+  @JsonProperty("publish")
+  protected int publish;
 
-  @JsonProperty("publish_details") protected Details publishDetails;
+  @JsonProperty("publish_details")
+  protected Details publishDetails;
 
-  @JsonProperty("publish_in") protected int publishIn;
+  @JsonProperty("publish_in")
+  protected int publishIn;
 
-  @JsonProperty("publish_in_details") protected Details publishInDetails;
+  @JsonProperty("publish_in_details")
+  protected Details publishInDetails;
 
-  @JsonProperty("publish_out") protected int publishOut;
+  @JsonProperty("publish_out")
+  protected int publishOut;
 
-  @JsonProperty("publish_out_details") protected Details publishOutDetails;
+  @JsonProperty("publish_out_details")
+  protected Details publishOutDetails;
 
-  @JsonProperty("redeliver") protected int redeliver;
+  @JsonProperty("redeliver")
+  protected int redeliver;
 
-  @JsonProperty("redeliver_details") protected Details redeliverDetails;
+  @JsonProperty("redeliver_details")
+  protected Details redeliverDetails;
 
-  @JsonProperty("return_unroutable") protected int returnUnroutable;
+  @JsonProperty("return_unroutable")
+  protected int returnUnroutable;
 
-  @JsonProperty("return_unroutable_details") protected Details returnUnroutableDetails;
+  @JsonProperty("return_unroutable_details")
+  protected Details returnUnroutableDetails;
 
   public int getAck() {
     return ack;

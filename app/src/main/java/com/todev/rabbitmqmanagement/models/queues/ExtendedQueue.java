@@ -24,70 +24,102 @@ import com.todev.rabbitmqmanagement.models.Details;
 import com.todev.rabbitmqmanagement.models.MessageStats;
 import com.todev.rabbitmqmanagement.models.policies.Policy;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedQueue extends Queue {
 
-  @JsonProperty("backing_queue_status") protected BackingQueueStatus backingQueueStatus;
+  @JsonProperty("backing_queue_status")
+  protected BackingQueueStatus backingQueueStatus;
 
-  @JsonProperty("consumer_utilisation") protected Object consumerUtilisation;
+  @JsonProperty("consumer_utilisation")
+  protected Object consumerUtilisation;
 
-  @JsonProperty("consumers") protected int consumers;
+  @JsonProperty("consumers")
+  protected int consumers;
 
-  @JsonProperty("disk_reads") protected int diskReads;
+  @JsonProperty("disk_reads")
+  protected int diskReads;
 
-  @JsonProperty("disk_writes") protected int diskWrites;
+  @JsonProperty("disk_writes")
+  protected int diskWrites;
 
-  @JsonProperty("exclusive") protected boolean exclusive;
+  @JsonProperty("exclusive")
+  protected boolean exclusive;
 
-  @JsonProperty("exclusive_consumer_tag") protected Object exclusiveConsumerTag;
+  @JsonProperty("exclusive_consumer_tag")
+  protected Object exclusiveConsumerTag;
 
-  @JsonProperty("head_message_timestamp") protected Object headMessageTimestamp;
+  @JsonProperty("head_message_timestamp")
+  protected Object headMessageTimestamp;
 
-  @JsonProperty("idle_since") protected String idleSince;
+  @JsonProperty("idle_since")
+  protected String idleSince;
 
-  @JsonProperty("memory") protected long memory;
+  @JsonProperty("memory")
+  protected long memory;
 
-  @JsonProperty("message_bytes") protected long messageBytes;
+  @JsonProperty("message_bytes")
+  protected long messageBytes;
 
-  @JsonProperty("message_bytes_persistent") protected long messageBytesPersistent;
+  @JsonProperty("message_bytes_persistent")
+  protected long messageBytesPersistent;
 
-  @JsonProperty("message_bytes_ram") protected long messageBytesRam;
+  @JsonProperty("message_bytes_ram")
+  protected long messageBytesRam;
 
-  @JsonProperty("message_bytes_ready") protected long messageBytesReady;
+  @JsonProperty("message_bytes_ready")
+  protected long messageBytesReady;
 
-  @JsonProperty("message_bytes_unacknowledged") protected long messageBytesUnacknowledged;
+  @JsonProperty("message_bytes_unacknowledged")
+  protected long messageBytesUnacknowledged;
 
-  @JsonProperty("message_stats") protected MessageStats messageStats;
+  @JsonProperty("message_stats")
+  protected MessageStats messageStats;
 
-  @JsonProperty("messages") protected int messages;
+  @JsonProperty("messages")
+  protected int messages;
 
-  @JsonProperty("messages_details") protected Details messagesDetails;
+  @JsonProperty("messages_details")
+  protected Details messagesDetails;
 
-  @JsonProperty("messages_persistent") protected int messagesPersistent;
+  @JsonProperty("messages_persistent")
+  protected int messagesPersistent;
 
-  @JsonProperty("messages_ram") protected long messagesRam;
+  @JsonProperty("messages_ram")
+  protected long messagesRam;
 
-  @JsonProperty("messages_ready") protected int messagesReady;
+  @JsonProperty("messages_ready")
+  protected int messagesReady;
 
-  @JsonProperty("messages_ready_details") protected Details messagesReadyDetails;
+  @JsonProperty("messages_ready_details")
+  protected Details messagesReadyDetails;
 
-  @JsonProperty("messages_ready_ram") protected long messagesReadyRam;
+  @JsonProperty("messages_ready_ram")
+  protected long messagesReadyRam;
 
-  @JsonProperty("messages_unacknowledged") protected int messagesUnacknowledged;
+  @JsonProperty("messages_unacknowledged")
+  protected int messagesUnacknowledged;
 
-  @JsonProperty("messages_unacknowledged_details") protected Details messagesUnacknowledgedDetails;
+  @JsonProperty("messages_unacknowledged_details")
+  protected Details messagesUnacknowledgedDetails;
 
-  @JsonProperty("messages_unacknowledged_ram") protected long messagesUnacknowledgedRam;
+  @JsonProperty("messages_unacknowledged_ram")
+  protected long messagesUnacknowledgedRam;
 
-  @JsonProperty("node") protected String node;
+  @JsonProperty("node")
+  protected String node;
 
-  @JsonProperty("policy") protected Policy policy;
+  @JsonProperty("policy")
+  protected Policy policy;
 
-  @JsonProperty("recoverable_slaves") protected Object recoverableSlaves;
+  @JsonProperty("recoverable_slaves")
+  protected Object recoverableSlaves;
 
-  @JsonProperty("state") protected String state;
+  @JsonProperty("state")
+  protected String state;
 
-  @JsonProperty("vhost") protected String vhost;
+  @JsonProperty("vhost")
+  protected String vhost;
 
   public BackingQueueStatus getBackingQueueStatus() {
     return backingQueueStatus;

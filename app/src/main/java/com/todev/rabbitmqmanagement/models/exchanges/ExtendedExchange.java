@@ -22,14 +22,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.MessageStats;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedExchange extends Exchange {
 
-  @JsonProperty("vhost") protected String vhost;
+  @JsonProperty("vhost")
+  protected String vhost;
 
-  @JsonProperty("policy") protected String policy;
+  @JsonProperty("policy")
+  protected String policy;
 
-  @JsonProperty("message_stats") protected MessageStats messageStats;
+  @JsonProperty("message_stats")
+  protected MessageStats messageStats;
 
   public String getVhost() {
     return vhost;

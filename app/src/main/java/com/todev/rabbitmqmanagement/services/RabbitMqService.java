@@ -27,6 +27,7 @@ import com.todev.rabbitmqmanagement.models.cluster.Cluster;
 import com.todev.rabbitmqmanagement.models.connections.Connection;
 import com.todev.rabbitmqmanagement.models.consumers.Consumer;
 import com.todev.rabbitmqmanagement.models.definitions.Definitions;
+import com.todev.rabbitmqmanagement.models.exchanges.Exchange;
 import com.todev.rabbitmqmanagement.models.exchanges.ExtendedExchange;
 import com.todev.rabbitmqmanagement.models.extensions.Extension;
 import com.todev.rabbitmqmanagement.models.nodes.Node;
@@ -57,71 +58,90 @@ public interface RabbitMqService {
 
   String CONTENT_TYPE = "application/json";
 
-  String TEST_URL = "http://192.168.1.129:15672/api/";
+  String TEST_URL = "http://192.168.3.150:15672/api/";
 
   String TEST_TOKEN = "Basic dG9tbXVzOnRvbW11cw==";
 
-  @GET("overview") Call<Overview> getOverview();
+  @GET("overview")
+  Call<Overview> getOverview();
 
-  @GET("cluster-name") Call<Cluster> getClusterName();
+  @GET("cluster-name")
+  Call<Cluster> getClusterName();
 
-  @PUT("cluster-name") Call<Void> updateClusterName(@Body @NonNull Cluster cluster);
+  @PUT("cluster-name")
+  Call<Void> updateClusterName(@Body @NonNull Cluster cluster);
 
-  @GET("nodes") Call<List<Node>> getNodes();
+  @GET("nodes")
+  Call<List<Node>> getNodes();
 
-  @GET("nodes/{name}") Call<Node> getNode(@Path("name") @NonNull String name);
+  @GET("nodes/{name}")
+  Call<Node> getNode(@Path("name") @NonNull String name);
 
-  @GET("extensions") Call<List<Extension>> getExtensions();
+  @GET("extensions")
+  Call<List<Extension>> getExtensions();
 
-  @GET("definitions") Call<Definitions> getDefinitions();
+  @GET("definitions")
+  Call<Definitions> getDefinitions();
 
   // TODO: Add POST /definitions.
 
-  @GET("definitions/{vhost}") Call<Definitions> getDefinitions(
-      @Path("vhost") @NonNull String vhost);
+  @GET("definitions/{vhost}")
+  Call<Definitions> getDefinitions(@Path("vhost") @NonNull String vhost);
 
   // TODO: Add POST /definitions/{vhost}.
 
-  @GET("connections") Call<List<Connection>> getConnections();
+  @GET("connections")
+  Call<List<Connection>> getConnections();
 
-  @GET("vhosts/{vhost}/connections") Call<List<Connection>> getConnections(
-      @Path("vhost") @NonNull String vhost);
+  @GET("vhosts/{vhost}/connections")
+  Call<List<Connection>> getConnections(@Path("vhost") @NonNull String vhost);
 
-  @GET("connections/{name}") Call<Connection> getConnection(@Path("name") @NonNull String name);
+  @GET("connections/{name}")
+  Call<Connection> getConnection(@Path("name") @NonNull String name);
 
-  @DELETE("connections/{name}") Call<Void> deleteConnection(@Path("name") @NonNull String name,
+  @DELETE("connections/{name}")
+  Call<Void> deleteConnection(@Path("name") @NonNull String name,
       @Header(Headers.X_REASON) @Nullable String reason);
 
-  @GET("connections/{name}/channels") Call<List<Channel>> getConnectionChannels(
-      @Path("name") @NonNull String connection);
+  @GET("connections/{name}/channels")
+  Call<List<Channel>> getConnectionChannels(@Path("name") @NonNull String connection);
 
-  @GET("channels") Call<List<Channel>> getChannels();
+  @GET("channels")
+  Call<List<Channel>> getChannels();
 
-  @GET("vhosts/{vhost}/channels") Call<List<Channel>> getChannels(
-      @Path("vhost") @NonNull String vhost);
+  @GET("vhosts/{vhost}/channels")
+  Call<List<Channel>> getChannels(@Path("vhost") @NonNull String vhost);
 
-  @GET("channels/{name}") Call<Channel> getChannel(@Path("name") @NonNull String name);
+  @GET("channels/{name}")
+  Call<Channel> getChannel(@Path("name") @NonNull String name);
 
-  @GET("consumers") Call<List<Consumer>> getConsumers();
+  @GET("consumers")
+  Call<List<Consumer>> getConsumers();
 
-  @GET("consumers/{vhost}") Call<List<Consumer>> getConsumers(@Path("vhost") @NonNull String vhost);
+  @GET("consumers/{vhost}")
+  Call<List<Consumer>> getConsumers(@Path("vhost") @NonNull String vhost);
 
-  @GET("exchanges") Call<List<ExtendedExchange>> getExchanges();
+  @GET("exchanges")
+  Call<List<ExtendedExchange>> getExchanges();
 
-  @GET("exchanges/{vhost}") Call<List<ExtendedExchange>> getExchanges(
-      @Path("vhost") @NonNull String vhost);
+  @GET("exchanges/{vhost}")
+  Call<List<ExtendedExchange>> getExchanges(@Path("vhost") @NonNull String vhost);
 
-  @GET("exchanges/{vhost}/{exchange}") Call<ExtendedExchange> getExchange(
-      @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange);
+  @GET("exchanges/{vhost}/{exchange}")
+  Call<ExtendedExchange> getExchange(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange);
 
-  // TODO: Add PUT /exchanges/{vhost}/{exchange}.
+  @PUT("exchanges/{vhost}/{exchange}")
+  Call<Void> putExchange(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Body @NonNull Exchange body);
 
-  @DELETE("exchanges/{vhost}/{exchange}") Call<Void> deleteExchange(
-      @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
-      @Query("if-unused") boolean ifUnused);
+  @DELETE("exchanges/{vhost}/{exchange}")
+  Call<Void> deleteExchange(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Query("if-unused") boolean ifUnused);
 
-  @GET("exchanges/{vhost}/{exchange}/bindings/source") Call<List<Binding>> getSourceBindings(
-      @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange);
+  @GET("exchanges/{vhost}/{exchange}/bindings/source")
+  Call<List<Binding>> getSourceBindings(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange);
 
   @GET("exchanges/{vhost}/{exchange}/bindings/destination")
   Call<List<Binding>> getDestinationBindings(@Path("vhost") @NonNull String vhost,
@@ -129,20 +149,25 @@ public interface RabbitMqService {
 
   // TODO: POST /exchanges/{vhost}/{name}/publish
 
-  @GET("queues") Call<List<ExtendedQueue>> getQueues();
+  @GET("queues")
+  Call<List<ExtendedQueue>> getQueues();
 
-  @GET("queues/{vhost}") Call<List<ExtendedQueue>> getQueues(@Path("vhost") @NonNull String vhost);
+  @GET("queues/{vhost}")
+  Call<List<ExtendedQueue>> getQueues(@Path("vhost") @NonNull String vhost);
 
-  @GET("queues/{vhost}/{queue}") Call<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost,
+  @GET("queues/{vhost}/{queue}")
+  Call<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost,
       @Path("queue") @NonNull String queue);
 
   // TODO: Add PUT /queues/{vhost}/{name}.
 
-  @DELETE("queues/{vhost}/{queue}") Call<Void> deleteQueue(@Path("vhost") @NonNull String vhost,
+  @DELETE("queues/{vhost}/{queue}")
+  Call<Void> deleteQueue(@Path("vhost") @NonNull String vhost,
       @Path("queue") @NonNull String queue);
 
-  @GET("queues/{vhost}/{queue}/bindings") Call<List<Binding>> getQueueBindings(
-      @Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
+  @GET("queues/{vhost}/{queue}/bindings")
+  Call<List<Binding>> getQueueBindings(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue);
 
   // TODO: Add PUT /queues/{vhost}/{queue}/contents.
 
@@ -150,9 +175,11 @@ public interface RabbitMqService {
 
   // TODO: Add POST /queues/{vhost}/{queue}/get.
 
-  @GET("bindings") Call<List<Binding>> getBindings();
+  @GET("bindings")
+  Call<List<Binding>> getBindings();
 
-  @GET("bindings/{vhost}") Call<List<Binding>> getBindings(@Path("vhost") @NonNull String vhost);
+  @GET("bindings/{vhost}")
+  Call<List<Binding>> getBindings(@Path("vhost") @NonNull String vhost);
 
   @GET("bindings/{vhost}/e/{exchange}/q/{queue}")
   Call<List<ExtendedBinding>> getBindingsBetweenExchangeAndQueue(
@@ -188,76 +215,96 @@ public interface RabbitMqService {
       @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
       @Path("props") @NonNull String propertiesKey);
 
-  @GET("vhosts") Call<List<ExtendedVhost>> getVhosts();
+  @GET("vhosts")
+  Call<List<ExtendedVhost>> getVhosts();
 
-  @GET("vhosts/{name}") Call<ExtendedVhost> getVhost(@Path("name") @NonNull String name);
+  @GET("vhosts/{name}")
+  Call<ExtendedVhost> getVhost(@Path("name") @NonNull String name);
 
   // TODO: Add PUT /vhosts/{name}.
 
-  @DELETE("vhosts/{name}") Call<Void> deleteHost(@Path("name") @NonNull String name);
+  @DELETE("vhosts/{name}")
+  Call<Void> deleteHost(@Path("name") @NonNull String name);
 
-  @GET("vhosts/{vhost}/permissions") Call<List<Permission>> getVhostPermissions(
-      @Path("vhost") @NonNull String vhost);
+  @GET("vhosts/{vhost}/permissions")
+  Call<List<Permission>> getVhostPermissions(@Path("vhost") @NonNull String vhost);
 
-  @GET("users") Call<List<ExtendedUser>> getUsers();
+  @GET("users")
+  Call<List<ExtendedUser>> getUsers();
 
-  @GET("users/{name}") Call<ExtendedUser> getUser(@Path("name") @NonNull String name);
+  @GET("users/{name}")
+  Call<ExtendedUser> getUser(@Path("name") @NonNull String name);
 
   // TODO: Add PUT /users/{name}.
 
-  @DELETE("users/{name}") Call<Void> deleteUser(@Path("name") @NonNull String name);
+  @DELETE("users/{name}")
+  Call<Void> deleteUser(@Path("name") @NonNull String name);
 
-  @GET("users/{user}/permissions") Call<List<Permission>> getUserPermissions(
+  @GET("users/{user}/permissions")
+  Call<List<Permission>> getUserPermissions(@Path("user") @NonNull String user);
+
+  @GET("whoami")
+  Call<User> whoAmI();
+
+  @GET("permissions")
+  Call<List<Permission>> getPermissions();
+
+  @GET("permissions/{vhost}/{user}")
+  Call<Permission> getPermission(@Path("vhost") @NonNull String vhost,
       @Path("user") @NonNull String user);
 
-  @GET("whoami") Call<User> whoAmI();
+  @PUT("permissions/{vhost}/{user}")
+  Call<Void> putPermission(@Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user,
+      @Body @NonNull Permission body);
 
-  @GET("permissions") Call<List<Permission>> getPermissions();
+  @DELETE("permissions/{vhost}/{user}")
+  Call<Void> deletePermission(@Path("vhost") @NonNull String vhost,
+      @Path("user") @NonNull String user);
 
-  @GET("permissions/{vhost}/{user}") Call<Permission> getPermission(
-      @Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
+  @GET("parameters")
+  Call<List<Parameter>> getParameters();
 
-  @PUT("permissions/{vhost}/{user}") Call<Void> putPermission(@Path("vhost") @NonNull String vhost,
-      @Path("user") @NonNull String user, @Body @NonNull Permission body);
+  @GET("parameters/{component}")
+  Call<List<Parameter>> getParameters(@Path("component") @NonNull String component);
 
-  @DELETE("permissions/{vhost}/{user}") Call<Void> deletePermission(
-      @Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
+  @GET("parameters/{component}/{vhost}")
+  Call<List<Parameter>> getParameters(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost);
 
-  @GET("parameters") Call<List<Parameter>> getParameters();
-
-  @GET("parameters/{component}") Call<List<Parameter>> getParameters(
-      @Path("component") @NonNull String component);
-
-  @GET("parameters/{component}/{vhost}") Call<List<Parameter>> getParameters(
-      @Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost);
-
-  @GET("parameters/{component}/{vhost}/{parameter}") Call<Parameter> getParameter(
-      @Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
-      @Path("parameter") @NonNull String parameter);
+  @GET("parameters/{component}/{vhost}/{parameter}")
+  Call<Parameter> getParameter(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter);
 
   // TODO: Add PUT /parameters/{component}/{vhost}/{name}.
 
-  @DELETE("parameters/{component}/{vhost}/{parameter}") Call<Void> deleteParameter(
-      @Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
-      @Path("parameter") @NonNull String parameter);
+  @DELETE("parameters/{component}/{vhost}/{parameter}")
+  Call<Void> deleteParameter(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter);
 
-  @GET("policies") Call<List<Policy>> getPolicies();
+  @GET("policies")
+  Call<List<Policy>> getPolicies();
 
-  @GET("policies/{vhost}") Call<List<Policy>> getPolicies(@Path("vhost") @NonNull String vhost);
+  @GET("policies/{vhost}")
+  Call<List<Policy>> getPolicies(@Path("vhost") @NonNull String vhost);
 
-  @GET("policies/{vhost}/{policy}") Call<Policy> getPolicy(@Path("vhost") @NonNull String vhost,
+  @GET("policies/{vhost}/{policy}")
+  Call<Policy> getPolicy(@Path("vhost") @NonNull String vhost,
       @Path("policy") @NonNull String policy);
 
   // TODO: Add PUT /policies/{vhost}/{name}.
 
-  @DELETE("policies/{vhost}/{policy}") Call<Void> deletePolicy(@Path("vhost") @NonNull String vhost,
+  @DELETE("policies/{vhost}/{policy}")
+  Call<Void> deletePolicy(@Path("vhost") @NonNull String vhost,
       @Path("policy") @NonNull String policy);
 
-  @GET("aliveness-test/{vhost}") Call<Check> checkAlive(@Path("vhost") @NonNull String vhost);
+  @GET("aliveness-test/{vhost}")
+  Call<Check> checkAlive(@Path("vhost") @NonNull String vhost);
 
-  @GET("healthchecks/node") Call<Check> checkHealth();
+  @GET("healthchecks/node")
+  Call<Check> checkHealth();
 
-  @GET("healthchecks/node/{node}") Call<Check> checkHealth(@Path("node") @NonNull String node);
+  @GET("healthchecks/node/{node}")
+  Call<Check> checkHealth(@Path("node") @NonNull String node);
 
   class Headers {
     public static final String X_REASON = "X-Reason";

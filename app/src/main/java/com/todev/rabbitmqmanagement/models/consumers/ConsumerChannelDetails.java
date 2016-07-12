@@ -22,14 +22,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.models.channels.ChannelDetails;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ConsumerChannelDetails extends ChannelDetails {
 
-  @JsonProperty("connection_name") protected String connectionName;
+  @JsonProperty("connection_name")
+  protected String connectionName;
 
-  @JsonProperty("number") protected int number;
+  @JsonProperty("number")
+  protected int number;
 
-  @JsonProperty("user") protected String user;
+  @JsonProperty("user")
+  protected String user;
 
   public String getConnectionName() {
     return connectionName;

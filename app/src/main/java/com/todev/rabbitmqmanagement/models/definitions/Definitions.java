@@ -30,28 +30,38 @@ import com.todev.rabbitmqmanagement.models.vhosts.Vhost;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Definitions {
 
-  @JsonProperty("bindings") protected List<Binding> bindings = new ArrayList<>();
+  @JsonProperty("bindings")
+  protected List<Binding> bindings = new ArrayList<>();
 
-  @JsonProperty("exchanges") protected List<Exchange> exchanges = new ArrayList<>();
+  @JsonProperty("exchanges")
+  protected List<Exchange> exchanges = new ArrayList<>();
 
   // TODO: Parameters should be corrected.
 
-  @JsonProperty("parameters") protected List<Object> parameters = new ArrayList<>();
+  @JsonProperty("parameters")
+  protected List<Object> parameters = new ArrayList<>();
 
-  @JsonProperty("permissions") protected List<Permission> permissions = new ArrayList<>();
+  @JsonProperty("permissions")
+  protected List<Permission> permissions = new ArrayList<>();
 
-  @JsonProperty("policies") protected List<Policy> policies = new ArrayList<>();
+  @JsonProperty("policies")
+  protected List<Policy> policies = new ArrayList<>();
 
-  @JsonProperty("queues") protected List<Queue> queues = new ArrayList<>();
+  @JsonProperty("queues")
+  protected List<Queue> queues = new ArrayList<>();
 
-  @JsonProperty("rabbit_version") protected String rabbitVersion;
+  @JsonProperty("rabbit_version")
+  protected String rabbitVersion;
 
-  @JsonProperty("users") protected List<ExtendedUser> users = new ArrayList<>();
+  @JsonProperty("users")
+  protected List<ExtendedUser> users = new ArrayList<>();
 
-  @JsonProperty("vhosts") protected List<Vhost> vhosts = new ArrayList<>();
+  @JsonProperty("vhosts")
+  protected List<Vhost> vhosts = new ArrayList<>();
 
   public List<Binding> getBindings() {
     return bindings;

@@ -21,14 +21,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Description {
 
-  @JsonProperty("description") protected String description;
+  @JsonProperty("description")
+  protected String description;
 
-  @JsonProperty("enabled") protected boolean enabled;
+  @JsonProperty("enabled")
+  protected boolean enabled;
 
-  @JsonProperty("name") protected String name;
+  @JsonProperty("name")
+  protected String name;
 
   public String getDescription() {
     return description;

@@ -25,38 +25,54 @@ import com.todev.rabbitmqmanagement.models.MessageStats;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Overview {
 
-  @JsonProperty("cluster_name") protected String clusterName;
+  @JsonProperty("cluster_name")
+  protected String clusterName;
 
-  @JsonProperty("contexts") protected List<OverviewContext> contexts = new ArrayList<>();
+  @JsonProperty("contexts")
+  protected List<OverviewContext> contexts = new ArrayList<>();
 
-  @JsonProperty("erlang_full_version") protected String erlangFullVersion;
+  @JsonProperty("erlang_full_version")
+  protected String erlangFullVersion;
 
-  @JsonProperty("erlang_version") protected String erlangVersion;
+  @JsonProperty("erlang_version")
+  protected String erlangVersion;
 
-  @JsonProperty("exchange_types") protected List<Description> exchangeTypes = new ArrayList<>();
+  @JsonProperty("exchange_types")
+  protected List<Description> exchangeTypes = new ArrayList<>();
 
-  @JsonProperty("listeners") protected List<Listener> listeners = new ArrayList<>();
+  @JsonProperty("listeners")
+  protected List<Listener> listeners = new ArrayList<>();
 
-  @JsonProperty("management_version") protected String managementVersion;
+  @JsonProperty("management_version")
+  protected String managementVersion;
 
-  @JsonProperty("message_stats") protected MessageStats messageStats;
+  @JsonProperty("message_stats")
+  protected MessageStats messageStats;
 
-  @JsonProperty("node") protected String node;
+  @JsonProperty("node")
+  protected String node;
 
-  @JsonProperty("object_totals") protected ObjectTotals objectTotals;
+  @JsonProperty("object_totals")
+  protected ObjectTotals objectTotals;
 
-  @JsonProperty("queue_totals") protected QueueTotals queueTotals;
+  @JsonProperty("queue_totals")
+  protected QueueTotals queueTotals;
 
-  @JsonProperty("rabbitmq_version") protected String rabbitmqVersion;
+  @JsonProperty("rabbitmq_version")
+  protected String rabbitmqVersion;
 
-  @JsonProperty("rates_mode") protected String ratesMode;
+  @JsonProperty("rates_mode")
+  protected String ratesMode;
 
-  @JsonProperty("statistics_db_event_queue") protected int statisticsDbEventQueue;
+  @JsonProperty("statistics_db_event_queue")
+  protected int statisticsDbEventQueue;
 
-  @JsonProperty("statistics_db_node") protected String statisticsDbNode;
+  @JsonProperty("statistics_db_node")
+  protected String statisticsDbNode;
 
   public String getClusterName() {
     return clusterName;

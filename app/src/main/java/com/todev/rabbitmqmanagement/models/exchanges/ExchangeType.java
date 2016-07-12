@@ -15,18 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models;
+package com.todev.rabbitmqmanagement.models.exchanges;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+public enum ExchangeType {
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Arguments {
+  DIRECT,
 
-  @JsonProperty("asd") protected String asd;
+  FANOUT,
 
-  public String getAsd() {
-    return asd;
+  HEADERS,
+
+  TOPIC;
+
+  public String getLiteral() {
+    return toString().toLowerCase();
   }
 }

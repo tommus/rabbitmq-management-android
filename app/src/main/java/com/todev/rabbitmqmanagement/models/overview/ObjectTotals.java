@@ -21,18 +21,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ObjectTotals {
 
-  @JsonProperty("channels") protected int channels;
+  @JsonProperty("channels")
+  protected int channels;
 
-  @JsonProperty("connections") protected int connections;
+  @JsonProperty("connections")
+  protected int connections;
 
-  @JsonProperty("consumers") protected int consumers;
+  @JsonProperty("consumers")
+  protected int consumers;
 
-  @JsonProperty("exchanges") protected int exchanges;
+  @JsonProperty("exchanges")
+  protected int exchanges;
 
-  @JsonProperty("queues") protected int queues;
+  @JsonProperty("queues")
+  protected int queues;
 
   public int getChannels() {
     return channels;

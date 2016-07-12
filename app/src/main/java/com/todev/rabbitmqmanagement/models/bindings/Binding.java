@@ -21,18 +21,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Binding {
 
-  @JsonProperty("arguments") protected BindingArguments bindingArguments;
+  @JsonProperty("arguments")
+  protected BindingArguments bindingArguments;
 
-  @JsonProperty("destination") protected String destination;
+  @JsonProperty("destination")
+  protected String destination;
 
-  @JsonProperty("destination_type") protected String destinationType;
+  @JsonProperty("destination_type")
+  protected String destinationType;
 
-  @JsonProperty("routing_key") protected String routingKey;
+  @JsonProperty("routing_key")
+  protected String routingKey;
 
-  @JsonProperty("source") protected String source;
+  @JsonProperty("source")
+  protected String source;
 
   public BindingArguments getArguments() {
     return bindingArguments;

@@ -21,12 +21,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true) @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Check {
 
-  @JsonProperty("status") protected String status;
+  @JsonProperty("status")
+  protected String status;
 
-  @JsonProperty("reason") protected String reason;
+  @JsonProperty("reason")
+  protected String reason;
 
   public String getStatus() {
     return status;
