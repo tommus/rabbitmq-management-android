@@ -31,6 +31,8 @@ import com.todev.rabbitmqmanagement.models.exchanges.Exchange;
 import com.todev.rabbitmqmanagement.models.exchanges.ExtendedExchange;
 import com.todev.rabbitmqmanagement.models.extensions.Extension;
 import com.todev.rabbitmqmanagement.models.messages.Message;
+import com.todev.rabbitmqmanagement.models.messages.PublishBody;
+import com.todev.rabbitmqmanagement.models.messages.PublishResponse;
 import com.todev.rabbitmqmanagement.models.messages.Requirements;
 import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
@@ -62,7 +64,7 @@ public interface RabbitMqService {
 
   String CONTENT_TYPE = "application/json";
 
-  String TEST_URL = "http://192.168.3.150:15672/api/";
+  String TEST_URL = "http://192.168.1.129:15672/api/";
 
   String TEST_TOKEN = "Basic dG9tbXVzOnRvbW11cw==";
 
@@ -151,7 +153,9 @@ public interface RabbitMqService {
   Call<List<Binding>> getDestinationBindings(@Path("vhost") @NonNull String vhost,
       @Path("exchange") @NonNull String exchange);
 
-  // TODO: POST /exchanges/{vhost}/{name}/publish
+  @POST("exchanges/{vhost}/{exchange}/publish")
+  Call<PublishResponse> postExchangePublish(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Body @NonNull PublishBody body);
 
   @GET("queues")
   Call<List<ExtendedQueue>> getQueues();
