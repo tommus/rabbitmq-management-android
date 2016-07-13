@@ -37,6 +37,7 @@ import com.todev.rabbitmqmanagement.models.messages.Requirements;
 import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
 import com.todev.rabbitmqmanagement.models.parameters.Parameter;
+import com.todev.rabbitmqmanagement.models.parameters.PutParameter;
 import com.todev.rabbitmqmanagement.models.permissions.Permission;
 import com.todev.rabbitmqmanagement.models.policies.Policy;
 import com.todev.rabbitmqmanagement.models.queues.Action;
@@ -299,7 +300,10 @@ public interface RabbitMqService {
   Call<Parameter> getParameter(@Path("component") @NonNull String component,
       @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter);
 
-  // TODO: Add PUT /parameters/{component}/{vhost}/{name}.
+  @PUT("parameters/{component}/{vhost}/{parameter}")
+  Call<Void> putParameter(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter,
+      @Body @NonNull PutParameter body);
 
   @DELETE("parameters/{component}/{vhost}/{parameter}")
   Call<Void> deleteParameter(@Path("component") @NonNull String component,
