@@ -17,6 +17,8 @@
  */
 package com.todev.rabbitmqmanagement.models.policies;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,20 @@ public class Policy {
 
   @JsonProperty(value = "vhost")
   protected String vhost;
+
+  public Policy() {
+    // Jackson requires presence of empty constructor.
+  }
+
+  public Policy(@NonNull String pattern, @NonNull Map<String, String> definition,
+      @Nullable Integer priority, @Nullable String applyTo) {
+    this.pattern = pattern;
+    this.definition = definition;
+    if (priority != null) {
+      this.priority = priority;
+    }
+    this.applyTo = applyTo;
+  }
 
   public String getApplyTo() {
     return applyTo;

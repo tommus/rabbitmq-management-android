@@ -314,7 +314,9 @@ public interface RabbitMqService {
   Call<Policy> getPolicy(@Path("vhost") @NonNull String vhost,
       @Path("policy") @NonNull String policy);
 
-  // TODO: Add PUT /policies/{vhost}/{name}.
+  @PUT("policies/{vhost}/{policy}")
+  Call<Void> putPolicy(@Path("vhost") @NonNull String vhost, @Path("policy") @NonNull String policy,
+      @Body @NonNull Policy body);
 
   @DELETE("policies/{vhost}/{policy}")
   Call<Void> deletePolicy(@Path("vhost") @NonNull String vhost,
