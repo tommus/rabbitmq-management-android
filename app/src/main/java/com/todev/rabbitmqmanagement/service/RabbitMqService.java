@@ -41,6 +41,7 @@ import com.todev.rabbitmqmanagement.models.permissions.Permission;
 import com.todev.rabbitmqmanagement.models.policies.Policy;
 import com.todev.rabbitmqmanagement.models.queues.Action;
 import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
+import com.todev.rabbitmqmanagement.models.queues.PutQueue;
 import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
 import com.todev.rabbitmqmanagement.models.users.User;
 import com.todev.rabbitmqmanagement.models.vhosts.ExtendedVhost;
@@ -143,7 +144,7 @@ public interface RabbitMqService {
 
   @DELETE("exchanges/{vhost}/{exchange}")
   Call<Void> deleteExchange(@Path("vhost") @NonNull String vhost,
-      @Path("exchange") @NonNull String exchange, @Query("if-unused") boolean ifUnused);
+      @Path("exchange") @NonNull String exchange, @Query("if-unused") @Nullable Boolean ifUnused);
 
   @GET("exchanges/{vhost}/{exchange}/bindings/source")
   Call<List<Binding>> getSourceBindings(@Path("vhost") @NonNull String vhost,
@@ -167,11 +168,13 @@ public interface RabbitMqService {
   Call<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost,
       @Path("queue") @NonNull String queue);
 
-  // TODO: Add PUT /queues/{vhost}/{name}.
+  @PUT("queues/{vhost}/{queue}")
+  Call<Void> putQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
+      @Body @NonNull PutQueue body);
 
   @DELETE("queues/{vhost}/{queue}")
-  Call<Void> deleteQueue(@Path("vhost") @NonNull String vhost,
-      @Path("queue") @NonNull String queue);
+  Call<Void> deleteQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
+      @Query("if-empty") @Nullable Boolean ifEmpty, @Query("if-unused") @Nullable Boolean ifUnused);
 
   @GET("queues/{vhost}/{queue}/bindings")
   Call<List<Binding>> getQueueBindings(@Path("vhost") @NonNull String vhost,
