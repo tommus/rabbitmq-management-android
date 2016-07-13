@@ -41,7 +41,7 @@ public class Policy {
   protected String pattern;
 
   @JsonProperty(value = "priority")
-  protected int priority;
+  protected Integer priority;
 
   @JsonProperty(value = "vhost")
   protected String vhost;
@@ -54,9 +54,7 @@ public class Policy {
       @Nullable Integer priority, @Nullable String applyTo) {
     this.pattern = pattern;
     this.definition = definition;
-    if (priority != null) {
-      this.priority = priority;
-    }
+    this.priority = priority;
     this.applyTo = applyTo;
   }
 
