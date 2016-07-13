@@ -4,12 +4,29 @@
 
   <eat-comment/>
 
-  <style name="RabbitmqManagement" parent="Theme.AppCompat.Light.DarkActionBar">
-
+  <style name="RabbitmqManagement" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+  </style>
 
+  <style name="RabbitmqManagement.Button" parent="Base.Widget.AppCompat.Button">
+    <item name="colorButtonNormal">@color/colorPrimary</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textAllCaps">true</item>
+  </style>
+
+  <style name="RabbitmqManagement.TextInputLayout" parent="TextAppearance.AppCompat">
+    <item name="android:textColorHint">@color/colorPrimary</item>
+    <item name="colorControlNormal">@color/colorPrimary</item>
+    <item name="colorControlActivated">@color/colorPrimaryDark</item>
+    <item name="android:textSize">@dimen/font_size_medium_plus</item>
+  </style>
+
+  <style name="RabbitmqManagement.AppCompatSpinner">
+    <item name="colorAccent">@color/colorPrimary</item>
+    <item name="colorControlNormal">@color/colorPrimary</item>
+    <item name="colorControlActivated">@color/colorPrimaryDark</item>
   </style>
 
 </resources>
