@@ -38,7 +38,6 @@ public class Parameter {
   @JsonProperty(value = "vhost")
   protected String vhost;
 
-
   public String getComponent() {
     return component;
   }
