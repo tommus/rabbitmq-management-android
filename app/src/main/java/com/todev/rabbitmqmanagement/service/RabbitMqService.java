@@ -180,7 +180,8 @@ public interface RabbitMqService {
   Call<List<Binding>> getQueueBindings(@Path("vhost") @NonNull String vhost,
       @Path("queue") @NonNull String queue);
 
-  // TODO: Add PUT /queues/{vhost}/{queue}/contents.
+  @DELETE("queues/{vhost}/{queue}/contents")
+  Call<Void> purgeQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
 
   @POST("queues/{vhost}/{queue}/actions")
   Call<Void> postAction(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
