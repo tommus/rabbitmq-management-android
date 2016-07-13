@@ -26,13 +26,13 @@ import com.todev.rabbitmqmanagement.models.MessageStats;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedExchange extends Exchange {
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
-  @JsonProperty("policy")
+  @JsonProperty(value = "policy")
   protected String policy;
 
-  @JsonProperty("message_stats")
+  @JsonProperty(value = "message_stats")
   protected MessageStats messageStats;
 
   public String getVhost() {

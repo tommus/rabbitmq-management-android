@@ -26,19 +26,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Permission {
 
-  @JsonProperty("configure")
+  @JsonProperty(value = "configure")
   protected String configure;
 
-  @JsonProperty("read")
+  @JsonProperty(value = "read")
   protected String read;
 
-  @JsonProperty("user")
+  @JsonProperty(value = "user")
   protected String user;
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
-  @JsonProperty("write")
+  @JsonProperty(value = "write")
   protected String write;
 
   public Permission() {

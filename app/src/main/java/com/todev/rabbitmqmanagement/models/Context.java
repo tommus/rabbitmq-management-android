@@ -25,16 +25,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Context {
 
-  @JsonProperty("description")
+  @JsonProperty(value = "description")
   protected String description;
 
-  @JsonProperty("path")
+  @JsonProperty(value = "path")
   protected String path;
 
-  @JsonProperty("port")
+  @JsonProperty(value = "port")
   protected String port;
 
-  @JsonProperty("ssl")
+  @JsonProperty(value = "ssl")
   protected String ssl;
 
   public String getDescription() {

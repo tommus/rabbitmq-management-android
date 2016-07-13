@@ -30,11 +30,14 @@ import com.todev.rabbitmqmanagement.models.definitions.Definitions;
 import com.todev.rabbitmqmanagement.models.exchanges.Exchange;
 import com.todev.rabbitmqmanagement.models.exchanges.ExtendedExchange;
 import com.todev.rabbitmqmanagement.models.extensions.Extension;
+import com.todev.rabbitmqmanagement.models.messages.Message;
+import com.todev.rabbitmqmanagement.models.messages.Requirements;
 import com.todev.rabbitmqmanagement.models.nodes.Node;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
 import com.todev.rabbitmqmanagement.models.parameters.Parameter;
 import com.todev.rabbitmqmanagement.models.permissions.Permission;
 import com.todev.rabbitmqmanagement.models.policies.Policy;
+import com.todev.rabbitmqmanagement.models.queues.Action;
 import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
 import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
 import com.todev.rabbitmqmanagement.models.users.User;
@@ -50,6 +53,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -171,9 +175,13 @@ public interface RabbitMqService {
 
   // TODO: Add PUT /queues/{vhost}/{queue}/contents.
 
-  // TODO: Add POST /queues/{vhost}/{queue}/actions.
+  @POST("queues/{vhost}/{queue}/actions")
+  Call<Void> postAction(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
+      @Body @NonNull Action body);
 
-  // TODO: Add POST /queues/{vhost}/{queue}/get.
+  @POST("queues/{vhost}/{queue}/get")
+  Call<List<Message>> getMessages(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue, @Body @NonNull Requirements body);
 
   @GET("bindings")
   Call<List<Binding>> getBindings();
@@ -186,7 +194,10 @@ public interface RabbitMqService {
       @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
       @Path("queue") @NonNull String queue);
 
-  // TODO: Add POST /bindings/{vhost}/e/{exchange}/q/{queue}.
+  @POST("bindings/{vhost}/e/{exchange}/q/{queue}")
+  Call<Void> postBindingsBetweenExchangeAndQueue(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
+      @Body @NonNull Binding body);
 
   @GET("bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
   Call<ExtendedBinding> getBindingsBetweenExchangeAndQueue(@Path("vhost") String vhost,
@@ -203,7 +214,10 @@ public interface RabbitMqService {
       @Path("source") @NonNull String srcExchange,
       @Path("destination") @NonNull String dstExchange);
 
-  // TODO: Add POST /bindings/{vhost}/e/{source}/e/{destination}.
+  @POST("bindings/{vhost}/e/{source}/e/{destination}")
+  Call<Void> postBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
+      @Path("source") @NonNull String source, @Path("destination") @NonNull String destination,
+      @Body @NonNull Binding body);
 
   @GET("bindings/{vhost}/e/{source}/e/{destination}/{props}")
   Call<ExtendedBinding> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
@@ -309,7 +323,10 @@ public interface RabbitMqService {
   Call<Check> checkHealth(@Path("node") @NonNull String node);
 
   class Headers {
+
     public static final String X_REASON = "X-Reason";
+
+    public static final String LOCATION = "Location";
   }
 
   class Json {

@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Cluster {
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
   protected Cluster() {

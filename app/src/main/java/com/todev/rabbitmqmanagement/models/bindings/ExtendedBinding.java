@@ -25,10 +25,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedBinding extends Binding {
 
-  @JsonProperty("properties_key")
+  @JsonProperty(value = "properties_key")
   protected String propertiesKey;
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
   public String getPropertiesKey() {

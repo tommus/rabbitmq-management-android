@@ -15,20 +15,35 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models.bindings;
+package com.todev.rabbitmqmanagement.models.messages;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class BindingArguments {
+public class Requirements {
 
-  @JsonProperty("test")
-  protected String test;
+  @JsonProperty(value = "count")
+  protected int count;
 
-  public String getTest() {
-    return test;
+  @JsonProperty(value = "requeue")
+  protected boolean requeue;
+
+  @JsonProperty(value = "encoding")
+  protected String encoding;
+
+  @JsonProperty(value = "truncate")
+  protected Long truncate;
+
+  public Requirements(int count, boolean requeue, @NonNull String encoding,
+      @Nullable Long truncate) {
+    this.count = count;
+    this.requeue = requeue;
+    this.encoding = encoding;
+    this.truncate = truncate;
   }
 }

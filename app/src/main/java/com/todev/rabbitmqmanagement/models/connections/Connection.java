@@ -26,103 +26,103 @@ import com.todev.rabbitmqmanagement.models.Details;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Connection {
 
-  @JsonProperty("auth_mechanism")
+  @JsonProperty(value = "auth_mechanism")
   protected String authMechanism;
 
-  @JsonProperty("channel_max")
+  @JsonProperty(value = "channel_max")
   protected int channelMax;
 
-  @JsonProperty("channels")
+  @JsonProperty(value = "channels")
   protected int channels;
 
-  @JsonProperty("client_properties")
+  @JsonProperty(value = "client_properties")
   protected ClientProperties clientProperties;
 
-  @JsonProperty("connected_at")
+  @JsonProperty(value = "connected_at")
   protected long connectedAt;
 
-  @JsonProperty("frame_max")
+  @JsonProperty(value = "frame_max")
   protected int frameMax;
 
-  @JsonProperty("host")
+  @JsonProperty(value = "host")
   protected String host;
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
-  @JsonProperty("node")
+  @JsonProperty(value = "node")
   protected String node;
 
-  @JsonProperty("peer_cert_issuer")
+  @JsonProperty(value = "peer_cert_issuer")
   protected Object peerCertIssuer;
 
-  @JsonProperty("peer_cert_subject")
+  @JsonProperty(value = "peer_cert_subject")
   protected Object peerCertSubject;
 
-  @JsonProperty("peer_cert_validity")
+  @JsonProperty(value = "peer_cert_validity")
   protected Object peerCertValidity;
 
-  @JsonProperty("peer_host")
+  @JsonProperty(value = "peer_host")
   protected String peerHost;
 
-  @JsonProperty("peer_port")
+  @JsonProperty(value = "peer_port")
   protected int peerPort;
 
-  @JsonProperty("port")
+  @JsonProperty(value = "port")
   protected int port;
 
-  @JsonProperty("protocol")
+  @JsonProperty(value = "protocol")
   protected String protocol;
 
-  @JsonProperty("recv_cnt")
+  @JsonProperty(value = "recv_cnt")
   protected int recvCnt;
 
-  @JsonProperty("recv_oct")
+  @JsonProperty(value = "recv_oct")
   protected int recvOct;
 
-  @JsonProperty("recv_oct_details")
+  @JsonProperty(value = "recv_oct_details")
   protected Details recvOctDetails;
 
-  @JsonProperty("send_cnt")
+  @JsonProperty(value = "send_cnt")
   protected int sendCnt;
 
-  @JsonProperty("send_oct")
+  @JsonProperty(value = "send_oct")
   protected int sendOct;
 
-  @JsonProperty("send_oct_details")
+  @JsonProperty(value = "send_oct_details")
   protected Details sendOctDetails;
 
-  @JsonProperty("send_pend")
+  @JsonProperty(value = "send_pend")
   protected int sendPend;
 
-  @JsonProperty("ssl")
+  @JsonProperty(value = "ssl")
   protected boolean ssl;
 
-  @JsonProperty("ssl_cipher")
+  @JsonProperty(value = "ssl_cipher")
   protected Object sslCipher;
 
-  @JsonProperty("ssl_hash")
+  @JsonProperty(value = "ssl_hash")
   protected Object sslHash;
 
-  @JsonProperty("ssl_key_exchange")
+  @JsonProperty(value = "ssl_key_exchange")
   protected Object sslKeyExchange;
 
-  @JsonProperty("ssl_protocol")
+  @JsonProperty(value = "ssl_protocol")
   protected Object sslProtocol;
 
-  @JsonProperty("state")
+  @JsonProperty(value = "state")
   protected String state;
 
-  @JsonProperty("timeout")
+  @JsonProperty(value = "timeout")
   protected int timeout;
 
-  @JsonProperty("type")
+  @JsonProperty(value = "type")
   protected String type;
 
-  @JsonProperty("user")
+  @JsonProperty(value = "user")
   protected String user;
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
   public String getAuthMechanism() {

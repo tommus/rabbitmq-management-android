@@ -25,10 +25,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Check {
 
-  @JsonProperty("status")
+  @JsonProperty(value = "status")
   protected String status;
 
-  @JsonProperty("reason")
+  @JsonProperty(value = "reason")
   protected String reason;
 
   public String getStatus() {

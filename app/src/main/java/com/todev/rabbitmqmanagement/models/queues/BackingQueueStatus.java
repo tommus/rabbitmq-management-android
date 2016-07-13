@@ -27,43 +27,43 @@ import java.util.List;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class BackingQueueStatus {
 
-  @JsonProperty("avg_ack_egress_rate")
+  @JsonProperty(value = "avg_ack_egress_rate")
   protected float avgAckEgressRate;
 
-  @JsonProperty("avg_ack_ingress_rate")
+  @JsonProperty(value = "avg_ack_ingress_rate")
   protected float avgAckIngressRate;
 
-  @JsonProperty("avg_egress_rate")
+  @JsonProperty(value = "avg_egress_rate")
   protected float avgEgressRate;
 
-  @JsonProperty("avg_ingress_rate")
+  @JsonProperty(value = "avg_ingress_rate")
   protected float avgIngressRate;
 
-  @JsonProperty("delta")
+  @JsonProperty(value = "delta")
   protected List<String> delta = new ArrayList<>();
 
-  @JsonProperty("len")
+  @JsonProperty(value = "len")
   protected int len;
 
-  @JsonProperty("mode")
+  @JsonProperty(value = "mode")
   protected String mode;
 
-  @JsonProperty("next_seq_id")
+  @JsonProperty(value = "next_seq_id")
   protected int nextSeqId;
 
-  @JsonProperty("q1")
+  @JsonProperty(value = "q1")
   protected int q1;
 
-  @JsonProperty("q2")
+  @JsonProperty(value = "q2")
   protected int q2;
 
-  @JsonProperty("q3")
+  @JsonProperty(value = "q3")
   protected int q3;
 
-  @JsonProperty("q4")
+  @JsonProperty(value = "q4")
   protected int q4;
 
-  @JsonProperty("target_ram_count")
+  @JsonProperty(value = "target_ram_count")
   protected String targetRamCount;
 
   public float getAvgAckEgressRate() {

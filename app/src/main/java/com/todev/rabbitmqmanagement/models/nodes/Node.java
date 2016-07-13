@@ -30,227 +30,227 @@ import java.util.List;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Node {
 
-  @JsonProperty("applications")
+  @JsonProperty(value = "applications")
   protected List<Application> applications = new ArrayList<>();
 
-  @JsonProperty("auth_mechanisms")
+  @JsonProperty(value = "auth_mechanisms")
   protected List<Description> authMechanisms = new ArrayList<>();
 
   // TODO: Cluster links should be corrected.
 
-  @JsonProperty("cluster_links")
+  @JsonProperty(value = "cluster_links")
   protected List<Object> clusterLinks = new ArrayList<>();
 
-  @JsonProperty("config_files")
+  @JsonProperty(value = "config_files")
   protected List<String> configFiles = new ArrayList<>();
 
-  @JsonProperty("contexts")
+  @JsonProperty(value = "contexts")
   protected List<Context> contexts = new ArrayList<>();
 
-  @JsonProperty("db_dir")
+  @JsonProperty(value = "db_dir")
   protected String dbDir;
 
-  @JsonProperty("disk_free")
+  @JsonProperty(value = "disk_free")
   protected long diskFree;
 
-  @JsonProperty("disk_free_alarm")
+  @JsonProperty(value = "disk_free_alarm")
   protected boolean diskFreeAlarm;
 
-  @JsonProperty("disk_free_details")
+  @JsonProperty(value = "disk_free_details")
   protected Details diskFreeDetails;
 
-  @JsonProperty("disk_free_limit")
+  @JsonProperty(value = "disk_free_limit")
   protected long diskFreeLimit;
 
-  @JsonProperty("enabled_plugins")
+  @JsonProperty(value = "enabled_plugins")
   protected List<String> enabledPlugins = new ArrayList<>();
 
-  @JsonProperty("exchange_types")
+  @JsonProperty(value = "exchange_types")
   protected List<Description> exchangeTypes = new ArrayList<>();
 
-  @JsonProperty("fd_total")
+  @JsonProperty(value = "fd_total")
   protected int fdTotal;
 
-  @JsonProperty("fd_used")
+  @JsonProperty(value = "fd_used")
   protected int fdUsed;
 
-  @JsonProperty("fd_used_details")
+  @JsonProperty(value = "fd_used_details")
   protected Details fdUsedDetails;
 
-  @JsonProperty("io_read_avg_time")
+  @JsonProperty(value = "io_read_avg_time")
   protected float ioReadAvgTime;
 
-  @JsonProperty("io_read_avg_time_details")
+  @JsonProperty(value = "io_read_avg_time_details")
   protected Details ioReadAvgTimeDetails;
 
-  @JsonProperty("io_read_bytes")
+  @JsonProperty(value = "io_read_bytes")
   protected int ioReadBytes;
 
-  @JsonProperty("io_read_bytes_details")
+  @JsonProperty(value = "io_read_bytes_details")
   protected Details ioReadBytesDetails;
 
-  @JsonProperty("io_read_count")
+  @JsonProperty(value = "io_read_count")
   protected int ioReadCount;
 
-  @JsonProperty("io_read_count_details")
+  @JsonProperty(value = "io_read_count_details")
   protected Details ioReadCountDetails;
 
-  @JsonProperty("io_reopen_count")
+  @JsonProperty(value = "io_reopen_count")
   protected int ioReopenCount;
 
-  @JsonProperty("io_reopen_count_details")
+  @JsonProperty(value = "io_reopen_count_details")
   protected Details ioReopenCountDetails;
 
-  @JsonProperty("io_seek_avg_time")
+  @JsonProperty(value = "io_seek_avg_time")
   protected float ioSeekAvgTime;
 
-  @JsonProperty("io_seek_avg_time_details")
+  @JsonProperty(value = "io_seek_avg_time_details")
   protected Details ioSeekAvgTimeDetails;
 
-  @JsonProperty("io_seek_count")
+  @JsonProperty(value = "io_seek_count")
   protected int ioSeekCount;
 
-  @JsonProperty("io_seek_count_details")
+  @JsonProperty(value = "io_seek_count_details")
   protected Details ioSeekCountDetails;
 
-  @JsonProperty("io_sync_avg_time")
+  @JsonProperty(value = "io_sync_avg_time")
   protected float ioSyncAvgTime;
 
-  @JsonProperty("io_sync_avg_time_details")
+  @JsonProperty(value = "io_sync_avg_time_details")
   protected Details ioSyncAvgTimeDetails;
 
-  @JsonProperty("io_sync_count")
+  @JsonProperty(value = "io_sync_count")
   protected int ioSyncCount;
 
-  @JsonProperty("io_sync_count_details")
+  @JsonProperty(value = "io_sync_count_details")
   protected Details ioSyncCountDetails;
 
-  @JsonProperty("io_write_avg_time")
+  @JsonProperty(value = "io_write_avg_time")
   protected float ioWriteAvgTime;
 
-  @JsonProperty("io_write_avg_time_details")
+  @JsonProperty(value = "io_write_avg_time_details")
   protected Details ioWriteAvgTimeDetails;
 
-  @JsonProperty("io_write_bytes")
+  @JsonProperty(value = "io_write_bytes")
   protected long ioWriteBytes;
 
-  @JsonProperty("io_write_bytes_details")
+  @JsonProperty(value = "io_write_bytes_details")
   protected Details ioWriteBytesDetails;
 
-  @JsonProperty("io_write_count")
+  @JsonProperty(value = "io_write_count")
   protected int ioWriteCount;
 
-  @JsonProperty("io_write_count_details")
+  @JsonProperty(value = "io_write_count_details")
   protected Details ioWriteCountDetails;
 
-  @JsonProperty("log_file")
+  @JsonProperty(value = "log_file")
   protected String logFile;
 
-  @JsonProperty("mem_alarm")
+  @JsonProperty(value = "mem_alarm")
   protected boolean memAlarm;
 
-  @JsonProperty("mem_limit")
+  @JsonProperty(value = "mem_limit")
   protected long memLimit;
 
-  @JsonProperty("mem_used")
+  @JsonProperty(value = "mem_used")
   protected long memUsed;
 
-  @JsonProperty("mem_used_details")
+  @JsonProperty(value = "mem_used_details")
   protected Details memUsedDetails;
 
-  @JsonProperty("mnesia_disk_tx_count")
+  @JsonProperty(value = "mnesia_disk_tx_count")
   protected int mnesiaDiskTxCount;
 
-  @JsonProperty("mnesia_disk_tx_count_details")
+  @JsonProperty(value = "mnesia_disk_tx_count_details")
   protected Details mnesiaDiskTxCountDetails;
 
-  @JsonProperty("mnesia_ram_tx_count")
+  @JsonProperty(value = "mnesia_ram_tx_count")
   protected int mnesiaRamTxCount;
 
-  @JsonProperty("mnesia_ram_tx_count_details")
+  @JsonProperty(value = "mnesia_ram_tx_count_details")
   protected Details mnesiaRamTxCountDetails;
 
-  @JsonProperty("msg_store_read_count")
+  @JsonProperty(value = "msg_store_read_count")
   protected int msgStoreReadCount;
 
-  @JsonProperty("msg_store_read_count_details")
+  @JsonProperty(value = "msg_store_read_count_details")
   protected Details msgStoreReadCountDetails;
 
-  @JsonProperty("msg_store_write_count")
+  @JsonProperty(value = "msg_store_write_count")
   protected int msgStoreWriteCount;
 
-  @JsonProperty("msg_store_write_count_details")
+  @JsonProperty(value = "msg_store_write_count_details")
   protected Details msgStoreWriteCountDetails;
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
-  @JsonProperty("net_ticktime")
+  @JsonProperty(value = "net_ticktime")
   protected int netTicktime;
 
-  @JsonProperty("os_pid")
+  @JsonProperty(value = "os_pid")
   protected String osPid;
 
   // TODO: Partitions should be corrected.
 
-  @JsonProperty("partitions")
+  @JsonProperty(value = "partitions")
   protected List<Object> partitions = new ArrayList<>();
 
-  @JsonProperty("proc_total")
+  @JsonProperty(value = "proc_total")
   protected int procTotal;
 
-  @JsonProperty("proc_used")
+  @JsonProperty(value = "proc_used")
   protected int procUsed;
 
-  @JsonProperty("proc_used_details")
+  @JsonProperty(value = "proc_used_details")
   protected Details procUsedDetails;
 
-  @JsonProperty("processors")
+  @JsonProperty(value = "processors")
   protected int processors;
 
-  @JsonProperty("queue_index_journal_write_count")
+  @JsonProperty(value = "queue_index_journal_write_count")
   protected int queueIndexJournalWriteCount;
 
-  @JsonProperty("queue_index_journal_write_count_details")
+  @JsonProperty(value = "queue_index_journal_write_count_details")
   protected Details queueIndexJournalWriteCountDetails;
 
-  @JsonProperty("queue_index_read_count")
+  @JsonProperty(value = "queue_index_read_count")
   protected int queueIndexReadCount;
 
-  @JsonProperty("queue_index_read_count_details")
+  @JsonProperty(value = "queue_index_read_count_details")
   protected Details queueIndexReadCountDetails;
 
-  @JsonProperty("queue_index_write_count")
+  @JsonProperty(value = "queue_index_write_count")
   protected int queueIndexWriteCount;
 
-  @JsonProperty("queue_index_write_count_details")
+  @JsonProperty(value = "queue_index_write_count_details")
   protected Details queueIndexWriteCountDetails;
 
-  @JsonProperty("rates_mode")
+  @JsonProperty(value = "rates_mode")
   protected String ratesMode;
 
-  @JsonProperty("run_queue")
+  @JsonProperty(value = "run_queue")
   protected int runQueue;
 
-  @JsonProperty("running")
+  @JsonProperty(value = "running")
   protected boolean running;
 
-  @JsonProperty("sasl_log_file")
+  @JsonProperty(value = "sasl_log_file")
   protected String saslLogFile;
 
-  @JsonProperty("sockets_total")
+  @JsonProperty(value = "sockets_total")
   protected int socketsTotal;
 
-  @JsonProperty("sockets_used")
+  @JsonProperty(value = "sockets_used")
   protected int socketsUsed;
 
-  @JsonProperty("sockets_used_details")
+  @JsonProperty(value = "sockets_used_details")
   protected Details socketsUsedDetails;
 
-  @JsonProperty("type")
+  @JsonProperty(value = "type")
   protected String type;
 
-  @JsonProperty("uptime")
+  @JsonProperty(value = "uptime")
   protected int uptime;
 
   public List<Application> getApplications() {

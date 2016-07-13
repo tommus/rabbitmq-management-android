@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Details {
 
-  @JsonProperty("rate")
+  @JsonProperty(value = "rate")
   protected float rate;
 
   public float getRate() {

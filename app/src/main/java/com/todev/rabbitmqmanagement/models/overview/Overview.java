@@ -29,49 +29,49 @@ import java.util.List;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Overview {
 
-  @JsonProperty("cluster_name")
+  @JsonProperty(value = "cluster_name")
   protected String clusterName;
 
-  @JsonProperty("contexts")
+  @JsonProperty(value = "contexts")
   protected List<OverviewContext> contexts = new ArrayList<>();
 
-  @JsonProperty("erlang_full_version")
+  @JsonProperty(value = "erlang_full_version")
   protected String erlangFullVersion;
 
-  @JsonProperty("erlang_version")
+  @JsonProperty(value = "erlang_version")
   protected String erlangVersion;
 
-  @JsonProperty("exchange_types")
+  @JsonProperty(value = "exchange_types")
   protected List<Description> exchangeTypes = new ArrayList<>();
 
-  @JsonProperty("listeners")
+  @JsonProperty(value = "listeners")
   protected List<Listener> listeners = new ArrayList<>();
 
-  @JsonProperty("management_version")
+  @JsonProperty(value = "management_version")
   protected String managementVersion;
 
-  @JsonProperty("message_stats")
+  @JsonProperty(value = "message_stats")
   protected MessageStats messageStats;
 
-  @JsonProperty("node")
+  @JsonProperty(value = "node")
   protected String node;
 
-  @JsonProperty("object_totals")
+  @JsonProperty(value = "object_totals")
   protected ObjectTotals objectTotals;
 
-  @JsonProperty("queue_totals")
+  @JsonProperty(value = "queue_totals")
   protected QueueTotals queueTotals;
 
-  @JsonProperty("rabbitmq_version")
+  @JsonProperty(value = "rabbitmq_version")
   protected String rabbitmqVersion;
 
-  @JsonProperty("rates_mode")
+  @JsonProperty(value = "rates_mode")
   protected String ratesMode;
 
-  @JsonProperty("statistics_db_event_queue")
+  @JsonProperty(value = "statistics_db_event_queue")
   protected int statisticsDbEventQueue;
 
-  @JsonProperty("statistics_db_node")
+  @JsonProperty(value = "statistics_db_node")
   protected String statisticsDbNode;
 
   public String getClusterName() {

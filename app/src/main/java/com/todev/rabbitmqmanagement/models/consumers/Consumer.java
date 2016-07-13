@@ -20,37 +20,37 @@ package com.todev.rabbitmqmanagement.models.consumers;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Consumer {
-  @JsonProperty("ack_required")
+  @JsonProperty(value = "ack_required")
   protected boolean ackRequired;
 
-  @JsonProperty("arguments")
-  protected LinkedHashMap<String, String> arguments;
+  @JsonProperty(value = "arguments")
+  protected Map<String, String> arguments;
 
-  @JsonProperty("channel_details")
+  @JsonProperty(value = "channel_details")
   protected ConsumerChannelDetails channelDetails;
 
-  @JsonProperty("consumer_tag")
+  @JsonProperty(value = "consumer_tag")
   protected String consumerTag;
 
-  @JsonProperty("exclusive")
+  @JsonProperty(value = "exclusive")
   protected boolean exclusive;
 
-  @JsonProperty("prefetch_count")
+  @JsonProperty(value = "prefetch_count")
   protected int prefetchCount;
 
-  @JsonProperty("queue")
+  @JsonProperty(value = "queue")
   protected ConsumerQueue queue;
 
   public boolean isAckRequired() {
     return ackRequired;
   }
 
-  public LinkedHashMap<String, String> getArguments() {
+  public Map<String, String> getArguments() {
     return arguments;
   }
 

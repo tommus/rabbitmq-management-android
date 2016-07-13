@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Vhost {
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
   public String getName() {

@@ -25,19 +25,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ObjectTotals {
 
-  @JsonProperty("channels")
+  @JsonProperty(value = "channels")
   protected int channels;
 
-  @JsonProperty("connections")
+  @JsonProperty(value = "connections")
   protected int connections;
 
-  @JsonProperty("consumers")
+  @JsonProperty(value = "consumers")
   protected int consumers;
 
-  @JsonProperty("exchanges")
+  @JsonProperty(value = "exchanges")
   protected int exchanges;
 
-  @JsonProperty("queues")
+  @JsonProperty(value = "queues")
   protected int queues;
 
   public int getChannels() {

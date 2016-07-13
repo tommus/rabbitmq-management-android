@@ -25,13 +25,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Application {
 
-  @JsonProperty("description")
+  @JsonProperty(value = "description")
   protected String description;
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
-  @JsonProperty("version")
+  @JsonProperty(value = "version")
   protected String version;
 
   public String getDescription() {

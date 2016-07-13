@@ -17,30 +17,41 @@
  */
 package com.todev.rabbitmqmanagement.models.bindings;
 
+import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Binding {
 
-  @JsonProperty("arguments")
-  protected BindingArguments bindingArguments;
+  @JsonProperty(value = "arguments")
+  protected Map<String, String> bindingArguments;
 
-  @JsonProperty("destination")
+  @JsonProperty(value = "destination")
   protected String destination;
 
-  @JsonProperty("destination_type")
+  @JsonProperty(value = "destination_type")
   protected String destinationType;
 
-  @JsonProperty("routing_key")
+  @JsonProperty(value = "routing_key")
   protected String routingKey;
 
-  @JsonProperty("source")
+  @JsonProperty(value = "source")
   protected String source;
 
-  public BindingArguments getArguments() {
+  public Binding() {
+    // Jackson requires presence of empty constructor.
+  }
+
+  public Binding(@NonNull String routingKey, @NonNull Map<String, String> bindingArguments) {
+    this.routingKey = routingKey;
+    this.bindingArguments = bindingArguments;
+  }
+
+  public Map<String, String> getArguments() {
     return bindingArguments;
   }
 

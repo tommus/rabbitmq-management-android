@@ -26,29 +26,29 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.todev.rabbitmqmanagement.services.serialization.ExchangeTypeDeserializer;
 import com.todev.rabbitmqmanagement.services.serialization.ExchangeTypeSerializer;
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Exchange {
 
-  @JsonProperty("arguments")
-  protected LinkedHashMap<String, String> arguments;
+  @JsonProperty(value = "arguments")
+  protected Map<String, String> arguments;
 
-  @JsonProperty("auto_delete")
+  @JsonProperty(value = "auto_delete")
   protected boolean autoDelete;
 
-  @JsonProperty("durable")
+  @JsonProperty(value = "durable")
   protected boolean durable;
 
-  @JsonProperty("internal")
+  @JsonProperty(value = "internal")
   protected boolean internal;
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
   @JsonDeserialize(using = ExchangeTypeDeserializer.class)
-  @JsonProperty("type")
+  @JsonProperty(value = "type")
   @JsonSerialize(using = ExchangeTypeSerializer.class)
   protected Type type;
 
@@ -57,7 +57,7 @@ public class Exchange {
   }
 
   public Exchange(@NonNull Type type, boolean autoDelete, boolean durable, boolean internal,
-      @Nullable LinkedHashMap<String, String> arguments) {
+      @Nullable Map<String, String> arguments) {
     this.type = type;
     this.autoDelete = autoDelete;
     this.durable = durable;
@@ -65,7 +65,7 @@ public class Exchange {
     this.arguments = arguments;
   }
 
-  public LinkedHashMap<String, String> getArguments() {
+  public Map<String, String> getArguments() {
     return arguments;
   }
 
@@ -90,6 +90,6 @@ public class Exchange {
   }
 
   public enum Type {
-    DIRECT, FANOUT, HEADERS, TOPIC;
+    DIRECT, FANOUT, HEADERS, TOPIC
   }
 }

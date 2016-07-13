@@ -20,35 +20,35 @@ package com.todev.rabbitmqmanagement.models.policies;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Policy {
 
-  @JsonProperty("apply-to")
+  @JsonProperty(value = "apply-to")
   protected String applyTo;
 
-  @JsonProperty("definition")
-  protected LinkedHashMap<String, String> definition;
+  @JsonProperty(value = "definition")
+  protected Map<String, String> definition;
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
-  @JsonProperty("pattern")
+  @JsonProperty(value = "pattern")
   protected String pattern;
 
-  @JsonProperty("priority")
+  @JsonProperty(value = "priority")
   protected int priority;
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
   public String getApplyTo() {
     return applyTo;
   }
 
-  public LinkedHashMap<String, String> getDefinition() {
+  public Map<String, String> getDefinition() {
     return definition;
   }
 

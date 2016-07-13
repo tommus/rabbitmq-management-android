@@ -15,20 +15,18 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models.extensions;
+package com.todev.rabbitmqmanagement.services.serialization;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.todev.rabbitmqmanagement.models.queues.Action;
+import java.io.IOException;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class Extension {
-
-  @JsonProperty(value = "javascript")
-  protected String javascript;
-
-  public String getJavascript() {
-    return javascript;
+public class ActionTypeSerializer extends JsonSerializer<Action.Type> {
+  @Override
+  public void serialize(Action.Type value, JsonGenerator gen, SerializerProvider serializers)
+      throws IOException {
+    gen.writeString(value.toString().toLowerCase());
   }
 }

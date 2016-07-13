@@ -26,13 +26,13 @@ import com.todev.rabbitmqmanagement.models.channels.ChannelDetails;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ConsumerChannelDetails extends ChannelDetails {
 
-  @JsonProperty("connection_name")
+  @JsonProperty(value = "connection_name")
   protected String connectionName;
 
-  @JsonProperty("number")
+  @JsonProperty(value = "number")
   protected int number;
 
-  @JsonProperty("user")
+  @JsonProperty(value = "user")
   protected String user;
 
   public String getConnectionName() {

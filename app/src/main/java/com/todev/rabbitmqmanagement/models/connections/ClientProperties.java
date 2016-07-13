@@ -25,10 +25,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ClientProperties {
 
-  @JsonProperty("library")
+  @JsonProperty(value = "library")
   protected String library;
 
-  @JsonProperty("library_version")
+  @JsonProperty(value = "library_version")
   protected String libraryVersion;
 
   public String getLibrary() {

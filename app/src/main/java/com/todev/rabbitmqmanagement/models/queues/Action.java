@@ -15,38 +15,35 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models.users;
+package com.todev.rabbitmqmanagement.models.queues;
 
+import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.todev.rabbitmqmanagement.services.serialization.UserTagsDeserializer;
-import com.todev.rabbitmqmanagement.services.serialization.UserTagsSerializer;
-import java.util.List;
+import com.todev.rabbitmqmanagement.services.serialization.ActionTypeDeserializer;
+import com.todev.rabbitmqmanagement.services.serialization.ActionTypeSerializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class User {
+public class Action {
 
-  @JsonProperty(value = "name")
-  protected String name;
+  public static final Action SYNC = new Action(Type.SYNC);
 
-  @JsonDeserialize(using = UserTagsDeserializer.class)
-  @JsonProperty(value = "tags")
-  @JsonSerialize(using = UserTagsSerializer.class)
-  protected List<Tag> tags;
+  public static final Action CANCEL_SYNC = new Action(Type.CANCEL_SYNC);
 
-  public String getName() {
-    return name;
+  @JsonDeserialize(using = ActionTypeDeserializer.class)
+  @JsonProperty(value = "action")
+  @JsonSerialize(using = ActionTypeSerializer.class)
+  protected Type action;
+
+  protected Action(@NonNull Type action) {
+    this.action = action;
   }
 
-  public List<Tag> getTags() {
-    return tags;
-  }
-
-  public enum Tag {
-    ADMINISTRATOR, MONITORING, POLICYMAKER, MANAGEMENT, NONE
+  public enum Type {
+    SYNC, CANCEL_SYNC
   }
 }

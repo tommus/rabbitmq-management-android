@@ -26,25 +26,25 @@ import com.todev.rabbitmqmanagement.models.Details;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedVhost extends Vhost {
 
-  @JsonProperty("messages")
+  @JsonProperty(value = "messages")
   protected int messages;
 
-  @JsonProperty("messages_details")
+  @JsonProperty(value = "messages_details")
   protected Details messagesDetails;
 
-  @JsonProperty("messages_ready")
+  @JsonProperty(value = "messages_ready")
   protected int messagesReady;
 
-  @JsonProperty("messages_ready_details")
+  @JsonProperty(value = "messages_ready_details")
   protected Details messagesReadyDetails;
 
-  @JsonProperty("messages_unacknowledged")
+  @JsonProperty(value = "messages_unacknowledged")
   protected int messagesUnacknowledged;
 
-  @JsonProperty("messages_unacknowledged_details")
+  @JsonProperty(value = "messages_unacknowledged_details")
   protected Details messagesUnacknowledgedDetails;
 
-  @JsonProperty("tracing")
+  @JsonProperty(value = "tracing")
   protected boolean tracing;
 
   public int getMessages() {

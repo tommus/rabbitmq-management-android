@@ -26,58 +26,58 @@ import com.todev.rabbitmqmanagement.models.MessageStats;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Channel {
 
-  @JsonProperty("acks_uncommitted")
+  @JsonProperty(value = "acks_uncommitted")
   protected int acksUncommitted;
 
-  @JsonProperty("confirm")
+  @JsonProperty(value = "confirm")
   protected boolean confirm;
 
-  @JsonProperty("connection_details")
+  @JsonProperty(value = "connection_details")
   protected ChannelDetails connectionDetails;
 
-  @JsonProperty("consumer_count")
+  @JsonProperty(value = "consumer_count")
   protected int consumerCount;
 
-  @JsonProperty("global_prefetch_count")
+  @JsonProperty(value = "global_prefetch_count")
   protected int globalPrefetchCount;
 
-  @JsonProperty("idle_since")
+  @JsonProperty(value = "idle_since")
   protected String idleSince;
 
-  @JsonProperty("message_stats")
+  @JsonProperty(value = "message_stats")
   protected MessageStats messageStats;
 
-  @JsonProperty("messages_unacknowledged")
+  @JsonProperty(value = "messages_unacknowledged")
   protected int messagesUnacknowledged;
 
-  @JsonProperty("messages_uncommitted")
+  @JsonProperty(value = "messages_uncommitted")
   protected int messagesUncommitted;
 
-  @JsonProperty("messages_unconfirmed")
+  @JsonProperty(value = "messages_unconfirmed")
   protected int messagesUnconfirmed;
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
-  @JsonProperty("node")
+  @JsonProperty(value = "node")
   protected String node;
 
-  @JsonProperty("number")
+  @JsonProperty(value = "number")
   protected int number;
 
-  @JsonProperty("prefetch_count")
+  @JsonProperty(value = "prefetch_count")
   protected int prefetchCount;
 
-  @JsonProperty("state")
+  @JsonProperty(value = "state")
   protected String state;
 
-  @JsonProperty("transactional")
+  @JsonProperty(value = "transactional")
   protected boolean transactional;
 
-  @JsonProperty("user")
+  @JsonProperty(value = "user")
   protected String user;
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
   public int getAcksUncommitted() {

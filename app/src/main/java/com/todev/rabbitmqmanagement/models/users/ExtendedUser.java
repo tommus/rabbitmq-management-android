@@ -27,13 +27,13 @@ import java.util.List;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedUser extends User {
 
-  @JsonProperty("hashing_algorithm")
+  @JsonProperty(value = "hashing_algorithm")
   protected String hashingAlgorithm;
 
-  @JsonProperty("password_hash")
+  @JsonProperty(value = "password_hash")
   protected String passwordHash;
 
-  @JsonProperty("password")
+  @JsonProperty(value = "password")
   protected String password;
 
   protected ExtendedUser() {

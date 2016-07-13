@@ -15,38 +15,28 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.models.users;
+package com.todev.rabbitmqmanagement.models.messages;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.todev.rabbitmqmanagement.services.serialization.UserTagsDeserializer;
-import com.todev.rabbitmqmanagement.services.serialization.UserTagsSerializer;
-import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class User {
+public class Properties {
 
-  @JsonProperty(value = "name")
-  protected String name;
+  @JsonProperty(value = "delivery_mode")
+  protected int deliveryMode;
 
-  @JsonDeserialize(using = UserTagsDeserializer.class)
-  @JsonProperty(value = "tags")
-  @JsonSerialize(using = UserTagsSerializer.class)
-  protected List<Tag> tags;
+  @JsonProperty(value = "headers")
+  protected Map<String, String> headers;
 
-  public String getName() {
-    return name;
+  public int getDeliveryMode() {
+    return deliveryMode;
   }
 
-  public List<Tag> getTags() {
-    return tags;
-  }
-
-  public enum Tag {
-    ADMINISTRATOR, MONITORING, POLICYMAKER, MANAGEMENT, NONE
+  public Map<String, String> getHeaders() {
+    return headers;
   }
 }

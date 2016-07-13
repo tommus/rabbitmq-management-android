@@ -34,33 +34,33 @@ import java.util.List;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Definitions {
 
-  @JsonProperty("bindings")
+  @JsonProperty(value = "bindings")
   protected List<Binding> bindings = new ArrayList<>();
 
-  @JsonProperty("exchanges")
+  @JsonProperty(value = "exchanges")
   protected List<Exchange> exchanges = new ArrayList<>();
 
   // TODO: Parameters should be corrected.
 
-  @JsonProperty("parameters")
+  @JsonProperty(value = "parameters")
   protected List<Object> parameters = new ArrayList<>();
 
-  @JsonProperty("permissions")
+  @JsonProperty(value = "permissions")
   protected List<Permission> permissions = new ArrayList<>();
 
-  @JsonProperty("policies")
+  @JsonProperty(value = "policies")
   protected List<Policy> policies = new ArrayList<>();
 
-  @JsonProperty("queues")
+  @JsonProperty(value = "queues")
   protected List<Queue> queues = new ArrayList<>();
 
-  @JsonProperty("rabbit_version")
+  @JsonProperty(value = "rabbit_version")
   protected String rabbitVersion;
 
-  @JsonProperty("users")
+  @JsonProperty(value = "users")
   protected List<ExtendedUser> users = new ArrayList<>();
 
-  @JsonProperty("vhosts")
+  @JsonProperty(value = "vhosts")
   protected List<Vhost> vhosts = new ArrayList<>();
 
   public List<Binding> getBindings() {

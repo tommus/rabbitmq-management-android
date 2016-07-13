@@ -25,52 +25,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class MessageStats {
 
-  @JsonProperty("ack")
+  @JsonProperty(value = "ack")
   protected int ack;
 
-  @JsonProperty("ack_details")
+  @JsonProperty(value = "ack_details")
   protected Details ackDetails;
 
-  @JsonProperty("confirm")
+  @JsonProperty(value = "confirm")
   protected int confirm;
 
-  @JsonProperty("confirm_details")
+  @JsonProperty(value = "confirm_details")
   protected Details confirmDetails;
 
-  @JsonProperty("deliver_get")
+  @JsonProperty(value = "deliver_get")
   protected int deliverGet;
 
-  @JsonProperty("deliver_get_details")
+  @JsonProperty(value = "deliver_get_details")
   protected Details deliverGetDetails;
 
-  @JsonProperty("publish")
+  @JsonProperty(value = "publish")
   protected int publish;
 
-  @JsonProperty("publish_details")
+  @JsonProperty(value = "publish_details")
   protected Details publishDetails;
 
-  @JsonProperty("publish_in")
+  @JsonProperty(value = "publish_in")
   protected int publishIn;
 
-  @JsonProperty("publish_in_details")
+  @JsonProperty(value = "publish_in_details")
   protected Details publishInDetails;
 
-  @JsonProperty("publish_out")
+  @JsonProperty(value = "publish_out")
   protected int publishOut;
 
-  @JsonProperty("publish_out_details")
+  @JsonProperty(value = "publish_out_details")
   protected Details publishOutDetails;
 
-  @JsonProperty("redeliver")
+  @JsonProperty(value = "redeliver")
   protected int redeliver;
 
-  @JsonProperty("redeliver_details")
+  @JsonProperty(value = "redeliver_details")
   protected Details redeliverDetails;
 
-  @JsonProperty("return_unroutable")
+  @JsonProperty(value = "return_unroutable")
   protected int returnUnroutable;
 
-  @JsonProperty("return_unroutable_details")
+  @JsonProperty(value = "return_unroutable_details")
   protected Details returnUnroutableDetails;
 
   public int getAck() {

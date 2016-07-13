@@ -9,7 +9,7 @@ import com.todev.rabbitmqmanagement.models.Context;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class OverviewContext extends Context {
 
-  @JsonProperty("node")
+  @JsonProperty(value = "node")
   protected String node;
 
   public String getNode() {

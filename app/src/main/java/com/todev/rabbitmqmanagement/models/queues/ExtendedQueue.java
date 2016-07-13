@@ -28,97 +28,97 @@ import com.todev.rabbitmqmanagement.models.policies.Policy;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ExtendedQueue extends Queue {
 
-  @JsonProperty("backing_queue_status")
+  @JsonProperty(value = "backing_queue_status")
   protected BackingQueueStatus backingQueueStatus;
 
-  @JsonProperty("consumer_utilisation")
+  @JsonProperty(value = "consumer_utilisation")
   protected Object consumerUtilisation;
 
-  @JsonProperty("consumers")
+  @JsonProperty(value = "consumers")
   protected int consumers;
 
-  @JsonProperty("disk_reads")
+  @JsonProperty(value = "disk_reads")
   protected int diskReads;
 
-  @JsonProperty("disk_writes")
+  @JsonProperty(value = "disk_writes")
   protected int diskWrites;
 
-  @JsonProperty("exclusive")
+  @JsonProperty(value = "exclusive")
   protected boolean exclusive;
 
-  @JsonProperty("exclusive_consumer_tag")
+  @JsonProperty(value = "exclusive_consumer_tag")
   protected Object exclusiveConsumerTag;
 
-  @JsonProperty("head_message_timestamp")
+  @JsonProperty(value = "head_message_timestamp")
   protected Object headMessageTimestamp;
 
-  @JsonProperty("idle_since")
+  @JsonProperty(value = "idle_since")
   protected String idleSince;
 
-  @JsonProperty("memory")
+  @JsonProperty(value = "memory")
   protected long memory;
 
-  @JsonProperty("message_bytes")
+  @JsonProperty(value = "message_bytes")
   protected long messageBytes;
 
-  @JsonProperty("message_bytes_persistent")
+  @JsonProperty(value = "message_bytes_persistent")
   protected long messageBytesPersistent;
 
-  @JsonProperty("message_bytes_ram")
+  @JsonProperty(value = "message_bytes_ram")
   protected long messageBytesRam;
 
-  @JsonProperty("message_bytes_ready")
+  @JsonProperty(value = "message_bytes_ready")
   protected long messageBytesReady;
 
-  @JsonProperty("message_bytes_unacknowledged")
+  @JsonProperty(value = "message_bytes_unacknowledged")
   protected long messageBytesUnacknowledged;
 
-  @JsonProperty("message_stats")
+  @JsonProperty(value = "message_stats")
   protected MessageStats messageStats;
 
-  @JsonProperty("messages")
+  @JsonProperty(value = "messages")
   protected int messages;
 
-  @JsonProperty("messages_details")
+  @JsonProperty(value = "messages_details")
   protected Details messagesDetails;
 
-  @JsonProperty("messages_persistent")
+  @JsonProperty(value = "messages_persistent")
   protected int messagesPersistent;
 
-  @JsonProperty("messages_ram")
+  @JsonProperty(value = "messages_ram")
   protected long messagesRam;
 
-  @JsonProperty("messages_ready")
+  @JsonProperty(value = "messages_ready")
   protected int messagesReady;
 
-  @JsonProperty("messages_ready_details")
+  @JsonProperty(value = "messages_ready_details")
   protected Details messagesReadyDetails;
 
-  @JsonProperty("messages_ready_ram")
+  @JsonProperty(value = "messages_ready_ram")
   protected long messagesReadyRam;
 
-  @JsonProperty("messages_unacknowledged")
+  @JsonProperty(value = "messages_unacknowledged")
   protected int messagesUnacknowledged;
 
-  @JsonProperty("messages_unacknowledged_details")
+  @JsonProperty(value = "messages_unacknowledged_details")
   protected Details messagesUnacknowledgedDetails;
 
-  @JsonProperty("messages_unacknowledged_ram")
+  @JsonProperty(value = "messages_unacknowledged_ram")
   protected long messagesUnacknowledgedRam;
 
-  @JsonProperty("node")
+  @JsonProperty(value = "node")
   protected String node;
 
-  @JsonProperty("policy")
+  @JsonProperty(value = "policy")
   protected Policy policy;
 
-  @JsonProperty("recoverable_slaves")
+  @JsonProperty(value = "recoverable_slaves")
   protected Object recoverableSlaves;
 
-  @JsonProperty("state")
+  @JsonProperty(value = "state")
   protected String state;
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
   public BackingQueueStatus getBackingQueueStatus() {

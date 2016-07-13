@@ -20,22 +20,22 @@ package com.todev.rabbitmqmanagement.models.parameters;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Parameter {
 
-  @JsonProperty("component")
+  @JsonProperty(value = "component")
   protected String component;
 
-  @JsonProperty("name")
+  @JsonProperty(value = "name")
   protected String name;
 
-  @JsonProperty("value")
-  protected LinkedHashMap<String, String> value;
+  @JsonProperty(value = "value")
+  protected Map<String, String> value;
 
-  @JsonProperty("vhost")
+  @JsonProperty(value = "vhost")
   protected String vhost;
 
   public String getComponent() {
@@ -46,7 +46,7 @@ public class Parameter {
     return name;
   }
 
-  public LinkedHashMap<String, String> getValue() {
+  public Map<String, String> getValue() {
     return value;
   }
 
