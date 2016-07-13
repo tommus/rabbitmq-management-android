@@ -23,8 +23,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.todev.rabbitmqmanagement.services.serialization.ActionTypeDeserializer;
-import com.todev.rabbitmqmanagement.services.serialization.ActionTypeSerializer;
+import com.todev.rabbitmqmanagement.service.serialization.ActionTypeDeserializer;
+import com.todev.rabbitmqmanagement.service.serialization.ActionTypeSerializer;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.services.serialization;
+package com.todev.rabbitmqmanagement.service.serialization;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

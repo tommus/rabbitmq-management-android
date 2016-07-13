@@ -24,8 +24,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.todev.rabbitmqmanagement.services.serialization.ExchangeTypeDeserializer;
-import com.todev.rabbitmqmanagement.services.serialization.ExchangeTypeSerializer;
+import com.todev.rabbitmqmanagement.service.serialization.ExchangeTypeDeserializer;
+import com.todev.rabbitmqmanagement.service.serialization.ExchangeTypeSerializer;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

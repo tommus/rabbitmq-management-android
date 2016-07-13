@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.services;
+package com.todev.rabbitmqmanagement.service;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -42,8 +42,8 @@ import com.todev.rabbitmqmanagement.models.queues.ExtendedQueue;
 import com.todev.rabbitmqmanagement.models.users.ExtendedUser;
 import com.todev.rabbitmqmanagement.models.users.User;
 import com.todev.rabbitmqmanagement.models.vhosts.ExtendedVhost;
-import com.todev.rabbitmqmanagement.services.interceptors.AuthorizationInterceptor;
-import com.todev.rabbitmqmanagement.services.interceptors.ContentTypeInterceptor;
+import com.todev.rabbitmqmanagement.service.interceptors.AuthorizationInterceptor;
+import com.todev.rabbitmqmanagement.service.interceptors.ContentTypeInterceptor;
 import java.util.List;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;

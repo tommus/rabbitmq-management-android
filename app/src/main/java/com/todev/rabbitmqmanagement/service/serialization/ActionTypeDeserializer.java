@@ -15,18 +15,22 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.services.serialization;
+package com.todev.rabbitmqmanagement.service.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.todev.rabbitmqmanagement.models.queues.Action;
 import java.io.IOException;
 
-public class ActionTypeSerializer extends JsonSerializer<Action.Type> {
+public class ActionTypeDeserializer extends JsonDeserializer<Action.Type> {
   @Override
-  public void serialize(Action.Type value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
-    gen.writeString(value.toString().toLowerCase());
+  public Action.Type deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    String serialized = p.getText().trim();
+    try {
+      return Action.Type.valueOf(serialized.toUpperCase());
+    } catch (IllegalArgumentException e) {
+      return Action.Type.SYNC;
+    }
   }
 }

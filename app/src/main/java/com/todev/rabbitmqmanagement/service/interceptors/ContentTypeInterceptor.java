@@ -15,38 +15,26 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.services.interceptors;
+package com.todev.rabbitmqmanagement.service.interceptors;
 
-import android.util.Base64;
 import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class AuthorizationInterceptor implements Interceptor {
+public class ContentTypeInterceptor implements Interceptor {
 
-  private static final String HEADER_AUTHORIZATION = "Authorization";
+  private static final String HEADER_CONTENT_TYPE = "Content-Type";
 
-  private static final String PREFIX_BASIC_AUTH = "Basic ";
+  private String contentType;
 
-  private String token;
-
-  public AuthorizationInterceptor(String username, String password) {
-    this.token = generateToken(username, password);
-  }
-
-  public AuthorizationInterceptor(String token) {
-    this.token = token;
+  public ContentTypeInterceptor(String contentType) {
+    this.contentType = contentType;
   }
 
   @Override public Response intercept(Chain chain) throws IOException {
     Request original = chain.request();
-    Request intercepted = original.newBuilder().header(HEADER_AUTHORIZATION, token).build();
+    Request intercepted = original.newBuilder().header(HEADER_CONTENT_TYPE, contentType).build();
     return chain.proceed(intercepted);
-  }
-
-  private String generateToken(String username, String password) {
-    String decoded = String.format("%s:%s", username, password);
-    return PREFIX_BASIC_AUTH + Base64.encodeToString(decoded.getBytes(), Base64.NO_WRAP);
   }
 }
