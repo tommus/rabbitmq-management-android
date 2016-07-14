@@ -10,8 +10,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.fragments.AddServiceDialogFragment;
 
 public class LoginActivity extends AppCompatActivity {
+
+  public static final String TAG_ADD_SERVICE = "Add Service Fragment";
 
   @BindView(R.id.select_service_spinner)
   AppCompatSpinner serviceSpinner;
@@ -35,7 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
   @OnClick(R.id.add_service_button)
   protected void onAddServiceButtonClicked(View view) {
-    // TODO: Implement logic.
+    AddServiceDialogFragment fragment = new AddServiceDialogFragment();
+    fragment.show(getSupportFragmentManager(), TAG_ADD_SERVICE);
   }
 
   private void loadSamples() {

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_medium_plus"
+    >
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_medium_minus"
+      android:layout_marginTop="@dimen/margin_medium_minus"
+      android:text="@string/fragment_add_service_dialog_title"
+      android:textColor="@color/colorPrimaryDark"
+      android:textSize="@dimen/font_size_medium_plus"
+      android:textStyle="bold"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/divider_tiny"
+      android:layout_marginBottom="@dimen/margin_large"
+      android:layout_marginEnd="@dimen/padding_inverse_medium_plus"
+      android:layout_marginLeft="@dimen/padding_inverse_medium_plus"
+      android:layout_marginRight="@dimen/padding_inverse_medium_plus"
+      android:layout_marginStart="@dimen/padding_inverse_medium_plus"
+      android:layout_marginTop="@dimen/margin_medium_plus"
+      android:background="@color/colorPrimary"
+      android:padding="@dimen/padding_none"
+      />
+
+  <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_medium_plus"
+      android:theme="@style/RabbitmqManagement.Widget.Colored.TextInputLayout"
+      >
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/label_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/fragment_add_service_dialog_label"
+        android:textColor="@color/colorPrimary"
+        />
+
+  </android.support.design.widget.TextInputLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_medium_plus"
+        android:layout_weight="1"
+        android:theme="@style/RabbitmqManagement.Widget.Colored.TextInputLayout"
+        >
+
+      <android.support.v7.widget.AppCompatEditText
+          android:id="@+id/address_edit_text"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/fragment_add_service_dialog_address"
+          android:textColor="@color/colorPrimary"
+          />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/find_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/content_description_fragment_add_service_search"
+        android:padding="@dimen/padding_medium"
+        android:src="@drawable/ic_search_white_24dp"
+        android:theme="@style/RabbitmqManagement.Widget.Button"
+        />
+
+  </LinearLayout>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/fragment_add_service_dialog_port"
+      android:textColor="@color/colorPrimaryDark"
+      android:textSize="@dimen/font_size_medium_plus"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:orientation="horizontal"
+      >
+
+    <NumberPicker
+        android:id="@+id/port_number_picker_10000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/margin_tiny"
+        android:layout_marginRight="@dimen/margin_tiny"
+        android:orientation="horizontal"
+        android:theme="@style/RabbitmqManagement.Widget.Colored.NumberPicker"
+        />
+
+    <NumberPicker
+        android:id="@+id/port_number_picker_1000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/margin_tiny"
+        android:layout_marginRight="@dimen/margin_tiny"
+        android:orientation="horizontal"
+        android:theme="@style/RabbitmqManagement.Widget.Colored.NumberPicker"
+        />
+
+    <NumberPicker
+        android:id="@+id/port_number_picker_100"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/margin_tiny"
+        android:layout_marginRight="@dimen/margin_tiny"
+        android:orientation="horizontal"
+        android:theme="@style/RabbitmqManagement.Widget.Colored.NumberPicker"
+        />
+
+    <NumberPicker
+        android:id="@+id/port_number_picker_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/margin_tiny"
+        android:layout_marginRight="@dimen/margin_tiny"
+        android:orientation="horizontal"
+        android:theme="@style/RabbitmqManagement.Widget.Colored.NumberPicker"
+        />
+
+    <NumberPicker
+        android:id="@+id/port_number_picker_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:theme="@style/RabbitmqManagement.Widget.Colored.NumberPicker"
+        />
+
+  </LinearLayout>
+
+</LinearLayout>

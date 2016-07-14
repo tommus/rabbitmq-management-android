@@ -29,7 +29,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/logo_image_view"
       android:layout_marginBottom="@dimen/margin_medium_plus"
-      android:theme="@style/RabbitmqManagement.TextInputLayout"
+      android:theme="@style/RabbitmqManagement.Widget.Colored.TextInputLayout"
       >
 
     <android.support.v7.widget.AppCompatEditText
@@ -48,7 +48,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/login_edit_text_layout"
       android:layout_marginBottom="@dimen/margin_medium_plus"
-      android:theme="@style/RabbitmqManagement.TextInputLayout"
+      android:theme="@style/RabbitmqManagement.Widget.Colored.TextInputLayout"
       >
 
     <android.support.v7.widget.AppCompatEditText
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/add_service_button"
         android:layout_toStartOf="@+id/add_service_button"
-        android:theme="@style/RabbitmqManagement.AppCompatSpinner"
+        android:theme="@style/RabbitmqManagement.Widget.Colored"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         />
 
@@ -87,7 +87,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:text="@string/add"
-        android:theme="@style/RabbitmqManagement.Button"
+        android:theme="@style/RabbitmqManagement.Widget.Button"
         />
 
   </RelativeLayout>
@@ -100,7 +100,7 @@
       android:layout_marginBottom="@dimen/margin_medium"
       android:text="@string/activity_login_remember"
       android:textColor="@color/colorPrimaryDark"
-      android:theme="@style/RabbitmqManagement.AppCompatCheckBox"
+      android:theme="@style/RabbitmqManagement.Widget.Colored"
       />
 
   <Button
@@ -109,7 +109,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/remember_configuration_check_box"
       android:text="@string/login"
-      android:theme="@style/RabbitmqManagement.Button"
+      android:theme="@style/RabbitmqManagement.Widget.Button"
       />
 
 </RelativeLayout>

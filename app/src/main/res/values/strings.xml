@@ -7,11 +7,18 @@
   <string name="app_name">RabbitMQ Management</string>
 
   <string name="content_description_rabbitmq_logo">RabbitMQ logo</string>
+  <string name="content_description_fragment_add_service_search">Search for available services.</string>
 
   <string name="login">Login</string>
   <string name="password">Password</string>
   <string name="add">Add</string>
+  <string name="find">Find</string>
 
   <string name="activity_login_remember">Remember configuration.</string>
+
+  <string name="fragment_add_service_dialog_title">Provide RabbitMQ service details</string>
+  <string name="fragment_add_service_dialog_address">Address</string>
+  <string name="fragment_add_service_dialog_label">Label</string>
+  <string name="fragment_add_service_dialog_port">Select service port number:</string>
 
 </resources>

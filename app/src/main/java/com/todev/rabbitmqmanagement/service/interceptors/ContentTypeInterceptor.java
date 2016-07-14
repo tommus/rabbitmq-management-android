@@ -32,7 +32,8 @@ public class ContentTypeInterceptor implements Interceptor {
     this.contentType = contentType;
   }
 
-  @Override public Response intercept(Chain chain) throws IOException {
+  @Override
+  public Response intercept(Chain chain) throws IOException {
     Request original = chain.request();
     Request intercepted = original.newBuilder().header(HEADER_CONTENT_TYPE, contentType).build();
     return chain.proceed(intercepted);

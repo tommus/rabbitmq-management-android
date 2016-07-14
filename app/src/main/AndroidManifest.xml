@@ -15,6 +15,8 @@
 
     <activity
         android:name=".activities.LoginActivity"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
       <intent-filter>
@@ -27,7 +29,10 @@
 
     </activity>
 
-    <activity android:name=".activities.TestActivity"/>
+    <activity
+        android:name=".activities.TestActivity"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"/>
 
   </application>
 

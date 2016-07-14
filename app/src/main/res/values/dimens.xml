@@ -4,6 +4,16 @@
 
   <eat-comment/>
 
+  <dimen name="padding_inverse_huge">-48dp</dimen>
+  <dimen name="padding_inverse_large">-32dp</dimen>
+  <dimen name="padding_inverse_larger">-24dp</dimen>
+  <dimen name="padding_inverse_medium_plus">-20dp</dimen>
+  <dimen name="padding_inverse_medium">-16dp</dimen>
+  <dimen name="padding_inverse_medium_minus">-12dp</dimen>
+  <dimen name="padding_inverse_lower">-8dp</dimen>
+  <dimen name="padding_inverse_small">-6dp</dimen>
+  <dimen name="padding_inverse_tiny">-4dp</dimen>
+
   <dimen name="padding_huge">48dp</dimen>
   <dimen name="padding_large">32dp</dimen>
   <dimen name="padding_larger">24dp</dimen>
@@ -14,6 +24,16 @@
   <dimen name="padding_small">6dp</dimen>
   <dimen name="padding_tiny">4dp</dimen>
   <dimen name="padding_none">0dp</dimen>
+
+  <dimen name="margin_inverse_huge">-48dp</dimen>
+  <dimen name="margin_inverse_large">-32dp</dimen>
+  <dimen name="margin_inverse_larger">-24dp</dimen>
+  <dimen name="margin_inverse_medium_plus">-20dp</dimen>
+  <dimen name="margin_inverse_medium">-16dp</dimen>
+  <dimen name="margin_inverse_medium_minus">-12dp</dimen>
+  <dimen name="margin_inverse_lower">-8dp</dimen>
+  <dimen name="margin_inverse_small">-6dp</dimen>
+  <dimen name="margin_inverse_tiny">-4dp</dimen>
 
   <dimen name="margin_huge">48dp</dimen>
   <dimen name="margin_large">32dp</dimen>
@@ -35,5 +55,10 @@
   <dimen name="font_size_lower">12sp</dimen>
   <dimen name="font_size_small">10sp</dimen>
   <dimen name="font_size_tiny">8sp</dimen>
+
+  <dimen name="divider_huge">4dp</dimen>
+  <dimen name="divider_large">3dp</dimen>
+  <dimen name="divider_small">2dp</dimen>
+  <dimen name="divider_tiny">1dp</dimen>
 
 </resources>
