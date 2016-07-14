@@ -35,7 +35,10 @@ import com.todev.rabbitmqmanagement.R;
 public class AddServiceDialogFragment extends DialogFragment {
 
   public static final String PICKER_DEFAULT = "15672";
+
   public static final String[] PICKER_VALUES = "123456789".split("");
+
+  public static final int PICKER_MIN_VALUE = 0;
 
   @BindView(R.id.label_edit_text)
   AppCompatEditText labelEditText;
@@ -64,6 +67,7 @@ public class AddServiceDialogFragment extends DialogFragment {
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     LayoutInflater inflater = getActivity().getLayoutInflater();
     View view = inflater.inflate(R.layout.fragment_add_service_dialog, null);
+
     ButterKnife.bind(this, view);
 
     builder.setView(view)
@@ -86,6 +90,7 @@ public class AddServiceDialogFragment extends DialogFragment {
   @Override
   public void onStart() {
     super.onStart();
+
     ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE)
         .setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
 
@@ -96,7 +101,25 @@ public class AddServiceDialogFragment extends DialogFragment {
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
+
     loadDefaultPortNumber();
+    initializeListeners();
+  }
+
+  private void initializeListeners() {
+    portNumberPicker1000.setOnValueChangedListener(
+        new OnValueChangeListener(portNumberPicker10000));
+
+    portNumberPicker100.setOnValueChangedListener(
+        new OnValueChangeListener(portNumberPicker10000, portNumberPicker1000));
+
+    portNumberPicker10.setOnValueChangedListener(
+        new OnValueChangeListener(portNumberPicker10000, portNumberPicker1000,
+            portNumberPicker100));
+
+    portNumberPicker1.setOnValueChangedListener(
+        new OnValueChangeListener(portNumberPicker10000, portNumberPicker1000, portNumberPicker100,
+            portNumberPicker10));
   }
 
   private void loadDefaultPortNumber() {
@@ -107,11 +130,29 @@ public class AddServiceDialogFragment extends DialogFragment {
 
     for (int i = 0; i < pickers.length; ++i) {
       int value = Integer.parseInt(PICKER_DEFAULT.substring(i, i + 1));
-      pickers[i].setMinValue(0);
+      pickers[i].setMinValue(PICKER_MIN_VALUE);
       pickers[i].setMaxValue(PICKER_VALUES.length - 1);
       pickers[i].setDisplayedValues(PICKER_VALUES);
       pickers[i].setValue(value);
       pickers[i].setWrapSelectorWheel(false);
+    }
+  }
+
+  private class OnValueChangeListener implements NumberPicker.OnValueChangeListener {
+
+    private NumberPicker[] pickers;
+
+    OnValueChangeListener(NumberPicker... pickers) {
+      this.pickers = pickers;
+    }
+
+    @Override
+    public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
+      if (newVal == PICKER_MIN_VALUE) {
+        for (NumberPicker picker : pickers) {
+          picker.setValue(PICKER_MIN_VALUE);
+        }
+      }
     }
   }
 }
