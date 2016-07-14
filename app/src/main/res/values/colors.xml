@@ -4,8 +4,8 @@
 
   <eat-comment/>
 
-  <color name="colorPrimary">#FF9800</color>
-  <color name="colorPrimaryDark">#F57C00</color>
+  <color name="colorPrimary">#F57C00</color>
+  <color name="colorPrimaryDark">#EF6C00</color>
   <color name="colorAccent">#536DFE</color>
 
 </resources>

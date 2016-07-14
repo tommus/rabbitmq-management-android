@@ -2,6 +2,7 @@ package com.todev.rabbitmqmanagement.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,9 @@ public class LoginActivity extends AppCompatActivity {
 
   @BindView(R.id.select_service_spinner)
   AppCompatSpinner serviceSpinner;
+
+  @BindView(R.id.remember_configuration_check_box)
+  AppCompatCheckBox rememberConfigurationCheckBox;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

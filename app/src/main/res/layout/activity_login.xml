@@ -67,7 +67,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/password_edit_text_layout"
-      android:layout_marginBottom="@dimen/margin_medium_plus"
+      android:layout_marginBottom="@dimen/margin_medium"
       >
 
     <android.support.v7.widget.AppCompatSpinner
@@ -92,11 +92,22 @@
 
   </RelativeLayout>
 
+  <android.support.v7.widget.AppCompatCheckBox
+      android:id="@+id/remember_configuration_check_box"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/services_relative_layout"
+      android:layout_marginBottom="@dimen/margin_medium"
+      android:text="@string/activity_login_remember"
+      android:textColor="@color/colorPrimaryDark"
+      android:theme="@style/RabbitmqManagement.AppCompatCheckBox"
+      />
+
   <Button
       android:id="@+id/login_button"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@id/services_relative_layout"
+      android:layout_below="@id/remember_configuration_check_box"
       android:text="@string/login"
       android:theme="@style/RabbitmqManagement.Button"
       />

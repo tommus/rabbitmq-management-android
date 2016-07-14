@@ -5,6 +5,7 @@
 # CI
 .gradle/
 gradle/
+!gradle/wrapper/gradle-wrapper.properties
 
 # Android
 build/
