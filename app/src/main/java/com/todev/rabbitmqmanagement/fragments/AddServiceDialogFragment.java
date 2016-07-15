@@ -18,15 +18,20 @@
 package com.todev.rabbitmqmanagement.fragments;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatEditText;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,11 +47,20 @@ public class AddServiceDialogFragment extends DialogFragment {
 
   public static final int PICKER_MIN_VALUE = 0;
 
+  @BindView(R.id.label_edit_text_layout)
+  TextInputLayout labelTextInputLayout;
+
   @BindView(R.id.label_edit_text)
   AppCompatEditText labelEditText;
 
+  @BindView(R.id.address_edit_text_layout)
+  TextInputLayout addressTextInputLayout;
+
   @BindView(R.id.address_edit_text)
   AppCompatEditText addressEditText;
+
+  @BindView(R.id.port_number_picker_layout)
+  LinearLayout portNumberPickerLayout;
 
   @BindView(R.id.port_number_picker_10000)
   NumberPicker portNumberPicker10000;
@@ -63,6 +77,8 @@ public class AddServiceDialogFragment extends DialogFragment {
   @BindView(R.id.port_number_picker_1)
   NumberPicker portNumberPicker1;
 
+  private Animation horizontalShakeAnimation;
+
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -73,21 +89,8 @@ public class AddServiceDialogFragment extends DialogFragment {
     ButterKnife.bind(this, view);
 
     builder.setView(view)
-        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialogInterface, int i) {
-            String label = labelEditText.getText().toString();
-            String address = addressEditText.getText().toString();
-            int port = combinePort();
-            // TODO: Add persistence and validation.
-          }
-        })
-        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialogInterface, int i) {
-            // Do nothing on cancel.
-          }
-        });
+        .setPositiveButton(android.R.string.ok, null)
+        .setNegativeButton(android.R.string.cancel, null);
 
     return builder.create();
   }
@@ -96,16 +99,20 @@ public class AddServiceDialogFragment extends DialogFragment {
   public void onStart() {
     super.onStart();
 
-    ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE)
-        .setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+    Button positiveButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE);
+    positiveButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+    positiveButton.setOnClickListener(new OnPositiveButtonClickedListener());
 
-    ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE)
-        .setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+    Button negativeButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE);
+    negativeButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+    negativeButton.setOnClickListener(new OnPositiveButtonClickedListener());
   }
 
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
+
+    horizontalShakeAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.horizontal_shake);
 
     initializeNumberPickers();
   }
@@ -140,6 +147,20 @@ public class AddServiceDialogFragment extends DialogFragment {
     return port;
   }
 
+  private boolean validateLabel(String label) {
+    // TODO: Check whether label is not already used.
+    return !label.isEmpty();
+  }
+
+  private boolean validateAddress(String address) {
+    return Patterns.IP_ADDRESS.matcher(address).matches() || Patterns.WEB_URL.matcher(address)
+        .matches();
+  }
+
+  private boolean validatePort(int port) {
+    return port > 1024 && port <= 65535;
+  }
+
   private class OnValueChangeListener implements NumberPicker.OnValueChangeListener {
 
     private NumberPicker[] pickers;
@@ -168,6 +189,45 @@ public class AddServiceDialogFragment extends DialogFragment {
       } catch (Exception e) {
         // Do nothing. This is just a visible bug handler.
       }
+    }
+  }
+
+  private class OnPositiveButtonClickedListener implements View.OnClickListener {
+
+    @Override
+    public void onClick(View view) {
+      String label = labelEditText.getText().toString();
+      String address = addressEditText.getText().toString();
+      int port = combinePort();
+
+      if (!validateLabel(label)) {
+        labelTextInputLayout.startAnimation(horizontalShakeAnimation);
+        labelEditText.setError(getString(R.string.fragment_add_service_dialog_label_incorrect));
+        return;
+      }
+
+      if (!validateAddress(address)) {
+        addressTextInputLayout.startAnimation(horizontalShakeAnimation);
+        addressEditText.setError(getString(R.string.fragment_add_service_dialog_address_incorrect));
+        return;
+      }
+
+      if (!validatePort(port)) {
+        portNumberPickerLayout.startAnimation(horizontalShakeAnimation);
+        return;
+      }
+
+      // TODO: Add persistence.
+
+      dismiss();
+    }
+  }
+
+  private class OnNegativeButtonClickedListener implements View.OnClickListener {
+
+    @Override
+    public void onClick(View view) {
+      dismiss();
     }
   }
 }

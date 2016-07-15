@@ -20,5 +20,7 @@
   <string name="fragment_add_service_dialog_address">Address</string>
   <string name="fragment_add_service_dialog_label">Label</string>
   <string name="fragment_add_service_dialog_port">Select service port number:</string>
+  <string name="fragment_add_service_dialog_label_incorrect">Incorrect label</string>
+  <string name="fragment_add_service_dialog_address_incorrect">Incorrect address</string>
 
 </resources>
