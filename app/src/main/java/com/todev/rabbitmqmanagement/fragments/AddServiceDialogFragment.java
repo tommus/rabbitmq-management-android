@@ -63,8 +63,6 @@ public class AddServiceDialogFragment extends DialogFragment {
   @BindView(R.id.port_number_picker_1)
   NumberPicker portNumberPicker1;
 
-  private int selectedPort = Integer.parseInt(PICKER_DEFAULT);
-
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
