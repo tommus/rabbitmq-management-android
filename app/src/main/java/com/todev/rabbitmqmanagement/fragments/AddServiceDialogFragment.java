@@ -63,6 +63,8 @@ public class AddServiceDialogFragment extends DialogFragment {
   @BindView(R.id.port_number_picker_1)
   NumberPicker portNumberPicker1;
 
+  private int selectedPort = Integer.parseInt(PICKER_DEFAULT);
+
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -76,13 +78,16 @@ public class AddServiceDialogFragment extends DialogFragment {
         .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialogInterface, int i) {
-            // TODO: Implement confirm logic.
+            String label = labelEditText.getText().toString();
+            String address = addressEditText.getText().toString();
+            int port = combinePort();
+            // TODO: Add persistence and validation.
           }
         })
         .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialogInterface, int i) {
-            // TODO: Implement cancel logic.
+            // Do nothing on cancel.
           }
         });
 
@@ -125,6 +130,22 @@ public class AddServiceDialogFragment extends DialogFragment {
       NumberPicker[] older = Arrays.copyOfRange(pickers, 0, i);
       pickers[i].setOnValueChangedListener(new OnValueChangeListener(older));
     }
+  }
+
+  private int combinePort() {
+    NumberPicker[] pickers = new NumberPicker[] {
+        portNumberPicker10000, portNumberPicker1000, portNumberPicker100, portNumberPicker10,
+        portNumberPicker1
+    };
+
+    int port = 0;
+
+    for (int i = 0; i < pickers.length; ++i) {
+      int value = pickers[i].getValue() * 10000 / (int) Math.pow(10, i);
+      port += value;
+    }
+
+    return port;
   }
 
   private class OnValueChangeListener implements NumberPicker.OnValueChangeListener {
