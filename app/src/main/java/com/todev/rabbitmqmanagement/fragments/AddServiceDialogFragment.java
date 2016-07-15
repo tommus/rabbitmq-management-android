@@ -131,18 +131,12 @@ public class AddServiceDialogFragment extends DialogFragment {
   }
 
   private int combinePort() {
-    NumberPicker[] pickers = new NumberPicker[] {
-        portNumberPicker10000, portNumberPicker1000, portNumberPicker100, portNumberPicker10,
-        portNumberPicker1
-    };
-
     int port = 0;
-
-    for (int i = 0; i < pickers.length; ++i) {
-      int value = pickers[i].getValue() * 10000 / (int) Math.pow(10, i);
-      port += value;
-    }
-
+    port += portNumberPicker10000.getValue() * 10000;
+    port += portNumberPicker1000.getValue() * 1000;
+    port += portNumberPicker100.getValue() * 100;
+    port += portNumberPicker10.getValue() * 10;
+    port += portNumberPicker1.getValue();
     return port;
   }
 
