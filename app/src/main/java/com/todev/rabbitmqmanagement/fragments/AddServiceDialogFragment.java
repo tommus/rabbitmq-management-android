@@ -31,6 +31,8 @@ import android.widget.NumberPicker;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class AddServiceDialogFragment extends DialogFragment {
 
@@ -102,39 +104,26 @@ public class AddServiceDialogFragment extends DialogFragment {
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
 
-    loadDefaultPortNumber();
-    initializeListeners();
+    initializeNumberPickers();
   }
 
-  private void initializeListeners() {
-    portNumberPicker1000.setOnValueChangedListener(
-        new OnValueChangeListener(portNumberPicker10000));
-
-    portNumberPicker100.setOnValueChangedListener(
-        new OnValueChangeListener(portNumberPicker10000, portNumberPicker1000));
-
-    portNumberPicker10.setOnValueChangedListener(
-        new OnValueChangeListener(portNumberPicker10000, portNumberPicker1000,
-            portNumberPicker100));
-
-    portNumberPicker1.setOnValueChangedListener(
-        new OnValueChangeListener(portNumberPicker10000, portNumberPicker1000, portNumberPicker100,
-            portNumberPicker10));
-  }
-
-  private void loadDefaultPortNumber() {
+  private void initializeNumberPickers() {
     NumberPicker[] pickers = new NumberPicker[] {
         portNumberPicker10000, portNumberPicker1000, portNumberPicker100, portNumberPicker10,
         portNumberPicker1
     };
 
     for (int i = 0; i < pickers.length; ++i) {
-      int value = Integer.parseInt(PICKER_DEFAULT.substring(i, i + 1));
+      pickers[i].setWrapSelectorWheel(false);
+      pickers[i].setDisplayedValues(PICKER_VALUES);
       pickers[i].setMinValue(PICKER_MIN_VALUE);
       pickers[i].setMaxValue(PICKER_VALUES.length - 1);
-      pickers[i].setDisplayedValues(PICKER_VALUES);
+
+      int value = Integer.parseInt(PICKER_DEFAULT.substring(i, i + 1));
       pickers[i].setValue(value);
-      pickers[i].setWrapSelectorWheel(false);
+
+      NumberPicker[] older = Arrays.copyOfRange(pickers, 0, i);
+      pickers[i].setOnValueChangedListener(new OnValueChangeListener(older));
     }
   }
 
@@ -148,10 +137,23 @@ public class AddServiceDialogFragment extends DialogFragment {
 
     @Override
     public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
-      if (newVal == PICKER_MIN_VALUE) {
+      if (pickers != null && newVal == PICKER_MIN_VALUE) {
         for (NumberPicker picker : pickers) {
-          picker.setValue(PICKER_MIN_VALUE);
+          if (picker.getValue() != PICKER_MIN_VALUE) {
+            picker.setValue(PICKER_MIN_VALUE);
+            invalidate(picker);
+          }
         }
+      }
+    }
+
+    private void invalidate(NumberPicker picker) {
+      try {
+        Method method = picker.getClass().getDeclaredMethod("changeValueByOne", boolean.class);
+        method.setAccessible(true);
+        method.invoke(picker, false);
+      } catch (Exception e) {
+        // Do nothing. This is just a visible bug handler.
       }
     }
   }
