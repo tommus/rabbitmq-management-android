@@ -208,34 +208,33 @@ public class AddServiceFragment extends DialogFragment {
 
     @Override
     public void onClick(View view) {
-      String label = labelEditText.getText().toString();
-      String address = addressEditText.getText().toString();
-      int port = combinePort();
+      Service service =
+          new Service(labelEditText.getText().toString(), addressEditText.getText().toString(),
+              combinePort());
 
-      if (!validateLabel(label)) {
+      if (!validateLabel(service.getLabel())) {
         labelTextInputLayout.startAnimation(horizontalShakeAnimation);
         labelEditText.setError(getString(R.string.fragment_add_service_dialog_label_incorrect));
         return;
       }
 
-      if (!checkLabelAvailable(label)) {
+      if (!isLabelAvailable(service.getLabel())) {
         labelTextInputLayout.startAnimation(horizontalShakeAnimation);
         labelEditText.setError(getString(R.string.fragment_add_service_dialog_label_used));
         return;
       }
 
-      if (!validateAddress(address)) {
+      if (!validateAddress(service.getAddress())) {
         addressTextInputLayout.startAnimation(horizontalShakeAnimation);
         addressEditText.setError(getString(R.string.fragment_add_service_dialog_address_incorrect));
         return;
       }
 
-      if (!validatePort(port)) {
+      if (!validatePort(service.getPort())) {
         portNumberPickerLayout.startAnimation(horizontalShakeAnimation);
         return;
       }
 
-      Service service = new Service(label, address, port);
       service.save();
 
       for (OnSuccessListener listener : onSuccessListeners) {
@@ -245,7 +244,7 @@ public class AddServiceFragment extends DialogFragment {
       dismiss();
     }
 
-    private boolean checkLabelAvailable(String label) {
+    private boolean isLabelAvailable(String label) {
       List<Service> services = new Select().from(Service.class).where("Label = ?", label).execute();
       return services.isEmpty();
     }
