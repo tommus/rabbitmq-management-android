@@ -105,7 +105,7 @@ public class AddServiceDialogFragment extends DialogFragment {
 
     Button negativeButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE);
     negativeButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-    negativeButton.setOnClickListener(new OnPositiveButtonClickedListener());
+    negativeButton.setOnClickListener(new OnNegativeButtonClickedListener());
   }
 
   @Override
