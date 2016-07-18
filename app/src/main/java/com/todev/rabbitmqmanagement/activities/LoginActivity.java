@@ -5,12 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.fragments.AddServiceDialogFragment;
+import com.todev.rabbitmqmanagement.adapters.ServicesAdapter;
+import com.todev.rabbitmqmanagement.fragments.AddServiceFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,7 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login);
     ButterKnife.bind(this);
 
-    loadSamples();
+    // TODO: Select last used or remembered by user.
+    initializeSpinner(-1);
   }
 
   @OnClick(R.id.login_button)
@@ -38,14 +39,25 @@ public class LoginActivity extends AppCompatActivity {
 
   @OnClick(R.id.add_service_button)
   protected void onAddServiceButtonClicked(View view) {
-    AddServiceDialogFragment fragment = new AddServiceDialogFragment();
+    AddServiceFragment fragment = new AddServiceFragment();
+    fragment.addOnSuccessListener(new OnDialogSuccessListener());
     fragment.show(getSupportFragmentManager(), TAG_ADD_SERVICE);
   }
 
-  private void loadSamples() {
-    ArrayAdapter<CharSequence> adapter =
-        ArrayAdapter.createFromResource(this, R.array.services, R.layout.spinner_item);
-    adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+  private void initializeSpinner(long id) {
+    ServicesAdapter adapter = new ServicesAdapter(getApplicationContext());
     serviceSpinner.setAdapter(adapter);
+    int position = adapter.getItemPosition(id);
+    if (position != -1) {
+      serviceSpinner.setSelection(position);
+    }
+  }
+
+  private class OnDialogSuccessListener implements AddServiceFragment.OnSuccessListener {
+
+    @Override
+    public void onSuccess(long id) {
+      initializeSpinner(id);
+    }
   }
 }

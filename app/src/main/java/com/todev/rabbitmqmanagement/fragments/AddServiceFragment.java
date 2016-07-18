@@ -35,11 +35,15 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.activeandroid.query.Select;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.database.Service;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-public class AddServiceDialogFragment extends DialogFragment {
+public class AddServiceFragment extends DialogFragment {
 
   public static final String PICKER_DEFAULT = "15672";
 
@@ -79,6 +83,8 @@ public class AddServiceDialogFragment extends DialogFragment {
 
   private Animation horizontalShakeAnimation;
 
+  private List<OnSuccessListener> onSuccessListeners = new ArrayList<>();
+
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -99,11 +105,11 @@ public class AddServiceDialogFragment extends DialogFragment {
   public void onStart() {
     super.onStart();
 
-    Button positiveButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE);
+    Button positiveButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE);
     positiveButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
     positiveButton.setOnClickListener(new OnPositiveButtonClickedListener());
 
-    Button negativeButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE);
+    Button negativeButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE);
     negativeButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
     negativeButton.setOnClickListener(new OnNegativeButtonClickedListener());
   }
@@ -115,6 +121,12 @@ public class AddServiceDialogFragment extends DialogFragment {
     horizontalShakeAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.horizontal_shake);
 
     initializeNumberPickers();
+  }
+
+  public void addOnSuccessListener(OnSuccessListener listener) {
+    if (!onSuccessListeners.contains(listener)) {
+      onSuccessListeners.add(listener);
+    }
   }
 
   private void initializeNumberPickers() {
@@ -206,6 +218,12 @@ public class AddServiceDialogFragment extends DialogFragment {
         return;
       }
 
+      if (!checkLabelAvailable(label)) {
+        labelTextInputLayout.startAnimation(horizontalShakeAnimation);
+        labelEditText.setError(getString(R.string.fragment_add_service_dialog_label_used));
+        return;
+      }
+
       if (!validateAddress(address)) {
         addressTextInputLayout.startAnimation(horizontalShakeAnimation);
         addressEditText.setError(getString(R.string.fragment_add_service_dialog_address_incorrect));
@@ -217,9 +235,19 @@ public class AddServiceDialogFragment extends DialogFragment {
         return;
       }
 
-      // TODO: Add persistence.
+      Service service = new Service(label, address, port);
+      service.save();
+
+      for (OnSuccessListener listener : onSuccessListeners) {
+        listener.onSuccess(service.getId());
+      }
 
       dismiss();
+    }
+
+    private boolean checkLabelAvailable(String label) {
+      List<Service> services = new Select().from(Service.class).where("Label = ?", label).execute();
+      return services.isEmpty();
     }
   }
 
@@ -229,5 +257,10 @@ public class AddServiceDialogFragment extends DialogFragment {
     public void onClick(View view) {
       dismiss();
     }
+  }
+
+  public interface OnSuccessListener {
+
+    void onSuccess(long id);
   }
 }

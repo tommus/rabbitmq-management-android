@@ -2,15 +2,6 @@
 
 <resources>
 
-  <eat-comment />
-
-  <string-array name="services">
-    <item>Alpha</item>
-    <item>Bravo</item>
-    <item>Charlie</item>
-    <item>Delta</item>
-    <item>Echo</item>
-    <item>Foxtrot</item>
-  </string-array>
+  <eat-comment/>
 
 </resources>
