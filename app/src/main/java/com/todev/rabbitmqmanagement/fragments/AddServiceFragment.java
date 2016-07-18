@@ -160,8 +160,12 @@ public class AddServiceFragment extends DialogFragment {
   }
 
   private boolean validateLabel(String label) {
-    // TODO: Check whether label is not already used.
-    return !label.isEmpty();
+    if (label.isEmpty()) {
+      return false;
+    }
+
+    List<Service> services = new Select().from(Service.class).where("Label = ?", label).execute();
+    return services.isEmpty();
   }
 
   private boolean validateAddress(String address) {
@@ -218,12 +222,6 @@ public class AddServiceFragment extends DialogFragment {
         return;
       }
 
-      if (!isLabelAvailable(service.getLabel())) {
-        labelTextInputLayout.startAnimation(horizontalShakeAnimation);
-        labelEditText.setError(getString(R.string.fragment_add_service_dialog_label_used));
-        return;
-      }
-
       if (!validateAddress(service.getAddress())) {
         addressTextInputLayout.startAnimation(horizontalShakeAnimation);
         addressEditText.setError(getString(R.string.fragment_add_service_dialog_address_incorrect));
@@ -242,11 +240,6 @@ public class AddServiceFragment extends DialogFragment {
       }
 
       dismiss();
-    }
-
-    private boolean isLabelAvailable(String label) {
-      List<Service> services = new Select().from(Service.class).where("Label = ?", label).execute();
-      return services.isEmpty();
     }
   }
 
