@@ -24,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
-import com.activeandroid.query.Select;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.database.Service;
 import java.util.Collections;
@@ -32,7 +31,7 @@ import java.util.List;
 
 public class ServicesAdapter extends ArrayAdapter<Service> {
 
-  private List<Service> items = new Select().from(Service.class).execute();
+  private List<Service> items = Service.all();
 
   public ServicesAdapter(Context context) {
     super(context, 0);

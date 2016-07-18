@@ -35,7 +35,6 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.activeandroid.query.Select;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.database.Service;
 import java.lang.reflect.Method;
@@ -160,12 +159,7 @@ public class AddServiceFragment extends DialogFragment {
   }
 
   private boolean validateLabel(String label) {
-    if (label.isEmpty()) {
-      return false;
-    }
-
-    List<Service> services = new Select().from(Service.class).where("Label = ?", label).execute();
-    return services.isEmpty();
+    return !label.isEmpty() && !Service.exists(label);
   }
 
   private boolean validateAddress(String address) {

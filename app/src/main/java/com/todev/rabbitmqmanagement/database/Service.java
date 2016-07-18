@@ -21,6 +21,8 @@ import android.support.annotation.NonNull;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+import java.util.List;
 
 @Table(name = "Services")
 public class Service extends Model implements Comparable<Service> {
@@ -45,6 +47,11 @@ public class Service extends Model implements Comparable<Service> {
     this.port = port;
   }
 
+  @Override
+  public int compareTo(@NonNull Service service) {
+    return getLabel().compareTo(service.getLabel());
+  }
+
   public String getLabel() {
     return label;
   }
@@ -57,8 +64,19 @@ public class Service extends Model implements Comparable<Service> {
     return port;
   }
 
-  @Override
-  public int compareTo(@NonNull Service service) {
-    return getLabel().compareTo(service.getLabel());
+  public static List<Service> all() {
+    return new Select().from(Service.class).execute();
+  }
+
+  public static Service singleByLabel(String label) {
+    return new Select().from(Service.class).where("Label = ?", label).executeSingle();
+  }
+
+  public static List<Service> listByLabel(String label) {
+    return new Select().from(Service.class).where("Label = ?", label).execute();
+  }
+
+  public static boolean exists(String label) {
+    return new Select().from(Service.class).where("Label = ?").exists();
   }
 }

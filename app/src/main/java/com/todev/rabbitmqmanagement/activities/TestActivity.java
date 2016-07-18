@@ -26,7 +26,7 @@ public class TestActivity extends AppCompatActivity {
 
   protected static final String TAG = TestActivity.class.getSimpleName();
 
-  protected RabbitMqService rabbitMqService = RabbitMqService.Json.createService();
+  protected RabbitMqService rabbitMqService = RabbitMqService.Json.createTestService();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

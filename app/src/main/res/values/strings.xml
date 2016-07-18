@@ -14,6 +14,11 @@
   <string name="add">Add</string>
   <string name="find">Find</string>
 
+  <string name="service_unreachable">The service is unreachable</string>
+
+  <string name="activity_login_login_missing">Enter user login</string>
+  <string name="activity_login_password_missing">Enter user password</string>
+  <string name="activity_login_credentials_invalid">User credentials invalid</string>
   <string name="activity_login_remember">Remember configuration.</string>
 
   <string name="fragment_add_service_dialog_title">Provide RabbitMQ service details</string>

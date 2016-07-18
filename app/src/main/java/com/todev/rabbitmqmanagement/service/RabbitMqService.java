@@ -66,9 +66,15 @@ public interface RabbitMqService {
 
   String CONTENT_TYPE = "application/json";
 
-  String TEST_URL = "http://192.168.1.129:15672/api/";
+  String URL_FORMAT = "http://%s:%d/api/";
 
-  String TEST_TOKEN = "Basic dG9tbXVzOnRvbW11cw==";
+  String TEST_URL = "192.168.3.150";
+
+  int TEST_PORT = 15672;
+
+  String TEST_USERNAME = "tommus";
+
+  String TEST_PASSWORD = "tommus";
 
   @GET("overview")
   Call<Overview> getOverview();
@@ -344,18 +350,23 @@ public interface RabbitMqService {
   }
 
   class Json {
-    public static RabbitMqService createService() {
-      OkHttpClient httpClient =
-          new OkHttpClient.Builder().addInterceptor(new AuthorizationInterceptor(TEST_TOKEN))
-              .addInterceptor(new ContentTypeInterceptor(CONTENT_TYPE))
-              .build();
+    public static RabbitMqService createService(String url, int port, String username,
+        String password) {
+      OkHttpClient httpClient = new OkHttpClient.Builder().addInterceptor(
+          new AuthorizationInterceptor(username, password))
+          .addInterceptor(new ContentTypeInterceptor(CONTENT_TYPE))
+          .build();
 
-      Retrofit retrofit = new Retrofit.Builder().baseUrl(TEST_URL)
+      Retrofit retrofit = new Retrofit.Builder().baseUrl(String.format(URL_FORMAT, url, port))
           .addConverterFactory(JacksonConverterFactory.create())
           .client(httpClient)
           .build();
 
       return retrofit.create(RabbitMqService.class);
+    }
+
+    public static RabbitMqService createTestService() {
+      return createService(TEST_URL, TEST_PORT, TEST_USERNAME, TEST_PASSWORD);
     }
   }
 }
