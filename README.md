@@ -8,7 +8,7 @@ This application targets Android 4.0 version and newer.
 
 ## Dependencies
 
-This applications takes advantage of the fantastic work of the authors of such libraries as:
+This application takes advantage of the fantastic work of the authors of such libraries as:
 
 1. [Butter Knife][1] by Jake Wharton
 2. [Retrofit][2] and [OkHttp][3] by Square
