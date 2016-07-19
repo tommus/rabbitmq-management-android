@@ -126,6 +126,21 @@ public class LoginActivity extends AppCompatActivity {
     }
   }
 
+  private void saveSharedPreferences() {
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+    editor.putString(getString(R.string.shared_preferences_last_used_login), loginEditText.getText().toString());
+
+    editor.putString(getString(R.string.shared_preferences_last_used_password), passwordEditText.getText().toString());
+
+    editor.putInt(getString(R.string.shared_preferences_last_used_service), serviceSpinner.getSelectedItemPosition());
+
+    editor.putBoolean(getString(R.string.shared_preferences_remember_credentials),
+        rememberConfigurationCheckBox.isChecked());
+
+    editor.apply();
+  }
+
   private boolean validateLogin(String login) {
     return login.length() > 0;
   }
@@ -166,19 +181,7 @@ public class LoginActivity extends AppCompatActivity {
         return;
       }
 
-      SharedPreferences.Editor editor = sharedPreferences.edit();
-
-      editor.putString(getString(R.string.shared_preferences_last_used_login), loginEditText.getText().toString());
-
-      editor.putString(getString(R.string.shared_preferences_last_used_password),
-          passwordEditText.getText().toString());
-
-      editor.putInt(getString(R.string.shared_preferences_last_used_service), serviceSpinner.getSelectedItemPosition());
-
-      editor.putBoolean(getString(R.string.shared_preferences_remember_credentials),
-          rememberConfigurationCheckBox.isChecked());
-
-      editor.apply();
+      saveSharedPreferences();
 
       Intent intent = new Intent(LoginActivity.this, OverviewActivity.class);
       startActivity(intent);
