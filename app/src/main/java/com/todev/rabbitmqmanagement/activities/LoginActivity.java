@@ -19,7 +19,7 @@ import butterknife.OnClick;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.adapters.ServicesAdapter;
 import com.todev.rabbitmqmanagement.database.Service;
-import com.todev.rabbitmqmanagement.fragments.AddServiceFragment;
+import com.todev.rabbitmqmanagement.fragments.dialogs.AddServiceFragment;
 import com.todev.rabbitmqmanagement.models.users.User;
 import com.todev.rabbitmqmanagement.service.RabbitMqService;
 import retrofit2.Call;
