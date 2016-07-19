@@ -4,7 +4,14 @@
 
   <eat-comment/>
 
-  <string name="app_name">RabbitMQ Management</string>
+  <string name="app_name" translatable="false">RabbitMQ Management</string>
+
+  <string name="shared_preferences_key" translatable="false">com.todev.rabbitmqmanagement.SHARED_PREFERENCES_KEY</string>
+
+  <string name="shared_preferences_last_used_service" translatable="false">LAST_USED_SERVICE</string>
+  <string name="shared_preferences_last_used_login" translatable="false">LAST_USED_LOGIN</string>
+  <string name="shared_preferences_last_used_password" translatable="false">LAST_USED_PASSWORD</string>
+  <string name="shared_preferences_remember_credentials" translatable="false">REMEMBER_CREDENTIALS</string>
 
   <string name="content_description_rabbitmq_logo">RabbitMQ logo</string>
   <string name="content_description_fragment_add_service_search">Search for available services.</string>

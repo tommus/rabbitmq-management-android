@@ -25,8 +25,7 @@ import java.io.IOException;
 
 public class ExchangeTypeSerializer extends JsonSerializer<Exchange.Type> {
   @Override
-  public void serialize(Exchange.Type value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(Exchange.Type value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
     gen.writeString(value.toString().toLowerCase());
   }
 }

@@ -47,6 +47,22 @@ public class Service extends Model implements Comparable<Service> {
     this.port = port;
   }
 
+  public static List<Service> all() {
+    return new Select().from(Service.class).execute();
+  }
+
+  public static Service singleByLabel(String label) {
+    return new Select().from(Service.class).where("Label = ?", label).executeSingle();
+  }
+
+  public static List<Service> listByLabel(String label) {
+    return new Select().from(Service.class).where("Label = ?", label).execute();
+  }
+
+  public static boolean exists(String label) {
+    return new Select().from(Service.class).where("Label = ?").exists();
+  }
+
   @Override
   public int compareTo(@NonNull Service service) {
     return getLabel().compareTo(service.getLabel());
@@ -62,21 +78,5 @@ public class Service extends Model implements Comparable<Service> {
 
   public int getPort() {
     return port;
-  }
-
-  public static List<Service> all() {
-    return new Select().from(Service.class).execute();
-  }
-
-  public static Service singleByLabel(String label) {
-    return new Select().from(Service.class).where("Label = ?", label).executeSingle();
-  }
-
-  public static List<Service> listByLabel(String label) {
-    return new Select().from(Service.class).where("Label = ?", label).execute();
-  }
-
-  public static boolean exists(String label) {
-    return new Select().from(Service.class).where("Label = ?").exists();
   }
 }

@@ -25,8 +25,7 @@ import java.io.IOException;
 
 public class ActionTypeSerializer extends JsonSerializer<Action.Type> {
   @Override
-  public void serialize(Action.Type value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(Action.Type value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
     gen.writeString(value.toString().toLowerCase());
   }
 }

@@ -50,8 +50,8 @@ public class Policy {
     // Jackson requires presence of empty constructor.
   }
 
-  public Policy(@NonNull String pattern, @NonNull Map<String, String> definition,
-      @Nullable Integer priority, @Nullable String applyTo) {
+  public Policy(@NonNull String pattern, @NonNull Map<String, String> definition, @Nullable Integer priority,
+      @Nullable String applyTo) {
     this.pattern = pattern;
     this.definition = definition;
     this.priority = priority;

@@ -93,9 +93,7 @@ public class AddServiceFragment extends DialogFragment {
 
     ButterKnife.bind(this, view);
 
-    builder.setView(view)
-        .setPositiveButton(android.R.string.ok, null)
-        .setNegativeButton(android.R.string.cancel, null);
+    builder.setView(view).setPositiveButton(android.R.string.ok, null).setNegativeButton(android.R.string.cancel, null);
 
     return builder.create();
   }
@@ -130,8 +128,7 @@ public class AddServiceFragment extends DialogFragment {
 
   private void initializeNumberPickers() {
     NumberPicker[] pickers = new NumberPicker[] {
-        portNumberPicker10000, portNumberPicker1000, portNumberPicker100, portNumberPicker10,
-        portNumberPicker1
+        portNumberPicker10000, portNumberPicker1000, portNumberPicker100, portNumberPicker10, portNumberPicker1
     };
 
     for (int i = 0; i < pickers.length; ++i) {
@@ -163,12 +160,16 @@ public class AddServiceFragment extends DialogFragment {
   }
 
   private boolean validateAddress(String address) {
-    return Patterns.IP_ADDRESS.matcher(address).matches() || Patterns.WEB_URL.matcher(address)
-        .matches();
+    return Patterns.IP_ADDRESS.matcher(address).matches() || Patterns.WEB_URL.matcher(address).matches();
   }
 
   private boolean validatePort(int port) {
     return port > 1024 && port <= 65535;
+  }
+
+  public interface OnSuccessListener {
+
+    void onSuccess(long id);
   }
 
   private class OnValueChangeListener implements NumberPicker.OnValueChangeListener {
@@ -207,8 +208,7 @@ public class AddServiceFragment extends DialogFragment {
     @Override
     public void onClick(View view) {
       Service service =
-          new Service(labelEditText.getText().toString(), addressEditText.getText().toString(),
-              combinePort());
+          new Service(labelEditText.getText().toString(), addressEditText.getText().toString(), combinePort());
 
       if (!validateLabel(service.getLabel())) {
         labelTextInputLayout.startAnimation(horizontalShakeAnimation);
@@ -243,10 +243,5 @@ public class AddServiceFragment extends DialogFragment {
     public void onClick(View view) {
       dismiss();
     }
-  }
-
-  public interface OnSuccessListener {
-
-    void onSuccess(long id);
   }
 }

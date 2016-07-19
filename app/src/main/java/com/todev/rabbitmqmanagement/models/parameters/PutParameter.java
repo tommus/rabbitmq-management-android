@@ -38,8 +38,7 @@ public class PutParameter {
   @JsonProperty(value = "vhost")
   protected String vhost;
 
-  public PutParameter(@NonNull String vhost, @NonNull String component, @NonNull String name,
-      @NonNull String value) {
+  public PutParameter(@NonNull String vhost, @NonNull String component, @NonNull String name, @NonNull String value) {
     this.vhost = vhost;
     this.component = component;
     this.name = name;

@@ -39,8 +39,7 @@ public class Requirements {
   @JsonProperty(value = "truncate")
   protected Long truncate;
 
-  public Requirements(int count, boolean requeue, @NonNull String encoding,
-      @Nullable Long truncate) {
+  public Requirements(int count, boolean requeue, @NonNull String encoding, @Nullable Long truncate) {
     this.count = count;
     this.requeue = requeue;
     this.encoding = encoding;

@@ -114,8 +114,7 @@ public interface RabbitMqService {
   Call<Connection> getConnection(@Path("name") @NonNull String name);
 
   @DELETE("connections/{name}")
-  Call<Void> deleteConnection(@Path("name") @NonNull String name,
-      @Header(Headers.X_REASON) @Nullable String reason);
+  Call<Void> deleteConnection(@Path("name") @NonNull String name, @Header(Headers.X_REASON) @Nullable String reason);
 
   @GET("connections/{name}/channels")
   Call<List<Channel>> getConnectionChannels(@Path("name") @NonNull String connection);
@@ -142,16 +141,15 @@ public interface RabbitMqService {
   Call<List<ExtendedExchange>> getExchanges(@Path("vhost") @NonNull String vhost);
 
   @GET("exchanges/{vhost}/{exchange}")
-  Call<ExtendedExchange> getExchange(@Path("vhost") @NonNull String vhost,
-      @Path("exchange") @NonNull String exchange);
+  Call<ExtendedExchange> getExchange(@Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange);
 
   @PUT("exchanges/{vhost}/{exchange}")
-  Call<Void> putExchange(@Path("vhost") @NonNull String vhost,
-      @Path("exchange") @NonNull String exchange, @Body @NonNull Exchange body);
+  Call<Void> putExchange(@Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
+      @Body @NonNull Exchange body);
 
   @DELETE("exchanges/{vhost}/{exchange}")
-  Call<Void> deleteExchange(@Path("vhost") @NonNull String vhost,
-      @Path("exchange") @NonNull String exchange, @Query("if-unused") @Nullable Boolean ifUnused);
+  Call<Void> deleteExchange(@Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
+      @Query("if-unused") @Nullable Boolean ifUnused);
 
   @GET("exchanges/{vhost}/{exchange}/bindings/source")
   Call<List<Binding>> getSourceBindings(@Path("vhost") @NonNull String vhost,
@@ -172,8 +170,7 @@ public interface RabbitMqService {
   Call<List<ExtendedQueue>> getQueues(@Path("vhost") @NonNull String vhost);
 
   @GET("queues/{vhost}/{queue}")
-  Call<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost,
-      @Path("queue") @NonNull String queue);
+  Call<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
 
   @PUT("queues/{vhost}/{queue}")
   Call<Void> putQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
@@ -184,8 +181,7 @@ public interface RabbitMqService {
       @Query("if-empty") @Nullable Boolean ifEmpty, @Query("if-unused") @Nullable Boolean ifUnused);
 
   @GET("queues/{vhost}/{queue}/bindings")
-  Call<List<Binding>> getQueueBindings(@Path("vhost") @NonNull String vhost,
-      @Path("queue") @NonNull String queue);
+  Call<List<Binding>> getQueueBindings(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
 
   @DELETE("queues/{vhost}/{queue}/contents")
   Call<Void> purgeQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
@@ -195,8 +191,8 @@ public interface RabbitMqService {
       @Body @NonNull Action body);
 
   @POST("queues/{vhost}/{queue}/get")
-  Call<List<Message>> getMessages(@Path("vhost") @NonNull String vhost,
-      @Path("queue") @NonNull String queue, @Body @NonNull Requirements body);
+  Call<List<Message>> getMessages(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
+      @Body @NonNull Requirements body);
 
   @GET("bindings")
   Call<List<Binding>> getBindings();
@@ -205,14 +201,12 @@ public interface RabbitMqService {
   Call<List<Binding>> getBindings(@Path("vhost") @NonNull String vhost);
 
   @GET("bindings/{vhost}/e/{exchange}/q/{queue}")
-  Call<List<ExtendedBinding>> getBindingsBetweenExchangeAndQueue(
-      @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
-      @Path("queue") @NonNull String queue);
+  Call<List<ExtendedBinding>> getBindingsBetweenExchangeAndQueue(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue);
 
   @POST("bindings/{vhost}/e/{exchange}/q/{queue}")
   Call<Void> postBindingsBetweenExchangeAndQueue(@Path("vhost") @NonNull String vhost,
-      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
-      @Body @NonNull Binding body);
+      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue, @Body @NonNull Binding body);
 
   @GET("bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
   Call<ExtendedBinding> getBindingsBetweenExchangeAndQueue(@Path("vhost") String vhost,
@@ -226,13 +220,11 @@ public interface RabbitMqService {
 
   @GET("bindings/{vhost}/e/{source}/e/{destination}")
   Call<List<ExtendedBinding>> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
-      @Path("source") @NonNull String srcExchange,
-      @Path("destination") @NonNull String dstExchange);
+      @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange);
 
   @POST("bindings/{vhost}/e/{source}/e/{destination}")
-  Call<Void> postBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
-      @Path("source") @NonNull String source, @Path("destination") @NonNull String destination,
-      @Body @NonNull Binding body);
+  Call<Void> postBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost, @Path("source") @NonNull String source,
+      @Path("destination") @NonNull String destination, @Body @NonNull Binding body);
 
   @GET("bindings/{vhost}/e/{source}/e/{destination}/{props}")
   Call<ExtendedBinding> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
@@ -281,16 +273,14 @@ public interface RabbitMqService {
   Call<List<Permission>> getPermissions();
 
   @GET("permissions/{vhost}/{user}")
-  Call<Permission> getPermission(@Path("vhost") @NonNull String vhost,
-      @Path("user") @NonNull String user);
+  Call<Permission> getPermission(@Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
 
   @PUT("permissions/{vhost}/{user}")
   Call<Void> putPermission(@Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user,
       @Body @NonNull Permission body);
 
   @DELETE("permissions/{vhost}/{user}")
-  Call<Void> deletePermission(@Path("vhost") @NonNull String vhost,
-      @Path("user") @NonNull String user);
+  Call<Void> deletePermission(@Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
 
   @GET("parameters")
   Call<List<Parameter>> getParameters();
@@ -303,17 +293,16 @@ public interface RabbitMqService {
       @Path("vhost") @NonNull String vhost);
 
   @GET("parameters/{component}/{vhost}/{parameter}")
-  Call<Parameter> getParameter(@Path("component") @NonNull String component,
-      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter);
+  Call<Parameter> getParameter(@Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
+      @Path("parameter") @NonNull String parameter);
 
   @PUT("parameters/{component}/{vhost}/{parameter}")
-  Call<Void> putParameter(@Path("component") @NonNull String component,
-      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter,
-      @Body @NonNull PutParameter body);
+  Call<Void> putParameter(@Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
+      @Path("parameter") @NonNull String parameter, @Body @NonNull PutParameter body);
 
   @DELETE("parameters/{component}/{vhost}/{parameter}")
-  Call<Void> deleteParameter(@Path("component") @NonNull String component,
-      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter);
+  Call<Void> deleteParameter(@Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
+      @Path("parameter") @NonNull String parameter);
 
   @GET("policies")
   Call<List<Policy>> getPolicies();
@@ -322,16 +311,14 @@ public interface RabbitMqService {
   Call<List<Policy>> getPolicies(@Path("vhost") @NonNull String vhost);
 
   @GET("policies/{vhost}/{policy}")
-  Call<Policy> getPolicy(@Path("vhost") @NonNull String vhost,
-      @Path("policy") @NonNull String policy);
+  Call<Policy> getPolicy(@Path("vhost") @NonNull String vhost, @Path("policy") @NonNull String policy);
 
   @PUT("policies/{vhost}/{policy}")
   Call<Void> putPolicy(@Path("vhost") @NonNull String vhost, @Path("policy") @NonNull String policy,
       @Body @NonNull Policy body);
 
   @DELETE("policies/{vhost}/{policy}")
-  Call<Void> deletePolicy(@Path("vhost") @NonNull String vhost,
-      @Path("policy") @NonNull String policy);
+  Call<Void> deletePolicy(@Path("vhost") @NonNull String vhost, @Path("policy") @NonNull String policy);
 
   @GET("aliveness-test/{vhost}")
   Call<Check> checkAlive(@Path("vhost") @NonNull String vhost);
@@ -350,12 +337,11 @@ public interface RabbitMqService {
   }
 
   class Json {
-    public static RabbitMqService createService(String url, int port, String username,
-        String password) {
-      OkHttpClient httpClient = new OkHttpClient.Builder().addInterceptor(
-          new AuthorizationInterceptor(username, password))
-          .addInterceptor(new ContentTypeInterceptor(CONTENT_TYPE))
-          .build();
+    public static RabbitMqService createService(String url, int port, String username, String password) {
+      OkHttpClient httpClient =
+          new OkHttpClient.Builder().addInterceptor(new AuthorizationInterceptor(username, password))
+              .addInterceptor(new ContentTypeInterceptor(CONTENT_TYPE))
+              .build();
 
       Retrofit retrofit = new Retrofit.Builder().baseUrl(String.format(URL_FORMAT, url, port))
           .addConverterFactory(JacksonConverterFactory.create())

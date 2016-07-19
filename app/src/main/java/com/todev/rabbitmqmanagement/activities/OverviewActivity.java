@@ -20,17 +20,12 @@ package com.todev.rabbitmqmanagement.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.service.RabbitMqService;
 
-public class TestActivity extends AppCompatActivity {
-
-  protected static final String TAG = TestActivity.class.getSimpleName();
-
-  protected RabbitMqService rabbitMqService = RabbitMqService.Json.createTestService();
+public class OverviewActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_test);
+    setContentView(R.layout.activity_overview);
   }
 }

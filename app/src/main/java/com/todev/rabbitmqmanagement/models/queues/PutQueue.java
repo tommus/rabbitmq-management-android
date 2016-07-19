@@ -22,8 +22,8 @@ public class PutQueue {
   @JsonProperty(value = "node")
   protected String node;
 
-  public PutQueue(@Nullable Boolean autoDelete, @Nullable Boolean durable,
-      @Nullable Map<String, String> arguments, @Nullable String node) {
+  public PutQueue(@Nullable Boolean autoDelete, @Nullable Boolean durable, @Nullable Map<String, String> arguments,
+      @Nullable String node) {
     this.autoDelete = autoDelete;
     this.durable = durable;
     this.arguments = arguments;

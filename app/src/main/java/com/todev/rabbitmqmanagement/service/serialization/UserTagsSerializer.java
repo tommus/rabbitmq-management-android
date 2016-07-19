@@ -26,8 +26,7 @@ import java.util.List;
 
 public class UserTagsSerializer extends JsonSerializer<List<User.Tag>> {
   @Override
-  public void serialize(List<User.Tag> value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(List<User.Tag> value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
     StringBuilder builder = new StringBuilder();
     for (User.Tag tag : value) {
       builder.append(tag.toString().toLowerCase());
