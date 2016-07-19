@@ -54,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
 
   private SharedPreferences sharedPreferences;
 
-  private RabbitMqService rabbitMqService;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
@@ -97,7 +95,8 @@ public class LoginActivity extends AppCompatActivity {
       return;
     }
 
-    rabbitMqService = RabbitMqService.Json.createService(service.getAddress(), service.getPort(), login, password);
+    RabbitMqService rabbitMqService =
+        RabbitMqService.Json.createService(service.getAddress(), service.getPort(), login, password);
 
     rabbitMqService.whoAmI().enqueue(new LoginResponseCallback());
   }
