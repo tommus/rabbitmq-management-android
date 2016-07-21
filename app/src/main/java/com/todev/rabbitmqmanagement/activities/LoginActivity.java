@@ -127,6 +127,8 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   private void saveSharedPreferences() {
+    Service service = (Service) serviceSpinner.getSelectedItem();
+
     SharedPreferences.Editor editor = sharedPreferences.edit();
 
     editor.putString(getString(R.string.shared_preferences_last_used_login), loginEditText.getText().toString());
@@ -134,6 +136,10 @@ public class LoginActivity extends AppCompatActivity {
     editor.putString(getString(R.string.shared_preferences_last_used_password), passwordEditText.getText().toString());
 
     editor.putInt(getString(R.string.shared_preferences_last_used_service), serviceSpinner.getSelectedItemPosition());
+
+    editor.putString(getString(R.string.shared_preferences_last_used_service_url), service.getAddress());
+
+    editor.putInt(getString(R.string.shared_preferences_last_used_service_port), service.getPort());
 
     editor.putBoolean(getString(R.string.shared_preferences_remember_credentials),
         rememberConfigurationCheckBox.isChecked());

@@ -19,10 +19,52 @@ package com.todev.rabbitmqmanagement.models.overview;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.todev.rabbitmqmanagement.models.Details;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class QueueTotals {
 
-  // TODO: To be implemented.
+  @JsonProperty(value = "messages")
+  protected int messages;
+
+  @JsonProperty(value = "messages_details")
+  protected Details messagesDetails;
+
+  @JsonProperty(value = "messages_ready")
+  protected int messagesReady;
+
+  @JsonProperty(value = "messages_ready_details")
+  protected Details messagesReadyDetails;
+
+  @JsonProperty(value = "messages_unacknowledged")
+  protected int messagesUnacknowledged;
+
+  @JsonProperty(value = "messages_unacknowledged_details")
+  protected Details messagesUnacknowledgedDetails;
+
+  public int getMessages() {
+    return messages;
+  }
+
+  public Details getMessagesDetails() {
+    return messagesDetails;
+  }
+
+  public int getMessagesReady() {
+    return messagesReady;
+  }
+
+  public Details getMessagesReadyDetails() {
+    return messagesReadyDetails;
+  }
+
+  public int getMessagesUnacknowledged() {
+    return messagesUnacknowledged;
+  }
+
+  public Details getMessagesUnacknowledgedDetails() {
+    return messagesUnacknowledgedDetails;
+  }
 }

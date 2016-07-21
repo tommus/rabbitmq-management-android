@@ -25,7 +25,10 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".activities.OverviewActivity"/>
+    <activity
+        android:name=".activities.OverviewActivity"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"/>
 
     <meta-data
         android:name="AA_DB_NAME"

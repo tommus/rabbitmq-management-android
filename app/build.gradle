@@ -22,8 +22,10 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
-  compile group: 'com.android.support', name: 'appcompat-v7', version: '24.0.0'
-  compile group: 'com.android.support', name: 'design', version: '24.0.0'
+  compile group: 'com.android.support', name: 'appcompat-v7', version: '24.1.0'
+  compile group: 'com.android.support', name: 'cardview-v7', version: '24.1.0'
+  compile group: 'com.android.support', name: 'design', version: '24.1.0'
+  compile group: 'com.github.philjay', name: 'mpandroidchart', version: 'v3.0.0-beta1'
   compile group: 'com.jakewharton', name: 'butterknife', version: '8.0.1'
   compile group: 'com.michaelpardo', name: 'activeandroid', version: '3.1.0-SNAPSHOT'
   compile group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.0.2'
@@ -36,4 +38,5 @@ dependencies {
 
 repositories {
   maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+  maven { url "https://jitpack.io" }
 }

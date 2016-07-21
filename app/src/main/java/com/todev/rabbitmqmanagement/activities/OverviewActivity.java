@@ -18,14 +18,45 @@
 package com.todev.rabbitmqmanagement.activities;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.fragments.QueuedMessagesFragment;
 
 public class OverviewActivity extends AppCompatActivity {
+
+  @BindView(R.id.activity_overview)
+  View rootView;
+
+  QueuedMessagesFragment queuedMessagesFragment;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_overview);
+
+    ButterKnife.bind(this);
+
+    queuedMessagesFragment =
+        (QueuedMessagesFragment) getSupportFragmentManager().findFragmentById(R.id.queued_messages_fragment);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+
+    if (queuedMessagesFragment.getView() != null) {
+      animate(queuedMessagesFragment.getView(), rootView);
+    }
+  }
+
+  private void animate(@NonNull View view, @NonNull View parent) {
+    view.animate().cancel();
+    view.setAlpha(0);
+    view.setTranslationY(parent.getHeight());
+    view.animate().alpha(1f).translationY(0).setDuration(600).setStartDelay(400);
   }
 }

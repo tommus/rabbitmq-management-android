@@ -8,6 +8,15 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+    <item name="actionBarStyle">@style/RabbitmqManagement.ActionBar</item>
+  </style>
+
+  <style name="RabbitmqManagement.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+    <item name="titleTextStyle">@style/RabbitmqManagement.ActionBar.Text.Title</item>
+  </style>
+
+  <style name="RabbitmqManagement.ActionBar.Text.Title" parent="@style/TextAppearance.AppCompat.Widget.ActionMode.Title">
+    <item name="android:textColor">@android:color/white</item>
   </style>
 
   <style name="RabbitmqManagement.Widget">
@@ -35,5 +44,7 @@
   <style name="RabbitmqManagement.Widget.Colored.NumberPicker">
     <item name="android:textColorPrimary">@color/colorPrimary</item>
   </style>
+
+  <style name="Login.Widget.CardView.Button" parent="Widget.AppCompat.Button.Borderless.Colored"/>
 
 </resources>
