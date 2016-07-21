@@ -45,6 +45,4 @@
     <item name="android:textColorPrimary">@color/colorPrimary</item>
   </style>
 
-  <style name="Login.Widget.CardView.Button" parent="Widget.AppCompat.Button.Borderless.Colored"/>
-
 </resources>

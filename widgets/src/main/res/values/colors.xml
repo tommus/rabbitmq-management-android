@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <color name="queued_messages_indicator_default_ready_color">#EDC240</color>
+  <color name="queued_messages_indicator_default_unacked_color">#AFD8F8</color>
+  <color name="queued_messages_indicator_default_total_color">#CB4B4B</color>
+
+</resources>

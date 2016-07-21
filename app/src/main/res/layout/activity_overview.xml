@@ -13,12 +13,21 @@
     tools:context=".activities.OverviewActivity"
     >
 
-  <fragment
-      class="com.todev.rabbitmqmanagement.fragments.QueuedMessagesFragment"
-      android:id="@+id/queued_messages_fragment"
+  <com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator
+      xmlns:qmi="http://schemas.android.com/apk/res/com.todev.rabbitmqmanagement"
+      android:id="@+id/queued_messages_indicator"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      tools:layout="@layout/fragment_queued_messages"
+      qmi:idleText="@string/activity_overview_no_data"
+      qmi:readyButtonColor="@color/indicator_messages_ready"
+      qmi:readyLineColor="@color/indicator_messages_ready"
+      qmi:title="@string/activity_overview_queued_messages_title"
+      qmi:totalButtonColor="@color/indicator_messages_total"
+      qmi:totalLineColor="@color/indicator_messages_total"
+      qmi:unackedButtonColor="@color/indicator_messages_unacked"
+      qmi:unackedLineColor="@color/indicator_messages_unacked"
+      qmi:valuesVisible="false"
+      qmi:visibleRange="one_minute"
       />
 
 </RelativeLayout>

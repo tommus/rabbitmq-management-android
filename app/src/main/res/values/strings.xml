@@ -30,6 +30,7 @@
   <string name="activity_login_credentials_invalid">User credentials invalid</string>
   <string name="activity_login_remember">Remember configuration.</string>
 
+  <string name="activity_overview_queued_messages_title">Queued Messages</string>
   <string name="activity_overview_no_data">No data provided yet.</string>
   <string name="activity_overview_button_ready">Ready: %d</string>
   <string name="activity_overview_button_unacked">Unacked: %d</string>

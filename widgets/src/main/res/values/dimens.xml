@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <eat-comment/>
+
+  <dimen name="none">0dp</dimen>
+
+  <dimen name="queued_messages_indicator_elevation">2dp</dimen>
+  <dimen name="queued_messages_indicator_padding">16dp</dimen>
+  <dimen name="queued_messages_indicator_padding_bottom">8dp</dimen>
+  <dimen name="queued_messages_indicator_margin_bottom">8dp</dimen>
+  <dimen name="queued_messages_indicator_chart_min_height">180dp</dimen>
+  <dimen name="queued_messages_indicator_title_size">16sp</dimen>
+
+</resources>

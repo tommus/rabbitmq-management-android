@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+android {
+  buildToolsVersion "24.0.0"
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileSdkVersion 24
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 24
+    versionCode 1
+    versionName "0.0.2"
+  }
+
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  compile group: 'com.android.support', name: 'appcompat-v7', version: '24.1.0'
+  compile group: 'com.android.support', name: 'cardview-v7', version: '24.1.0'
+  compile group: 'com.github.philjay', name: 'mpandroidchart', version: 'v3.0.0-beta1'
+}
+
+repositories {
+  maven { url "https://jitpack.io" }
+}

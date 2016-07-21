@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <eat-comment/>
+
+  <bool name="queued_messages_indicator_default_values_visible">true</bool>
+
+</resources>

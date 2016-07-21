@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <eat-comment/>
+
+  <string name="app_name">RabbitMQ Management Widgets</string>
+
+  <string name="queued_messages_indicator_default_title">Queued Messages</string>
+  <string name="queued_messages_indicator_default_ready_text">Ready</string>
+  <string name="queued_messages_indicator_default_unacked_text">Unacked</string>
+  <string name="queued_messages_indicator_default_total_text">Total</string>
+
+</resources>

@@ -22,6 +22,8 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
+  compile project(':widgets')
+
   compile group: 'com.android.support', name: 'appcompat-v7', version: '24.1.0'
   compile group: 'com.android.support', name: 'cardview-v7', version: '24.1.0'
   compile group: 'com.android.support', name: 'design', version: '24.1.0'
