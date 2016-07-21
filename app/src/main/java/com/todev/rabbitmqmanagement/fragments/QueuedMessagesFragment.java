@@ -38,8 +38,10 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.AxisValueFormatter;
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.models.overview.Overview;
@@ -49,6 +51,7 @@ import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import org.joda.time.LocalDateTime;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,6 +63,8 @@ public class QueuedMessagesFragment extends Fragment {
   private static final int DATA_UNACKED_INDEX = 1;
 
   private static final int DATA_TOTAL_INDEX = 2;
+
+  private static final int VISIBLE_LAST_UPDATES = 60;
 
   @BindView(R.id.queued_messages_line_chart)
   LineChart queuedMessagesLineChart;
@@ -76,6 +81,10 @@ public class QueuedMessagesFragment extends Fragment {
   private RabbitMqService rabbitMqService;
 
   private ScheduledExecutorService executorService;
+
+  private ValueFormatter simpleValueFormatter = new DefaultValueFormatter(0);
+
+  private AxisValueFormatter simpleAxisFormatter = new DefaultAxisValueFormatter(0);
 
   private TimerTask updateTimerTask = new TimerTask() {
     @Override
@@ -159,7 +168,7 @@ public class QueuedMessagesFragment extends Fragment {
     queuedMessagesLineChart.getXAxis().setAxisMinValue(0);
     queuedMessagesLineChart.getXAxis().setGranularity(1f);
     queuedMessagesLineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-    queuedMessagesLineChart.getXAxis().setValueFormatter(new DefaultAxisValueFormatter(0));
+    queuedMessagesLineChart.getXAxis().setValueFormatter(simpleAxisFormatter);
 
     LineData data = new LineData();
     data.setValueTextColor(Color.WHITE);
@@ -195,7 +204,7 @@ public class QueuedMessagesFragment extends Fragment {
     data.notifyDataChanged();
 
     queuedMessagesLineChart.notifyDataSetChanged();
-    queuedMessagesLineChart.setVisibleXRangeMaximum(6);
+    queuedMessagesLineChart.setVisibleXRangeMaximum(VISIBLE_LAST_UPDATES);
     queuedMessagesLineChart.moveViewToX(data.getEntryCount());
   }
 
@@ -210,12 +219,9 @@ public class QueuedMessagesFragment extends Fragment {
     LineDataSet set = new LineDataSet(null, "");
     set.setColor(color);
     set.setCircleColor(color);
-    set.setCircleRadius(4f);
+    set.setCircleRadius(1f);
     set.setFillColor(color);
-    set.setValueTextColor(color);
-    set.setValueFormatter(new DefaultValueFormatter(0));
-    set.setValueTextSize(12f);
-    set.setDrawValues(true);
+    set.setDrawValues(false);
     return set;
   }
 
@@ -228,7 +234,6 @@ public class QueuedMessagesFragment extends Fragment {
     }
 
     set.setVisible(!set.isVisible());
-    set.setDrawValues(!set.isDrawValuesEnabled());
   }
 
   private class OverviewResponseCallback implements Callback<Overview> {
@@ -240,6 +245,8 @@ public class QueuedMessagesFragment extends Fragment {
       }
 
       Overview overview = response.body();
+
+      long now = LocalDateTime.now().toDateTime().getMillis();
 
       updateQueuedMessagesChart(overview.getQueueTotals().getMessagesReady(), DATA_READY_INDEX,
           ContextCompat.getColor(getContext(), R.color.indicator_messages_ready));
