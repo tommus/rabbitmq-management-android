@@ -29,7 +29,6 @@ dependencies {
   compile group: 'com.jakewharton', name: 'butterknife', version: '8.0.1'
   compile group: 'com.michaelpardo', name: 'activeandroid', version: '3.1.0-SNAPSHOT'
   compile group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.0.2'
-  compile group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.0.2'
   compile group: 'com.squareup.retrofit2', name: 'converter-jackson', version: '2.0.2'
   compile group: 'joda-time', name: 'joda-time', version: '2.9.4'
 
