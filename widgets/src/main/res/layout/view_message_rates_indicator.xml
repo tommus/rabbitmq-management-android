@@ -13,21 +13,21 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
-      android:paddingBottom="@dimen/queued_messages_indicator_padding_bottom"
-      android:paddingEnd="@dimen/queued_messages_indicator_padding"
-      android:paddingLeft="@dimen/queued_messages_indicator_padding"
-      android:paddingRight="@dimen/queued_messages_indicator_padding"
-      android:paddingStart="@dimen/queued_messages_indicator_padding"
-      android:paddingTop="@dimen/queued_messages_indicator_padding"
+      android:paddingBottom="@dimen/messages_indicator_padding_bottom"
+      android:paddingEnd="@dimen/messages_indicator_padding"
+      android:paddingLeft="@dimen/messages_indicator_padding"
+      android:paddingRight="@dimen/messages_indicator_padding"
+      android:paddingStart="@dimen/messages_indicator_padding"
+      android:paddingTop="@dimen/messages_indicator_padding"
       >
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/queued_messages_indicator_margin_bottom"
+        android:layout_marginBottom="@dimen/messages_indicator_margin_bottom"
         android:text="@string/queued_messages_indicator_default_title"
-        android:textSize="@dimen/queued_messages_indicator_title_size"
+        android:textSize="@dimen/messages_indicator_title_size"
         android:textStyle="bold"
         />
 
@@ -35,7 +35,7 @@
         android:id="@+id/messages_chart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/queued_messages_indicator_chart_min_height"
+        android:minHeight="@dimen/messages_indicator_chart_min_height"
         />
 
     <TableLayout
@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:text="@string/message_rates_indicator_default_publish_text"
             android:textColor="@color/message_rates_indicator_default_publish_color"
-            style="@style/RabbitmqManagement.Widget.QueuedMessagesIndicator.Button"
+            style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
         <Button
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:text="@string/message_rates_indicator_default_publish_out_text"
             android:textColor="@color/message_rates_indicator_default_publish_out_color"
-            style="@style/RabbitmqManagement.Widget.QueuedMessagesIndicator.Button"
+            style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
         <Button
@@ -75,7 +75,7 @@
             android:layout_weight="1"
             android:text="@string/message_rates_indicator_default_publish_in_text"
             android:textColor="@color/message_rates_indicator_default_publish_in_color"
-            style="@style/RabbitmqManagement.Widget.QueuedMessagesIndicator.Button"
+            style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
       </TableRow>
@@ -92,7 +92,7 @@
             android:layout_weight="1"
             android:text="@string/message_rates_indicator_default_confirm_text"
             android:textColor="@color/message_rates_indicator_default_confirm_color"
-            style="@style/RabbitmqManagement.Widget.QueuedMessagesIndicator.Button"
+            style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
         <Button
@@ -102,7 +102,7 @@
             android:layout_weight="1"
             android:text="@string/message_rates_indicator_default_deliver_text"
             android:textColor="@color/message_rates_indicator_default_deliver_color"
-            style="@style/RabbitmqManagement.Widget.QueuedMessagesIndicator.Button"
+            style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
         <Button
@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:text="@string/message_rates_indicator_default_redelivered_text"
             android:textColor="@color/message_rates_indicator_default_redelivered_color"
-            style="@style/RabbitmqManagement.Widget.QueuedMessagesIndicator.Button"
+            style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
       </TableRow>

@@ -23,4 +23,4 @@ task clean(type: Delete) {
 project.ext.minSdkVersion = 14
 project.ext.targetSdkVersion = 24
 project.ext.versionCode = 1
-project.ext.versionName = '0.0.3'
+project.ext.versionName = '0.0.4'

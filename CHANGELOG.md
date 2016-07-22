@@ -1,4 +1,10 @@
+## 0.0.4 (July 22, 2016)
+
+- New: widget that allows to present message rates stats
+
 ## 0.0.3 (July 22, 2016)
+
+- New: widget that allows to present queued messages stats
 
 - New: mockups for overview activity
 
