@@ -14,20 +14,20 @@
     >
 
   <com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator
-      xmlns:qmi="http://schemas.android.com/apk/res/com.todev.rabbitmqmanagement"
+      xmlns:todevcom="http://schemas.android.com/apk/res-auto"
       android:id="@+id/queued_messages_indicator"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      qmi:idleText="@string/activity_overview_no_data"
-      qmi:readyButtonColor="@color/indicator_messages_ready"
-      qmi:readyLineColor="@color/indicator_messages_ready"
-      qmi:title="@string/activity_overview_queued_messages_title"
-      qmi:totalButtonColor="@color/indicator_messages_total"
-      qmi:totalLineColor="@color/indicator_messages_total"
-      qmi:unackedButtonColor="@color/indicator_messages_unacked"
-      qmi:unackedLineColor="@color/indicator_messages_unacked"
-      qmi:valuesVisible="false"
-      qmi:visibleRange="one_minute"
+      todevcom:idleText="@string/activity_overview_no_data"
+      todevcom:readyButtonColor="@color/indicator_messages_ready"
+      todevcom:readyLineColor="@color/indicator_messages_ready"
+      todevcom:title="@string/activity_overview_queued_messages_title"
+      todevcom:totalButtonColor="@color/indicator_messages_total"
+      todevcom:totalLineColor="@color/indicator_messages_total"
+      todevcom:unackedButtonColor="@color/indicator_messages_unacked"
+      todevcom:unackedLineColor="@color/indicator_messages_unacked"
+      todevcom:valuesVisible="false"
+      todevcom:visibleRange="one_minute"
       />
 
 </RelativeLayout>
