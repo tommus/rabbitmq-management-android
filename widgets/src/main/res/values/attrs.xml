@@ -6,15 +6,15 @@
 
   <declare-styleable name="QueuedMessagesIndicator">
     <attr format="string" name="title"/>
-    <attr format="color" name="readyLineColor"/>
-    <attr format="color" name="readyButtonColor"/>
-    <attr format="color" name="unackedLineColor"/>
-    <attr format="color" name="unackedButtonColor"/>
-    <attr format="color" name="totalLineColor"/>
-    <attr format="color" name="totalButtonColor"/>
-    <attr format="boolean" name="valuesVisible"/>
-    <attr format="string" name="idleText"/>
-    <attr format="enum" name="visibleRange">
+    <attr format="color" name="ready_line_color"/>
+    <attr format="color" name="ready_button_color"/>
+    <attr format="color" name="unacked_line_color"/>
+    <attr format="color" name="unacked_button_color"/>
+    <attr format="color" name="total_line_color"/>
+    <attr format="color" name="total_button_color"/>
+    <attr format="boolean" name="values_visible"/>
+    <attr format="string" name="idle_text"/>
+    <attr format="enum" name="visible_range">
       <enum name="one_minute" value="0"/>
       <enum name="ten_minutes" value="1"/>
       <enum name="one_hour" value="2"/>

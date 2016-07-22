@@ -199,30 +199,30 @@ public class QueuedMessagesIndicator extends FrameLayout {
 
       defaultColor = ContextCompat.getColor(context, android.R.color.black);
 
-      readyLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_readyLineColor,
+      readyLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_ready_line_color,
           ContextCompat.getColor(context, R.color.queued_messages_indicator_default_ready_color));
 
-      readyButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_readyButtonColor,
+      readyButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_ready_button_color,
           ContextCompat.getColor(context, R.color.queued_messages_indicator_default_ready_color));
 
-      unackedLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_unackedLineColor,
+      unackedLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_unacked_line_color,
           ContextCompat.getColor(context, R.color.queued_messages_indicator_default_unacked_color));
 
-      unackedButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_unackedButtonColor,
+      unackedButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_unacked_button_color,
           ContextCompat.getColor(context, R.color.queued_messages_indicator_default_unacked_color));
 
-      totalLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_totalLineColor,
+      totalLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_total_line_color,
           ContextCompat.getColor(context, R.color.queued_messages_indicator_default_total_color));
 
-      totalButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_totalButtonColor,
+      totalButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_total_button_color,
           ContextCompat.getColor(context, R.color.queued_messages_indicator_default_total_color));
 
-      valuesVisible = array.getBoolean(R.styleable.QueuedMessagesIndicator_valuesVisible,
+      valuesVisible = array.getBoolean(R.styleable.QueuedMessagesIndicator_values_visible,
           getResources().getBoolean(R.bool.queued_messages_indicator_default_values_visible));
 
-      idleText = array.getString(R.styleable.QueuedMessagesIndicator_idleText);
+      idleText = array.getString(R.styleable.QueuedMessagesIndicator_idle_text);
 
-      int range = array.getInteger(R.styleable.QueuedMessagesIndicator_visibleRange, 0);
+      int range = array.getInteger(R.styleable.QueuedMessagesIndicator_visible_range, 0);
 
       visibleRange = VisibleRange.fromRange(range);
     } finally {

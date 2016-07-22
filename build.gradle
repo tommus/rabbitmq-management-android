@@ -1,14 +1,16 @@
+allprojects {
+  repositories {
+    jcenter()
+    maven { url "https://jitpack.io" }
+  }
+}
+
 buildscript {
   dependencies {
     classpath group: 'com.android.tools.build', name: 'gradle', version: '2.1.2'
     classpath group: 'com.neenbedankt.gradle.plugins', name: 'android-apt', version: '1.8'
   }
-  repositories {
-    jcenter()
-  }
-}
 
-allprojects {
   repositories {
     jcenter()
   }
@@ -17,3 +19,8 @@ allprojects {
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
+
+project.ext.minSdkVersion = 14
+project.ext.targetSdkVersion = 24
+project.ext.versionCode = 1
+project.ext.versionName = '0.0.3'
