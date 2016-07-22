@@ -1,0 +1,23 @@
+language: android
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-24.0.0
+    - android-24
+    - extra-android-m2repository
+
+branches:
+  only:
+    - master
+
+sudo: false
+
+notifications:
+  email: false
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.gradle
