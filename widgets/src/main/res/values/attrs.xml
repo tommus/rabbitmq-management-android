@@ -4,14 +4,8 @@
 
   <eat-comment/>
 
-  <declare-styleable name="QueuedMessagesIndicator">
+  <declare-styleable name="MessagesIndicator">
     <attr format="string" name="title"/>
-    <attr format="color" name="ready_line_color"/>
-    <attr format="color" name="ready_button_color"/>
-    <attr format="color" name="unacked_line_color"/>
-    <attr format="color" name="unacked_button_color"/>
-    <attr format="color" name="total_line_color"/>
-    <attr format="color" name="total_button_color"/>
     <attr format="boolean" name="values_visible"/>
     <attr format="string" name="idle_text"/>
     <attr format="enum" name="visible_range">
@@ -21,6 +15,30 @@
       <enum name="eight_hours" value="3"/>
       <enum name="one_day" value="4"/>
     </attr>
+  </declare-styleable>
+
+  <declare-styleable name="QueuedMessagesIndicator">
+    <attr format="color" name="ready_line_color"/>
+    <attr format="color" name="ready_button_color"/>
+    <attr format="color" name="unacked_line_color"/>
+    <attr format="color" name="unacked_button_color"/>
+    <attr format="color" name="total_line_color"/>
+    <attr format="color" name="total_button_color"/>
+  </declare-styleable>
+
+  <declare-styleable name="MessageRatesIndicator">
+    <attr format="color" name="publish_line_color"/>
+    <attr format="color" name="publish_button_color"/>
+    <attr format="color" name="confirm_line_color"/>
+    <attr format="color" name="confirm_button_color"/>
+    <attr format="color" name="publish_in_line_color"/>
+    <attr format="color" name="publish_in_button_color"/>
+    <attr format="color" name="publish_out_line_color"/>
+    <attr format="color" name="publish_out_button_color"/>
+    <attr format="color" name="deliver_line_color"/>
+    <attr format="color" name="deliver_button_color"/>
+    <attr format="color" name="redelivered_line_color"/>
+    <attr format="color" name="redelivered_button_color"/>
   </declare-styleable>
 
 </resources>

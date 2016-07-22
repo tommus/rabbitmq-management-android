@@ -1,32 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="none"
     tools:context=".activity.OverviewActivity"
     >
 
-  <com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator
+  <LinearLayout
       xmlns:todev="http://schemas.android.com/apk/res-auto"
-      android:id="@+id/queued_messages_indicator"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      todev:idle_text="@string/activity_overview_no_data"
-      todev:ready_button_color="@color/indicator_messages_ready"
-      todev:ready_line_color="@color/indicator_messages_ready"
-      todev:title="@string/activity_overview_queued_messages_title"
-      todev:total_button_color="@color/indicator_messages_total"
-      todev:total_line_color="@color/indicator_messages_total"
-      todev:unacked_button_color="@color/indicator_messages_unacked"
-      todev:unacked_line_color="@color/indicator_messages_unacked"
-      todev:values_visible="false"
-      todev:visible_range="one_minute"
-      />
+      android:orientation="vertical"
+      >
 
-</RelativeLayout>
+    <com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator
+        android:id="@+id/queued_messages_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        todev:idle_text="@string/activity_overview_no_data"
+        todev:ready_button_color="@color/indicator_messages_ready"
+        todev:ready_line_color="@color/indicator_messages_ready"
+        todev:title="@string/activity_overview_queued_messages_title"
+        todev:total_button_color="@color/indicator_messages_total"
+        todev:total_line_color="@color/indicator_messages_total"
+        todev:unacked_button_color="@color/indicator_messages_unacked"
+        todev:unacked_line_color="@color/indicator_messages_unacked"
+        todev:values_visible="false"
+        todev:visible_range="one_minute"
+        />
+
+    <com.todev.rabbitmqmanagement.widget.MessageRatesIndicator
+        android:id="@+id/message_rates_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        todev:confirm_button_color="@color/message_rates_indicator_default_confirm_color"
+        todev:confirm_line_color="@color/message_rates_indicator_default_confirm_color"
+        todev:deliver_button_color="@color/message_rates_indicator_default_deliver_color"
+        todev:deliver_line_color="@color/message_rates_indicator_default_deliver_color"
+        todev:idle_text="@string/activity_overview_no_data"
+        todev:publish_button_color="@color/message_rates_indicator_default_publish_color"
+        todev:publish_in_button_color="@color/message_rates_indicator_default_publish_in_color"
+        todev:publish_in_line_color="@color/message_rates_indicator_default_publish_in_color"
+        todev:publish_line_color="@color/message_rates_indicator_default_publish_color"
+        todev:publish_out_button_color="@color/message_rates_indicator_default_publish_out_color"
+        todev:publish_out_line_color="@color/message_rates_indicator_default_publish_out_color"
+        todev:redelivered_button_color="@color/message_rates_indicator_default_redelivered_color"
+        todev:redelivered_line_color="@color/message_rates_indicator_default_redelivered_color"
+        todev:title="@string/activity_overview_message_rates_title"
+        todev:values_visible="false"
+        todev:visible_range="one_minute"
+        />
+
+  </LinearLayout>
+
+</ScrollView>

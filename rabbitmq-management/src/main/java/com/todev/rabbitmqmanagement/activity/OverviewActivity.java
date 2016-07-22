@@ -28,6 +28,7 @@ import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.model.overview.Overview;
 import com.todev.rabbitmqmanagement.service.RabbitMqService;
+import com.todev.rabbitmqmanagement.widget.MessageRatesIndicator;
 import com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator;
 import java.util.TimerTask;
 import java.util.concurrent.Executors;
@@ -41,6 +42,9 @@ public class OverviewActivity extends AppCompatActivity {
 
   @BindView(R.id.queued_messages_indicator)
   QueuedMessagesIndicator queuedMessagesIndicator;
+
+  @BindView(R.id.message_rates_indicator)
+  MessageRatesIndicator messageRatesIndicator;
 
   private ScheduledExecutorService executorService;
 
@@ -67,7 +71,9 @@ public class OverviewActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
 
-    animate(queuedMessagesIndicator);
+    animate(queuedMessagesIndicator, 0);
+    animate(messageRatesIndicator, 1);
+
     initializeScheduler();
     startScheduler();
   }
@@ -107,10 +113,10 @@ public class OverviewActivity extends AppCompatActivity {
     }
   }
 
-  private void animate(@NonNull View view) {
+  private void animate(@NonNull View view, int order) {
     view.animate().cancel();
     view.setAlpha(0);
-    view.animate().alpha(1f).setDuration(600).setStartDelay(400);
+    view.animate().alpha(1f).setDuration(600).setStartDelay(400 + order * 300);
   }
 
   private void updateQueuedMessagesIndicator(Response<Overview> response) {
@@ -120,13 +126,38 @@ public class OverviewActivity extends AppCompatActivity {
     int unacked = overview.getQueueTotals().getMessagesUnacknowledged();
     int total = overview.getQueueTotals().getMessages();
 
-    queuedMessagesIndicator.updateChart(ready, QueuedMessagesIndicator.SetIndex.READY);
-    queuedMessagesIndicator.updateChart(unacked, QueuedMessagesIndicator.SetIndex.UNACKED);
-    queuedMessagesIndicator.updateChart(total, QueuedMessagesIndicator.SetIndex.TOTAL);
+    queuedMessagesIndicator.updateChart(ready, QueuedMessagesIndicator.SetIndex.READY.getIndex());
+    queuedMessagesIndicator.updateChart(unacked, QueuedMessagesIndicator.SetIndex.UNACKED.getIndex());
+    queuedMessagesIndicator.updateChart(total, QueuedMessagesIndicator.SetIndex.TOTAL.getIndex());
 
     queuedMessagesIndicator.updateReadyButton(getString(R.string.activity_overview_button_ready, ready));
     queuedMessagesIndicator.updateUnackedButton(getString(R.string.activity_overview_button_unacked, unacked));
     queuedMessagesIndicator.updateTotalButton(getString(R.string.activity_overview_button_total, total));
+  }
+
+  private void updateMessageRatesIndicator(Response<Overview> response) {
+    Overview overview = response.body();
+
+    float publish = overview.getMessageStats().getPublishDetails().getRate();
+    float confirm = overview.getMessageStats().getConfirmDetails().getRate();
+    float publishIn = overview.getMessageStats().getPublishInDetails().getRate();
+    float publishOut = overview.getMessageStats().getPublishOutDetails().getRate();
+    float deliver = overview.getMessageStats().getDeliverGetDetails().getRate();
+    float redeliver = overview.getMessageStats().getRedeliverDetails().getRate();
+
+    messageRatesIndicator.updateChart(publish, MessageRatesIndicator.SetIndex.PUBLISH.getIndex());
+    messageRatesIndicator.updateChart(confirm, MessageRatesIndicator.SetIndex.CONFIRM.getIndex());
+    messageRatesIndicator.updateChart(publishIn, MessageRatesIndicator.SetIndex.PUBLISH_IN.getIndex());
+    messageRatesIndicator.updateChart(publishOut, MessageRatesIndicator.SetIndex.PUBLISH_OUT.getIndex());
+    messageRatesIndicator.updateChart(deliver, MessageRatesIndicator.SetIndex.DELIVER.getIndex());
+    messageRatesIndicator.updateChart(redeliver, MessageRatesIndicator.SetIndex.REDELIVERED.getIndex());
+
+    messageRatesIndicator.updatePublishButton(getString(R.string.activity_overview_button_publish, publish));
+    messageRatesIndicator.updateConfirmButton(getString(R.string.activity_overview_button_confirm, confirm));
+    messageRatesIndicator.updatePublishInButton(getString(R.string.activity_overview_button_publish_in, publishIn));
+    messageRatesIndicator.updatePublishOutButton(getString(R.string.activity_overview_button_publish_out, publishOut));
+    messageRatesIndicator.updateDeliverButton(getString(R.string.activity_overview_button_deliver, deliver));
+    messageRatesIndicator.updateRedeliveredButton(getString(R.string.activity_overview_button_redelivered, redeliver));
   }
 
   private class OverviewResponseCallback implements Callback<Overview> {
@@ -138,6 +169,7 @@ public class OverviewActivity extends AppCompatActivity {
       }
 
       updateQueuedMessagesIndicator(response);
+      updateMessageRatesIndicator(response);
     }
 
     @Override

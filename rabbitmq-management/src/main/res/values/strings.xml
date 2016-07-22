@@ -30,11 +30,18 @@
   <string name="activity_login_credentials_invalid">User credentials invalid</string>
   <string name="activity_login_remember">Remember configuration.</string>
 
-  <string name="activity_overview_queued_messages_title">Queued Messages</string>
   <string name="activity_overview_no_data">No data provided yet.</string>
+  <string name="activity_overview_queued_messages_title">Queued Messages</string>
+  <string name="activity_overview_message_rates_title">Message Rates</string>
   <string name="activity_overview_button_ready">Ready: %d</string>
   <string name="activity_overview_button_unacked">Unacked: %d</string>
   <string name="activity_overview_button_total">Total: %d</string>
+  <string name="activity_overview_button_publish">Publish:\n%.2f/s</string>
+  <string name="activity_overview_button_publish_in">Publish in:\n%.2f/s</string>
+  <string name="activity_overview_button_publish_out">Publish out:\n%.2f/s</string>
+  <string name="activity_overview_button_confirm">Confirm:\n%.2f/s</string>
+  <string name="activity_overview_button_deliver">Deliver:\n%.2f/s</string>
+  <string name="activity_overview_button_redelivered">Redelivered:\n%.2f/s</string>
 
   <string name="fragment_add_service_dialog_title">Provide RabbitMQ service details</string>
   <string name="fragment_add_service_dialog_address">Address</string>

@@ -11,4 +11,11 @@
   <string name="queued_messages_indicator_default_unacked_text">Unacked</string>
   <string name="queued_messages_indicator_default_total_text">Total</string>
 
+  <string name="message_rates_indicator_default_publish_text">Publish</string>
+  <string name="message_rates_indicator_default_confirm_text">Confirm</string>
+  <string name="message_rates_indicator_default_publish_in_text">P. In</string>
+  <string name="message_rates_indicator_default_publish_out_text">P. Out</string>
+  <string name="message_rates_indicator_default_deliver_text">Delivered</string>
+  <string name="message_rates_indicator_default_redelivered_text">Redelivered</string>
+
 </resources>
