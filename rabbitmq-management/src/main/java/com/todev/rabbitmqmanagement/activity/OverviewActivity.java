@@ -39,9 +39,6 @@ import retrofit2.Response;
 
 public class OverviewActivity extends AppCompatActivity {
 
-  @BindView(R.id.activity_overview)
-  View rootView;
-
   @BindView(R.id.queued_messages_indicator)
   QueuedMessagesIndicator queuedMessagesIndicator;
 
@@ -70,7 +67,7 @@ public class OverviewActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
 
-    animate(queuedMessagesIndicator, rootView);
+    animate(queuedMessagesIndicator);
     initializeScheduler();
     startScheduler();
   }
@@ -110,11 +107,10 @@ public class OverviewActivity extends AppCompatActivity {
     }
   }
 
-  private void animate(@NonNull View view, @NonNull View parent) {
+  private void animate(@NonNull View view) {
     view.animate().cancel();
     view.setAlpha(0);
-    view.setTranslationY(parent.getHeight());
-    view.animate().alpha(1f).translationY(0).setDuration(600).setStartDelay(400);
+    view.animate().alpha(1f).setDuration(600).setStartDelay(400);
   }
 
   private void updateQueuedMessagesIndicator(Response<Overview> response) {
