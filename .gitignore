@@ -3,6 +3,7 @@
 .idea/
 
 # CI
+.gradletasknamecache
 .gradle/
 gradle/*.jar
 
