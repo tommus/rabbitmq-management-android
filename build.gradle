@@ -16,11 +16,13 @@ buildscript {
   }
 }
 
+ext {
+  minSdkVersion = 14
+  targetSdkVersion = 24
+  versionCode = 1
+  versionName = '0.0.4'
+}
+
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
-
-project.ext.minSdkVersion = 14
-project.ext.targetSdkVersion = 24
-project.ext.versionCode = 1
-project.ext.versionName = '0.0.4'

@@ -1,1 +1,2 @@
-include ':rabbitmq-management', ':widgets'
+include 'rabbitmq-management'
+include 'widgets'
