@@ -18,6 +18,10 @@ android {
     versionCode rootProject.versionCode
     versionName rootProject.versionName
   }
+
+  lintOptions {
+    disable 'InvalidPackage'
+  }
 }
 
 dependencies {

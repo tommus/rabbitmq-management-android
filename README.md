@@ -24,3 +24,7 @@ This application takes advantage of the fantastic work of the authors of such li
 [5]: https://github.com/FasterXML/jackson
 [6]: https://github.com/pardom/ActiveAndroid
 [7]: https://github.com/PhilJay/MPAndroidChart
+
+## Continuous Integration
+
+[![Build Status](https://travis-ci.org/tommus/rabbitmq-management-android.svg?branch=master)](https://travis-ci.org/tommus/rabbitmq-management-android)
