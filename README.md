@@ -17,6 +17,17 @@ This application takes advantage of the fantastic work of the authors of such li
 6. [ActiveAndroid][5] by pardom
 7. [MPAndroidChart][7] by Philipp Jahoda
 
+## Continuous Integration
+
+[![Build Status](https://travis-ci.org/tommus/rabbitmq-management-android.svg?branch=master)](https://travis-ci.org/tommus/rabbitmq-management-android)
+
+## Contact
+
+If you like my work and want to hire me or order a job - please do not hesitate to contact me via:
+
+- [**LinkedIn**][8]
+- [**StackOverflow**][9]
+
 [1]: https://github.com/JakeWharton/butterknife
 [2]: https://github.com/square/retrofit
 [3]: https://github.com/square/okhttp
@@ -24,7 +35,5 @@ This application takes advantage of the fantastic work of the authors of such li
 [5]: https://github.com/FasterXML/jackson
 [6]: https://github.com/pardom/ActiveAndroid
 [7]: https://github.com/PhilJay/MPAndroidChart
-
-## Continuous Integration
-
-[![Build Status](https://travis-ci.org/tommus/rabbitmq-management-android.svg?branch=master)](https://travis-ci.org/tommus/rabbitmq-management-android)
+[8]: https://www.linkedin.com/in/tomasz-dzieniak-09a70098
+[9]: http://stackoverflow.com/users/2057291/tommus
