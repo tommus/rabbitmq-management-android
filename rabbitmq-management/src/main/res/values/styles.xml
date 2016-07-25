@@ -4,11 +4,17 @@
 
   <eat-comment/>
 
-  <style name="RabbitmqManagement" parent="Base.Theme.AppCompat.Light">
+  <style name="RabbitmqManagement" parent="Theme.AppCompat.Light">
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
     <item name="actionBarStyle">@style/RabbitmqManagement.ActionBar</item>
+  </style>
+
+  <style name="RabbitmqManagement.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
   </style>
 
   <style name="RabbitmqManagement.ActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">

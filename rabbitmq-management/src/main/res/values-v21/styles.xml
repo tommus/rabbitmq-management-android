@@ -4,7 +4,7 @@
 
   <eat-comment/>
 
-  <style name="RabbitmqManagement" parent="Base.Theme.AppCompat.Light">
+  <style name="RabbitmqManagement" parent="Theme.AppCompat.Light">
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
@@ -12,6 +12,14 @@
     <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
     <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     <item name="actionBarStyle">@style/RabbitmqManagement.ActionBar</item>
+  </style>
+
+  <style name="RabbitmqManagement.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+    <item name="android:statusBarColor">@color/colorPrimaryDark</item>
   </style>
 
 </resources>

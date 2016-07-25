@@ -4,18 +4,26 @@ The main purpose of this projects is to allow view and manage data provided by R
 
 ## Requirements
 
-This application targets Android 4.0 version and newer.
+This application targets Android (4.0) Ice Cream Sandwich and newer.
+
+## Project Modules
+
+RabbitMQ Management for Android consists of the following modules:
+
+1. **rabbitmq-management** - main module, where most of the client-side code is placed
+2. **api** - module that contains implementation of REST method handlers for RabbitMQ Management API
+3. **widgets** - module with custom widgets created for project needs
 
 ## Dependencies
 
 This application takes advantage of the fantastic work of the authors of such libraries as:
 
-1. [Butter Knife][1] by Jake Wharton
-2. [Retrofit][2] and [OkHttp][3] by Square
-4. [Joda-Time][3] by Joda.org
-5. [Jackson][4] by FasterXML
-6. [ActiveAndroid][5] by pardom
-7. [MPAndroidChart][7] by Philipp Jahoda
+1. [Butter Knife](https://github.com/JakeWharton/butterknife) by Jake Wharton
+2. [Retrofit](https://github.com/square/retrofit) and [OkHttp](https://github.com/square/okhttp) by Square
+4. [Joda-Time](https://github.com/JodaOrg/joda-time) by Joda.org
+5. [Jackson](https://github.com/FasterXML/jackson) by FasterXML
+6. [ActiveAndroid](https://github.com/pardom/ActiveAndroid) by pardom
+7. [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) by Philipp Jahoda
 
 ## Continuous Integration
 
@@ -23,17 +31,7 @@ This application takes advantage of the fantastic work of the authors of such li
 
 ## Contact
 
-If you like my work and want to hire me or order a job - please do not hesitate to contact me via:
+If you like my work and want to hire me - please do not hesitate to contact me via:
 
-- [**LinkedIn**][8]
-- [**StackOverflow**][9]
-
-[1]: https://github.com/JakeWharton/butterknife
-[2]: https://github.com/square/retrofit
-[3]: https://github.com/square/okhttp
-[4]: https://github.com/JodaOrg/joda-time
-[5]: https://github.com/FasterXML/jackson
-[6]: https://github.com/pardom/ActiveAndroid
-[7]: https://github.com/PhilJay/MPAndroidChart
-[8]: https://www.linkedin.com/in/tomasz-dzieniak-09a70098
-[9]: http://stackoverflow.com/users/2057291/tommus
+- [**LinkedIn**](https://www.linkedin.com/in/tomasz-dzieniak-09a70098)
+- [**StackOverflow**](http://stackoverflow.com/users/2057291/tommus)

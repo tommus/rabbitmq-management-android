@@ -27,7 +27,8 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
-  compile group: 'com.android.support', name: 'appcompat-v7', version: rootProject.supportVersion
-  compile group: 'com.android.support', name: 'cardview-v7', version: rootProject.supportVersion
-  compile group: 'com.github.philjay', name: 'mpandroidchart', version: 'v3.0.0-beta1'
+  compile group: 'com.android.support', name: 'support-annotations', version: rootProject.supportVersion
+  compile group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.1.0'
+  compile group: 'com.squareup.retrofit2', name: 'converter-jackson', version: '2.1.0'
+  compile group: 'joda-time', name: 'joda-time', version: '2.9.4'
 }

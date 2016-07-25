@@ -25,9 +25,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.android.internal.util.Predicate;
 import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.model.overview.Overview;
-import com.todev.rabbitmqmanagement.service.RabbitMqService;
+import com.todev.rabbitmqmanagement.api.model.MessageStats;
+import com.todev.rabbitmqmanagement.api.model.overview.Overview;
+import com.todev.rabbitmqmanagement.api.model.overview.QueueTotals;
+import com.todev.rabbitmqmanagement.api.service.RabbitMqService;
 import com.todev.rabbitmqmanagement.widget.MessageRatesIndicator;
 import com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator;
 import java.util.TimerTask;
@@ -54,6 +57,26 @@ public class OverviewActivity extends AppCompatActivity {
     @Override
     public void run() {
       rabbitMqService.getOverview().enqueue(new OverviewResponseCallback());
+    }
+  };
+
+  private Predicate<QueueTotals> totalsAvailabilityPredicate = new Predicate<QueueTotals>() {
+    @Override
+    public boolean apply(QueueTotals queueTotals) {
+      return queueTotals != null;
+    }
+  };
+
+  private Predicate<MessageStats> ratesAvailabilityPredicate = new Predicate<MessageStats>() {
+
+    @Override
+    public boolean apply(MessageStats messageStats) {
+      return messageStats.getPublishDetails() != null &&
+          messageStats.getConfirmDetails() != null &&
+          messageStats.getPublishInDetails() != null &&
+          messageStats.getPublishOutDetails() != null &&
+          messageStats.getDeliverGetDetails() != null &&
+          messageStats.getRedeliverDetails() != null;
     }
   };
 
@@ -121,10 +144,15 @@ public class OverviewActivity extends AppCompatActivity {
 
   private void updateQueuedMessagesIndicator(Response<Overview> response) {
     Overview overview = response.body();
+    QueueTotals totals = overview.getQueueTotals();
 
-    int ready = overview.getQueueTotals().getMessagesReady();
-    int unacked = overview.getQueueTotals().getMessagesUnacknowledged();
-    int total = overview.getQueueTotals().getMessages();
+    if (!totalsAvailabilityPredicate.apply(totals)) {
+      return;
+    }
+
+    int ready = totals.getMessagesReady();
+    int unacked = totals.getMessagesUnacknowledged();
+    int total = totals.getMessages();
 
     queuedMessagesIndicator.updateChart(ready, QueuedMessagesIndicator.SetIndex.READY.getIndex());
     queuedMessagesIndicator.updateChart(unacked, QueuedMessagesIndicator.SetIndex.UNACKED.getIndex());
@@ -137,13 +165,18 @@ public class OverviewActivity extends AppCompatActivity {
 
   private void updateMessageRatesIndicator(Response<Overview> response) {
     Overview overview = response.body();
+    MessageStats stats = overview.getMessageStats();
 
-    float publish = overview.getMessageStats().getPublishDetails().getRate();
-    float confirm = overview.getMessageStats().getConfirmDetails().getRate();
-    float publishIn = overview.getMessageStats().getPublishInDetails().getRate();
-    float publishOut = overview.getMessageStats().getPublishOutDetails().getRate();
-    float deliver = overview.getMessageStats().getDeliverGetDetails().getRate();
-    float redeliver = overview.getMessageStats().getRedeliverDetails().getRate();
+    if (!ratesAvailabilityPredicate.apply(stats)) {
+      return;
+    }
+
+    float publish = stats.getPublishDetails().getRate();
+    float confirm = stats.getConfirmDetails().getRate();
+    float publishIn = stats.getPublishInDetails().getRate();
+    float publishOut = stats.getPublishOutDetails().getRate();
+    float deliver = stats.getDeliverGetDetails().getRate();
+    float redeliver = stats.getRedeliverDetails().getRate();
 
     messageRatesIndicator.updateChart(publish, MessageRatesIndicator.SetIndex.PUBLISH.getIndex());
     messageRatesIndicator.updateChart(confirm, MessageRatesIndicator.SetIndex.CONFIRM.getIndex());
