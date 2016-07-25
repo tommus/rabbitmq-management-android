@@ -3,6 +3,8 @@ package com.todev.rabbitmqmanagement.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -13,15 +15,19 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.SpinnerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.adapter.ServicesAdapter;
-import com.todev.rabbitmqmanagement.database.Service;
-import com.todev.rabbitmqmanagement.fragment.dialog.AddServiceFragment;
 import com.todev.rabbitmqmanagement.api.model.user.User;
 import com.todev.rabbitmqmanagement.api.service.RabbitMqService;
+import com.todev.rabbitmqmanagement.database.Service;
+import com.todev.rabbitmqmanagement.fragment.dialog.AddServiceFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,15 +50,23 @@ public class LoginActivity extends AppCompatActivity {
   @BindView(R.id.password_edit_text)
   AppCompatEditText passwordEditText;
 
+  @BindView(R.id.services_relative_layout)
+  RelativeLayout servicesRelativeLayout;
+
   @BindView(R.id.select_service_spinner)
   AppCompatSpinner serviceSpinner;
 
   @BindView(R.id.remember_configuration_check_box)
   AppCompatCheckBox rememberConfigurationCheckBox;
 
+  @BindView(R.id.delete_service_button)
+  ImageButton deleteServiceButton;
+
   private Animation horizontalShakeAnimation;
 
   private SharedPreferences sharedPreferences;
+
+  private LastUsedData lastUsedData = new LastUsedData();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -66,15 +80,16 @@ public class LoginActivity extends AppCompatActivity {
 
     sharedPreferences =
         getApplicationContext().getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE);
-
-    initializeSpinner(-1);
   }
 
   @Override
   protected void onStart() {
     super.onStart();
 
+    int services = loadSpinnerItems(lastUsedData.getService());
+    invalidateDeleteServiceButton(services);
     loadSharedPreferences();
+    initializeFields();
   }
 
   @OnClick(R.id.login_button)
@@ -95,6 +110,10 @@ public class LoginActivity extends AppCompatActivity {
       return;
     }
 
+    if (!validateService(serviceSpinner.getSelectedItem())) {
+      servicesRelativeLayout.startAnimation(horizontalShakeAnimation);
+    }
+
     RabbitMqService rabbitMqService =
         RabbitMqService.Json.createService(service.getAddress(), service.getPort(), login, password);
 
@@ -108,22 +127,39 @@ public class LoginActivity extends AppCompatActivity {
     fragment.show(getSupportFragmentManager(), TAG_ADD_SERVICE);
   }
 
+  @OnClick(R.id.delete_service_button)
+  protected void onDeleteServiceButtonClicked(View view) {
+    Service service = (Service) serviceSpinner.getSelectedItem();
+    service.delete();
+
+    int services = loadSpinnerItems(lastUsedData.getService());
+    invalidateDeleteServiceButton(services);
+  }
+
+  private void cleanupSharedPreferences() {
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+    int[] preferences = new int[] {
+        R.string.shared_preferences_last_used_login, R.string.shared_preferences_last_used_password,
+        R.string.shared_preferences_last_used_service, R.string.shared_preferences_last_used_service_port,
+        R.string.shared_preferences_last_used_service_url, R.string.shared_preferences_remember_credentials
+    };
+
+    for (int preference : preferences) {
+      editor.remove(getString(preference));
+    }
+
+    editor.apply();
+  }
+
   private void loadSharedPreferences() {
+    String login = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_login), "");
+    String password = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_password), "");
+    long service = sharedPreferences.getLong(getString(R.string.shared_preferences_last_used_service), -1);
     boolean rememberCredentials =
         sharedPreferences.getBoolean(getString(R.string.shared_preferences_remember_credentials), false);
 
-    if (rememberCredentials) {
-      String login = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_login), "");
-
-      String password = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_password), "");
-
-      int lastUsedService = sharedPreferences.getInt(getString(R.string.shared_preferences_last_used_service), -1);
-
-      loginEditText.setText(login);
-      passwordEditText.setText(password);
-      serviceSpinner.setSelection(lastUsedService);
-      rememberConfigurationCheckBox.setChecked(true);
-    }
+    lastUsedData.initialize(login, password, service, rememberCredentials);
   }
 
   private void saveSharedPreferences() {
@@ -132,19 +168,24 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences.Editor editor = sharedPreferences.edit();
 
     editor.putString(getString(R.string.shared_preferences_last_used_login), loginEditText.getText().toString());
-
     editor.putString(getString(R.string.shared_preferences_last_used_password), passwordEditText.getText().toString());
-
-    editor.putInt(getString(R.string.shared_preferences_last_used_service), serviceSpinner.getSelectedItemPosition());
-
+    editor.putLong(getString(R.string.shared_preferences_last_used_service), service.getId());
     editor.putString(getString(R.string.shared_preferences_last_used_service_url), service.getAddress());
-
     editor.putInt(getString(R.string.shared_preferences_last_used_service_port), service.getPort());
-
     editor.putBoolean(getString(R.string.shared_preferences_remember_credentials),
         rememberConfigurationCheckBox.isChecked());
 
     editor.apply();
+  }
+
+  private void initializeFields() {
+    int position = getServicePosition(serviceSpinner.getAdapter(), lastUsedData.getService());
+    if (position != -1) {
+      serviceSpinner.setSelection(position);
+      loginEditText.setText(lastUsedData.getUsername());
+      passwordEditText.setText(lastUsedData.getPassword());
+      rememberConfigurationCheckBox.setChecked(lastUsedData.isRemember());
+    }
   }
 
   private boolean validateLogin(String login) {
@@ -155,12 +196,34 @@ public class LoginActivity extends AppCompatActivity {
     return password.length() > 0;
   }
 
-  private void initializeSpinner(long id) {
+  private boolean validateService(Object item) {
+    return item != null;
+  }
+
+  private int loadSpinnerItems(long id) {
     ServicesAdapter adapter = new ServicesAdapter(getApplicationContext());
     serviceSpinner.setAdapter(adapter);
-    int position = adapter.getItemPosition(id);
+
+    int position = getServicePosition(adapter, id);
     if (position != -1) {
       serviceSpinner.setSelection(position);
+    }
+
+    return serviceSpinner.getCount();
+  }
+
+  private int getServicePosition(SpinnerAdapter adapter, long serviceId) {
+    ServicesAdapter servicesAdapter = (ServicesAdapter) adapter;
+    return servicesAdapter.getItemPosition(serviceId);
+  }
+
+  private void invalidateDeleteServiceButton(int services) {
+    if (services <= 0) {
+      deleteServiceButton.setClickable(false);
+      deleteServiceButton.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+    } else {
+      deleteServiceButton.setClickable(true);
+      deleteServiceButton.getBackground().setColorFilter(null);
     }
   }
 
@@ -170,11 +233,60 @@ public class LoginActivity extends AppCompatActivity {
     Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
   }
 
+  private class LastUsedData {
+    private String username = "";
+    private String password = "";
+    private long service = -1;
+    private boolean remember = false;
+
+    public void initialize(String username, String password, long service, boolean remember) {
+      this.username = remember ? username : "";
+      this.password = remember ? password : "";
+      this.service = remember ? service : -1;
+      this.remember = remember;
+    }
+
+    public String getUsername() {
+      return username;
+    }
+
+    public String getPassword() {
+      return password;
+    }
+
+    public long getService() {
+      return service;
+    }
+
+    public boolean isRemember() {
+      return remember;
+    }
+  }
+
+  private class OnServiceSelectedListener implements AdapterView.OnItemSelectedListener {
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+      int services = loadSpinnerItems(id);
+      invalidateDeleteServiceButton(services);
+      cleanupSharedPreferences();
+      loadSharedPreferences();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+      // Do nothing.
+    }
+  }
+
   private class OnDialogSuccessListener implements AddServiceFragment.OnSuccessListener {
 
     @Override
     public void onSuccess(long id) {
-      initializeSpinner(id);
+      int services = loadSpinnerItems(id);
+      invalidateDeleteServiceButton(services);
+      cleanupSharedPreferences();
+      loadSharedPreferences();
     }
   }
 

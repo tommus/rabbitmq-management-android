@@ -75,21 +75,42 @@
         android:id="@+id/select_service_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/add_service_button"
-        android:layout_toStartOf="@+id/add_service_button"
+        android:layout_toLeftOf="@+id/service_manipulation_placeholder"
+        android:layout_toStartOf="@+id/service_manipulation_placeholder"
         android:theme="@style/RabbitmqManagement.Widget.Colored"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         />
 
-    <Button
-        android:id="@id/add_service_button"
+    <LinearLayout
+        android:id="@id/service_manipulation_placeholder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="@string/add"
-        android:theme="@style/RabbitmqManagement.Widget.Button"
-        />
+        android:orientation="horizontal"
+        >
+
+      <ImageButton
+          android:id="@+id/add_service_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:contentDescription="@string/content_description_fragment_delete_service"
+          android:src="@drawable/ic_edit_white_24dp"
+          android:text="@string/add"
+          android:theme="@style/RabbitmqManagement.Widget.Button"
+          />
+
+      <ImageButton
+          android:id="@+id/delete_service_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:contentDescription="@string/content_description_fragment_add_service"
+          android:src="@drawable/ic_delete_forever_white_24dp"
+          android:text="@string/delete"
+          android:theme="@style/RabbitmqManagement.Widget.Button"
+          />
+
+    </LinearLayout>
 
   </RelativeLayout>
 

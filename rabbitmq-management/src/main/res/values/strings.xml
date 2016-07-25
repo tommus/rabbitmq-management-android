@@ -16,10 +16,13 @@
   <string name="shared_preferences_remember_credentials" translatable="false">REMEMBER_CREDENTIALS</string>
 
   <string name="content_description_rabbitmq_logo">RabbitMQ logo</string>
+  <string name="content_description_fragment_add_service">Configure new service.</string>
+  <string name="content_description_fragment_delete_service">Remove service from list.</string>
   <string name="content_description_fragment_add_service_search">Search for available services.</string>
 
   <string name="login">Login</string>
   <string name="password">Password</string>
+  <string name="delete">Delete</string>
   <string name="add">Add</string>
   <string name="find">Find</string>
 
