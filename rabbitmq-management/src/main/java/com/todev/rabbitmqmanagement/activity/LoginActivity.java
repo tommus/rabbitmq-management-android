@@ -15,7 +15,6 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.SpinnerAdapter;
@@ -260,22 +259,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean isRemember() {
       return remember;
-    }
-  }
-
-  private class OnServiceSelectedListener implements AdapterView.OnItemSelectedListener {
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-      int services = loadSpinnerItems(id);
-      invalidateDeleteServiceButton(services);
-      cleanupSharedPreferences();
-      loadSharedPreferences();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-      // Do nothing.
     }
   }
 
