@@ -5,9 +5,14 @@ android {
   buildToolsVersion rootProject.buildToolsVersion
 
   buildTypes {
-    release {
+    debug {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
 
