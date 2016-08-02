@@ -165,7 +165,7 @@ public class MessageRatesIndicator extends MessagesIndicator {
   protected int getLineColor(int index) {
     int[] colors = new int[] {
         getPublishLineColor(), getConfirmLineColor(), getPublishInLineColor(), getPublishOutLineColor(),
-        getDeliverLineColor()
+        getDeliverLineColor(), getRedeliveredLineColor()
     };
 
     if (index < colors.length) {
@@ -291,66 +291,6 @@ public class MessageRatesIndicator extends MessagesIndicator {
 
   public void setRedeliveredButtonColor(int redeliveredButtonColor) {
     this.redeliveredButtonColor = redeliveredButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public Button getPublishButton() {
-    return publishButton;
-  }
-
-  public void setPublishButton(Button publishButton) {
-    this.publishButton = publishButton;
-    invalidate();
-    requestLayout();
-  }
-
-  public Button getConfirmButton() {
-    return confirmButton;
-  }
-
-  public void setConfirmButton(Button confirmButton) {
-    this.confirmButton = confirmButton;
-    invalidate();
-    requestLayout();
-  }
-
-  public Button getPublishInButton() {
-    return publishInButton;
-  }
-
-  public void setPublishInButton(Button publishInButton) {
-    this.publishInButton = publishInButton;
-    invalidate();
-    requestLayout();
-  }
-
-  public Button getPublishOutButton() {
-    return publishOutButton;
-  }
-
-  public void setPublishOutButton(Button publishOutButton) {
-    this.publishOutButton = publishOutButton;
-    invalidate();
-    requestLayout();
-  }
-
-  public Button getDeliverButton() {
-    return deliverButton;
-  }
-
-  public void setDeliverButton(Button deliverButton) {
-    this.deliverButton = deliverButton;
-    invalidate();
-    requestLayout();
-  }
-
-  public Button getRedeliveredButton() {
-    return redeliveredButton;
-  }
-
-  public void setRedeliveredButton(Button redeliveredButton) {
-    this.redeliveredButton = redeliveredButton;
     invalidate();
     requestLayout();
   }
