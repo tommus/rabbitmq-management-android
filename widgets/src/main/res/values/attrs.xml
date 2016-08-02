@@ -41,4 +41,8 @@
     <attr format="color" name="redelivered_button_color"/>
   </declare-styleable>
 
+  <declare-styleable name="PortPicker">
+    <attr format="integer" name="initial_port_number"/>
+  </declare-styleable>
+
 </resources>

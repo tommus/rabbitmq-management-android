@@ -4,8 +4,24 @@
 
   <eat-comment/>
 
+  <style name="RabbitmqManagement"/>
+
+  <style name="RabbitmqManagement.Widget">
+    <item name="colorAccent">?attr/colorPrimary</item>
+  </style>
+
+  <style name="RabbitmqManagement.Widget.Button"/>
+
   <style name="RabbitmqManagement.Widget.Button.Borderless.Colored" parent="Widget.AppCompat.Button.Borderless.Colored">
     <item name="android:textAllCaps">false</item>
+  </style>
+
+  <style name="RabbitmqManagement.Widget.NumberPicker"/>
+
+  <style name="RabbitmqManagement.Widget.NumberPicker.Colored">
+    <item name="colorControlNormal">?attr/colorPrimary</item>
+    <item name="colorControlActivated">?attr/colorPrimaryDark</item>
+    <item name="android:textColorPrimary">?attr/colorPrimary</item>
   </style>
 
 </resources>

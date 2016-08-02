@@ -31,24 +31,15 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.database.Service;
-import java.lang.reflect.Method;
+import com.todev.rabbitmqmanagement.widget.PortPicker;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AddServiceFragment extends DialogFragment {
-
-  public static final String PICKER_DEFAULT = "15672";
-
-  public static final String[] PICKER_VALUES = "123456789".split("");
-
-  public static final int PICKER_MIN_VALUE = 0;
 
   @BindView(R.id.label_edit_text_layout)
   TextInputLayout labelTextInputLayout;
@@ -62,23 +53,8 @@ public class AddServiceFragment extends DialogFragment {
   @BindView(R.id.address_edit_text)
   AppCompatEditText addressEditText;
 
-  @BindView(R.id.port_number_picker_layout)
-  LinearLayout portNumberPickerLayout;
-
-  @BindView(R.id.port_number_picker_10000)
-  NumberPicker portNumberPicker10000;
-
-  @BindView(R.id.port_number_picker_1000)
-  NumberPicker portNumberPicker1000;
-
-  @BindView(R.id.port_number_picker_100)
-  NumberPicker portNumberPicker100;
-
-  @BindView(R.id.port_number_picker_10)
-  NumberPicker portNumberPicker10;
-
-  @BindView(R.id.port_number_picker_1)
-  NumberPicker portNumberPicker1;
+  @BindView(R.id.port_number_picker)
+  PortPicker portNumberPicker;
 
   private Animation horizontalShakeAnimation;
 
@@ -116,43 +92,12 @@ public class AddServiceFragment extends DialogFragment {
     super.onActivityCreated(savedInstanceState);
 
     horizontalShakeAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.horizontal_shake);
-
-    initializeNumberPickers();
   }
 
   public void addOnSuccessListener(OnSuccessListener listener) {
     if (!onSuccessListeners.contains(listener)) {
       onSuccessListeners.add(listener);
     }
-  }
-
-  private void initializeNumberPickers() {
-    NumberPicker[] pickers = new NumberPicker[] {
-        portNumberPicker10000, portNumberPicker1000, portNumberPicker100, portNumberPicker10, portNumberPicker1
-    };
-
-    for (int i = 0; i < pickers.length; ++i) {
-      pickers[i].setWrapSelectorWheel(false);
-      pickers[i].setDisplayedValues(PICKER_VALUES);
-      pickers[i].setMinValue(PICKER_MIN_VALUE);
-      pickers[i].setMaxValue(PICKER_VALUES.length - 1);
-
-      int value = Integer.parseInt(PICKER_DEFAULT.substring(i, i + 1));
-      pickers[i].setValue(value);
-
-      NumberPicker[] older = Arrays.copyOfRange(pickers, 0, i);
-      pickers[i].setOnValueChangedListener(new OnValueChangeListener(older));
-    }
-  }
-
-  private int combinePort() {
-    int port = 0;
-    port += portNumberPicker10000.getValue() * 10000;
-    port += portNumberPicker1000.getValue() * 1000;
-    port += portNumberPicker100.getValue() * 100;
-    port += portNumberPicker10.getValue() * 10;
-    port += portNumberPicker1.getValue();
-    return port;
   }
 
   private boolean validateLabel(String label) {
@@ -172,43 +117,12 @@ public class AddServiceFragment extends DialogFragment {
     void onSuccess(long id);
   }
 
-  private class OnValueChangeListener implements NumberPicker.OnValueChangeListener {
-
-    private NumberPicker[] pickers;
-
-    OnValueChangeListener(NumberPicker... pickers) {
-      this.pickers = pickers;
-    }
-
-    @Override
-    public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
-      if (pickers != null && newVal == PICKER_MIN_VALUE) {
-        for (NumberPicker picker : pickers) {
-          if (picker.getValue() != PICKER_MIN_VALUE) {
-            picker.setValue(PICKER_MIN_VALUE);
-            invalidate(picker);
-          }
-        }
-      }
-    }
-
-    private void invalidate(NumberPicker picker) {
-      try {
-        Method method = picker.getClass().getDeclaredMethod("changeValueByOne", boolean.class);
-        method.setAccessible(true);
-        method.invoke(picker, false);
-      } catch (Exception e) {
-        // Do nothing. This is just a visible bug handler.
-      }
-    }
-  }
-
   private class OnPositiveButtonClickedListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-      Service service =
-          new Service(labelEditText.getText().toString(), addressEditText.getText().toString(), combinePort());
+      Service service = new Service(labelEditText.getText().toString(), addressEditText.getText().toString(),
+          portNumberPicker.getPortNumber());
 
       if (!validateLabel(service.getLabel())) {
         labelTextInputLayout.startAnimation(horizontalShakeAnimation);
@@ -223,7 +137,7 @@ public class AddServiceFragment extends DialogFragment {
       }
 
       if (!validatePort(service.getPort())) {
-        portNumberPickerLayout.startAnimation(horizontalShakeAnimation);
+        portNumberPicker.startAnimation(horizontalShakeAnimation);
         return;
       }
 

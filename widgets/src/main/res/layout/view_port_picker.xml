@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/port_number_picker_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    >
+
+  <NumberPicker
+      android:id="@+id/port_picker_part_10000"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginEnd="@dimen/port_picker_item_margin"
+      android:layout_marginRight="@dimen/port_picker_item_margin"
+      android:orientation="horizontal"
+      android:theme="@style/RabbitmqManagement.Widget.NumberPicker.Colored"
+      />
+
+  <NumberPicker
+      android:id="@+id/port_picker_part_1000"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginEnd="@dimen/port_picker_item_margin"
+      android:layout_marginRight="@dimen/port_picker_item_margin"
+      android:orientation="horizontal"
+      android:theme="@style/RabbitmqManagement.Widget.NumberPicker.Colored"
+      />
+
+  <NumberPicker
+      android:id="@+id/port_picker_part_100"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginEnd="@dimen/port_picker_item_margin"
+      android:layout_marginRight="@dimen/port_picker_item_margin"
+      android:orientation="horizontal"
+      android:theme="@style/RabbitmqManagement.Widget.NumberPicker.Colored"
+      />
+
+  <NumberPicker
+      android:id="@+id/port_picker_part_10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginEnd="@dimen/port_picker_item_margin"
+      android:layout_marginRight="@dimen/port_picker_item_margin"
+      android:orientation="horizontal"
+      android:theme="@style/RabbitmqManagement.Widget.NumberPicker.Colored"
+      />
+
+  <NumberPicker
+      android:id="@+id/port_picker_part_1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:orientation="horizontal"
+      android:theme="@style/RabbitmqManagement.Widget.NumberPicker.Colored"
+      />
+
+</LinearLayout>

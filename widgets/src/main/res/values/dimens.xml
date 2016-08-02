@@ -13,4 +13,6 @@
   <dimen name="messages_indicator_chart_min_height">180dp</dimen>
   <dimen name="messages_indicator_title_size">16sp</dimen>
 
+  <dimen name="port_picker_item_margin">4dp</dimen>
+
 </resources>
