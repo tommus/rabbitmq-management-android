@@ -35,7 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.database.Service;
-import com.todev.rabbitmqmanagement.widget.PortPicker;
+import com.todev.rabbitmqmanagement.widget.PortNumberPicker;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class AddServiceFragment extends DialogFragment {
   AppCompatEditText addressEditText;
 
   @BindView(R.id.port_number_picker)
-  PortPicker portNumberPicker;
+  PortNumberPicker portNumberPicker;
 
   private Animation horizontalShakeAnimation;
 

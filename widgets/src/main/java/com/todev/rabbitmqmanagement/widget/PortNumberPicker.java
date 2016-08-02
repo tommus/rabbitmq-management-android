@@ -26,7 +26,7 @@ import com.todev.rabbitmqmanagement.widgets.R;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-public class PortPicker extends LinearLayout {
+public class PortNumberPicker extends LinearLayout {
 
   public static final int MAX_PORT = 65535;
   public static final int PART_MIN_VALUE = 0;
@@ -40,7 +40,7 @@ public class PortPicker extends LinearLayout {
   protected NumberPicker part10;
   protected NumberPicker part1;
 
-  public PortPicker(Context context, AttributeSet attrs) {
+  public PortNumberPicker(Context context, AttributeSet attrs) {
     super(context, attrs);
 
     inflate(context, R.layout.view_port_picker, this);
@@ -80,10 +80,10 @@ public class PortPicker extends LinearLayout {
   }
 
   protected void initializeAttributes(Context context, AttributeSet attrs) {
-    TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PortPicker, 0, 0);
+    TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PortNumberPicker, 0, 0);
 
     try {
-      initialPortNumber = array.getInt(R.styleable.PortPicker_initial_port_number, MAX_PORT);
+      initialPortNumber = array.getInt(R.styleable.PortNumberPicker_initial_port_number, MAX_PORT);
     } finally {
       array.recycle();
     }
