@@ -21,15 +21,33 @@
       android:paddingTop="@dimen/messages_indicator_padding"
       >
 
-    <TextView
-        android:id="@+id/title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/messages_indicator_margin_bottom"
-        android:text="@string/queued_messages_indicator_default_title"
-        android:textSize="@dimen/messages_indicator_title_size"
-        android:textStyle="bold"
-        />
+        >
+
+      <TextView
+          android:id="@+id/title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:layout_marginBottom="@dimen/messages_indicator_margin_bottom"
+          android:text="@string/queued_messages_indicator_default_title"
+          android:textSize="@dimen/messages_indicator_title_size"
+          android:textStyle="bold"
+          />
+
+      <ImageButton
+          android:id="@+id/range"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentRight="true"
+          android:src="@drawable/ic_date_range_black_24dp"
+          style="@android:style/Widget.Holo.Button.Borderless"
+          />
+
+    </RelativeLayout>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/messages_chart"

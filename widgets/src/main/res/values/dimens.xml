@@ -12,6 +12,7 @@
   <dimen name="messages_indicator_margin_bottom">8dp</dimen>
   <dimen name="messages_indicator_chart_min_height">180dp</dimen>
   <dimen name="messages_indicator_title_size">16sp</dimen>
+  <dimen name="messages_indicator_button_padding">8dp</dimen>
 
   <dimen name="port_picker_item_margin">4dp</dimen>
 
