@@ -23,14 +23,12 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import com.todev.rabbitmqmanagement.widgets.R;
-import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public class PortNumberPicker extends LinearLayout {
 
   public static final int MAX_PORT = 65535;
   public static final int PART_MIN_VALUE = 0;
-  public static final String[] PART_VALUES = "0123456789".split("");
+  public static final String[] PART_VALUES = "0123456789".split("(?!^)");
 
   protected int initialPortNumber;
 
@@ -104,40 +102,6 @@ public class PortNumberPicker extends LinearLayout {
       pickers[i].setDisplayedValues(PART_VALUES);
       pickers[i].setMinValue(PART_MIN_VALUE);
       pickers[i].setMaxValue(PART_VALUES.length - 1);
-
-      NumberPicker[] older = Arrays.copyOfRange(pickers, 0, i);
-      pickers[i].setOnValueChangedListener(new OnValueChangeListener(older));
-    }
-  }
-
-  protected class OnValueChangeListener implements NumberPicker.OnValueChangeListener {
-
-    private NumberPicker[] pickers;
-
-    OnValueChangeListener(NumberPicker... pickers) {
-      this.pickers = pickers;
-    }
-
-    @Override
-    public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
-      if (pickers != null && newVal == PART_MIN_VALUE) {
-        for (NumberPicker picker : pickers) {
-          if (picker.getValue() != PART_MIN_VALUE) {
-            picker.setValue(PART_MIN_VALUE);
-            invalidate(picker);
-          }
-        }
-      }
-    }
-
-    private void invalidate(NumberPicker picker) {
-      try {
-        Method method = picker.getClass().getDeclaredMethod("changeValueByOne", boolean.class);
-        method.setAccessible(true);
-        method.invoke(picker, false);
-      } catch (Exception e) {
-        // Do nothing. This is just a visible bug handler.
-      }
     }
   }
 }
