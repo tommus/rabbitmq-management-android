@@ -17,6 +17,7 @@ android {
     applicationId "com.todev.rabbitmqmanagement"
     minSdkVersion rootProject.minSdkVersion
     targetSdkVersion rootProject.targetSdkVersion
+    vectorDrawables.useSupportLibrary = true
     versionCode rootProject.versionCode
     versionName rootProject.versionName
   }
