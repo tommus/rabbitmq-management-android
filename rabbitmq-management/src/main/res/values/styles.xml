@@ -7,7 +7,7 @@
   <style name="RabbitmqManagement" parent="Theme.AppCompat.Light">
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorAccent">@color/colorPrimary</item>
     <item name="actionBarStyle">@style/RabbitmqManagement.ActionBar</item>
   </style>
 
@@ -33,22 +33,6 @@
     <item name="colorButtonNormal">@color/colorPrimary</item>
     <item name="android:textColor">@android:color/white</item>
     <item name="android:textAllCaps">true</item>
-  </style>
-
-  <style name="RabbitmqManagement.Widget.Colored">
-    <item name="colorControlNormal">@color/colorPrimary</item>
-    <item name="colorControlActivated">@color/colorPrimaryDark</item>
-  </style>
-
-  <style name="RabbitmqManagement.Widget.Colored.TextInputLayout">
-    <item name="android:textColorHint">@color/colorPrimary</item>
-    <item name="android:textColorHighlight">@color/colorPrimary</item>
-    <item name="android:textColorLink">@color/colorPrimary</item>
-    <item name="android:textSize">@dimen/font_size_medium_plus</item>
-  </style>
-
-  <style name="RabbitmqManagement.Widget.Colored.NumberPicker">
-    <item name="android:textColorPrimary">@color/colorPrimary</item>
   </style>
 
 </resources>

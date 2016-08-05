@@ -20,7 +20,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginBottom="@dimen/margin_huge"
-      android:contentDescription="@string/content_description_rabbitmq_logo"
+      android:contentDescription="@null"
       android:src="@drawable/logo"
       />
 
@@ -30,7 +30,6 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/logo_image_view"
       android:layout_marginBottom="@dimen/margin_medium_plus"
-      android:theme="@style/RabbitmqManagement.Widget.Colored.TextInputLayout"
       >
 
     <android.support.v7.widget.AppCompatEditText
@@ -38,7 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/login"
-        android:textColor="@color/colorPrimary"
         />
 
   </android.support.design.widget.TextInputLayout>
@@ -49,7 +47,6 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/login_edit_text_layout"
       android:layout_marginBottom="@dimen/margin_medium_plus"
-      android:theme="@style/RabbitmqManagement.Widget.Colored.TextInputLayout"
       >
 
     <android.support.v7.widget.AppCompatEditText
@@ -58,7 +55,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColor="@color/colorPrimary"
         />
 
   </android.support.design.widget.TextInputLayout>
@@ -68,6 +64,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/password_edit_text_layout"
+      android:layout_centerVertical="true"
       android:layout_marginBottom="@dimen/margin_medium"
       >
 
@@ -77,8 +74,6 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/service_manipulation_placeholder"
         android:layout_toStartOf="@+id/service_manipulation_placeholder"
-        android:theme="@style/RabbitmqManagement.Widget.Colored"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
         />
 
     <LinearLayout
@@ -94,8 +89,8 @@
           android:id="@+id/add_service_button"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:contentDescription="@string/content_description_fragment_delete_service"
-          android:src="@drawable/ic_edit_white_24dp"
+          android:contentDescription="@null"
+          android:src="@drawable/ic_edit_white"
           android:text="@string/add"
           android:theme="@style/RabbitmqManagement.Widget.Button"
           />
@@ -104,8 +99,8 @@
           android:id="@+id/delete_service_button"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:contentDescription="@string/content_description_fragment_add_service"
-          android:src="@drawable/ic_delete_forever_white_24dp"
+          android:contentDescription="@null"
+          android:src="@drawable/ic_delete_white"
           android:text="@string/delete"
           android:theme="@style/RabbitmqManagement.Widget.Button"
           />
@@ -121,8 +116,6 @@
       android:layout_below="@id/services_relative_layout"
       android:layout_marginBottom="@dimen/margin_medium"
       android:text="@string/activity_login_remember"
-      android:textColor="@color/colorPrimaryDark"
-      android:theme="@style/RabbitmqManagement.Widget.Colored"
       />
 
   <Button

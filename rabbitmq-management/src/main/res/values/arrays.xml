@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <eat-comment/>
+
+  <string-array name="dialog_select_range_values">
+    <item>@string/dialog_select_range_one_minute</item>
+    <item>@string/dialog_select_range_ten_minutes</item>
+    <item>@string/dialog_select_range_one_hour</item>
+    <item>@string/dialog_select_range_eight_hours</item>
+    <item>@string/dialog_select_range_one_day</item>
+  </string-array>
+
+</resources>

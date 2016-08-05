@@ -23,6 +23,7 @@ import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -48,6 +49,8 @@ public abstract class MessagesIndicator extends FrameLayout {
   protected VisibleRange visibleRange;
 
   protected TextView titleTextView;
+
+  protected ImageButton rangeButton;
 
   protected LineChart messagesChart;
 
@@ -119,14 +122,8 @@ public abstract class MessagesIndicator extends FrameLayout {
     requestLayout();
   }
 
-  public TextView getTitleTextView() {
-    return titleTextView;
-  }
-
-  public void setTitleTextView(TextView titleTextView) {
-    this.titleTextView = titleTextView;
-    invalidate();
-    requestLayout();
+  public void setRangeButtonOnClickListener(OnClickListener listener) {
+    rangeButton.setOnClickListener(listener);
   }
 
   public void updateChart(float value, int index) {
@@ -171,6 +168,7 @@ public abstract class MessagesIndicator extends FrameLayout {
 
   protected void initializeWidgets() {
     titleTextView = (TextView) findViewById(R.id.title);
+    rangeButton = (ImageButton) findViewById(R.id.range);
     messagesChart = (LineChart) findViewById(R.id.messages_chart);
 
     titleTextView.setText(getTitle());

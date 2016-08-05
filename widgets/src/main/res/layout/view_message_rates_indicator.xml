@@ -13,34 +13,57 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
-      android:paddingBottom="@dimen/messages_indicator_padding_bottom"
-      android:paddingEnd="@dimen/messages_indicator_padding"
-      android:paddingLeft="@dimen/messages_indicator_padding"
-      android:paddingRight="@dimen/messages_indicator_padding"
-      android:paddingStart="@dimen/messages_indicator_padding"
-      android:paddingTop="@dimen/messages_indicator_padding"
       >
 
-    <TextView
-        android:id="@+id/title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/messages_indicator_margin_bottom"
-        android:text="@string/queued_messages_indicator_default_title"
-        android:textSize="@dimen/messages_indicator_title_size"
-        android:textStyle="bold"
-        />
+        android:paddingBottom="@dimen/padding_medium"
+        android:paddingTop="@dimen/padding_medium"
+        >
+
+      <TextView
+          android:id="@+id/title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:paddingEnd="@dimen/padding_medium"
+          android:paddingLeft="@dimen/padding_medium"
+          android:paddingRight="@dimen/padding_medium"
+          android:paddingStart="@dimen/padding_medium"
+          android:text="@string/queued_messages_indicator_default_title"
+          android:textColor="@color/message_indicator_default_title_color"
+          android:textSize="@dimen/font_size_medium"
+          android:textStyle="bold"
+          />
+
+      <ImageButton
+          android:id="@+id/range"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentRight="true"
+          android:contentDescription="@null"
+          android:src="@drawable/ic_more"
+          style="@android:style/Widget.Holo.Button.Borderless"
+          />
+
+    </RelativeLayout>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/messages_chart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/messages_indicator_chart_min_height"
+        android:minHeight="@dimen/char_min_height"
+        android:paddingBottom="@dimen/padding_medium"
+        android:paddingTop="@dimen/padding_medium"
         />
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_medium"
+        android:paddingTop="@dimen/padding_medium"
         >
 
       <TableRow

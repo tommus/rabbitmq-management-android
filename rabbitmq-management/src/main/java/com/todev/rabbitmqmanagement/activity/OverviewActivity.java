@@ -31,6 +31,7 @@ import com.todev.rabbitmqmanagement.api.model.MessageStats;
 import com.todev.rabbitmqmanagement.api.model.overview.Overview;
 import com.todev.rabbitmqmanagement.api.model.overview.QueueTotals;
 import com.todev.rabbitmqmanagement.api.service.RabbitMqService;
+import com.todev.rabbitmqmanagement.fragment.dialog.SelectRangeFragment;
 import com.todev.rabbitmqmanagement.widget.MessageRatesIndicator;
 import com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator;
 import java.util.TimerTask;
@@ -42,6 +43,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OverviewActivity extends AppCompatActivity {
+
+  public static final String TAG_SELECT_RANGE = "Select Range Fragment";
 
   @BindView(R.id.queued_messages_indicator)
   QueuedMessagesIndicator queuedMessagesIndicator;
@@ -86,6 +89,24 @@ public class OverviewActivity extends AppCompatActivity {
     setContentView(R.layout.activity_overview);
 
     ButterKnife.bind(this);
+
+    queuedMessagesIndicator.setRangeButtonOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        SelectRangeFragment fragment = new SelectRangeFragment();
+        fragment.setMessagesIndicator(queuedMessagesIndicator);
+        fragment.show(getSupportFragmentManager(), TAG_SELECT_RANGE);
+      }
+    });
+
+    messageRatesIndicator.setRangeButtonOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        SelectRangeFragment fragment = new SelectRangeFragment();
+        fragment.setMessagesIndicator(messageRatesIndicator);
+        fragment.show(getSupportFragmentManager(), TAG_SELECT_RANGE);
+      }
+    });
 
     initializeRabbitMqService();
   }
