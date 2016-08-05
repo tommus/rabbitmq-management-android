@@ -65,7 +65,7 @@ public class AddServiceFragment extends DialogFragment {
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     LayoutInflater inflater = getActivity().getLayoutInflater();
-    View view = inflater.inflate(R.layout.fragment_add_service_dialog, null);
+    View view = inflater.inflate(R.layout.dialog_add_service, null);
 
     ButterKnife.bind(this, view);
 
@@ -126,13 +126,13 @@ public class AddServiceFragment extends DialogFragment {
 
       if (!validateLabel(service.getLabel())) {
         labelTextInputLayout.startAnimation(horizontalShakeAnimation);
-        labelEditText.setError(getString(R.string.fragment_add_service_dialog_label_incorrect));
+        labelEditText.setError(getString(R.string.dialog_add_service_label_incorrect));
         return;
       }
 
       if (!validateAddress(service.getAddress())) {
         addressTextInputLayout.startAnimation(horizontalShakeAnimation);
-        addressEditText.setError(getString(R.string.fragment_add_service_dialog_address_incorrect));
+        addressEditText.setError(getString(R.string.dialog_add_service_address_incorrect));
         return;
       }
 

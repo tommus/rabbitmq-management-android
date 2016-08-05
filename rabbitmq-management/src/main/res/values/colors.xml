@@ -6,7 +6,8 @@
 
   <color name="colorPrimary">#F57C00</color>
   <color name="colorPrimaryDark">#EF6C00</color>
-  <color name="colorAccent">#536DFE</color>
+  <color name="colorAccent">@color/colorPrimary</color>
+  <color name="colorDark">#666666</color>
 
   <color name="indicator_messages_ready">#EDC240</color>
   <color name="indicator_messages_unacked">#AFD8F8</color>

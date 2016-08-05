@@ -122,14 +122,8 @@ public abstract class MessagesIndicator extends FrameLayout {
     requestLayout();
   }
 
-  public TextView getTitleTextView() {
-    return titleTextView;
-  }
-
-  public void setTitleTextView(TextView titleTextView) {
-    this.titleTextView = titleTextView;
-    invalidate();
-    requestLayout();
+  public void setRangeButtonOnClickListener(OnClickListener listener) {
+    rangeButton.setOnClickListener(listener);
   }
 
   public void updateChart(float value, int index) {
