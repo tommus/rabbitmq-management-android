@@ -44,6 +44,7 @@
   <dimen name="margin_lower">8dp</dimen>
   <dimen name="margin_small">6dp</dimen>
   <dimen name="margin_tiny">4dp</dimen>
+  <dimen name="margin_tiny_minus">2dp</dimen>
   <dimen name="margin_none">0dp</dimen>
 
   <dimen name="font_size_huge">24sp</dimen>
@@ -60,5 +61,8 @@
   <dimen name="divider_large">3dp</dimen>
   <dimen name="divider_small">2dp</dimen>
   <dimen name="divider_tiny">1dp</dimen>
+
+  <dimen name="elevation_resting">2dp</dimen>
+  <dimen name="elevation_raised">8dp</dimen>
 
 </resources>

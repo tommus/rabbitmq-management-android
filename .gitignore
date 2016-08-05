@@ -13,3 +13,6 @@ build/
 
 # Project specific
 local.properties
+
+# System specific
+.DS_Store

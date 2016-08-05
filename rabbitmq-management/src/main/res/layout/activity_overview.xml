@@ -58,6 +58,12 @@
         todev:visible_range="one_minute"
         />
 
+    <com.todev.rabbitmqmanagement.widget.GlobalCountsIndicator
+        android:id="@+id/global_counts_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
   </LinearLayout>
 
 </ScrollView>

@@ -21,4 +21,10 @@
   <string name="message_rates_indicator_default_redelivered_text">Redelivered</string>
   <string name="message_rates_indicator_range_button_content_description">Range</string>
 
+  <string name="global_counts_indicator_connections">Connections</string>
+  <string name="global_counts_indicator_channels">Channels</string>
+  <string name="global_counts_indicator_exchanges">Exchanges</string>
+  <string name="global_counts_indicator_queues">Queues</string>
+  <string name="global_counts_indicator_consumers">Consumers</string>
+
 </resources>

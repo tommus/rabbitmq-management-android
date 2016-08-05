@@ -28,10 +28,12 @@ import butterknife.ButterKnife;
 import com.android.internal.util.Predicate;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.api.model.MessageStats;
+import com.todev.rabbitmqmanagement.api.model.overview.ObjectTotals;
 import com.todev.rabbitmqmanagement.api.model.overview.Overview;
 import com.todev.rabbitmqmanagement.api.model.overview.QueueTotals;
 import com.todev.rabbitmqmanagement.api.service.RabbitMqService;
 import com.todev.rabbitmqmanagement.fragment.dialog.SelectRangeFragment;
+import com.todev.rabbitmqmanagement.widget.GlobalCountsIndicator;
 import com.todev.rabbitmqmanagement.widget.MessageRatesIndicator;
 import com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator;
 import java.util.TimerTask;
@@ -52,6 +54,9 @@ public class OverviewActivity extends AppCompatActivity {
   @BindView(R.id.message_rates_indicator)
   MessageRatesIndicator messageRatesIndicator;
 
+  @BindView(R.id.global_counts_indicator)
+  GlobalCountsIndicator globalCountsIndicator;
+
   private ScheduledExecutorService executorService;
 
   private RabbitMqService rabbitMqService;
@@ -63,14 +68,14 @@ public class OverviewActivity extends AppCompatActivity {
     }
   };
 
-  private Predicate<QueueTotals> totalsAvailabilityPredicate = new Predicate<QueueTotals>() {
+  private Predicate<QueueTotals> queueTotalsPredicate = new Predicate<QueueTotals>() {
     @Override
     public boolean apply(QueueTotals queueTotals) {
       return queueTotals != null;
     }
   };
 
-  private Predicate<MessageStats> ratesAvailabilityPredicate = new Predicate<MessageStats>() {
+  private Predicate<MessageStats> ratesPredicate = new Predicate<MessageStats>() {
 
     @Override
     public boolean apply(MessageStats messageStats) {
@@ -80,6 +85,13 @@ public class OverviewActivity extends AppCompatActivity {
           messageStats.getPublishOutDetails() != null &&
           messageStats.getDeliverGetDetails() != null &&
           messageStats.getRedeliverDetails() != null;
+    }
+  };
+
+  private Predicate<ObjectTotals> objectTotalsPredicate = new Predicate<ObjectTotals>() {
+    @Override
+    public boolean apply(ObjectTotals objectTotals) {
+      return objectTotals != null;
     }
   };
 
@@ -117,6 +129,7 @@ public class OverviewActivity extends AppCompatActivity {
 
     animate(queuedMessagesIndicator, 0);
     animate(messageRatesIndicator, 1);
+    animate(globalCountsIndicator, 2);
 
     initializeScheduler();
     startScheduler();
@@ -167,7 +180,7 @@ public class OverviewActivity extends AppCompatActivity {
     Overview overview = response.body();
     QueueTotals totals = overview.getQueueTotals();
 
-    if (!totalsAvailabilityPredicate.apply(totals)) {
+    if (!queueTotalsPredicate.apply(totals)) {
       return;
     }
 
@@ -188,7 +201,7 @@ public class OverviewActivity extends AppCompatActivity {
     Overview overview = response.body();
     MessageStats stats = overview.getMessageStats();
 
-    if (!ratesAvailabilityPredicate.apply(stats)) {
+    if (!ratesPredicate.apply(stats)) {
       return;
     }
 
@@ -214,6 +227,21 @@ public class OverviewActivity extends AppCompatActivity {
     messageRatesIndicator.updateRedeliveredButton(getString(R.string.activity_overview_button_redelivered, redeliver));
   }
 
+  private void updateGlobalCountsIndicators(Response<Overview> response) {
+    Overview overview = response.body();
+    ObjectTotals totals = overview.getObjectTotals();
+
+    if (!objectTotalsPredicate.apply(totals)) {
+      return;
+    }
+
+    globalCountsIndicator.setExchanges(totals.getExchanges());
+    globalCountsIndicator.setQueues(totals.getQueues());
+    globalCountsIndicator.setConnections(totals.getConnections());
+    globalCountsIndicator.setConsumers(totals.getConsumers());
+    globalCountsIndicator.setChannels(totals.getChannels());
+  }
+
   private class OverviewResponseCallback implements Callback<Overview> {
 
     @Override
@@ -224,6 +252,7 @@ public class OverviewActivity extends AppCompatActivity {
 
       updateQueuedMessagesIndicator(response);
       updateMessageRatesIndicator(response);
+      updateGlobalCountsIndicators(response);
     }
 
     @Override
