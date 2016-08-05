@@ -44,7 +44,7 @@
           android:layout_alignParentEnd="true"
           android:layout_alignParentRight="true"
           android:contentDescription="@null"
-          android:src="@drawable/ic_more"
+          android:src="@drawable/ic_more_gray"
           style="@android:style/Widget.Holo.Button.Borderless"
           />
 
