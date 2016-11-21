@@ -1,29 +1,18 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.2.2'
+  }
+}
+
 allprojects {
   repositories {
     jcenter()
-    maven { url "https://jitpack.io" }
+    maven { url "https://clojars.org/repo/" }
   }
-}
-
-buildscript {
-  dependencies {
-    classpath group: 'com.android.tools.build', name: 'gradle', version: '2.1.2'
-    classpath group: 'com.neenbedankt.gradle.plugins', name: 'android-apt', version: '1.8'
-  }
-
-  repositories {
-    jcenter()
-  }
-}
-
-ext {
-  buildToolsVersion = '24.0.0'
-  compileSdkVersion = 24
-  minSdkVersion = 14
-  targetSdkVersion = 24
-  versionCode = 1
-  versionName = '0.0.4'
-  supportVersion = '24.1.1'
 }
 
 task clean(type: Delete) {
