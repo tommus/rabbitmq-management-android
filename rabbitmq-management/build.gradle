@@ -49,7 +49,6 @@ android {
       shrinkResources true
 
       proguardFile rootProject.file('settings/proguard/dbflow.pro')
-      proguardFile rootProject.file('settings/proguard/firebase.pro')
       proguardFile rootProject.file('settings/proguard/fragmentargs.pro')
       proguardFile rootProject.file('settings/proguard/icepick.pro')
       proguardFile rootProject.file('settings/proguard/lombok.pro')
