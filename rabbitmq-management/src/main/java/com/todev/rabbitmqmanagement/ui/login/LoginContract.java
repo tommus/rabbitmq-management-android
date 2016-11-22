@@ -17,7 +17,10 @@
  */
 package com.todev.rabbitmqmanagement.ui.login;
 
+import android.support.annotation.StringRes;
+import com.todev.rabbitmqmanagement.data.app.model.Credentials;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
+import java.util.List;
 
 public interface LoginContract {
   interface View {
@@ -27,13 +30,23 @@ public interface LoginContract {
 
     void showServiceNotSelectedError();
 
+    void showInvalidCredentialsError();
+
+    void showServiceUnreachableError();
+
     void showAddServiceDialog();
+
+    void invalidateDeleteServiceButton();
 
     void setDeleteServiceButtonEnabled(boolean enabled);
 
+    void invalidateLoginButton();
+
     void setLoginButtonEnabled(boolean enabled);
 
-    void showCredentials(String username, String password, int service, boolean remember);
+    void updateServices(List<Service> services);
+
+    void showCredentials(Credentials credentials);
 
     void showOverview();
 
@@ -51,13 +64,13 @@ public interface LoginContract {
 
     void onLoginButtonClicked();
 
-    void shouldLoadCredentials();
+    void onAddServiceDialogSuccess(int id);
 
     void loadCredentials();
 
     void loadServices();
 
-    void deleteService();
+    void deleteService(Service service);
 
     boolean validateLogin(String login);
 
@@ -66,5 +79,7 @@ public interface LoginContract {
     boolean validateService(Service service);
 
     void performLogin(String login, String password, Service service);
+
+    void unsubscribe();
   }
 }

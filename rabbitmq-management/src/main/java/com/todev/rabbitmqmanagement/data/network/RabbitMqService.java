@@ -19,8 +19,6 @@ package com.todev.rabbitmqmanagement.data.network;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.todev.rabbitmqmanagement.data.network.interceptor.AuthorizationInterceptor;
-import com.todev.rabbitmqmanagement.data.network.interceptor.ContentTypeInterceptor;
 import com.todev.rabbitmqmanagement.data.network.model.Check;
 import com.todev.rabbitmqmanagement.data.network.model.binding.Binding;
 import com.todev.rabbitmqmanagement.data.network.model.binding.ExtendedBinding;
@@ -48,11 +46,9 @@ import com.todev.rabbitmqmanagement.data.network.model.queue.PutQueue;
 import com.todev.rabbitmqmanagement.data.network.model.user.ExtendedUser;
 import com.todev.rabbitmqmanagement.data.network.model.user.User;
 import com.todev.rabbitmqmanagement.data.network.model.vhost.ExtendedVhost;
+import io.reactivex.Observable;
 import java.util.List;
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -64,295 +60,278 @@ import retrofit2.http.Query;
 
 public interface RabbitMqService {
 
-  String CONTENT_TYPE = "application/json";
+  @GET("api/overview")
+  Observable<Overview> getOverview();
 
-  String URL_FORMAT = "http://%s:%d/api/";
+  @GET("api/cluster-name")
+  Observable<Cluster> getClusterName();
 
-  String TEST_URL = "192.168.3.150";
+  @PUT("api/cluster-name")
+  Observable<Void> updateClusterName(@Body @NonNull Cluster cluster);
 
-  int TEST_PORT = 15672;
+  @GET("api/nodes")
+  Observable<List<Node>> getNodes();
 
-  String TEST_USERNAME = "tommus";
+  @GET("api/nodes/{name}")
+  Observable<Node> getNode(@Path("name") @NonNull String name);
 
-  String TEST_PASSWORD = "tommus";
+  @GET("api/extensions")
+  Observable<List<Extension>> getExtensions();
 
-  @GET("overview")
-  Call<Overview> getOverview();
-
-  @GET("cluster-name")
-  Call<Cluster> getClusterName();
-
-  @PUT("cluster-name")
-  Call<Void> updateClusterName(@Body @NonNull Cluster cluster);
-
-  @GET("nodes")
-  Call<List<Node>> getNodes();
-
-  @GET("nodes/{name}")
-  Call<Node> getNode(@Path("name") @NonNull String name);
-
-  @GET("extensions")
-  Call<List<Extension>> getExtensions();
-
-  @GET("definitions")
-  Call<Definitions> getDefinitions();
+  @GET("api/definitions")
+  Observable<Definitions> getDefinitions();
 
   // TODO: Add POST /definitions.
 
-  @GET("definitions/{vhost}")
-  Call<Definitions> getDefinitions(@Path("vhost") @NonNull String vhost);
+  @GET("api/definitions/{vhost}")
+  Observable<Definitions> getDefinitions(@Path("vhost") @NonNull String vhost);
 
   // TODO: Add POST /definitions/{vhost}.
 
-  @GET("connections")
-  Call<List<Connection>> getConnections();
+  @GET("api/connections")
+  Observable<List<Connection>> getConnections();
 
-  @GET("vhosts/{vhost}/connections")
-  Call<List<Connection>> getConnections(@Path("vhost") @NonNull String vhost);
+  @GET("api/vhosts/{vhost}/connections")
+  Observable<List<Connection>> getConnections(@Path("vhost") @NonNull String vhost);
 
-  @GET("connections/{name}")
-  Call<Connection> getConnection(@Path("name") @NonNull String name);
+  @GET("api/connections/{name}")
+  Observable<Connection> getConnection(@Path("name") @NonNull String name);
 
-  @DELETE("connections/{name}")
-  Call<Void> deleteConnection(@Path("name") @NonNull String name, @Header(Headers.X_REASON) @Nullable String reason);
+  @DELETE("api/connections/{name}")
+  Observable<Void> deleteConnection(@Path("name") @NonNull String name,
+      @Header(Headers.X_REASON) @Nullable String reason);
 
-  @GET("connections/{name}/channels")
-  Call<List<Channel>> getConnectionChannels(@Path("name") @NonNull String connection);
+  @GET("api/connections/{name}/channels")
+  Observable<List<Channel>> getConnectionChannels(@Path("name") @NonNull String connection);
 
-  @GET("channels")
-  Call<List<Channel>> getChannels();
+  @GET("api/channels")
+  Observable<List<Channel>> getChannels();
 
-  @GET("vhosts/{vhost}/channels")
-  Call<List<Channel>> getChannels(@Path("vhost") @NonNull String vhost);
+  @GET("api/vhosts/{vhost}/channels")
+  Observable<List<Channel>> getChannels(@Path("vhost") @NonNull String vhost);
 
-  @GET("channels/{name}")
-  Call<Channel> getChannel(@Path("name") @NonNull String name);
+  @GET("api/channels/{name}")
+  Observable<Channel> getChannel(@Path("name") @NonNull String name);
 
-  @GET("consumers")
-  Call<List<Consumer>> getConsumers();
+  @GET("api/consumers")
+  Observable<List<Consumer>> getConsumers();
 
-  @GET("consumers/{vhost}")
-  Call<List<Consumer>> getConsumers(@Path("vhost") @NonNull String vhost);
+  @GET("api/consumers/{vhost}")
+  Observable<List<Consumer>> getConsumers(@Path("vhost") @NonNull String vhost);
 
-  @GET("exchanges")
-  Call<List<ExtendedExchange>> getExchanges();
+  @GET("api/exchanges")
+  Observable<List<ExtendedExchange>> getExchanges();
 
-  @GET("exchanges/{vhost}")
-  Call<List<ExtendedExchange>> getExchanges(@Path("vhost") @NonNull String vhost);
+  @GET("api/exchanges/{vhost}")
+  Observable<List<ExtendedExchange>> getExchanges(@Path("vhost") @NonNull String vhost);
 
-  @GET("exchanges/{vhost}/{exchange}")
-  Call<ExtendedExchange> getExchange(@Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange);
+  @GET("api/exchanges/{vhost}/{exchange}")
+  Observable<ExtendedExchange> getExchange(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange);
 
-  @PUT("exchanges/{vhost}/{exchange}")
-  Call<Void> putExchange(@Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
-    @Body @NonNull Exchange body);
+  @PUT("api/exchanges/{vhost}/{exchange}")
+  Observable<Void> putExchange(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Body @NonNull Exchange body);
 
-  @DELETE("exchanges/{vhost}/{exchange}")
-  Call<Void> deleteExchange(@Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
-    @Query("if-unused") @Nullable Boolean ifUnused);
+  @DELETE("api/exchanges/{vhost}/{exchange}")
+  Observable<Void> deleteExchange(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Query("if-unused") @Nullable Boolean ifUnused);
 
-  @GET("exchanges/{vhost}/{exchange}/bindings/source")
-  Call<List<Binding>> getSourceBindings(@Path("vhost") @NonNull String vhost,
-    @Path("exchange") @NonNull String exchange);
+  @GET("api/exchanges/{vhost}/{exchange}/bindings/source")
+  Observable<List<Binding>> getSourceBindings(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange);
 
-  @GET("exchanges/{vhost}/{exchange}/bindings/destination")
-  Call<List<Binding>> getDestinationBindings(@Path("vhost") @NonNull String vhost,
-    @Path("exchange") @NonNull String exchange);
+  @GET("api/exchanges/{vhost}/{exchange}/bindings/destination")
+  Observable<List<Binding>> getDestinationBindings(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange);
 
-  @POST("exchanges/{vhost}/{exchange}/publish")
-  Call<PublishResponse> postExchangePublish(@Path("vhost") @NonNull String vhost,
-    @Path("exchange") @NonNull String exchange, @Body @NonNull PublishBody body);
+  @POST("api/exchanges/{vhost}/{exchange}/publish")
+  Observable<PublishResponse> postExchangePublish(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Body @NonNull PublishBody body);
 
-  @GET("queues")
-  Call<List<ExtendedQueue>> getQueues();
+  @GET("api/queues")
+  Observable<List<ExtendedQueue>> getQueues();
 
-  @GET("queues/{vhost}")
-  Call<List<ExtendedQueue>> getQueues(@Path("vhost") @NonNull String vhost);
+  @GET("api/queues/{vhost}")
+  Observable<List<ExtendedQueue>> getQueues(@Path("vhost") @NonNull String vhost);
 
-  @GET("queues/{vhost}/{queue}")
-  Call<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
+  @GET("api/queues/{vhost}/{queue}")
+  Observable<ExtendedQueue> getQueue(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue);
 
-  @PUT("queues/{vhost}/{queue}")
-  Call<Void> putQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
-    @Body @NonNull PutQueue body);
+  @PUT("api/queues/{vhost}/{queue}")
+  Observable<Void> putQueue(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue, @Body @NonNull PutQueue body);
 
-  @DELETE("queues/{vhost}/{queue}")
-  Call<Void> deleteQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
-    @Query("if-empty") @Nullable Boolean ifEmpty, @Query("if-unused") @Nullable Boolean ifUnused);
+  @DELETE("api/queues/{vhost}/{queue}")
+  Observable<Void> deleteQueue(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue, @Query("if-empty") @Nullable Boolean ifEmpty,
+      @Query("if-unused") @Nullable Boolean ifUnused);
 
-  @GET("queues/{vhost}/{queue}/bindings")
-  Call<List<Binding>> getQueueBindings(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
+  @GET("api/queues/{vhost}/{queue}/bindings")
+  Observable<List<Binding>> getQueueBindings(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue);
 
-  @DELETE("queues/{vhost}/{queue}/contents")
-  Call<Void> purgeQueue(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue);
+  @DELETE("api/queues/{vhost}/{queue}/contents")
+  Observable<Void> purgeQueue(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue);
 
-  @POST("queues/{vhost}/{queue}/actions")
-  Call<Void> postAction(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
-    @Body @NonNull Action body);
+  @POST("api/queues/{vhost}/{queue}/actions")
+  Observable<Void> postAction(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue, @Body @NonNull Action body);
 
-  @POST("queues/{vhost}/{queue}/get")
-  Call<List<Message>> getMessages(@Path("vhost") @NonNull String vhost, @Path("queue") @NonNull String queue,
-    @Body @NonNull Requirements body);
+  @POST("api/queues/{vhost}/{queue}/get")
+  Observable<List<Message>> getMessages(@Path("vhost") @NonNull String vhost,
+      @Path("queue") @NonNull String queue, @Body @NonNull Requirements body);
 
-  @GET("bindings")
-  Call<List<Binding>> getBindings();
+  @GET("api/bindings")
+  Observable<List<Binding>> getBindings();
 
-  @GET("bindings/{vhost}")
-  Call<List<Binding>> getBindings(@Path("vhost") @NonNull String vhost);
+  @GET("api/bindings/{vhost}")
+  Observable<List<Binding>> getBindings(@Path("vhost") @NonNull String vhost);
 
-  @GET("bindings/{vhost}/e/{exchange}/q/{queue}")
-  Call<List<ExtendedBinding>> getBindingsBetweenExchangeAndQueue(@Path("vhost") @NonNull String vhost,
-    @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue);
+  @GET("api/bindings/{vhost}/e/{exchange}/q/{queue}")
+  Observable<List<ExtendedBinding>> getBindingsBetweenExchangeAndQueue(
+      @Path("vhost") @NonNull String vhost, @Path("exchange") @NonNull String exchange,
+      @Path("queue") @NonNull String queue);
 
-  @POST("bindings/{vhost}/e/{exchange}/q/{queue}")
-  Call<Void> postBindingsBetweenExchangeAndQueue(@Path("vhost") @NonNull String vhost,
-    @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue, @Body @NonNull Binding body);
+  @POST("api/bindings/{vhost}/e/{exchange}/q/{queue}")
+  Observable<Void> postBindingsBetweenExchangeAndQueue(@Path("vhost") @NonNull String vhost,
+      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
+      @Body @NonNull Binding body);
 
-  @GET("bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
-  Call<ExtendedBinding> getBindingsBetweenExchangeAndQueue(@Path("vhost") String vhost,
-    @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
-    @Path("props") @NonNull String propertiesKey);
+  @GET("api/bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
+  Observable<ExtendedBinding> getBindingsBetweenExchangeAndQueue(@Path("vhost") String vhost,
+      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
+      @Path("props") @NonNull String propertiesKey);
 
-  @DELETE("bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
-  Call<ExtendedBinding> deleteBindingsBetweenExchangeAndQueue(@Path("vhost") String vhost,
-    @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
-    @Path("props") @NonNull String propertiesKey);
+  @DELETE("api/bindings/{vhost}/e/{exchange}/q/{queue}/{props}")
+  Observable<ExtendedBinding> deleteBindingsBetweenExchangeAndQueue(@Path("vhost") String vhost,
+      @Path("exchange") @NonNull String exchange, @Path("queue") @NonNull String queue,
+      @Path("props") @NonNull String propertiesKey);
 
-  @GET("bindings/{vhost}/e/{source}/e/{destination}")
-  Call<List<ExtendedBinding>> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
-    @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange);
+  @GET("api/bindings/{vhost}/e/{source}/e/{destination}")
+  Observable<List<ExtendedBinding>> getBindingsBetweenExchanges(
+      @Path("vhost") @NonNull String vhost, @Path("source") @NonNull String srcExchange,
+      @Path("destination") @NonNull String dstExchange);
 
-  @POST("bindings/{vhost}/e/{source}/e/{destination}")
-  Call<Void> postBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost, @Path("source") @NonNull String source,
-    @Path("destination") @NonNull String destination, @Body @NonNull Binding body);
+  @POST("api/bindings/{vhost}/e/{source}/e/{destination}")
+  Observable<Void> postBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
+      @Path("source") @NonNull String source, @Path("destination") @NonNull String destination,
+      @Body @NonNull Binding body);
 
-  @GET("bindings/{vhost}/e/{source}/e/{destination}/{props}")
-  Call<ExtendedBinding> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
-    @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
-    @Path("props") @NonNull String propertiesKey);
+  @GET("api/bindings/{vhost}/e/{source}/e/{destination}/{props}")
+  Observable<ExtendedBinding> getBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
+      @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
+      @Path("props") @NonNull String propertiesKey);
 
-  @DELETE("bindings/{vhost}/e/{source}/e/{destination}/{props}")
-  Call<Void> deleteBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
-    @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
-    @Path("props") @NonNull String propertiesKey);
+  @DELETE("api/bindings/{vhost}/e/{source}/e/{destination}/{props}")
+  Observable<Void> deleteBindingsBetweenExchanges(@Path("vhost") @NonNull String vhost,
+      @Path("source") @NonNull String srcExchange, @Path("destination") @NonNull String dstExchange,
+      @Path("props") @NonNull String propertiesKey);
 
-  @GET("vhosts")
-  Call<List<ExtendedVhost>> getVhosts();
+  @GET("api/vhosts")
+  Observable<List<ExtendedVhost>> getVhosts();
 
-  @GET("vhosts/{name}")
-  Call<ExtendedVhost> getVhost(@Path("name") @NonNull String name);
+  @GET("api/vhosts/{name}")
+  Observable<ExtendedVhost> getVhost(@Path("name") @NonNull String name);
 
-  @PUT("vhosts/{name}")
-  Call<Void> putVhost(@Path("name") @NonNull String name);
+  @PUT("api/vhosts/{name}")
+  Observable<Void> putVhost(@Path("name") @NonNull String name);
 
-  @DELETE("vhosts/{name}")
-  Call<Void> deleteHost(@Path("name") @NonNull String name);
+  @DELETE("api/vhosts/{name}")
+  Observable<Void> deleteHost(@Path("name") @NonNull String name);
 
-  @GET("vhosts/{vhost}/permissions")
-  Call<List<Permission>> getVhostPermissions(@Path("vhost") @NonNull String vhost);
+  @GET("api/vhosts/{vhost}/permissions")
+  Observable<List<Permission>> getVhostPermissions(@Path("vhost") @NonNull String vhost);
 
-  @GET("users")
-  Call<List<ExtendedUser>> getUsers();
+  @GET("api/users")
+  Observable<List<ExtendedUser>> getUsers();
 
-  @GET("users/{name}")
-  Call<ExtendedUser> getUser(@Path("name") @NonNull String name);
+  @GET("api/users/{name}")
+  Observable<ExtendedUser> getUser(@Path("name") @NonNull String name);
 
-  @PUT("users/{name}")
-  Call<Void> putUser(@Path("name") @NonNull String name, @NonNull @Body ExtendedUser body);
+  @PUT("api/users/{name}")
+  Observable<Void> putUser(@Path("name") @NonNull String name, @NonNull @Body ExtendedUser body);
 
-  @DELETE("users/{name}")
-  Call<Void> deleteUser(@Path("name") @NonNull String name);
+  @DELETE("api/users/{name}")
+  Observable<Void> deleteUser(@Path("name") @NonNull String name);
 
-  @GET("users/{user}/permissions")
-  Call<List<Permission>> getUserPermissions(@Path("user") @NonNull String user);
+  @GET("api/users/{user}/permissions")
+  Observable<List<Permission>> getUserPermissions(@Path("user") @NonNull String user);
 
-  @GET("whoami")
-  Call<User> whoAmI();
+  @GET("api/whoami")
+  Observable<Response<User>> whoAmI();
 
-  @GET("permissions")
-  Call<List<Permission>> getPermissions();
+  @GET("api/permissions")
+  Observable<List<Permission>> getPermissions();
 
-  @GET("permissions/{vhost}/{user}")
-  Call<Permission> getPermission(@Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
+  @GET("api/permissions/{vhost}/{user}")
+  Observable<Permission> getPermission(@Path("vhost") @NonNull String vhost,
+      @Path("user") @NonNull String user);
 
-  @PUT("permissions/{vhost}/{user}")
-  Call<Void> putPermission(@Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user,
-    @Body @NonNull Permission body);
+  @PUT("api/permissions/{vhost}/{user}")
+  Observable<Void> putPermission(@Path("vhost") @NonNull String vhost,
+      @Path("user") @NonNull String user, @Body @NonNull Permission body);
 
-  @DELETE("permissions/{vhost}/{user}")
-  Call<Void> deletePermission(@Path("vhost") @NonNull String vhost, @Path("user") @NonNull String user);
+  @DELETE("api/permissions/{vhost}/{user}")
+  Observable<Void> deletePermission(@Path("vhost") @NonNull String vhost,
+      @Path("user") @NonNull String user);
 
-  @GET("parameters")
-  Call<List<Parameter>> getParameters();
+  @GET("api/parameters")
+  Observable<List<Parameter>> getParameters();
 
-  @GET("parameters/{component}")
-  Call<List<Parameter>> getParameters(@Path("component") @NonNull String component);
+  @GET("api/parameters/{component}")
+  Observable<List<Parameter>> getParameters(@Path("component") @NonNull String component);
 
-  @GET("parameters/{component}/{vhost}")
-  Call<List<Parameter>> getParameters(@Path("component") @NonNull String component,
-    @Path("vhost") @NonNull String vhost);
+  @GET("api/parameters/{component}/{vhost}")
+  Observable<List<Parameter>> getParameters(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost);
 
-  @GET("parameters/{component}/{vhost}/{parameter}")
-  Call<Parameter> getParameter(@Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
-    @Path("parameter") @NonNull String parameter);
+  @GET("api/parameters/{component}/{vhost}/{parameter}")
+  Observable<Parameter> getParameter(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter);
 
-  @PUT("parameters/{component}/{vhost}/{parameter}")
-  Call<Void> putParameter(@Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
-    @Path("parameter") @NonNull String parameter, @Body @NonNull PutParameter body);
+  @PUT("api/parameters/{component}/{vhost}/{parameter}")
+  Observable<Void> putParameter(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter,
+      @Body @NonNull PutParameter body);
 
-  @DELETE("parameters/{component}/{vhost}/{parameter}")
-  Call<Void> deleteParameter(@Path("component") @NonNull String component, @Path("vhost") @NonNull String vhost,
-    @Path("parameter") @NonNull String parameter);
+  @DELETE("api/parameters/{component}/{vhost}/{parameter}")
+  Observable<Void> deleteParameter(@Path("component") @NonNull String component,
+      @Path("vhost") @NonNull String vhost, @Path("parameter") @NonNull String parameter);
 
-  @GET("policies")
-  Call<List<Policy>> getPolicies();
+  @GET("api/policies")
+  Observable<List<Policy>> getPolicies();
 
-  @GET("policies/{vhost}")
-  Call<List<Policy>> getPolicies(@Path("vhost") @NonNull String vhost);
+  @GET("api/policies/{vhost}")
+  Observable<List<Policy>> getPolicies(@Path("vhost") @NonNull String vhost);
 
-  @GET("policies/{vhost}/{policy}")
-  Call<Policy> getPolicy(@Path("vhost") @NonNull String vhost, @Path("policy") @NonNull String policy);
+  @GET("api/policies/{vhost}/{policy}")
+  Observable<Policy> getPolicy(@Path("vhost") @NonNull String vhost,
+      @Path("policy") @NonNull String policy);
 
-  @PUT("policies/{vhost}/{policy}")
-  Call<Void> putPolicy(@Path("vhost") @NonNull String vhost, @Path("policy") @NonNull String policy,
-    @Body @NonNull Policy body);
+  @PUT("api/policies/{vhost}/{policy}")
+  Observable<Void> putPolicy(@Path("vhost") @NonNull String vhost,
+      @Path("policy") @NonNull String policy, @Body @NonNull Policy body);
 
-  @DELETE("policies/{vhost}/{policy}")
-  Call<Void> deletePolicy(@Path("vhost") @NonNull String vhost, @Path("policy") @NonNull String policy);
+  @DELETE("api/policies/{vhost}/{policy}")
+  Observable<Void> deletePolicy(@Path("vhost") @NonNull String vhost,
+      @Path("policy") @NonNull String policy);
 
-  @GET("aliveness-test/{vhost}")
-  Call<Check> checkAlive(@Path("vhost") @NonNull String vhost);
+  @GET("api/aliveness-test/{vhost}")
+  Observable<Check> checkAlive(@Path("vhost") @NonNull String vhost);
 
-  @GET("healthchecks/node")
-  Call<Check> checkHealth();
+  @GET("api/healthchecks/node")
+  Observable<Check> checkHealth();
 
-  @GET("healthchecks/node/{node}")
-  Call<Check> checkHealth(@Path("node") @NonNull String node);
+  @GET("api/healthchecks/node/{node}")
+  Observable<Check> checkHealth(@Path("node") @NonNull String node);
 
   class Headers {
 
     public static final String X_REASON = "X-Reason";
 
     public static final String LOCATION = "Location";
-  }
-
-  class Json {
-    public static RabbitMqService createService(String url, int port, String username, String password) {
-      OkHttpClient httpClient =
-        new OkHttpClient.Builder().addInterceptor(new AuthorizationInterceptor(username, password))
-          .addInterceptor(new ContentTypeInterceptor(CONTENT_TYPE))
-          .build();
-
-      Retrofit retrofit = new Retrofit.Builder().baseUrl(String.format(URL_FORMAT, url, port))
-        .addConverterFactory(JacksonConverterFactory.create())
-        .client(httpClient)
-        .build();
-
-      return retrofit.create(RabbitMqService.class);
-    }
-
-    public static RabbitMqService createTestService() {
-      return createService(TEST_URL, TEST_PORT, TEST_USERNAME, TEST_PASSWORD);
-    }
   }
 }

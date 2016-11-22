@@ -17,12 +17,28 @@
  */
 package com.todev.rabbitmqmanagement.ui.login;
 
+import com.todev.rabbitmqmanagement.data.app.DataProvider;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
+import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
+import com.todev.rabbitmqmanagement.data.network.interceptor.AddressInterceptor;
+import com.todev.rabbitmqmanagement.data.network.interceptor.AuthorizationInterceptor;
+import com.todev.rabbitmqmanagement.data.network.model.user.User;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 import lombok.Setter;
+import retrofit2.Response;
+import timber.log.Timber;
 
 public class LoginPresenter implements LoginContract.Presenter {
-
   @Setter LoginContract.View view;
+  @Setter DataProvider dataProvider;
+  @Setter AddressInterceptor addressInterceptor;
+  @Setter AuthorizationInterceptor authorizationInterceptor;
+  @Setter RabbitMqService rabbitMqService;
+
+  private CompositeDisposable disposables = new CompositeDisposable();
 
   @Override
   public void onAddServiceButtonClicked() {
@@ -31,7 +47,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
   @Override
   public void onDeleteServiceButtonClicked() {
-    deleteService();
+    deleteService(view.getService());
   }
 
   @Override
@@ -43,23 +59,34 @@ public class LoginPresenter implements LoginContract.Presenter {
   }
 
   @Override
-  public void shouldLoadCredentials() {
-
+  public void onAddServiceDialogSuccess(int id) {
+    loadServices();
   }
 
   @Override
   public void loadCredentials() {
-
+    disposables.add(dataProvider.getCredentials()
+        .subscribeOn(getSubscribeScheduler())
+        .observeOn(getObserveScheduler())
+        .subscribe(credentials -> view.showCredentials(credentials),
+            throwable -> Timber.e("An error occurred while fetching credentials data.")));
   }
 
   @Override
   public void loadServices() {
-
+    disposables.add(dataProvider.getServices()
+        .subscribeOn(getSubscribeScheduler())
+        .observeOn(getObserveScheduler())
+        .subscribe(services -> {
+          view.updateServices(services);
+          view.invalidateDeleteServiceButton();
+        }, throwable -> Timber.d("An error occurred while fetching services data.")));
   }
 
   @Override
-  public void deleteService() {
-
+  public void deleteService(Service service) {
+    service.delete();
+    loadServices();
   }
 
   @Override
@@ -96,11 +123,50 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     // Perform login.
     else {
-      // TODO: 22.11.16 Try to log in.
-      //RabbitMqService rabbitMqService =
-      //  RabbitMqService.Json.createService(service.getAddress(), service.getPort(), login, password);
-      //
-      //rabbitMqService.whoAmI().enqueue(new LoginResponseCallback());
+      interceptRequest(login, password, service);
+      processLogin();
     }
+  }
+
+  protected void interceptRequest(String login, String password, Service service) {
+    addressInterceptor.setAddress(service.getAddress());
+    authorizationInterceptor.setCredentials(login, password);
+  }
+
+  protected void processLogin() {
+    disposables.add(rabbitMqService.whoAmI()
+        .subscribeOn(getSubscribeScheduler())
+        .observeOn(getObserveScheduler())
+        .subscribe(response -> {
+          if (isSuccessfulLogin(response)) {
+            Timber.d(response.body().toString());
+            // TODO: 22.11.2016 Save credentials if user has marked 'remember'.
+            view.showOverview();
+          } else {
+            view.showInvalidCredentialsError();
+          }
+        }, throwable -> {
+          Timber.e("An error occurred while logging in.");
+          view.showServiceUnreachableError();
+        }));
+  }
+
+  protected boolean isSuccessfulLogin(Response<User> response) {
+    return response.isSuccessful();
+  }
+
+  @Override
+  public void unsubscribe() {
+    if (disposables != null && !disposables.isDisposed()) {
+      disposables.clear();
+    }
+  }
+
+  protected Scheduler getSubscribeScheduler() {
+    return Schedulers.io();
+  }
+
+  protected Scheduler getObserveScheduler() {
+    return AndroidSchedulers.mainThread();
   }
 }

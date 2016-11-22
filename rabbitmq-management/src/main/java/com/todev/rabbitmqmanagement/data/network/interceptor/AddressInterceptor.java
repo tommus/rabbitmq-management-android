@@ -17,36 +17,25 @@
  */
 package com.todev.rabbitmqmanagement.data.network.interceptor;
 
-import android.util.Base64;
 import java.io.IOException;
+import lombok.Setter;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class AuthorizationInterceptor implements Interceptor {
+public class AddressInterceptor implements Interceptor {
 
-  private static final String HEADER_AUTHORIZATION = "Authorization";
-
-  private static final String PREFIX_BASIC_AUTH = "Basic ";
-
-  private String token;
-
-  public void setCredentials(String username, String password) {
-    token = generateToken(username, password);
-  }
+  @Setter String address;
 
   @Override
   public Response intercept(Chain chain) throws IOException {
     Request original = chain.request();
     Request.Builder builder = original.newBuilder();
-    if (token != null) {
-      builder = builder.header(HEADER_AUTHORIZATION, token);
+    if (address != null) {
+      HttpUrl url = original.url().newBuilder().host(address).build();
+      builder = builder.url(url);
     }
     return chain.proceed(builder.build());
-  }
-
-  private String generateToken(String username, String password) {
-    String decoded = String.format("%s:%s", username, password);
-    return PREFIX_BASIC_AUTH + Base64.encodeToString(decoded.getBytes(), Base64.NO_WRAP);
   }
 }

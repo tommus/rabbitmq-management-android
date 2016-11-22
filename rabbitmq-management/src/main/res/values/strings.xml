@@ -6,15 +6,6 @@
 
   <string name="app_name" translatable="false">RabbitMQ Management</string>
 
-  <string name="shared_preferences_key" translatable="false">com.todev.rabbitmqmanagement.SHARED_PREFERENCES_KEY</string>
-
-  <string name="shared_preferences_last_used_service" translatable="false">LAST_USED_SERVICE</string>
-  <string name="shared_preferences_last_used_service_url" translatable="false">LAST_USED_SERVICE_URL</string>
-  <string name="shared_preferences_last_used_service_port" translatable="false">LAST_USED_SERVICE_PORT</string>
-  <string name="shared_preferences_last_used_login" translatable="false">LAST_USED_LOGIN</string>
-  <string name="shared_preferences_last_used_password" translatable="false">LAST_USED_PASSWORD</string>
-  <string name="shared_preferences_remember_credentials" translatable="false">REMEMBER_CREDENTIALS</string>
-
   <string name="login">Login</string>
   <string name="password">Password</string>
   <string name="delete">Delete</string>

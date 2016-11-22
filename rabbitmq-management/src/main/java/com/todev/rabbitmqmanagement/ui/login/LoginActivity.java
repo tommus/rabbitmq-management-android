@@ -1,14 +1,33 @@
+/*
+ * Copyright (c) 2016 to-dev.com.
+ *
+ * Licensed under the GNU GPL, Version 3 (the "License").
+ * You may not use this file except in compliance with the License.
+ *
+ * You may obtain a copy of the License at
+ *
+ *       https://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+ * OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.todev.rabbitmqmanagement.ui.login;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatSpinner;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -17,13 +36,22 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
+import com.todev.rabbitmqmanagement.data.app.DataProvider;
+import com.todev.rabbitmqmanagement.data.app.model.Credentials;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
+import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
+import com.todev.rabbitmqmanagement.data.network.interceptor.AddressInterceptor;
+import com.todev.rabbitmqmanagement.data.network.interceptor.AuthorizationInterceptor;
 import com.todev.rabbitmqmanagement.ui.BaseActivity;
 import com.todev.rabbitmqmanagement.ui.overview.OverviewActivity;
+import java.util.List;
 import javax.inject.Inject;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
-  @Inject SharedPreferences sharedPreferences;
+  @Inject DataProvider dataProvider;
+  @Inject AddressInterceptor addressInterceptor;
+  @Inject AuthorizationInterceptor authorizationInterceptor;
+  @Inject RabbitMqService rabbitMqService;
 
   @BindView(R.id.login_edit_text_layout) TextInputLayout loginLayout;
   @BindView(R.id.login_edit_text) AppCompatEditText login;
@@ -35,11 +63,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
   @BindView(R.id.add_service_button) ImageButton addServiceButton;
   @BindView(R.id.delete_service_button) ImageButton deleteServiceButton;
   @BindView(R.id.login_button) Button loginButton;
+
   private Animation horizontalShakeAnimation;
 
   private LoginPresenter presenter;
-
-  //private LastUsedData lastUsedData = new LastUsedData();
+  private ServicesAdapter adapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,106 +78,33 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     presenter = new LoginPresenter();
     presenter.setView(this);
+    presenter.setDataProvider(dataProvider);
+    presenter.setAddressInterceptor(addressInterceptor);
+    presenter.setAuthorizationInterceptor(authorizationInterceptor);
+    presenter.setRabbitMqService(rabbitMqService);
+
+    adapter = new ServicesAdapter(this);
+    services.setAdapter(adapter);
 
     addServiceButton.setOnClickListener(view -> presenter.onAddServiceButtonClicked());
     deleteServiceButton.setOnClickListener(view -> presenter.onDeleteServiceButtonClicked());
     loginButton.setOnClickListener(view -> presenter.onLoginButtonClicked());
 
-    horizontalShakeAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.horizontal_shake);
+    horizontalShakeAnimation = AnimationUtils.loadAnimation(this, R.anim.horizontal_shake);
   }
 
-  //@Override
-  //protected void onStart() {
-  //  super.onStart();
-  //
-  //  int services = loadSpinnerItems(lastUsedData.getService());
-  //  invalidateDeleteServiceButton(services);
-  //  loadSharedPreferences();
-  //  initializeFields();
-  //}
+  @Override
+  protected void onStart() {
+    super.onStart();
+    presenter.loadServices();
+    presenter.loadCredentials();
+  }
 
-  //@OnClick(R.id.delete_service_button)
-  //protected void onDeleteServiceButtonClicked(View view) {
-  //  Service service = (Service) services.getSelectedItem();
-  //  service.delete();
-  //
-  //  int services = loadSpinnerItems(lastUsedData.getService());
-  //  invalidateDeleteServiceButton(services);
-  //}
-
-  //private void cleanupSharedPreferences() {
-  //  SharedPreferences.Editor editor = sharedPreferences.edit();
-  //
-  //  int[] preferences = new int[] {
-  //    R.string.shared_preferences_last_used_login, R.string.shared_preferences_last_used_password,
-  //    R.string.shared_preferences_last_used_service, R.string.shared_preferences_last_used_service_port,
-  //    R.string.shared_preferences_last_used_service_url, R.string.shared_preferences_remember_credentials
-  //  };
-  //
-  //  for (int preference : preferences) {
-  //    editor.remove(getString(preference));
-  //  }
-  //
-  //  editor.apply();
-  //}
-
-  //private void loadSharedPreferences() {
-  //  String login = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_login), "");
-  //  String password = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_password), "");
-  //  long service = sharedPreferences.getLong(getString(R.string.shared_preferences_last_used_service), -1);
-  //  boolean rememberCredentials =
-  //    sharedPreferences.getBoolean(getString(R.string.shared_preferences_remember_credentials), false);
-  //
-  //  lastUsedData.initialize(login, password, service, rememberCredentials);
-  //}
-
-  //private void saveSharedPreferences() {
-  //  Service service = (Service) services.getSelectedItem();
-  //
-  //  SharedPreferences.Editor editor = sharedPreferences.edit();
-  //
-  //  editor.putString(getString(R.string.shared_preferences_last_used_login), login.getText().toString());
-  //  editor.putString(getString(R.string.shared_preferences_last_used_password), password.getText().toString());
-  //  editor.putLong(getString(R.string.shared_preferences_last_used_service), service.getId());
-  //  editor.putString(getString(R.string.shared_preferences_last_used_service_url), service.getAddress());
-  //  editor.putInt(getString(R.string.shared_preferences_last_used_service_port), service.getPort());
-  //  editor.putBoolean(getString(R.string.shared_preferences_remember_credentials), remember.isChecked());
-  //
-  //  editor.apply();
-  //}
-
-  //private void initializeFields() {
-  //  int position = getServicePosition(services.getAdapter(), lastUsedData.getService());
-  //  if (position != -1) {
-  //    services.setSelection(position);
-  //    login.setText(lastUsedData.getUsername());
-  //    password.setText(lastUsedData.getPassword());
-  //    remember.setChecked(lastUsedData.isRemember());
-  //  }
-  //}
-
-  //private int loadSpinnerItems(long id) {
-  //  ServicesAdapter adapter = new ServicesAdapter(getApplicationContext());
-  //  services.setAdapter(adapter);
-  //
-  //  int position = getServicePosition(adapter, id);
-  //  if (position != -1) {
-  //    services.setSelection(position);
-  //  }
-  //
-  //  return services.getCount();
-  //}
-
-  //private int getServicePosition(SpinnerAdapter adapter, long serviceId) {
-  //  ServicesAdapter servicesAdapter = (ServicesAdapter) adapter;
-  //  return servicesAdapter.getItemPosition(serviceId);
-  //}
-
-  //private void showError(int errorResourceId) {
-  //  View view = findViewById(R.id.login_activity_root);
-  //  CharSequence text = getString(errorResourceId);
-  //  Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
-  //}
+  @Override
+  protected void onPause() {
+    super.onPause();
+    presenter.unsubscribe();
+  }
 
   @Override
   public void showMissingUsernameError() {
@@ -169,10 +124,26 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
   }
 
   @Override
+  public void showInvalidCredentialsError() {
+    showError(R.string.activity_login_credentials_invalid);
+  }
+
+  @Override
+  public void showServiceUnreachableError() {
+    showError(R.string.service_unreachable);
+  }
+
+  @Override
   public void showAddServiceDialog() {
     AddServiceFragment fragment = new AddServiceFragment();
-    fragment.addOnSuccessListener(new OnDialogSuccessListener());
+    fragment.setOnSuccess(presenter::onAddServiceDialogSuccess);
     fragment.show(getSupportFragmentManager(), "add_service_fragment");
+  }
+
+  @Override
+  public void invalidateDeleteServiceButton() {
+    int count = adapter.getCount();
+    setDeleteServiceButtonEnabled(count > 0);
   }
 
   @Override
@@ -187,6 +158,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
   }
 
   @Override
+  public void invalidateLoginButton() {
+
+  }
+
+  @Override
   public void setLoginButtonEnabled(boolean enabled) {
     if (enabled) {
       loginButton.setClickable(true);
@@ -198,8 +174,19 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
   }
 
   @Override
-  public void showCredentials(String username, String password, int service, boolean remember) {
+  public void updateServices(List<Service> services) {
+    adapter.clear();
+    adapter.addAll(services);
+  }
 
+  @Override
+  public void showCredentials(Credentials credentials) {
+    if (credentials.isRemember()) {
+      this.login.setText(credentials.getUsername());
+      this.password.setText(credentials.getPassword());
+      this.services.setSelection(credentials.getService());
+      this.remember.setChecked(credentials.isRemember());
+    }
   }
 
   @Override
@@ -223,65 +210,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     return (Service) services.getSelectedItem();
   }
 
-  //private class LastUsedData {
-  //  private String username = "";
-  //  private String password = "";
-  //  private long service = -1;
-  //  private boolean remember = false;
-  //
-  //  public void initialize(String username, String password, long service, boolean remember) {
-  //    this.username = remember ? username : "";
-  //    this.password = remember ? password : "";
-  //    this.service = remember ? service : -1;
-  //    this.remember = remember;
-  //  }
-  //
-  //  public String getUsername() {
-  //    return username;
-  //  }
-  //
-  //  public String getPassword() {
-  //    return password;
-  //  }
-  //
-  //  public long getService() {
-  //    return service;
-  //  }
-  //
-  //  public boolean isRemember() {
-  //    return remember;
-  //  }
-  //}
-
-  private class OnDialogSuccessListener implements AddServiceFragment.OnSuccessListener {
-
-    @Override
-    public void onSuccess(long id) {
-      //    int services = loadSpinnerItems(id);
-      //    invalidateDeleteServiceButton(services);
-      //    cleanupSharedPreferences();
-      //    loadSharedPreferences();
-    }
+  protected void showError(@StringRes int errorId) {
+    View view = findViewById(R.id.login_activity_root);
+    CharSequence text = getString(errorId);
+    Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
   }
-
-  //private class LoginResponseCallback implements Callback<User> {
-  //
-  //  @Override
-  //  public void onResponse(Call<User> call, Response<User> response) {
-  //    if (!response.isSuccessful()) {
-  //      showError(R.string.activity_login_credentials_invalid);
-  //      return;
-  //    }
-  //
-  //    saveSharedPreferences();
-  //
-  //    Intent intent = new Intent(LoginActivity.this, OverviewActivity.class);
-  //    startActivity(intent);
-  //  }
-  //
-  //  @Override
-  //  public void onFailure(Call<User> call, Throwable t) {
-  //    showError(R.string.service_unreachable);
-  //  }
-  //}
 }

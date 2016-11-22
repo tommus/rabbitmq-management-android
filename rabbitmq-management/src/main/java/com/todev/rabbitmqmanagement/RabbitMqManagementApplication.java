@@ -23,6 +23,7 @@ import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.todev.rabbitmqmanagement.core.dagger.AppComponent;
 import lombok.Getter;
+import timber.log.Timber;
 
 public class RabbitMqManagementApplication extends Application {
 
@@ -36,6 +37,7 @@ public class RabbitMqManagementApplication extends Application {
   public void onCreate() {
     super.onCreate();
     initDagger();
+    initLogger();
     initDatabase();
   }
 
@@ -47,6 +49,12 @@ public class RabbitMqManagementApplication extends Application {
 
   private void initDagger() {
     component = AppComponent.Initializer.init(this);
+  }
+
+  private void initLogger() {
+    if (BuildConfig.DEBUG) {
+      Timber.plant(new Timber.DebugTree());
+    }
   }
 
   private void initDatabase() {

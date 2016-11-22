@@ -152,8 +152,11 @@ dependencies {
   // Charts.
   compile "com.github.philjay:mpandroidchart:v3.0.0-beta1"
 
-  // Memory leak detection
+  // Memory leak detection.
   compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+  // Logger.
+  compile 'com.jakewharton.timber:timber:4.3.1'
 
   // -- Development flavor only. --
 

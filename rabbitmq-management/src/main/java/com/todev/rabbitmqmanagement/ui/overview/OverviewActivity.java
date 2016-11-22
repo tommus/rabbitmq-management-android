@@ -17,8 +17,6 @@
  */
 package com.todev.rabbitmqmanagement.ui.overview;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.android.internal.util.Predicate;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
 import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
 import com.todev.rabbitmqmanagement.data.network.model.MessageStats;
 import com.todev.rabbitmqmanagement.data.network.model.overview.ObjectTotals;
@@ -37,24 +36,28 @@ import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import timber.log.Timber;
 
 public class OverviewActivity extends AppCompatActivity {
   public static final String TAG_SELECT_RANGE = "Select Range Fragment";
+
+  @Inject RabbitMqService rabbitMqService;
 
   @BindView(R.id.queued_messages_indicator) QueuedMessagesIndicator queuedMessagesIndicator;
   @BindView(R.id.message_rates_indicator) MessageRatesIndicator messageRatesIndicator;
   @BindView(R.id.global_counts_indicator) GlobalCountsIndicator globalCountsIndicator;
 
   private ScheduledExecutorService executorService;
-  private RabbitMqService rabbitMqService;
 
   private TimerTask updateTimerTask = new TimerTask() {
     @Override
     public void run() {
-      rabbitMqService.getOverview().enqueue(new OverviewResponseCallback());
+      Timber.w("Update has been disabled.");
+      //rabbitMqService.getOverview().enqueue(new OverviewResponseCallback());
     }
   };
 
@@ -70,11 +73,11 @@ public class OverviewActivity extends AppCompatActivity {
     @Override
     public boolean apply(MessageStats messageStats) {
       return messageStats.getPublishDetails() != null &&
-        messageStats.getConfirmDetails() != null &&
-        messageStats.getPublishInDetails() != null &&
-        messageStats.getPublishOutDetails() != null &&
-        messageStats.getDeliverGetDetails() != null &&
-        messageStats.getRedeliverDetails() != null;
+          messageStats.getConfirmDetails() != null &&
+          messageStats.getPublishInDetails() != null &&
+          messageStats.getPublishOutDetails() != null &&
+          messageStats.getDeliverGetDetails() != null &&
+          messageStats.getRedeliverDetails() != null;
     }
   };
 
@@ -87,6 +90,7 @@ public class OverviewActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    RabbitMqManagementApplication.get(this).getComponent().inject(this);
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_overview);
 
@@ -109,8 +113,6 @@ public class OverviewActivity extends AppCompatActivity {
         fragment.show(getSupportFragmentManager(), TAG_SELECT_RANGE);
       }
     });
-
-    initializeRabbitMqService();
   }
 
   @Override
@@ -130,18 +132,6 @@ public class OverviewActivity extends AppCompatActivity {
     super.onPause();
 
     stopScheduler();
-  }
-
-  private void initializeRabbitMqService() {
-    SharedPreferences sharedPreferences =
-      getApplicationContext().getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE);
-
-    String url = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_service_url), "");
-    int port = sharedPreferences.getInt(getString(R.string.shared_preferences_last_used_service_port), 15672);
-    String login = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_login), "");
-    String password = sharedPreferences.getString(getString(R.string.shared_preferences_last_used_password), "");
-
-    rabbitMqService = RabbitMqService.Json.createService(url, port, login, password);
   }
 
   private void initializeScheduler() {
@@ -179,12 +169,16 @@ public class OverviewActivity extends AppCompatActivity {
     int total = totals.getMessages();
 
     queuedMessagesIndicator.updateChart(ready, QueuedMessagesIndicator.SetIndex.READY.getIndex());
-    queuedMessagesIndicator.updateChart(unacked, QueuedMessagesIndicator.SetIndex.UNACKED.getIndex());
+    queuedMessagesIndicator.updateChart(unacked,
+        QueuedMessagesIndicator.SetIndex.UNACKED.getIndex());
     queuedMessagesIndicator.updateChart(total, QueuedMessagesIndicator.SetIndex.TOTAL.getIndex());
 
-    queuedMessagesIndicator.updateReadyButton(getString(R.string.activity_overview_button_ready, ready));
-    queuedMessagesIndicator.updateUnackedButton(getString(R.string.activity_overview_button_unacked, unacked));
-    queuedMessagesIndicator.updateTotalButton(getString(R.string.activity_overview_button_total, total));
+    queuedMessagesIndicator.updateReadyButton(
+        getString(R.string.activity_overview_button_ready, ready));
+    queuedMessagesIndicator.updateUnackedButton(
+        getString(R.string.activity_overview_button_unacked, unacked));
+    queuedMessagesIndicator.updateTotalButton(
+        getString(R.string.activity_overview_button_total, total));
   }
 
   private void updateMessageRatesIndicator(Response<Overview> response) {
@@ -204,17 +198,26 @@ public class OverviewActivity extends AppCompatActivity {
 
     messageRatesIndicator.updateChart(publish, MessageRatesIndicator.SetIndex.PUBLISH.getIndex());
     messageRatesIndicator.updateChart(confirm, MessageRatesIndicator.SetIndex.CONFIRM.getIndex());
-    messageRatesIndicator.updateChart(publishIn, MessageRatesIndicator.SetIndex.PUBLISH_IN.getIndex());
-    messageRatesIndicator.updateChart(publishOut, MessageRatesIndicator.SetIndex.PUBLISH_OUT.getIndex());
+    messageRatesIndicator.updateChart(publishIn,
+        MessageRatesIndicator.SetIndex.PUBLISH_IN.getIndex());
+    messageRatesIndicator.updateChart(publishOut,
+        MessageRatesIndicator.SetIndex.PUBLISH_OUT.getIndex());
     messageRatesIndicator.updateChart(deliver, MessageRatesIndicator.SetIndex.DELIVER.getIndex());
-    messageRatesIndicator.updateChart(redeliver, MessageRatesIndicator.SetIndex.REDELIVERED.getIndex());
+    messageRatesIndicator.updateChart(redeliver,
+        MessageRatesIndicator.SetIndex.REDELIVERED.getIndex());
 
-    messageRatesIndicator.updatePublishButton(getString(R.string.activity_overview_button_publish, publish));
-    messageRatesIndicator.updateConfirmButton(getString(R.string.activity_overview_button_confirm, confirm));
-    messageRatesIndicator.updatePublishInButton(getString(R.string.activity_overview_button_publish_in, publishIn));
-    messageRatesIndicator.updatePublishOutButton(getString(R.string.activity_overview_button_publish_out, publishOut));
-    messageRatesIndicator.updateDeliverButton(getString(R.string.activity_overview_button_deliver, deliver));
-    messageRatesIndicator.updateRedeliveredButton(getString(R.string.activity_overview_button_redelivered, redeliver));
+    messageRatesIndicator.updatePublishButton(
+        getString(R.string.activity_overview_button_publish, publish));
+    messageRatesIndicator.updateConfirmButton(
+        getString(R.string.activity_overview_button_confirm, confirm));
+    messageRatesIndicator.updatePublishInButton(
+        getString(R.string.activity_overview_button_publish_in, publishIn));
+    messageRatesIndicator.updatePublishOutButton(
+        getString(R.string.activity_overview_button_publish_out, publishOut));
+    messageRatesIndicator.updateDeliverButton(
+        getString(R.string.activity_overview_button_deliver, deliver));
+    messageRatesIndicator.updateRedeliveredButton(
+        getString(R.string.activity_overview_button_redelivered, redeliver));
   }
 
   private void updateGlobalCountsIndicators(Response<Overview> response) {

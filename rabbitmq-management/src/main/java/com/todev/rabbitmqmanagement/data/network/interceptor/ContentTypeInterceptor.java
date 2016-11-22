@@ -18,24 +18,24 @@
 package com.todev.rabbitmqmanagement.data.network.interceptor;
 
 import java.io.IOException;
+import lombok.AllArgsConstructor;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
+@AllArgsConstructor
 public class ContentTypeInterceptor implements Interceptor {
-
   private static final String HEADER_CONTENT_TYPE = "Content-Type";
 
   private String contentType;
 
-  public ContentTypeInterceptor(String contentType) {
-    this.contentType = contentType;
-  }
-
   @Override
   public Response intercept(Chain chain) throws IOException {
     Request original = chain.request();
-    Request intercepted = original.newBuilder().header(HEADER_CONTENT_TYPE, contentType).build();
-    return chain.proceed(intercepted);
+    Request.Builder builder = original.newBuilder();
+    if (contentType != null) {
+      builder = builder.header(HEADER_CONTENT_TYPE, contentType);
+    }
+    return chain.proceed(builder.build());
   }
 }

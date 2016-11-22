@@ -24,32 +24,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
-import com.raizlabs.android.dbflow.sql.language.Select;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
-import java.util.List;
 
 public class ServicesAdapter extends ArrayAdapter<Service> {
-
-  private List<Service> items = new Select().from(Service.class).queryList();
 
   public ServicesAdapter(Context context) {
     super(context, 0);
   }
 
   @Override
-  public int getCount() {
-    return items.size();
-  }
-
-  @Override
-  public Service getItem(int position) {
-    return items.get(position);
-  }
-
-  @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    Service service = items.get(position);
+    Service service = getItem(position);
 
     if (convertView == null) {
       LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -64,7 +50,7 @@ public class ServicesAdapter extends ArrayAdapter<Service> {
 
   @Override
   public View getDropDownView(int position, View convertView, ViewGroup parent) {
-    Service service = items.get(position);
+    Service service = getItem(position);
 
     if (convertView == null) {
       LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -75,14 +61,5 @@ public class ServicesAdapter extends ArrayAdapter<Service> {
     label.setText(service.getLabel());
 
     return convertView;
-  }
-
-  public int getItemPosition(long id) {
-    for (int i = 0; i < items.size(); ++i) {
-      if (items.get(i).getId() == id) {
-        return i;
-      }
-    }
-    return -1;
   }
 }

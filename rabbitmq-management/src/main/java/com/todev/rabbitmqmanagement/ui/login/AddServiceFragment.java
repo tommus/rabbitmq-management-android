@@ -37,18 +37,22 @@ import com.raizlabs.android.dbflow.sql.language.Select;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
 import com.todev.rabbitmqmanagement.data.database.model.Service_Table;
-import java.util.ArrayList;
-import java.util.List;
+import java8.util.Optional;
+import java8.util.function.Consumer;
 
 public class AddServiceFragment extends DialogFragment {
+  private static final Consumer<Integer> NOP_SUCCESS_CONSUMER = id -> {
+    // Null Object Pattern.
+  };
+
   @BindView(R.id.label_edit_text_layout) TextInputLayout labelTextInputLayout;
   @BindView(R.id.label_edit_text) AppCompatEditText labelEditText;
   @BindView(R.id.address_edit_text_layout) TextInputLayout addressTextInputLayout;
   @BindView(R.id.address_edit_text) AppCompatEditText addressEditText;
   @BindView(R.id.port_number_picker) PortNumberPicker portNumberPicker;
-
   private Animation horizontalShakeAnimation;
-  private List<OnSuccessListener> onSuccessListeners = new ArrayList<>();
+
+  private Consumer<Integer> onSuccess = NOP_SUCCESS_CONSUMER;
 
   @NonNull
   @Override
@@ -57,7 +61,9 @@ public class AddServiceFragment extends DialogFragment {
     LayoutInflater inflater = getActivity().getLayoutInflater();
     View view = inflater.inflate(R.layout.dialog_add_service, null);
     ButterKnife.bind(this, view);
-    builder.setView(view).setPositiveButton(android.R.string.ok, null).setNegativeButton(android.R.string.cancel, null);
+    builder.setView(view)
+        .setPositiveButton(android.R.string.ok, null)
+        .setNegativeButton(android.R.string.cancel, null);
     return builder.create();
   }
 
@@ -71,7 +77,7 @@ public class AddServiceFragment extends DialogFragment {
 
     Button negativeButton = ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE);
     negativeButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-    negativeButton.setOnClickListener(new OnNegativeButtonClickedListener());
+    negativeButton.setOnClickListener(view -> dismiss());
   }
 
   @Override
@@ -81,28 +87,23 @@ public class AddServiceFragment extends DialogFragment {
     horizontalShakeAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.horizontal_shake);
   }
 
-  public void addOnSuccessListener(OnSuccessListener listener) {
-    if (!onSuccessListeners.contains(listener)) {
-      onSuccessListeners.add(listener);
-    }
+  public void setOnSuccess(Consumer<Integer> onSuccess) {
+    this.onSuccess = Optional.ofNullable(onSuccess).orElse(NOP_SUCCESS_CONSUMER);
   }
 
   private boolean validateLabel(String label) {
-    Service service = new Select().from(Service.class).where(Service_Table.label.is(label)).querySingle();
+    Service service =
+        new Select().from(Service.class).where(Service_Table.label.is(label)).querySingle();
     return !label.isEmpty() && service == null;
   }
 
   private boolean validateAddress(String address) {
-    return Patterns.IP_ADDRESS.matcher(address).matches() || Patterns.WEB_URL.matcher(address).matches();
+    return Patterns.IP_ADDRESS.matcher(address).matches() || Patterns.WEB_URL.matcher(address)
+        .matches();
   }
 
   private boolean validatePort(int port) {
     return port > 1024 && port <= 65535;
-  }
-
-  public interface OnSuccessListener {
-
-    void onSuccess(long id);
   }
 
   private class OnPositiveButtonClickedListener implements View.OnClickListener {
@@ -133,18 +134,8 @@ public class AddServiceFragment extends DialogFragment {
 
       service.save();
 
-      for (OnSuccessListener listener : onSuccessListeners) {
-        listener.onSuccess(service.getId());
-      }
+      onSuccess.accept(service.getId());
 
-      dismiss();
-    }
-  }
-
-  private class OnNegativeButtonClickedListener implements View.OnClickListener {
-
-    @Override
-    public void onClick(View view) {
       dismiss();
     }
   }
