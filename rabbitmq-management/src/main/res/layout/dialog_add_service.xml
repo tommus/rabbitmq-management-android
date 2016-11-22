@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:orientation="vertical"
-    android:padding="@dimen/padding_medium_plus"
+    android:padding="@dimen/size_medium_plus"
     >
 
   <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/margin_medium_minus"
-      android:layout_marginTop="@dimen/margin_medium_minus"
+      android:layout_marginBottom="@dimen/size_medium_minus"
+      android:layout_marginTop="@dimen/size_medium_minus"
       android:text="@string/dialog_add_service_title"
       android:textColor="@color/colorDark"
       android:textSize="@dimen/font_size_medium_plus"
@@ -24,21 +24,21 @@
   <View
       android:layout_width="match_parent"
       android:layout_height="@dimen/divider_tiny"
-      android:layout_marginBottom="@dimen/margin_large"
-      android:layout_marginEnd="@dimen/padding_inverse_medium_plus"
-      android:layout_marginLeft="@dimen/padding_inverse_medium_plus"
-      android:layout_marginRight="@dimen/padding_inverse_medium_plus"
-      android:layout_marginStart="@dimen/padding_inverse_medium_plus"
-      android:layout_marginTop="@dimen/margin_medium_plus"
+      android:layout_marginBottom="@dimen/size_large"
+      android:layout_marginEnd="@dimen/size_inverse_medium_plus"
+      android:layout_marginLeft="@dimen/size_inverse_medium_plus"
+      android:layout_marginRight="@dimen/size_inverse_medium_plus"
+      android:layout_marginStart="@dimen/size_inverse_medium_plus"
+      android:layout_marginTop="@dimen/size_medium_plus"
       android:background="@color/colorDark"
-      android:padding="@dimen/padding_none"
+      android:padding="@dimen/size_none"
       />
 
   <android.support.design.widget.TextInputLayout
       android:id="@+id/label_edit_text_layout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/margin_medium_plus"
+      android:layout_marginBottom="@dimen/size_medium_plus"
       >
 
     <android.support.v7.widget.AppCompatEditText
@@ -60,7 +60,7 @@
         android:id="@+id/address_edit_text_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_medium_plus"
+        android:layout_marginBottom="@dimen/size_medium_plus"
         android:layout_weight="1"
         >
 
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@null"
-        android:padding="@dimen/padding_medium"
+        android:padding="@dimen/size_medium"
         android:src="@drawable/ic_search_white"
         android:theme="@style/RabbitmqManagement.Widget.Button"
         />
@@ -92,7 +92,7 @@
       android:textSize="@dimen/font_size_medium_plus"
       />
 
-  <com.todev.rabbitmqmanagement.widget.PortNumberPicker
+  <com.todev.rabbitmqmanagement.ui.login.PortNumberPicker
       android:id="@+id/port_number_picker"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

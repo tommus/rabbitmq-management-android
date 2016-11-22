@@ -88,10 +88,6 @@ android {
     exclude 'META-INF/NOTICE.txt'
     exclude 'META-INF/notice.txt'
   }
-
-  lintOptions {
-    disable 'InvalidPackage'
-  }
 }
 
 ext.supportVersion = '25.0.1'
@@ -106,11 +102,6 @@ ext.retrofitVersion = '2.1.0'
 ext.stethoVersion = '1.4.1'
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-
-  compile project(':api')
-  compile project(':widgets')
-
   compile "com.android.support:appcompat-v7:$supportVersion"
   compile "com.android.support:design:$supportVersion"
   compile "com.android.support:recyclerview-v7:$supportVersion"
@@ -158,6 +149,8 @@ dependencies {
   // Time handling.
   compile 'joda-time:joda-time:2.9.6'
 
+  // Charts.
+  compile "com.github.philjay:mpandroidchart:v3.0.0-beta1"
 
   // Memory leak detection
   compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'

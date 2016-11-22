@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <eat-comment/>
+
+  <string name="app_name" translatable="false">@string/app_name_main</string>
+
+</resources>

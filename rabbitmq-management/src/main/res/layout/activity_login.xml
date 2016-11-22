@@ -8,18 +8,18 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:gravity="center"
-    android:paddingEnd="@dimen/margin_large"
-    android:paddingLeft="@dimen/margin_large"
-    android:paddingRight="@dimen/margin_large"
-    android:paddingStart="@dimen/margin_large"
-    tools:context=".activity.LoginActivity"
+    android:paddingEnd="@dimen/size_large"
+    android:paddingLeft="@dimen/size_large"
+    android:paddingRight="@dimen/size_large"
+    android:paddingStart="@dimen/size_large"
+    tools:context=".ui.login.LoginActivity"
     >
 
   <ImageView
       android:id="@+id/logo_image_view"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/margin_huge"
+      android:layout_marginBottom="@dimen/size_huge"
       android:contentDescription="@null"
       android:src="@drawable/logo"
       />
@@ -29,7 +29,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/logo_image_view"
-      android:layout_marginBottom="@dimen/margin_medium_plus"
+      android:layout_marginBottom="@dimen/size_medium_plus"
       >
 
     <android.support.v7.widget.AppCompatEditText
@@ -46,7 +46,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/login_edit_text_layout"
-      android:layout_marginBottom="@dimen/margin_medium_plus"
+      android:layout_marginBottom="@dimen/size_medium_plus"
       >
 
     <android.support.v7.widget.AppCompatEditText
@@ -65,7 +65,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/password_edit_text_layout"
       android:layout_centerVertical="true"
-      android:layout_marginBottom="@dimen/margin_medium"
+      android:layout_marginBottom="@dimen/size_medium"
       >
 
     <android.support.v7.widget.AppCompatSpinner
@@ -114,7 +114,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/services_relative_layout"
-      android:layout_marginBottom="@dimen/margin_medium"
+      android:layout_marginBottom="@dimen/size_medium"
       android:text="@string/activity_login_remember"
       />
 

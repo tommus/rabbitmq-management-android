@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# Keep the BuildConfig
+-keep class com.todev.cinemacity.BuildConfig { *; }

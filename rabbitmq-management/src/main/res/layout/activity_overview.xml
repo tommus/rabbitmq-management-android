@@ -6,12 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/margin_medium"
-    android:paddingLeft="@dimen/margin_medium"
-    android:paddingRight="@dimen/margin_medium"
-    android:paddingTop="@dimen/margin_medium"
+    android:paddingBottom="@dimen/size_medium"
+    android:paddingLeft="@dimen/size_medium"
+    android:paddingRight="@dimen/size_medium"
+    android:paddingTop="@dimen/size_medium"
     android:scrollbars="none"
-    tools:context=".activity.OverviewActivity"
+    tools:context=".ui.overview.OverviewActivity"
     >
 
   <LinearLayout
@@ -20,7 +20,7 @@
       android:orientation="vertical"
       >
 
-    <com.todev.rabbitmqmanagement.widget.QueuedMessagesIndicator
+    <com.todev.rabbitmqmanagement.ui.overview.QueuedMessagesIndicator
         android:id="@+id/queued_messages_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         todev:visible_range="one_minute"
         />
 
-    <com.todev.rabbitmqmanagement.widget.MessageRatesIndicator
+    <com.todev.rabbitmqmanagement.ui.overview.MessageRatesIndicator
         android:id="@+id/message_rates_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         todev:visible_range="one_minute"
         />
 
-    <com.todev.rabbitmqmanagement.widget.GlobalCountsIndicator
+    <com.todev.rabbitmqmanagement.ui.overview.GlobalCountsIndicator
         android:id="@+id/global_counts_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

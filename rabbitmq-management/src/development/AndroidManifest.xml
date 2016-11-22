@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.todev.rabbitmqmanagement">
+
+  <uses-sdk tools:overrideLibrary="jp.wasabeef.takt"/>
+
+  <application
+      android:name=".DevelopmentRabbitMqManagementApplication"
+      tools:replace="android:name"/>
+
+</manifest>
