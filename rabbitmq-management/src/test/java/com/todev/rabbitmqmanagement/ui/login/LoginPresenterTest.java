@@ -21,6 +21,7 @@ import android.os.Build;
 import com.todev.rabbitmqmanagement.BuildConfig;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -49,6 +50,7 @@ public class LoginPresenterTest {
     presenter.setView(view);
   }
 
+  @Test
   public void should_show_add_service_dialog_on_add_service_button_clicked() {
     // When
     presenter.onAddServiceButtonClicked();
@@ -57,6 +59,7 @@ public class LoginPresenterTest {
     verify(view).showAddServiceDialog();
   }
 
+  @Test
   public void should_perform_delete_service_on_delete_service_button_clicked() {
     // When
     presenter.onDeleteServiceButtonClicked();
@@ -65,8 +68,12 @@ public class LoginPresenterTest {
     verify(presenter).deleteService();
   }
 
+  @Test
   public void should_retrieve_credentials_and_perform_login_on_login_button_clicked() {
     // Given
+    doReturn("Username").when(view).getUsername();
+    doReturn("Password").when(view).getPassword();
+    doReturn(new Service()).when(view).getService();
     doNothing().when(presenter).performLogin(anyString(), anyString(), any());
 
     // When
@@ -79,6 +86,7 @@ public class LoginPresenterTest {
     verify(presenter).performLogin(anyString(), anyString(), any());
   }
 
+  @Test
   public void should_show_missing_username_error_on_unsuccessful_username_validation() {
     // Given
     doReturn(false).when(presenter).validateLogin(anyString());
@@ -90,6 +98,7 @@ public class LoginPresenterTest {
     verify(view).showMissingUsernameError();
   }
 
+  @Test
   public void should_show_missing_password_error_on_unsuccessful_password_validation() {
     // Given
     doReturn(true).when(presenter).validateLogin(anyString());
@@ -102,6 +111,7 @@ public class LoginPresenterTest {
     verify(view).showMissingPasswordError();
   }
 
+  @Test
   public void should_show_missing_service_error_on_unsuccessful_service_validation() {
     // Given
     doReturn(true).when(presenter).validateLogin(anyString());
@@ -115,6 +125,7 @@ public class LoginPresenterTest {
     verify(view).showServiceNotSelectedError();
   }
 
+  @Test
   public void should_not_show_any_input_errors_on_valid_credentials() {
     // Given
     doReturn(true).when(presenter).validateLogin(anyString());
