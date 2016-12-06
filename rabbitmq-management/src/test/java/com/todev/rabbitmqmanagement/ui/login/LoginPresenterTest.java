@@ -18,8 +18,7 @@
 package com.todev.rabbitmqmanagement.ui.login;
 
 import android.content.SharedPreferences;
-import android.os.Build;
-import com.todev.rabbitmqmanagement.BuildConfig;
+import com.todev.rabbitmqmanagement.BaseTest;
 import com.todev.rabbitmqmanagement.data.app.DataProvider;
 import com.todev.rabbitmqmanagement.data.app.model.Credentials;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
@@ -32,14 +31,9 @@ import io.reactivex.schedulers.Schedulers;
 import java.util.Collections;
 import java.util.List;
 import okhttp3.ResponseBody;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 import retrofit2.Response;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -51,10 +45,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class,
-    sdk = Build.VERSION_CODES.LOLLIPOP)
-public class LoginPresenterTest {
+public class LoginPresenterTest extends BaseTest {
   @Mock LoginContract.View view;
   @Mock SharedPreferences sharedPreferences;
   @Mock DataProvider dataProvider;
@@ -67,9 +58,9 @@ public class LoginPresenterTest {
 
   private LoginPresenter presenter;
 
-  @Before
+  @Override
   public void setup() {
-    MockitoAnnotations.initMocks(this);
+    super.setup();
     presenter = spy(new LoginPresenter());
     presenter.setView(view);
     presenter.setDataProvider(dataProvider);
@@ -134,8 +125,7 @@ public class LoginPresenterTest {
     // Given
     doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
-    doReturn(Observable.just(new Credentials(sharedPreferences))).when(dataProvider)
-        .getCredentials();
+    doReturn(Observable.just(new Credentials(sharedPreferences))).when(dataProvider).getCredentials();
 
     // When
     presenter.loadCredentials();

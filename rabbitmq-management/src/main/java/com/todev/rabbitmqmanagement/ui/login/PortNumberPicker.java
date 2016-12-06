@@ -92,7 +92,6 @@ public class PortNumberPicker extends LinearLayout {
 
     for (int i = 0; i < pickers.length; ++i) {
       pickers[i].setWrapSelectorWheel(false);
-
       pickers[i].setDisplayedValues(PART_VALUES);
       pickers[i].setMinValue(PART_MIN_VALUE);
       pickers[i].setMaxValue(PART_VALUES.length - 1);

@@ -15,58 +15,77 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.login;
+package com.todev.rabbitmqmanagement.ui.overview.range;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.ui.BaseDialogFragment;
 import com.todev.rabbitmqmanagement.ui.overview.MessagesIndicator;
 import lombok.Setter;
 
-public class SelectRangeFragment extends DialogFragment {
-
+public class SelectRangeDialogFragment extends BaseDialogFragment implements SelectRangeContract.View {
   @BindView(R.id.ranges_list_view) ListView rangesListView;
 
   @Setter MessagesIndicator messagesIndicator;
 
+  private SelectRangePresenter presenter;
+
+  public SelectRangeDialogFragment() {
+    super();
+    presenter = new SelectRangePresenter();
+    presenter.setView(this);
+  }
+
+  @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     LayoutInflater inflater = getActivity().getLayoutInflater();
     View view = inflater.inflate(R.layout.dialog_select_range, null);
-
     ButterKnife.bind(this, view);
-
     builder.setView(view);
-
     return builder.create();
   }
 
   @Override
   public void onStart() {
     super.onStart();
+    presenter.loadVisibleRanges(this::loadVisibleRangesFromResources);
+  }
 
-    String[] ranges = getResources().getStringArray(R.array.dialog_select_range_values);
+  @Override
+  public void setVisibleRange(MessagesIndicator.VisibleRange visibleRange) {
+    messagesIndicator.setVisibleRange(visibleRange);
+  }
+
+  @Override
+  public void updateVisibleRanges(String[] visibleRanges) {
     ArrayAdapter<String> adapter =
-      new ArrayAdapter<>(getContext(), R.layout.dialog_select_range_item, android.R.id.text1, ranges);
-
+        new ArrayAdapter<>(getContext(), R.layout.dialog_select_range_item, android.R.id.text1, visibleRanges);
     rangesListView.setAdapter(adapter);
-    rangesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        MessagesIndicator.VisibleRange range = MessagesIndicator.VisibleRange.fromRange(position);
-        messagesIndicator.setVisibleRange(range);
-        dismiss();
-      }
+    rangesListView.setOnItemClickListener((adapterView, view, position, id) -> {
+      MessagesIndicator.VisibleRange visibleRange = MessagesIndicator.VisibleRange.fromRange(position);
+      presenter.onItemClicked(visibleRange);
     });
+  }
+
+  @Override
+  public void close() {
+    dismiss();
+  }
+
+  protected String[] loadVisibleRangesFromResources() {
+    return getResources().getStringArray(R.array.dialog_select_range_values);
   }
 }

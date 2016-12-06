@@ -43,6 +43,7 @@ import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
 import com.todev.rabbitmqmanagement.data.network.interceptor.AddressInterceptor;
 import com.todev.rabbitmqmanagement.data.network.interceptor.AuthorizationInterceptor;
 import com.todev.rabbitmqmanagement.ui.BaseActivity;
+import com.todev.rabbitmqmanagement.ui.login.addservice.AddServiceDialogFragment;
 import com.todev.rabbitmqmanagement.ui.overview.OverviewActivity;
 import java.util.List;
 import javax.inject.Inject;
@@ -135,7 +136,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
   @Override
   public void showAddServiceDialog() {
-    AddServiceFragment fragment = new AddServiceFragment();
+    AddServiceDialogFragment fragment = new AddServiceDialogFragment();
     fragment.setOnSuccess(presenter::onAddServiceDialogSuccess);
     fragment.show(getSupportFragmentManager(), "add_service_fragment");
   }

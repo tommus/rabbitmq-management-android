@@ -23,22 +23,17 @@ import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
 import com.todev.rabbitmqmanagement.data.network.interceptor.AddressInterceptor;
 import com.todev.rabbitmqmanagement.data.network.interceptor.AuthorizationInterceptor;
 import com.todev.rabbitmqmanagement.data.network.model.user.User;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.schedulers.Schedulers;
+import com.todev.rabbitmqmanagement.ui.BaseRxPresenter;
 import lombok.Setter;
 import retrofit2.Response;
 import timber.log.Timber;
 
-public class LoginPresenter implements LoginContract.Presenter {
+public class LoginPresenter extends BaseRxPresenter implements LoginContract.Presenter {
   @Setter LoginContract.View view;
   @Setter DataProvider dataProvider;
   @Setter AddressInterceptor addressInterceptor;
   @Setter AuthorizationInterceptor authorizationInterceptor;
   @Setter RabbitMqService rabbitMqService;
-
-  private CompositeDisposable disposables = new CompositeDisposable();
 
   @Override
   public void onAddServiceButtonClicked() {
@@ -65,7 +60,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
   @Override
   public void loadCredentials() {
-    disposables.add(dataProvider.getCredentials()
+    disposable.add(dataProvider.getCredentials()
         .subscribeOn(getSubscribeScheduler())
         .observeOn(getObserveScheduler())
         .subscribe(credentials -> view.showCredentials(credentials),
@@ -74,7 +69,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
   @Override
   public void loadServices() {
-    disposables.add(dataProvider.getServices()
+    disposable.add(dataProvider.getServices()
         .subscribeOn(getSubscribeScheduler())
         .observeOn(getObserveScheduler())
         .subscribe(services -> {
@@ -134,7 +129,7 @@ public class LoginPresenter implements LoginContract.Presenter {
   }
 
   protected void processLogin() {
-    disposables.add(rabbitMqService.whoAmI()
+    disposable.add(rabbitMqService.whoAmI()
         .subscribeOn(getSubscribeScheduler())
         .observeOn(getObserveScheduler())
         .subscribe(response -> {
@@ -153,20 +148,5 @@ public class LoginPresenter implements LoginContract.Presenter {
 
   protected boolean isSuccessfulLogin(Response<User> response) {
     return response.isSuccessful();
-  }
-
-  @Override
-  public void unsubscribe() {
-    if (disposables != null && !disposables.isDisposed()) {
-      disposables.clear();
-    }
-  }
-
-  protected Scheduler getSubscribeScheduler() {
-    return Schedulers.io();
-  }
-
-  protected Scheduler getObserveScheduler() {
-    return AndroidSchedulers.mainThread();
   }
 }

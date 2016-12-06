@@ -31,7 +31,7 @@ import com.todev.rabbitmqmanagement.data.network.model.MessageStats;
 import com.todev.rabbitmqmanagement.data.network.model.overview.ObjectTotals;
 import com.todev.rabbitmqmanagement.data.network.model.overview.Overview;
 import com.todev.rabbitmqmanagement.data.network.model.overview.QueueTotals;
-import com.todev.rabbitmqmanagement.ui.login.SelectRangeFragment;
+import com.todev.rabbitmqmanagement.ui.overview.range.SelectRangeDialogFragment;
 import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -99,7 +99,7 @@ public class OverviewActivity extends AppCompatActivity {
     queuedMessagesIndicator.setRangeButtonOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        SelectRangeFragment fragment = new SelectRangeFragment();
+        SelectRangeDialogFragment fragment = new SelectRangeDialogFragment();
         fragment.setMessagesIndicator(queuedMessagesIndicator);
         fragment.show(getSupportFragmentManager(), TAG_SELECT_RANGE);
       }
@@ -108,7 +108,7 @@ public class OverviewActivity extends AppCompatActivity {
     messageRatesIndicator.setRangeButtonOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        SelectRangeFragment fragment = new SelectRangeFragment();
+        SelectRangeDialogFragment fragment = new SelectRangeDialogFragment();
         fragment.setMessagesIndicator(messageRatesIndicator);
         fragment.show(getSupportFragmentManager(), TAG_SELECT_RANGE);
       }

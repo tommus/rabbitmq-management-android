@@ -17,7 +17,6 @@
  */
 package com.todev.rabbitmqmanagement.ui.login;
 
-import android.support.annotation.StringRes;
 import com.todev.rabbitmqmanagement.data.app.model.Credentials;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
 import java.util.List;
@@ -79,7 +78,5 @@ public interface LoginContract {
     boolean validateService(Service service);
 
     void performLogin(String login, String password, Service service);
-
-    void unsubscribe();
   }
 }
