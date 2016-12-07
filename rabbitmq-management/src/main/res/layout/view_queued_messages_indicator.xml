@@ -52,7 +52,7 @@
         android:id="@+id/messages_chart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/font_size_lower"
+        android:minHeight="@dimen/chart_min_height"
         android:paddingBottom="@dimen/size_medium"
         android:paddingTop="@dimen/size_medium"
         />

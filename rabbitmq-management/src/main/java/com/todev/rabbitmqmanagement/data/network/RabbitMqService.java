@@ -61,7 +61,7 @@ import retrofit2.http.Query;
 public interface RabbitMqService {
 
   @GET("api/overview")
-  Observable<Overview> getOverview();
+  Observable<Response<Overview>> getOverview();
 
   @GET("api/cluster-name")
   Observable<Cluster> getClusterName();

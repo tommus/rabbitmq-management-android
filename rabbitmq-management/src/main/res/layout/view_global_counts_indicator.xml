@@ -52,7 +52,7 @@
             android:paddingLeft="@dimen/size_medium"
             android:paddingRight="@dimen/size_medium"
             android:paddingStart="@dimen/size_medium"
-            android:paddingTop="@dimen/size_medium"
+            android:paddingTop="@dimen/size_small"
             android:textSize="@dimen/font_size_large"
             android:textStyle="bold"
             tools:text="15"

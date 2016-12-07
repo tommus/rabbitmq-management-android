@@ -123,7 +123,7 @@ public class LoginPresenterTest extends BaseTest {
   @Test
   public void should_show_credentials_on_successful_credentials_load() {
     // Given
-    doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
+    doReturn(Schedulers.trampoline()).when(presenter).getIoScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
     doReturn(Observable.just(new Credentials(sharedPreferences))).when(dataProvider).getCredentials();
 
@@ -137,7 +137,7 @@ public class LoginPresenterTest extends BaseTest {
   @Test
   public void should_not_show_credentials_on_unsuccessful_credentials_load() {
     // Given
-    doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
+    doReturn(Schedulers.trampoline()).when(presenter).getIoScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
     doReturn(Observable.error(new RuntimeException())).when(dataProvider).getCredentials();
 
@@ -152,7 +152,7 @@ public class LoginPresenterTest extends BaseTest {
   public void should_update_services_and_invalidate_delete_button_on_successful_services_load() {
     // Given
     List<Service> list = Collections.singletonList(new Service());
-    doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
+    doReturn(Schedulers.trampoline()).when(presenter).getIoScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
     doReturn(Observable.just(list)).when(dataProvider).getServices();
 
@@ -169,7 +169,7 @@ public class LoginPresenterTest extends BaseTest {
   @Test
   public void should_not_update_services_and_not_invalidate_delete_button_on_unsuccessful_serviecs_load() {
     // Given
-    doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
+    doReturn(Schedulers.trampoline()).when(presenter).getIoScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
     doReturn(Observable.error(new RuntimeException())).when(dataProvider).getServices();
 
@@ -272,7 +272,7 @@ public class LoginPresenterTest extends BaseTest {
   public void should_show_service_unreachable_error_on_unsuccessful_login_attempt() {
     // Given
     doReturn(Observable.error(new RuntimeException())).when(rabbitMqService).whoAmI();
-    doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
+    doReturn(Schedulers.trampoline()).when(presenter).getIoScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
 
     // When
@@ -286,7 +286,7 @@ public class LoginPresenterTest extends BaseTest {
   public void should_show_overview_after_successful_login() {
     // Given
     Response<User> response = Response.success(user);
-    doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
+    doReturn(Schedulers.trampoline()).when(presenter).getIoScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
     doReturn(Observable.just(response)).when(rabbitMqService).whoAmI();
     doReturn(true).when(presenter).isSuccessfulLogin(any());
@@ -302,7 +302,7 @@ public class LoginPresenterTest extends BaseTest {
   public void should_show_invalid_credentials_on_unsuccessful_login() {
     // Given
     Response<User> response = Response.error(503, errorResponseBody);
-    doReturn(Schedulers.trampoline()).when(presenter).getSubscribeScheduler();
+    doReturn(Schedulers.trampoline()).when(presenter).getIoScheduler();
     doReturn(Schedulers.trampoline()).when(presenter).getObserveScheduler();
     doReturn(Observable.just(response)).when(rabbitMqService).whoAmI();
     doReturn(false).when(presenter).isSuccessfulLogin(any());

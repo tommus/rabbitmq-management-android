@@ -55,4 +55,7 @@
   <dimen name="nav_header_height">160dp</dimen>
   <dimen name="fab_margin">16dp</dimen>
 
+  <!-- Overview. -->
+  <dimen name="chart_min_height">160dp</dimen>
+
 </resources>

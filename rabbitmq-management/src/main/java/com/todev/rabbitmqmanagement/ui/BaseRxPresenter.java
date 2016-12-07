@@ -32,8 +32,12 @@ public class BaseRxPresenter {
     }
   }
 
-  public Scheduler getSubscribeScheduler() {
+  public Scheduler getIoScheduler() {
     return Schedulers.io();
+  }
+
+  public Scheduler getComputationScheduler() {
+    return Schedulers.computation();
   }
 
   public Scheduler getObserveScheduler() {

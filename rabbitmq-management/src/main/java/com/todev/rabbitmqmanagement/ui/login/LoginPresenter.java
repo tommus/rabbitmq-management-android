@@ -61,7 +61,7 @@ public class LoginPresenter extends BaseRxPresenter implements LoginContract.Pre
   @Override
   public void loadCredentials() {
     disposable.add(dataProvider.getCredentials()
-        .subscribeOn(getSubscribeScheduler())
+        .subscribeOn(getIoScheduler())
         .observeOn(getObserveScheduler())
         .subscribe(credentials -> view.showCredentials(credentials),
             throwable -> Timber.e("An error occurred while fetching credentials data.")));
@@ -70,7 +70,7 @@ public class LoginPresenter extends BaseRxPresenter implements LoginContract.Pre
   @Override
   public void loadServices() {
     disposable.add(dataProvider.getServices()
-        .subscribeOn(getSubscribeScheduler())
+        .subscribeOn(getIoScheduler())
         .observeOn(getObserveScheduler())
         .subscribe(services -> {
           view.updateServices(services);
@@ -130,7 +130,7 @@ public class LoginPresenter extends BaseRxPresenter implements LoginContract.Pre
 
   protected void processLogin() {
     disposable.add(rabbitMqService.whoAmI()
-        .subscribeOn(getSubscribeScheduler())
+        .subscribeOn(getIoScheduler())
         .observeOn(getObserveScheduler())
         .subscribe(response -> {
           if (isSuccessfulLogin(response)) {
