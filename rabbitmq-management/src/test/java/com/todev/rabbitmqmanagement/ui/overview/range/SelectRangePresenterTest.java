@@ -18,7 +18,7 @@
 package com.todev.rabbitmqmanagement.ui.overview.range;
 
 import com.todev.rabbitmqmanagement.BaseTest;
-import com.todev.rabbitmqmanagement.ui.overview.MessagesIndicator.VisibleRange;
+import com.todev.rabbitmqmanagement.ui.overview.widget.MessagesIndicator.VisibleRange;
 import java8.util.function.Supplier;
 import org.junit.Test;
 import org.mockito.Mock;

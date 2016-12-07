@@ -18,6 +18,7 @@
 package com.todev.rabbitmqmanagement.ui.login;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +34,9 @@ public class ServicesAdapter extends ArrayAdapter<Service> {
     super(context, 0);
   }
 
+  @NonNull
   @Override
-  public View getView(int position, View convertView, ViewGroup parent) {
+  public View getView(int position, View convertView, @NonNull ViewGroup parent) {
     Service service = getItem(position);
 
     if (convertView == null) {
@@ -49,7 +51,7 @@ public class ServicesAdapter extends ArrayAdapter<Service> {
   }
 
   @Override
-  public View getDropDownView(int position, View convertView, ViewGroup parent) {
+  public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
     Service service = getItem(position);
 
     if (convertView == null) {

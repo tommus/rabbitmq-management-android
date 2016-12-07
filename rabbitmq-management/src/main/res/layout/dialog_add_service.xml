@@ -92,7 +92,7 @@
       android:textSize="@dimen/font_size_medium_plus"
       />
 
-  <com.todev.rabbitmqmanagement.ui.login.PortNumberPicker
+  <com.todev.rabbitmqmanagement.ui.login.widget.PortNumberPicker
       android:id="@+id/port_number_picker"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

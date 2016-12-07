@@ -20,7 +20,7 @@
       android:orientation="vertical"
       >
 
-    <com.todev.rabbitmqmanagement.ui.overview.QueuedMessagesIndicator
+    <com.todev.rabbitmqmanagement.ui.overview.widget.QueuedMessagesIndicator
         android:id="@+id/queued_messages_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         todev:visible_range="one_minute"
         />
 
-    <com.todev.rabbitmqmanagement.ui.overview.MessageRatesIndicator
+    <com.todev.rabbitmqmanagement.ui.overview.widget.MessageRatesIndicator
         android:id="@+id/message_rates_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         todev:visible_range="one_minute"
         />
 
-    <com.todev.rabbitmqmanagement.ui.overview.GlobalCountsIndicator
+    <com.todev.rabbitmqmanagement.ui.overview.widget.GlobalCountsIndicator
         android:id="@+id/global_counts_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

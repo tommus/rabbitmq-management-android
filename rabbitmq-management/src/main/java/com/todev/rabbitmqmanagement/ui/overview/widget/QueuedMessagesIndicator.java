@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.overview;
+package com.todev.rabbitmqmanagement.ui.overview.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.ui.overview.widget.MessagesIndicator;
 
 public class QueuedMessagesIndicator extends MessagesIndicator {
   protected int readyLineColor;

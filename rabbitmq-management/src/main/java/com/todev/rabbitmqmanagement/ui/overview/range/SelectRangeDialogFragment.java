@@ -20,18 +20,16 @@ package com.todev.rabbitmqmanagement.ui.overview.range;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.ui.BaseDialogFragment;
-import com.todev.rabbitmqmanagement.ui.overview.MessagesIndicator;
+import com.todev.rabbitmqmanagement.ui.overview.widget.MessagesIndicator;
 import lombok.Setter;
 
 public class SelectRangeDialogFragment extends BaseDialogFragment implements SelectRangeContract.View {

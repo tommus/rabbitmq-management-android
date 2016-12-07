@@ -1,6 +1,6 @@
 package com.todev.rabbitmqmanagement.ui.overview.range;
 
-import com.todev.rabbitmqmanagement.ui.overview.MessagesIndicator;
+import com.todev.rabbitmqmanagement.ui.overview.widget.MessagesIndicator;
 import java8.util.function.Supplier;
 import lombok.Setter;
 

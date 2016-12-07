@@ -34,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.ui.BaseDialogFragment;
-import com.todev.rabbitmqmanagement.ui.login.PortNumberPicker;
+import com.todev.rabbitmqmanagement.ui.login.widget.PortNumberPicker;
 import java8.util.function.Consumer;
 
 public class AddServiceDialogFragment extends BaseDialogFragment implements AddServiceContract.View {
