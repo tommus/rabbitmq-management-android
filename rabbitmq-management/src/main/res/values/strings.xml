@@ -4,7 +4,7 @@
 
   <eat-comment/>
 
-  <string name="app_name" translatable="false">RabbitMQ Management</string>
+  <string name="app_name_main" translatable="false">RabbitMQ Management</string>
 
   <string name="login">Login</string>
   <string name="password">Password</string>
