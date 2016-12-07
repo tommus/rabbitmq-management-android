@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -34,6 +35,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
+import com.todev.rabbitmqmanagement.BuildConfig;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
 import com.todev.rabbitmqmanagement.data.app.DataProvider;
@@ -43,8 +45,8 @@ import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
 import com.todev.rabbitmqmanagement.data.network.interceptor.AddressInterceptor;
 import com.todev.rabbitmqmanagement.data.network.interceptor.AuthorizationInterceptor;
 import com.todev.rabbitmqmanagement.ui.BaseActivity;
+import com.todev.rabbitmqmanagement.ui.drawer.DrawerActivity;
 import com.todev.rabbitmqmanagement.ui.login.addservice.AddServiceDialogFragment;
-import com.todev.rabbitmqmanagement.ui.overview.OverviewActivity;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -92,6 +94,16 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     loginButton.setOnClickListener(view -> presenter.onLoginButtonClicked());
 
     horizontalShakeAnimation = AnimationUtils.loadAnimation(this, R.anim.horizontal_shake);
+  }
+
+  @Override
+  protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
+
+    if (BuildConfig.DEBUG) {
+      login.setText("test");
+      password.setText("test");
+    }
   }
 
   @Override
@@ -192,7 +204,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
   @Override
   public void showOverview() {
-    Intent intent = new Intent(this, OverviewActivity.class);
+    Intent intent = new Intent(this, DrawerActivity.class);
     startActivity(intent);
   }
 

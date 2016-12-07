@@ -31,9 +31,10 @@
     </activity>
 
     <activity
-        android:name=".ui.overview.OverviewActivity"
+        android:name=".ui.drawer.DrawerActivity"
         android:configChanges="orientation"
-        android:screenOrientation="portrait"/>
+        android:screenOrientation="portrait"
+        android:theme="@style/RabbitmqManagement.NoActionBar"/>
 
   </application>
 

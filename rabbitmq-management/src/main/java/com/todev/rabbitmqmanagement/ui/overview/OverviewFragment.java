@@ -19,7 +19,10 @@ package com.todev.rabbitmqmanagement.ui.overview;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import butterknife.BindView;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
@@ -28,7 +31,7 @@ import com.todev.rabbitmqmanagement.data.network.model.MessageStats;
 import com.todev.rabbitmqmanagement.data.network.model.overview.ObjectTotals;
 import com.todev.rabbitmqmanagement.data.network.model.overview.Overview;
 import com.todev.rabbitmqmanagement.data.network.model.overview.QueueTotals;
-import com.todev.rabbitmqmanagement.ui.BaseActivity;
+import com.todev.rabbitmqmanagement.ui.BaseFragment;
 import com.todev.rabbitmqmanagement.ui.overview.range.SelectRangeDialogFragment;
 import com.todev.rabbitmqmanagement.ui.overview.widget.GlobalCountsIndicator;
 import com.todev.rabbitmqmanagement.ui.overview.widget.MessageRatesIndicator;
@@ -36,7 +39,7 @@ import com.todev.rabbitmqmanagement.ui.overview.widget.QueuedMessagesIndicator;
 import java8.util.function.Predicate;
 import javax.inject.Inject;
 
-public class OverviewActivity extends BaseActivity implements OverviewContract.View {
+public class OverviewFragment extends BaseFragment implements OverviewContract.View {
   public static final String TAG_SELECT_RANGE = "Select Range Fragment";
 
   @Inject RabbitMqService rabbitMqService;
@@ -48,22 +51,30 @@ public class OverviewActivity extends BaseActivity implements OverviewContract.V
   private OverviewPresenter presenter;
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    RabbitMqManagementApplication.get(this).getComponent().inject(this);
-
+  public void onCreate(Bundle savedInstanceState) {
+    RabbitMqManagementApplication.get(getContext()).getComponent().inject(this);
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_overview);
-
     presenter = new OverviewPresenter(rabbitMqService);
     presenter.setView(this);
+  }
 
+  @Nullable
+  @Override
+  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_overview, container, false);
+  }
+
+  @Override
+  public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
     queuedMessagesIndicator.setRangeButtonOnClickListener(v -> presenter.onQueuedMessagesRangeButtonClicked());
     messageRatesIndicator.setRangeButtonOnClickListener(v -> presenter.onMessageRatesRangeButtonClicked());
   }
 
   @Override
-  protected void onResume() {
-    super.onResume();
+  public void onStart() {
+    super.onStart();
 
     animate(queuedMessagesIndicator, 0);
     animate(messageRatesIndicator, 1);
@@ -73,8 +84,8 @@ public class OverviewActivity extends BaseActivity implements OverviewContract.V
   }
 
   @Override
-  protected void onPause() {
-    super.onPause();
+  public void onStop() {
+    super.onStop();
     presenter.unsubscribe();
   }
 
@@ -82,14 +93,14 @@ public class OverviewActivity extends BaseActivity implements OverviewContract.V
   public void showQueuedMessagesRangeDialogFragment() {
     SelectRangeDialogFragment fragment = new SelectRangeDialogFragment();
     fragment.setMessagesIndicator(queuedMessagesIndicator);
-    fragment.show(getSupportFragmentManager(), TAG_SELECT_RANGE);
+    fragment.show(getFragmentManager(), TAG_SELECT_RANGE);
   }
 
   @Override
   public void showMessageRatesRangeDialogFragment() {
     SelectRangeDialogFragment fragment = new SelectRangeDialogFragment();
     fragment.setMessagesIndicator(messageRatesIndicator);
-    fragment.show(getSupportFragmentManager(), TAG_SELECT_RANGE);
+    fragment.show(getFragmentManager(), TAG_SELECT_RANGE);
   }
 
   @Override

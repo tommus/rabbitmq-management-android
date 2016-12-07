@@ -64,7 +64,7 @@ public class OverviewPresenter extends BaseRxPresenter implements OverviewContra
                   view.updateMessageRates(response.body(), messageRatesPredicate);
                   view.updateGlobalCounts(response.body(), globalCountsPredicate);
                 }
-              }, throwable -> Timber.d("An error occurred while loading overview details."));
+              }, throwable -> Timber.d("An error occurred while loading fragment_overview details."));
         }));
   }
 

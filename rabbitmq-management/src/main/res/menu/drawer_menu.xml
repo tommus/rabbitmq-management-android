@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group
+      android:id="@+id/nav_group_basics"
+      android:checkableBehavior="single">
+
+    <item
+        android:id="@+id/nav_overview"
+        android:icon="@drawable/ic_assignment_black_24dp"
+        android:title="@string/overview"/>
+
+    <item
+        android:id="@+id/nav_connections"
+        android:icon="@drawable/ic_settings_input_component_black_24dp"
+        android:title="@string/connections"/>
+
+    <item
+        android:id="@+id/nav_channels"
+        android:icon="@drawable/ic_device_hub_black_24dp"
+        android:title="@string/channels"/>
+
+    <item
+        android:id="@+id/nav_exchanges"
+        android:icon="@drawable/ic_import_export_black_24dp"
+        android:title="@string/exchanges"/>
+
+    <item
+        android:id="@+id/nav_queues"
+        android:icon="@drawable/ic_people_black_24dp"
+        android:title="@string/queues"/>
+
+  </group>
+
+  <group
+      android:id="@+id/nav_group_administration"
+      android:checkableBehavior="single">
+
+    <item
+        android:id="@+id/nav_admin"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/admin"/>
+
+  </group>
+
+</menu>

@@ -101,7 +101,7 @@ public class LoginPresenter extends BaseRxPresenter implements LoginContract.Pre
 
   @Override
   public void performLogin(String login, String password, Service service) {
-    // Validate login.
+    // Validate activity_login.
     if (!validateLogin(login)) {
       view.showMissingUsernameError();
     }
@@ -116,7 +116,7 @@ public class LoginPresenter extends BaseRxPresenter implements LoginContract.Pre
       view.showServiceNotSelectedError();
     }
 
-    // Perform login.
+    // Perform activity_login.
     else {
       interceptRequest(login, password, service);
       processLogin();

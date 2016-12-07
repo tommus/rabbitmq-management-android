@@ -15,20 +15,10 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.data.network.model.overview;
+package com.todev.rabbitmqmanagement.ui.exchange;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.todev.rabbitmqmanagement.data.network.model.Context;
+import lombok.Setter;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class OverviewContext extends Context {
-
-  @JsonProperty(value = "node") protected String node;
-
-  public String getNode() {
-    return node;
-  }
+public class ExchangePresenter implements ExchangeContract.Presenter {
+  @Setter ExchangeContract.View view;
 }

@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/size_medium"
     android:paddingTop="@dimen/size_medium"
     android:scrollbars="none"
-    tools:context=".ui.overview.OverviewActivity"
+    tools:context=".ui.overview.OverviewFragment"
     >
 
   <LinearLayout
