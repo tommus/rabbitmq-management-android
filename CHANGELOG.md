@@ -1,3 +1,7 @@
+## 0.0.5 (December 7, 2016)
+
+-- New: add navigation drawer with fragment prototypes
+
 ## 0.0.4 (July 22, 2016)
 
 - New: widget that allows to present message rates stats

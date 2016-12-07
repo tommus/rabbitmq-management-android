@@ -6,24 +6,20 @@ The main purpose of this projects is to allow view and manage data provided by R
 
 This application targets Android (4.0) Ice Cream Sandwich and newer.
 
-## Project Modules
-
-RabbitMQ Management for Android consists of the following modules:
-
-1. **rabbitmq-management** - main module, where most of the client-side code is placed
-2. **api** - module that contains implementation of REST method handlers for RabbitMQ Management API
-3. **widgets** - module with custom widgets created for project needs
-
 ## Dependencies
 
 This application takes advantage of the fantastic work of the authors of such libraries as:
 
-1. [Butter Knife](https://github.com/JakeWharton/butterknife) by Jake Wharton
-2. [Retrofit](https://github.com/square/retrofit) and [OkHttp](https://github.com/square/okhttp) by Square
+1. [Butter Knife](https://github.com/JakeWharton/butterknife) and [Timber](https://github.com/JakeWharton/timber) by Jake Wharton
+2. [Retrofit 2](https://github.com/square/retrofit), [OkHttp 3](https://github.com/square/okhttp), [LeakCanary](https://github.com/square/leakcanary) by Square
+3. [RxJava 2](https://github.com/ReactiveX/RxJava/tree/2.x) by Netflix
 4. [Joda-Time](https://github.com/JodaOrg/joda-time) by Joda.org
 5. [Jackson](https://github.com/FasterXML/jackson) by FasterXML
-6. [ActiveAndroid](https://github.com/pardom/ActiveAndroid) by pardom
+6. [DBFlow](https://github.com/Raizlabs/DBFlow) by Andrew Grosner
 7. [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) by Philipp Jahoda
+8. [Stetho](https://github.com/facebook/stetho) by Facebook
+
+Along with above mentioned tools, in this project has also been used other dependencies. Please do not hesitate to take a look at modules `build.gradle` files for more information.
 
 ## Continuous Integration
 
