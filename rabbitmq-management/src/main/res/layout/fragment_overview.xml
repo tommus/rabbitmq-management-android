@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clipToPadding="false"
     android:paddingBottom="@dimen/size_medium"
     android:paddingLeft="@dimen/size_medium"
     android:paddingRight="@dimen/size_medium"
@@ -35,6 +36,7 @@
         todev:values_visible="false"
         todev:visible_range="one_minute"
         />
+
 
     <com.todev.rabbitmqmanagement.ui.overview.widget.MessageRatesIndicator
         android:id="@+id/message_rates_indicator"

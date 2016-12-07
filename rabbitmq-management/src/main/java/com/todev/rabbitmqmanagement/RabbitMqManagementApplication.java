@@ -17,15 +17,15 @@
  */
 package com.todev.rabbitmqmanagement;
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.todev.rabbitmqmanagement.core.dagger.AppComponent;
 import lombok.Getter;
 import timber.log.Timber;
 
-public class RabbitMqManagementApplication extends Application {
+public class RabbitMqManagementApplication extends MultiDexApplication {
 
   @Getter private AppComponent component;
 
