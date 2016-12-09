@@ -1,2 +1,14 @@
+# IDEs.
+.idea/
+
+# Language.
+__pycache__/
+*.py[cod]
+*$py.class
+
 # Virtual environment.
 venv/
+
+# Project specific.
+tmp/
+!tmp/.keep
