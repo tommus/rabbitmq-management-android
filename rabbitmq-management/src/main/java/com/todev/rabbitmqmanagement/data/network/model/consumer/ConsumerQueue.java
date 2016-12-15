@@ -20,20 +20,16 @@ package com.todev.rabbitmqmanagement.data.network.model.consumer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ConsumerQueue {
 
-  @JsonProperty(value = "name") protected String name;
+  @JsonProperty(value = "name")
+  protected String name;
 
-  @JsonProperty(value = "vhost") protected String vhost;
-
-  public String getName() {
-    return name;
-  }
-
-  public String getVhost() {
-    return vhost;
-  }
+  @JsonProperty(value = "vhost")
+  protected String vhost;
 }

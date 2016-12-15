@@ -20,20 +20,16 @@ package com.todev.rabbitmqmanagement.data.network.model.connection;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ClientProperties {
 
-  @JsonProperty(value = "library") protected String library;
+  @JsonProperty(value = "library")
+  protected String library;
 
-  @JsonProperty(value = "library_version") protected String libraryVersion;
-
-  public String getLibrary() {
-    return library;
-  }
-
-  public String getLibraryVersion() {
-    return libraryVersion;
-  }
+  @JsonProperty(value = "library_version")
+  protected String libraryVersion;
 }

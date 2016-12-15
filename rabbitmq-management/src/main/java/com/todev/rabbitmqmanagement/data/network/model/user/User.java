@@ -25,23 +25,20 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.todev.rabbitmqmanagement.data.network.serialization.UserTagsDeserializer;
 import com.todev.rabbitmqmanagement.data.network.serialization.UserTagsSerializer;
 import java.util.List;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class User {
 
-  @JsonProperty(value = "name") protected String name;
+  @JsonProperty(value = "name")
+  protected String name;
 
-  @JsonDeserialize(using = UserTagsDeserializer.class) @JsonProperty(value = "tags")
-  @JsonSerialize(using = UserTagsSerializer.class) protected List<Tag> tags;
-
-  public String getName() {
-    return name;
-  }
-
-  public List<Tag> getTags() {
-    return tags;
-  }
+  @JsonDeserialize(using = UserTagsDeserializer.class)
+  @JsonProperty(value = "tags")
+  @JsonSerialize(using = UserTagsSerializer.class)
+  protected List<Tag> tags;
 
   public enum Tag {
     ADMINISTRATOR, MONITORING, POLICYMAKER, MANAGEMENT, NONE

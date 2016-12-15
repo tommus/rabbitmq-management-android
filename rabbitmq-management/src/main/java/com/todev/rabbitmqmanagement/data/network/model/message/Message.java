@@ -20,56 +20,34 @@ package com.todev.rabbitmqmanagement.data.network.model.message;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Message {
 
-  @JsonProperty(value = "exchange") protected String exchange;
+  @JsonProperty(value = "exchange")
+  protected String exchange;
 
-  @JsonProperty(value = "message_count") protected int messageCount;
+  @JsonProperty(value = "message_count")
+  protected int messageCount;
 
-  @JsonProperty(value = "payload") protected String payload;
+  @JsonProperty(value = "payload")
+  protected String payload;
 
-  @JsonProperty(value = "payload_bytes") protected long payloadBytes;
+  @JsonProperty(value = "payload_bytes")
+  protected long payloadBytes;
 
-  @JsonProperty(value = "payload_encoding") protected String payloadEncoding;
+  @JsonProperty(value = "payload_encoding")
+  protected String payloadEncoding;
 
-  @JsonProperty(value = "properties") protected Properties properties;
+  @JsonProperty(value = "properties")
+  protected Properties properties;
 
-  @JsonProperty(value = "redelivered") protected boolean redelivered;
+  @JsonProperty(value = "redelivered")
+  protected boolean redelivered;
 
-  @JsonProperty(value = "routing_key") protected String routingKey;
-
-  public String getExchange() {
-    return exchange;
-  }
-
-  public int getMessageCount() {
-    return messageCount;
-  }
-
-  public String getPayload() {
-    return payload;
-  }
-
-  public long getPayloadBytes() {
-    return payloadBytes;
-  }
-
-  public String getPayloadEncoding() {
-    return payloadEncoding;
-  }
-
-  public Properties getProperties() {
-    return properties;
-  }
-
-  public boolean isRedelivered() {
-    return redelivered;
-  }
-
-  public String getRoutingKey() {
-    return routingKey;
-  }
+  @JsonProperty(value = "routing_key")
+  protected String routingKey;
 }

@@ -17,52 +17,36 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.binding;
 
-import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
+@Getter
 public class Binding {
 
-  @JsonProperty(value = "arguments") protected Map<String, String> bindingArguments;
+  @lombok.NonNull
+  @JsonProperty(value = "arguments")
+  protected Map<String, String> bindingArguments;
 
-  @JsonProperty(value = "destination") protected String destination;
+  @JsonProperty(value = "destination")
+  protected String destination;
 
-  @JsonProperty(value = "destination_type") protected String destinationType;
+  @JsonProperty(value = "destination_type")
+  protected String destinationType;
 
-  @JsonProperty(value = "routing_key") protected String routingKey;
+  @lombok.NonNull
+  @JsonProperty(value = "routing_key")
+  protected String routingKey;
 
-  @JsonProperty(value = "source") protected String source;
-
-  public Binding() {
-    // Jackson requires presence of empty constructor.
-  }
-
-  public Binding(@NonNull String routingKey, @NonNull Map<String, String> bindingArguments) {
-    this.routingKey = routingKey;
-    this.bindingArguments = bindingArguments;
-  }
-
-  public Map<String, String> getArguments() {
-    return bindingArguments;
-  }
-
-  public String getDestination() {
-    return destination;
-  }
-
-  public String getDestinationType() {
-    return destinationType;
-  }
-
-  public String getRoutingKey() {
-    return routingKey;
-  }
-
-  public String getSource() {
-    return source;
-  }
+  @JsonProperty(value = "source")
+  protected String source;
 }

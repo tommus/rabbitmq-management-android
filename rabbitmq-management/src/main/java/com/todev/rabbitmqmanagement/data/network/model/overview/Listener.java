@@ -20,32 +20,22 @@ package com.todev.rabbitmqmanagement.data.network.model.overview;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Listener {
 
-  @JsonProperty(value = "ip_address") protected String ipAddress;
+  @JsonProperty(value = "ip_address")
+  protected String ipAddress;
 
-  @JsonProperty(value = "node") protected String node;
+  @JsonProperty(value = "node")
+  protected String node;
 
-  @JsonProperty(value = "port") protected Integer port;
+  @JsonProperty(value = "port")
+  protected Integer port;
 
-  @JsonProperty(value = "protocol") protected String protocol;
-
-  public String getIpAddress() {
-    return ipAddress;
-  }
-
-  public String getNode() {
-    return node;
-  }
-
-  public Integer getPort() {
-    return port;
-  }
-
-  public String getProtocol() {
-    return protocol;
-  }
+  @JsonProperty(value = "protocol")
+  protected String protocol;
 }

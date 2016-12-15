@@ -21,30 +21,30 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.IOException;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Getter
 public class Error {
 
-  @JsonProperty("error") protected String error;
+  @JsonProperty("error")
+  protected String error;
 
-  @JsonProperty("reason") protected String reason;
-
-  public Error() {
-    // Jackson requires presence of empty constructor.
-  }
-
-  public Error(String error, String reason) {
-    this.error = error;
-    this.reason = reason;
-  }
+  @JsonProperty("reason")
+  protected String reason;
 
   public static Error fromBody(ResponseBody body) {
     Converter<ResponseBody, ?> converter =
-      JacksonConverterFactory.create().responseBodyConverter(Error.class, null, null);
+        JacksonConverterFactory.create().responseBodyConverter(Error.class, null, null);
 
     Error error;
 
@@ -55,13 +55,5 @@ public class Error {
     }
 
     return error;
-  }
-
-  public String getError() {
-    return error;
-  }
-
-  public String getReason() {
-    return reason;
   }
 }

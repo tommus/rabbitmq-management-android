@@ -24,98 +24,55 @@ import com.todev.rabbitmqmanagement.data.network.model.Description;
 import com.todev.rabbitmqmanagement.data.network.model.MessageStats;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Overview {
 
-  @JsonProperty(value = "cluster_name") protected String clusterName;
+  @JsonProperty(value = "cluster_name")
+  protected String clusterName;
 
-  @JsonProperty(value = "contexts") protected List<OverviewContext> contexts = new ArrayList<>();
+  @JsonProperty(value = "contexts")
+  protected List<OverviewContext> contexts = new ArrayList<>();
 
-  @JsonProperty(value = "erlang_full_version") protected String erlangFullVersion;
+  @JsonProperty(value = "erlang_full_version")
+  protected String erlangFullVersion;
 
-  @JsonProperty(value = "erlang_version") protected String erlangVersion;
+  @JsonProperty(value = "erlang_version")
+  protected String erlangVersion;
 
-  @JsonProperty(value = "exchange_types") protected List<Description> exchangeTypes = new ArrayList<>();
+  @JsonProperty(value = "exchange_types")
+  protected List<Description> exchangeTypes = new ArrayList<>();
 
-  @JsonProperty(value = "listeners") protected List<Listener> listeners = new ArrayList<>();
+  @JsonProperty(value = "listeners")
+  protected List<Listener> listeners = new ArrayList<>();
 
-  @JsonProperty(value = "management_version") protected String managementVersion;
+  @JsonProperty(value = "management_version")
+  protected String managementVersion;
 
-  @JsonProperty(value = "message_stats") protected MessageStats messageStats;
+  @JsonProperty(value = "message_stats")
+  protected MessageStats messageStats;
 
-  @JsonProperty(value = "node") protected String node;
+  @JsonProperty(value = "node")
+  protected String node;
 
-  @JsonProperty(value = "object_totals") protected ObjectTotals objectTotals;
+  @JsonProperty(value = "object_totals")
+  protected ObjectTotals objectTotals;
 
-  @JsonProperty(value = "queue_totals") protected QueueTotals queueTotals;
+  @JsonProperty(value = "queue_totals")
+  protected QueueTotals queueTotals;
 
-  @JsonProperty(value = "rabbitmq_version") protected String rabbitmqVersion;
+  @JsonProperty(value = "rabbitmq_version")
+  protected String rabbitmqVersion;
 
-  @JsonProperty(value = "rates_mode") protected String ratesMode;
+  @JsonProperty(value = "rates_mode")
+  protected String ratesMode;
 
-  @JsonProperty(value = "statistics_db_event_queue") protected int statisticsDbEventQueue;
+  @JsonProperty(value = "statistics_db_event_queue")
+  protected int statisticsDbEventQueue;
 
-  @JsonProperty(value = "statistics_db_node") protected String statisticsDbNode;
-
-  public String getClusterName() {
-    return clusterName;
-  }
-
-  public List<OverviewContext> getContexts() {
-    return contexts;
-  }
-
-  public String getErlangFullVersion() {
-    return erlangFullVersion;
-  }
-
-  public String getErlangVersion() {
-    return erlangVersion;
-  }
-
-  public List<Description> getExchangeTypes() {
-    return exchangeTypes;
-  }
-
-  public List<Listener> getListeners() {
-    return listeners;
-  }
-
-  public String getManagementVersion() {
-    return managementVersion;
-  }
-
-  public MessageStats getMessageStats() {
-    return messageStats;
-  }
-
-  public String getNode() {
-    return node;
-  }
-
-  public ObjectTotals getObjectTotals() {
-    return objectTotals;
-  }
-
-  public QueueTotals getQueueTotals() {
-    return queueTotals;
-  }
-
-  public String getRabbitmqVersion() {
-    return rabbitmqVersion;
-  }
-
-  public String getRatesMode() {
-    return ratesMode;
-  }
-
-  public Integer getStatisticsDbEventQueue() {
-    return statisticsDbEventQueue;
-  }
-
-  public String getStatisticsDbNode() {
-    return statisticsDbNode;
-  }
+  @JsonProperty(value = "statistics_db_node")
+  protected String statisticsDbNode;
 }

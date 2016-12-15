@@ -20,14 +20,13 @@ package com.todev.rabbitmqmanagement.data.network.model.extension;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Extension {
 
-  @JsonProperty(value = "javascript") protected String javascript;
-
-  public String getJavascript() {
-    return javascript;
-  }
+  @JsonProperty(value = "javascript")
+  protected String javascript;
 }

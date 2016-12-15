@@ -20,38 +20,25 @@ package com.todev.rabbitmqmanagement.data.network.model.overview;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ObjectTotals {
 
-  @JsonProperty(value = "channels") protected int channels;
+  @JsonProperty(value = "channels")
+  protected int channels;
 
-  @JsonProperty(value = "connections") protected int connections;
+  @JsonProperty(value = "connections")
+  protected int connections;
 
-  @JsonProperty(value = "consumers") protected int consumers;
+  @JsonProperty(value = "consumers")
+  protected int consumers;
 
-  @JsonProperty(value = "exchanges") protected int exchanges;
+  @JsonProperty(value = "exchanges")
+  protected int exchanges;
 
-  @JsonProperty(value = "queues") protected int queues;
-
-  public int getChannels() {
-    return channels;
-  }
-
-  public int getConnections() {
-    return connections;
-  }
-
-  public int getConsumers() {
-    return consumers;
-  }
-
-  public int getExchanges() {
-    return exchanges;
-  }
-
-  public int getQueues() {
-    return queues;
-  }
+  @JsonProperty(value = "queues")
+  protected int queues;
 }

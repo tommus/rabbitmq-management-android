@@ -21,49 +21,30 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Consumer {
-  @JsonProperty(value = "ack_required") protected boolean ackRequired;
+  @JsonProperty(value = "ack_required")
+  protected boolean ackRequired;
 
-  @JsonProperty(value = "arguments") protected Map<String, String> arguments;
+  @JsonProperty(value = "arguments")
+  protected Map<String, String> arguments;
 
-  @JsonProperty(value = "channel_details") protected ConsumerChannelDetails channelDetails;
+  @JsonProperty(value = "channel_details")
+  protected ConsumerChannelDetails channelDetails;
 
-  @JsonProperty(value = "consumer_tag") protected String consumerTag;
+  @JsonProperty(value = "consumer_tag")
+  protected String consumerTag;
 
-  @JsonProperty(value = "exclusive") protected boolean exclusive;
+  @JsonProperty(value = "exclusive")
+  protected boolean exclusive;
 
-  @JsonProperty(value = "prefetch_count") protected int prefetchCount;
+  @JsonProperty(value = "prefetch_count")
+  protected int prefetchCount;
 
-  @JsonProperty(value = "queue") protected ConsumerQueue queue;
-
-  public boolean isAckRequired() {
-    return ackRequired;
-  }
-
-  public Map<String, String> getArguments() {
-    return arguments;
-  }
-
-  public ConsumerChannelDetails getChannelDetails() {
-    return channelDetails;
-  }
-
-  public String getConsumerTag() {
-    return consumerTag;
-  }
-
-  public boolean isExclusive() {
-    return exclusive;
-  }
-
-  public int getPrefetchCount() {
-    return prefetchCount;
-  }
-
-  public ConsumerQueue getQueue() {
-    return queue;
-  }
+  @JsonProperty(value = "queue")
+  protected ConsumerQueue queue;
 }

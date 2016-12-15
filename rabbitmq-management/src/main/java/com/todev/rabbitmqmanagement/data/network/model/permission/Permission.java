@@ -17,52 +17,36 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.permission;
 
-import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
+@Getter
 public class Permission {
 
-  @JsonProperty(value = "configure") protected String configure;
+  @lombok.NonNull
+  @JsonProperty(value = "configure")
+  protected String configure;
 
-  @JsonProperty(value = "read") protected String read;
+  @lombok.NonNull
+  @JsonProperty(value = "read")
+  protected String read;
 
-  @JsonProperty(value = "user") protected String user;
+  @JsonProperty(value = "user")
+  protected String user;
 
-  @JsonProperty(value = "vhost") protected String vhost;
+  @JsonProperty(value = "vhost")
+  protected String vhost;
 
-  @JsonProperty(value = "write") protected String write;
-
-  public Permission() {
-    // Jackson requires presence of empty constructor.
-  }
-
-  public Permission(@NonNull String configure, @NonNull String read, @NonNull String write) {
-    this.configure = configure;
-    this.read = read;
-    this.write = write;
-  }
-
-  public String getConfigure() {
-    return configure;
-  }
-
-  public String getRead() {
-    return read;
-  }
-
-  public String getUser() {
-    return user;
-  }
-
-  public String getVhost() {
-    return vhost;
-  }
-
-  public String getWrite() {
-    return write;
-  }
+  @lombok.NonNull
+  @JsonProperty(value = "write")
+  protected String write;
 }

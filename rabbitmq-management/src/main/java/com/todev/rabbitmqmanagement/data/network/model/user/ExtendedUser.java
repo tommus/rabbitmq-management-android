@@ -22,16 +22,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ExtendedUser extends User {
 
-  @JsonProperty(value = "hashing_algorithm") protected String hashingAlgorithm;
+  @JsonProperty(value = "hashing_algorithm")
+  protected String hashingAlgorithm;
 
-  @JsonProperty(value = "password_hash") protected String passwordHash;
+  @JsonProperty(value = "password_hash")
+  protected String passwordHash;
 
-  @JsonProperty(value = "password") protected String password;
+  @JsonProperty(value = "password")
+  protected String password;
 
   protected ExtendedUser() {
     // Jackson requires presence of empty constructor.
@@ -40,17 +45,5 @@ public class ExtendedUser extends User {
   public ExtendedUser(@NonNull String password, @NonNull List<Tag> tags) {
     this.password = password;
     this.tags = tags;
-  }
-
-  public String getHashingAlgorithm() {
-    return hashingAlgorithm;
-  }
-
-  public String getPasswordHash() {
-    return passwordHash;
-  }
-
-  public String getPassword() {
-    return password;
   }
 }

@@ -21,26 +21,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.data.network.model.MessageStats;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ExtendedExchange extends Exchange {
 
-  @JsonProperty(value = "vhost") protected String vhost;
+  @JsonProperty(value = "vhost")
+  protected String vhost;
 
-  @JsonProperty(value = "policy") protected String policy;
+  @JsonProperty(value = "policy")
+  protected String policy;
 
-  @JsonProperty(value = "message_stats") protected MessageStats messageStats;
-
-  public String getVhost() {
-    return vhost;
-  }
-
-  public String getPolicy() {
-    return policy;
-  }
-
-  public MessageStats getMessageStats() {
-    return messageStats;
-  }
+  @JsonProperty(value = "message_stats")
+  protected MessageStats messageStats;
 }

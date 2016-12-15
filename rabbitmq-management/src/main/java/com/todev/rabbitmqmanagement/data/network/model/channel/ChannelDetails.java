@@ -20,26 +20,19 @@ package com.todev.rabbitmqmanagement.data.network.model.channel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ChannelDetails {
 
-  @JsonProperty(value = "name") protected String name;
+  @JsonProperty(value = "name")
+  protected String name;
 
-  @JsonProperty(value = "peer_host") protected String peerHost;
+  @JsonProperty(value = "peer_host")
+  protected String peerHost;
 
-  @JsonProperty(value = "peer_port") protected int peerPort;
-
-  public String getName() {
-    return name;
-  }
-
-  public String getPeerHost() {
-    return peerHost;
-  }
-
-  public int getPeerPort() {
-    return peerPort;
-  }
+  @JsonProperty(value = "peer_port")
+  protected int peerPort;
 }

@@ -21,26 +21,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todev.rabbitmqmanagement.data.network.model.channel.ChannelDetails;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ConsumerChannelDetails extends ChannelDetails {
 
-  @JsonProperty(value = "connection_name") protected String connectionName;
+  @JsonProperty(value = "connection_name")
+  protected String connectionName;
 
-  @JsonProperty(value = "number") protected int number;
+  @JsonProperty(value = "number")
+  protected int number;
 
-  @JsonProperty(value = "user") protected String user;
-
-  public String getConnectionName() {
-    return connectionName;
-  }
-
-  public int getNumber() {
-    return number;
-  }
-
-  public String getUser() {
-    return user;
-  }
+  @JsonProperty(value = "user")
+  protected String user;
 }

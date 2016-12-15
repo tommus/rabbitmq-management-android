@@ -20,20 +20,16 @@ package com.todev.rabbitmqmanagement.data.network.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Check {
 
-  @JsonProperty(value = "status") protected String status;
+  @JsonProperty(value = "status")
+  protected String status;
 
-  @JsonProperty(value = "reason") protected String reason;
-
-  public String getStatus() {
-    return status;
-  }
-
-  public String getReason() {
-    return reason;
-  }
+  @JsonProperty(value = "reason")
+  protected String reason;
 }

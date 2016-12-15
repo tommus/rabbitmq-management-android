@@ -20,20 +20,16 @@ package com.todev.rabbitmqmanagement.data.network.model.binding;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class ExtendedBinding extends Binding {
 
-  @JsonProperty(value = "properties_key") protected String propertiesKey;
+  @JsonProperty(value = "properties_key")
+  protected String propertiesKey;
 
-  @JsonProperty(value = "vhost") protected String vhost;
-
-  public String getPropertiesKey() {
-    return propertiesKey;
-  }
-
-  public String getVhost() {
-    return vhost;
-  }
+  @JsonProperty(value = "vhost")
+  protected String vhost;
 }

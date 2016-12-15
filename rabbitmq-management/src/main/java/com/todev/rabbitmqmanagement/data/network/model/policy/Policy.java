@@ -17,62 +17,41 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.policy;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
+@Getter
 public class Policy {
 
-  @JsonProperty(value = "apply-to") protected String applyTo;
+  @lombok.NonNull
+  @JsonProperty(value = "apply-to")
+  protected String applyTo;
 
-  @JsonProperty(value = "definition") protected Map<String, String> definition;
+  @lombok.NonNull
+  @JsonProperty(value = "definition")
+  protected Map<String, String> definition;
 
-  @JsonProperty(value = "name") protected String name;
+  @JsonProperty(value = "name")
+  protected String name;
 
-  @JsonProperty(value = "pattern") protected String pattern;
+  @lombok.NonNull
+  @JsonProperty(value = "pattern")
+  protected String pattern;
 
-  @JsonProperty(value = "priority") protected Integer priority;
+  @lombok.NonNull
+  @JsonProperty(value = "priority")
+  protected Integer priority;
 
-  @JsonProperty(value = "vhost") protected String vhost;
-
-  public Policy() {
-    // Jackson requires presence of empty constructor.
-  }
-
-  public Policy(@NonNull String pattern, @NonNull Map<String, String> definition, @Nullable Integer priority,
-    @Nullable String applyTo) {
-    this.pattern = pattern;
-    this.definition = definition;
-    this.priority = priority;
-    this.applyTo = applyTo;
-  }
-
-  public String getApplyTo() {
-    return applyTo;
-  }
-
-  public Map<String, String> getDefinition() {
-    return definition;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getPattern() {
-    return pattern;
-  }
-
-  public int getPriority() {
-    return priority;
-  }
-
-  public String getVhost() {
-    return vhost;
-  }
+  @JsonProperty(value = "vhost")
+  protected String vhost;
 }

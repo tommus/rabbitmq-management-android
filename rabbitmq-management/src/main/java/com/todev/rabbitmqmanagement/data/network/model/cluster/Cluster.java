@@ -17,26 +17,21 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.cluster;
 
-import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Getter
 public class Cluster {
 
-  @JsonProperty(value = "name") protected String name;
-
-  protected Cluster() {
-    // Jackson requires presence of empty constructor.
-  }
-
-  public Cluster(@NonNull String name) {
-    this.name = name;
-  }
-
-  public String getName() {
-    return name;
-  }
+  @JsonProperty(value = "name")
+  protected String name;
 }

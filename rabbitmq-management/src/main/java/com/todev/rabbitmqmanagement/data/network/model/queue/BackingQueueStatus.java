@@ -22,86 +22,49 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class BackingQueueStatus {
 
-  @JsonProperty(value = "avg_ack_egress_rate") protected float avgAckEgressRate;
+  @JsonProperty(value = "avg_ack_egress_rate")
+  protected float avgAckEgressRate;
 
-  @JsonProperty(value = "avg_ack_ingress_rate") protected float avgAckIngressRate;
+  @JsonProperty(value = "avg_ack_ingress_rate")
+  protected float avgAckIngressRate;
 
-  @JsonProperty(value = "avg_egress_rate") protected float avgEgressRate;
+  @JsonProperty(value = "avg_egress_rate")
+  protected float avgEgressRate;
 
-  @JsonProperty(value = "avg_ingress_rate") protected float avgIngressRate;
+  @JsonProperty(value = "avg_ingress_rate")
+  protected float avgIngressRate;
 
-  @JsonProperty(value = "delta") protected List<String> delta = new ArrayList<>();
+  @JsonProperty(value = "delta")
+  protected List<String> delta = new ArrayList<>();
 
-  @JsonProperty(value = "len") protected int len;
+  @JsonProperty(value = "len")
+  protected int len;
 
-  @JsonProperty(value = "mode") protected String mode;
+  @JsonProperty(value = "mode")
+  protected String mode;
 
-  @JsonProperty(value = "next_seq_id") protected int nextSeqId;
+  @JsonProperty(value = "next_seq_id")
+  protected int nextSeqId;
 
-  @JsonProperty(value = "q1") protected int q1;
+  @JsonProperty(value = "q1")
+  protected int q1;
 
-  @JsonProperty(value = "q2") protected int q2;
+  @JsonProperty(value = "q2")
+  protected int q2;
 
-  @JsonProperty(value = "q3") protected int q3;
+  @JsonProperty(value = "q3")
+  protected int q3;
 
-  @JsonProperty(value = "q4") protected int q4;
+  @JsonProperty(value = "q4")
+  protected int q4;
 
-  @JsonProperty(value = "target_ram_count") protected String targetRamCount;
-
-  public float getAvgAckEgressRate() {
-    return avgAckEgressRate;
-  }
-
-  public float getAvgAckIngressRate() {
-    return avgAckIngressRate;
-  }
-
-  public float getAvgEgressRate() {
-    return avgEgressRate;
-  }
-
-  public float getAvgIngressRate() {
-    return avgIngressRate;
-  }
-
-  public List<String> getDelta() {
-    return delta;
-  }
-
-  public int getLen() {
-    return len;
-  }
-
-  public String getMode() {
-    return mode;
-  }
-
-  public int getNextSeqId() {
-    return nextSeqId;
-  }
-
-  public int getQ1() {
-    return q1;
-  }
-
-  public int getQ2() {
-    return q2;
-  }
-
-  public int getQ3() {
-    return q3;
-  }
-
-  public int getQ4() {
-    return q4;
-  }
-
-  public String getTargetRamCount() {
-    return targetRamCount;
-  }
+  @JsonProperty(value = "target_ram_count")
+  protected String targetRamCount;
 }

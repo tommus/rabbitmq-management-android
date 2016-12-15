@@ -17,25 +17,26 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.message;
 
-import android.support.annotation.NonNull;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
+@AllArgsConstructor
 public class PublishBody {
 
-  @JsonProperty(value = "payload") protected String payload;
+  @JsonProperty(value = "payload")
+  protected String payload;
 
-  @JsonProperty(value = "payload_encoding") protected String payloadEncoding;
+  @JsonProperty(value = "payload_encoding")
+  protected String payloadEncoding;
 
-  @JsonProperty(value = "properties") protected Map<String, String> properties;
+  @JsonProperty(value = "properties")
+  protected Map<String, String> properties;
 
-  @JsonProperty(value = "routing_key") protected String routingKey;
-
-  public PublishBody(@NonNull String payload, @NonNull String payloadEncoding, @NonNull Map<String, String> properties,
-      @NonNull String routingKey) {
-    this.payload = payload;
-    this.payloadEncoding = payloadEncoding;
-    this.properties = properties;
-    this.routingKey = routingKey;
-  }
+  @JsonProperty(value = "routing_key")
+  protected String routingKey;
 }

@@ -21,20 +21,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Properties {
 
-  @JsonProperty(value = "delivery_mode") protected int deliveryMode;
+  @JsonProperty(value = "delivery_mode")
+  protected int deliveryMode;
 
-  @JsonProperty(value = "headers") protected Map<String, String> headers;
-
-  public int getDeliveryMode() {
-    return deliveryMode;
-  }
-
-  public Map<String, String> getHeaders() {
-    return headers;
-  }
+  @JsonProperty(value = "headers")
+  protected Map<String, String> headers;
 }

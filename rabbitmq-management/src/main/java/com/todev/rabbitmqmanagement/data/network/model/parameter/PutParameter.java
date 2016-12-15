@@ -17,27 +17,25 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.parameter;
 
-import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@AllArgsConstructor
 public class PutParameter {
 
-  @JsonProperty(value = "component") protected String component;
+  @JsonProperty(value = "component")
+  protected String component;
 
-  @JsonProperty(value = "name") protected String name;
+  @JsonProperty(value = "name")
+  protected String name;
 
-  @JsonProperty(value = "value") protected String value;
+  @JsonProperty(value = "value")
+  protected String value;
 
-  @JsonProperty(value = "vhost") protected String vhost;
-
-  public PutParameter(@NonNull String vhost, @NonNull String component, @NonNull String name, @NonNull String value) {
-    this.vhost = vhost;
-    this.component = component;
-    this.name = name;
-    this.value = value;
-  }
+  @JsonProperty(value = "vhost")
+  protected String vhost;
 }

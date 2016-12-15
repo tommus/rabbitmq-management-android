@@ -21,32 +21,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Parameter {
 
-  @JsonProperty(value = "component") protected String component;
+  @JsonProperty(value = "component")
+  protected String component;
 
-  @JsonProperty(value = "name") protected String name;
+  @JsonProperty(value = "name")
+  protected String name;
 
-  @JsonProperty(value = "value") protected Map<String, String> value;
+  @JsonProperty(value = "value")
+  protected Map<String, String> value;
 
-  @JsonProperty(value = "vhost") protected String vhost;
-
-  public String getComponent() {
-    return component;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public Map<String, String> getValue() {
-    return value;
-  }
-
-  public String getVhost() {
-    return vhost;
-  }
+  @JsonProperty(value = "vhost")
+  protected String vhost;
 }

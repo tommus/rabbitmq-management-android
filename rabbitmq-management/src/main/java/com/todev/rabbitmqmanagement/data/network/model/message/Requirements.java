@@ -17,28 +17,25 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.message;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@AllArgsConstructor
 public class Requirements {
 
-  @JsonProperty(value = "count") protected int count;
+  @JsonProperty(value = "count")
+  protected int count;
 
-  @JsonProperty(value = "requeue") protected boolean requeue;
+  @JsonProperty(value = "requeue")
+  protected boolean requeue;
 
-  @JsonProperty(value = "encoding") protected String encoding;
+  @JsonProperty(value = "encoding")
+  protected String encoding;
 
-  @JsonProperty(value = "truncate") protected Long truncate;
-
-  public Requirements(int count, boolean requeue, @NonNull String encoding, @Nullable Long truncate) {
-    this.count = count;
-    this.requeue = requeue;
-    this.encoding = encoding;
-    this.truncate = truncate;
-  }
+  @JsonProperty(value = "truncate")
+  protected Long truncate;
 }

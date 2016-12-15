@@ -20,14 +20,13 @@ package com.todev.rabbitmqmanagement.data.network.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Details {
 
-  @JsonProperty(value = "rate") protected float rate;
-
-  public float getRate() {
-    return rate;
-  }
+  @JsonProperty(value = "rate")
+  protected float rate;
 }

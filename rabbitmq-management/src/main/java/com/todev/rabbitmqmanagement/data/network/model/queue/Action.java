@@ -17,7 +17,6 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.queue;
 
-import android.support.annotation.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,21 +24,21 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.todev.rabbitmqmanagement.data.network.serialization.ActionTypeDeserializer;
 import com.todev.rabbitmqmanagement.data.network.serialization.ActionTypeSerializer;
+import lombok.AllArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@AllArgsConstructor
 public class Action {
 
   public static final Action SYNC = new Action(Type.SYNC);
 
   public static final Action CANCEL_SYNC = new Action(Type.CANCEL_SYNC);
 
-  @JsonDeserialize(using = ActionTypeDeserializer.class) @JsonProperty(value = "action")
-  @JsonSerialize(using = ActionTypeSerializer.class) protected Type action;
-
-  protected Action(@NonNull Type action) {
-    this.action = action;
-  }
+  @JsonDeserialize(using = ActionTypeDeserializer.class)
+  @JsonProperty(value = "action")
+  @JsonSerialize(using = ActionTypeSerializer.class)
+  protected Type action;
 
   public enum Type {
     SYNC, CANCEL_SYNC

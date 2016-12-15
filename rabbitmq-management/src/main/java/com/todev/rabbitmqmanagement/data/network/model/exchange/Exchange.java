@@ -17,8 +17,6 @@
  */
 package com.todev.rabbitmqmanagement.data.network.model.exchange;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,60 +25,42 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.todev.rabbitmqmanagement.data.network.serialization.ExchangeTypeDeserializer;
 import com.todev.rabbitmqmanagement.data.network.serialization.ExchangeTypeSerializer;
 import java.util.Map;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
+@Getter
 public class Exchange {
 
-  @JsonProperty(value = "arguments") protected Map<String, String> arguments;
+  @lombok.NonNull
+  @JsonProperty(value = "arguments")
+  protected Map<String, String> arguments;
 
-  @JsonProperty(value = "auto_delete") protected boolean autoDelete;
+  @lombok.NonNull
+  @JsonProperty(value = "auto_delete")
+  protected boolean autoDelete;
 
-  @JsonProperty(value = "durable") protected boolean durable;
+  @lombok.NonNull
+  @JsonProperty(value = "durable")
+  protected boolean durable;
 
-  @JsonProperty(value = "internal") protected boolean internal;
+  @lombok.NonNull
+  @JsonProperty(value = "internal")
+  protected boolean internal;
 
-  @JsonProperty(value = "name") protected String name;
+  @JsonProperty(value = "name")
+  protected String name;
 
-  @JsonDeserialize(using = ExchangeTypeDeserializer.class) @JsonProperty(value = "type")
-  @JsonSerialize(using = ExchangeTypeSerializer.class) protected Type type;
-
-  protected Exchange() {
-    // Jackson requires presence of empty constructor.
-  }
-
-  public Exchange(@NonNull Type type, boolean autoDelete, boolean durable, boolean internal,
-    @Nullable Map<String, String> arguments) {
-    this.type = type;
-    this.autoDelete = autoDelete;
-    this.durable = durable;
-    this.internal = internal;
-    this.arguments = arguments;
-  }
-
-  public Map<String, String> getArguments() {
-    return arguments;
-  }
-
-  public boolean isAutoDelete() {
-    return autoDelete;
-  }
-
-  public boolean isDurable() {
-    return durable;
-  }
-
-  public boolean isInternal() {
-    return internal;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public Type getType() {
-    return type;
-  }
+  @lombok.NonNull
+  @JsonDeserialize(using = ExchangeTypeDeserializer.class)
+  @JsonProperty(value = "type")
+  @JsonSerialize(using = ExchangeTypeSerializer.class)
+  protected Type type;
 
   public enum Type {
     DIRECT, FANOUT, HEADERS, TOPIC

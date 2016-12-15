@@ -20,32 +20,22 @@ package com.todev.rabbitmqmanagement.data.network.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Context {
 
-  @JsonProperty(value = "description") protected String description;
+  @JsonProperty(value = "description")
+  protected String description;
 
-  @JsonProperty(value = "path") protected String path;
+  @JsonProperty(value = "path")
+  protected String path;
 
-  @JsonProperty(value = "port") protected String port;
+  @JsonProperty(value = "port")
+  protected String port;
 
-  @JsonProperty(value = "ssl") protected String ssl;
-
-  public String getDescription() {
-    return description;
-  }
-
-  public String getPath() {
-    return path;
-  }
-
-  public String getPort() {
-    return port;
-  }
-
-  public String getSsl() {
-    return ssl;
-  }
+  @JsonProperty(value = "ssl")
+  protected String ssl;
 }

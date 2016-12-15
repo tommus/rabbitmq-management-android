@@ -21,32 +21,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
+import lombok.Getter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
+@Getter
 public class Queue {
 
-  @JsonProperty(value = "arguments") protected Map<String, String> arguments;
+  @JsonProperty(value = "arguments")
+  protected Map<String, String> arguments;
 
-  @JsonProperty(value = "auto_delete") protected boolean autoDelete;
+  @JsonProperty(value = "auto_delete")
+  protected boolean autoDelete;
 
-  @JsonProperty(value = "durable") protected boolean durable;
+  @JsonProperty(value = "durable")
+  protected boolean durable;
 
-  @JsonProperty(value = "name") protected String name;
-
-  public Map<String, String> getArguments() {
-    return arguments;
-  }
-
-  public boolean isAutoDelete() {
-    return autoDelete;
-  }
-
-  public boolean isDurable() {
-    return durable;
-  }
-
-  public String getName() {
-    return name;
-  }
+  @JsonProperty(value = "name")
+  protected String name;
 }
