@@ -98,15 +98,14 @@ android {
 }
 
 ext.supportVersion = '25.1.0'
-ext.rxVersion = '2.0.1'
-ext.daggerVersion = '2.7'
+ext.daggerVersion = '2.8'
 ext.butterknifeVersion = '8.4.0'
 ext.icepickVersion = '3.2.0'
 ext.intentbuilderVersion = '0.14.0'
 ext.fragmentargsVersion = '3.0.2'
-ext.dbflowVersion = '4.0.0-beta2'
+ext.dbflowVersion = '4.0.0-beta3'
 ext.retrofitVersion = '2.1.0'
-ext.stethoVersion = '1.4.1'
+ext.stethoVersion = '1.4.2'
 
 dependencies {
   compile "com.android.support:appcompat-v7:$supportVersion"
@@ -116,11 +115,11 @@ dependencies {
   compile 'com.android.support:multidex:1.0.1'
 
   // Reactive extensions.
-  compile "io.reactivex.rxjava2:rxandroid:$rxVersion"
-  compile "io.reactivex.rxjava2:rxjava:$rxVersion"
+  compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+  compile 'io.reactivex.rxjava2:rxjava:2.0.2'
 
   // Support.
-  provided 'org.projectlombok:lombok:1.16.10'
+  provided 'org.projectlombok:lombok:1.16.12'
   compile 'net.sourceforge.streamsupport:streamsupport:1.5.2'
 
   // Dependency injection.
@@ -158,10 +157,10 @@ dependencies {
   compile 'joda-time:joda-time:2.9.6'
 
   // Charts.
-  compile "com.github.philjay:mpandroidchart:v3.0.0-beta1"
+  compile "com.github.philjay:mpandroidchart:v3.0.1"
 
   // Logger.
-  compile 'com.jakewharton.timber:timber:4.3.1'
+  compile 'com.jakewharton.timber:timber:4.4.0'
 
   // Memory leak detection.
   productionCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
@@ -182,8 +181,8 @@ dependencies {
 
   // Unit tests.
   testCompile 'junit:junit:4.12'
-  testCompile 'com.google.truth:truth:0.30'
-  testCompile 'org.mockito:mockito-core:2.2.16'
+  testCompile 'com.google.truth:truth:0.31'
+  testCompile 'org.mockito:mockito-core:2.3.5'
   testCompile 'org.robolectric:robolectric:3.1.4'
   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

@@ -26,7 +26,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -146,7 +146,7 @@ public abstract class MessagesIndicator extends FrameLayout {
       defaultColor = ContextCompat.getColor(context, android.R.color.black);
 
       valuesVisible = array.getBoolean(R.styleable.MessagesIndicator_values_visible,
-        getResources().getBoolean(R.bool.queued_messages_indicator_default_values_visible));
+          getResources().getBoolean(R.bool.queued_messages_indicator_default_values_visible));
 
       idleText = array.getString(R.styleable.MessagesIndicator_idle_text);
 
@@ -167,17 +167,18 @@ public abstract class MessagesIndicator extends FrameLayout {
   }
 
   protected void initializeChart() {
-    messagesChart.getLegend().setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
-    messagesChart.setDescription("");
-    messagesChart.setNoDataTextDescription(getIdleText());
+    Description description = new Description();
+    description.setText("");
+    messagesChart.setDescription(description);
+    messagesChart.setNoDataText(getIdleText());
     messagesChart.setTouchEnabled(false);
     messagesChart.setDragEnabled(false);
     messagesChart.setPinchZoom(false);
     messagesChart.getLegend().setEnabled(false);
-    messagesChart.getAxisLeft().setAxisMinValue(0);
+    messagesChart.getAxisLeft().setAxisMinimum(0);
     messagesChart.getAxisLeft().setGranularity(1f);
     messagesChart.getAxisRight().setEnabled(false);
-    messagesChart.getXAxis().setAxisMinValue(0);
+    messagesChart.getXAxis().setAxisMinimum(0);
     messagesChart.getXAxis().setGranularity(1f);
     messagesChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
     messagesChart.getXAxis().setValueFormatter(new DefaultAxisValueFormatter(0));
