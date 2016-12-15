@@ -17,4 +17,4 @@
 #}
 
 # Keep the BuildConfig
--keep class com.todev.cinemacity.BuildConfig { *; }
+-keep class com.todev.rabbitmqmanagement.BuildConfig { *; }
