@@ -26,7 +26,7 @@ apply plugin: 'com.frogermcs.androiddevmetrics'
 
 android {
   compileSdkVersion 25
-  buildToolsVersion "25.0.1"
+  buildToolsVersion "25.0.2"
 
   defaultConfig {
     applicationId "com.todev.rabbitmqmanagement"
@@ -91,9 +91,13 @@ android {
     exclude 'META-INF/NOTICE.txt'
     exclude 'META-INF/notice.txt'
   }
+
+  lintOptions {
+    disable 'InvalidPackage'
+  }
 }
 
-ext.supportVersion = '25.0.1'
+ext.supportVersion = '25.1.0'
 ext.rxVersion = '2.0.1'
 ext.daggerVersion = '2.7'
 ext.butterknifeVersion = '8.4.0'
