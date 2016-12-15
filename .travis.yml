@@ -15,7 +15,7 @@ branches:
   only:
     - master
 
-sudo: false
+sudo: required
 
 notifications:
   email: false
