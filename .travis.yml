@@ -33,3 +33,6 @@ cache:
 before_install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq libstdc++6:i386 lib32z1 expect
+
+script:
+    - ./gradlew build connectedDevelopmentDebugAndroidTest
