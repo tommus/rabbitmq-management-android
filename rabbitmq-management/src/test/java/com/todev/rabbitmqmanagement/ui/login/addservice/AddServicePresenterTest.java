@@ -32,9 +32,12 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 public class AddServicePresenterTest extends BaseTest {
-  @Mock AddServiceContract.View view;
-  @Mock Consumer<Integer> onSuccess;
-  @Mock Service service;
+  @Mock
+  AddServiceContract.View view;
+  @Mock
+  Consumer<Integer> onSuccess;
+  @Mock
+  Service service;
 
   private AddServicePresenter presenter;
 
