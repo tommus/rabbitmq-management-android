@@ -36,17 +36,28 @@ import com.todev.rabbitmqmanagement.ui.overview.range.SelectRangeDialogFragment;
 import com.todev.rabbitmqmanagement.ui.overview.widget.GlobalCountsIndicator;
 import com.todev.rabbitmqmanagement.ui.overview.widget.MessageRatesIndicator;
 import com.todev.rabbitmqmanagement.ui.overview.widget.QueuedMessagesIndicator;
+import java8.util.Optional;
 import java8.util.function.Predicate;
 import javax.inject.Inject;
 
 public class OverviewFragment extends BaseFragment implements OverviewContract.View {
   public static final String TAG_SELECT_RANGE = "Select Range Fragment";
 
+  private static final Runnable NOP_RUNNABLE = () -> {
+    // Null Object Pattern.
+  };
+
   @Inject RabbitMqService rabbitMqService;
 
   @BindView(R.id.queued_messages_indicator) QueuedMessagesIndicator queuedMessagesIndicator;
   @BindView(R.id.message_rates_indicator) MessageRatesIndicator messageRatesIndicator;
   @BindView(R.id.global_counts_indicator) GlobalCountsIndicator globalCountsIndicator;
+
+  private Runnable onConnectionsRunnable = NOP_RUNNABLE;
+  private Runnable onChannelsRunnable = NOP_RUNNABLE;
+  private Runnable onExchangesRunnable = NOP_RUNNABLE;
+  private Runnable onQueuesRunnable = NOP_RUNNABLE;
+  private Runnable onConsumersRunnable = NOP_RUNNABLE;
 
   private OverviewPresenter presenter;
 
@@ -70,6 +81,11 @@ public class OverviewFragment extends BaseFragment implements OverviewContract.V
     super.onViewCreated(view, savedInstanceState);
     queuedMessagesIndicator.setRangeButtonOnClickListener(v -> presenter.onQueuedMessagesRangeButtonClicked());
     messageRatesIndicator.setRangeButtonOnClickListener(v -> presenter.onMessageRatesRangeButtonClicked());
+    globalCountsIndicator.getChannelsCardView().setOnClickListener(v -> onChannelsRunnable.run());
+    globalCountsIndicator.getConnectionsCardView().setOnClickListener(v -> onConnectionsRunnable.run());
+    globalCountsIndicator.getConsumersCardView().setOnClickListener(v -> onConsumersRunnable.run());
+    globalCountsIndicator.getExchangesCardView().setOnClickListener(v -> onExchangesRunnable.run());
+    globalCountsIndicator.getQueuesCardView().setOnClickListener(v -> onQueuesRunnable.run());
   }
 
   @Override
@@ -119,9 +135,9 @@ public class OverviewFragment extends BaseFragment implements OverviewContract.V
     queuedMessagesIndicator.updateChart(unacked, QueuedMessagesIndicator.SetIndex.UNACKED.getIndex());
     queuedMessagesIndicator.updateChart(total, QueuedMessagesIndicator.SetIndex.TOTAL.getIndex());
 
-    queuedMessagesIndicator.updateReadyButton(getString(R.string.activity_overview_button_ready, ready));
-    queuedMessagesIndicator.updateUnackedButton(getString(R.string.activity_overview_button_unacked, unacked));
-    queuedMessagesIndicator.updateTotalButton(getString(R.string.activity_overview_button_total, total));
+    queuedMessagesIndicator.getReadyButton().setText(getString(R.string.activity_overview_button_ready, ready));
+    queuedMessagesIndicator.getUnackedButton().setText(getString(R.string.activity_overview_button_unacked, unacked));
+    queuedMessagesIndicator.getTotalButton().setText(getString(R.string.activity_overview_button_total, total));
   }
 
   @Override
@@ -146,12 +162,12 @@ public class OverviewFragment extends BaseFragment implements OverviewContract.V
     messageRatesIndicator.updateChart(deliver, MessageRatesIndicator.SetIndex.DELIVER.getIndex());
     messageRatesIndicator.updateChart(redeliver, MessageRatesIndicator.SetIndex.REDELIVERED.getIndex());
 
-    messageRatesIndicator.updatePublishButton(getString(R.string.activity_overview_button_publish, publish));
-    messageRatesIndicator.updateConfirmButton(getString(R.string.activity_overview_button_confirm, confirm));
-    messageRatesIndicator.updatePublishInButton(getString(R.string.activity_overview_button_publish_in, publishIn));
-    messageRatesIndicator.updatePublishOutButton(getString(R.string.activity_overview_button_publish_out, publishOut));
-    messageRatesIndicator.updateDeliverButton(getString(R.string.activity_overview_button_deliver, deliver));
-    messageRatesIndicator.updateRedeliveredButton(getString(R.string.activity_overview_button_redelivered, redeliver));
+    messageRatesIndicator.getPublishButton().setText(getString(R.string.activity_overview_button_publish, publish));
+    messageRatesIndicator.getConfirmButton().setText(getString(R.string.activity_overview_button_confirm, confirm));
+    messageRatesIndicator.getPublishInButton().setText(getString(R.string.activity_overview_button_publish_in, publishIn));
+    messageRatesIndicator.getPublishOutButton().setText(getString(R.string.activity_overview_button_publish_out, publishOut));
+    messageRatesIndicator.getDeliverButton().setText(getString(R.string.activity_overview_button_deliver, deliver));
+    messageRatesIndicator.getRedeliveredButton().setText(getString(R.string.activity_overview_button_redelivered, redeliver));
   }
 
   @Override
@@ -162,11 +178,36 @@ public class OverviewFragment extends BaseFragment implements OverviewContract.V
       return;
     }
 
-    globalCountsIndicator.setExchanges(totals.getExchanges());
-    globalCountsIndicator.setQueues(totals.getQueues());
-    globalCountsIndicator.setConnections(totals.getConnections());
-    globalCountsIndicator.setConsumers(totals.getConsumers());
-    globalCountsIndicator.setChannels(totals.getChannels());
+    globalCountsIndicator.getExchangesTextView().setText(String.valueOf(totals.getExchanges()));
+    globalCountsIndicator.getQueuesTextView().setText(String.valueOf(totals.getQueues()));
+    globalCountsIndicator.getConnectionsTextView().setText(String.valueOf(totals.getConnections()));
+    globalCountsIndicator.getConsumersTextView().setText(String.valueOf(totals.getConsumers()));
+    globalCountsIndicator.getChannelsTextView().setText(String.valueOf(totals.getChannels()));
+  }
+
+  @Override
+  public void setOnConnectionsRunnable(Runnable runnable) {
+    this.onConnectionsRunnable = Optional.ofNullable(runnable).orElse(NOP_RUNNABLE);
+  }
+
+  @Override
+  public void setOnChannelsRunnable(Runnable runnable) {
+    this.onChannelsRunnable = Optional.ofNullable(runnable).orElse(NOP_RUNNABLE);
+  }
+
+  @Override
+  public void setOnExchangesRunnable(Runnable runnable) {
+    this.onExchangesRunnable = Optional.ofNullable(runnable).orElse(NOP_RUNNABLE);
+  }
+
+  @Override
+  public void setOnQueuesRunnable(Runnable runnable) {
+    this.onQueuesRunnable = Optional.ofNullable(runnable).orElse(NOP_RUNNABLE);
+  }
+
+  @Override
+  public void setOnConsumersRunnable(Runnable runnable) {
+    this.onConsumersRunnable = Optional.ofNullable(runnable).orElse(NOP_RUNNABLE);
   }
 
   private void animate(@NonNull View view, int order) {

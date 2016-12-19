@@ -21,29 +21,24 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.Button;
 import com.todev.rabbitmqmanagement.R;
+import lombok.Getter;
 
 public class MessageRatesIndicator extends MessagesIndicator {
-  protected int publishLineColor;
-  protected int publishButtonColor;
-  protected int confirmLineColor;
-  protected int confirmButtonColor;
-  protected int publishInLineColor;
-  protected int publishInButtonColor;
-  protected int publishOutLineColor;
-  protected int publishOutButtonColor;
-  protected int deliverLineColor;
-  protected int deliverButtonColor;
-  protected int redeliveredLineColor;
-  protected int redeliveredButtonColor;
-  protected Button publishButton;
-  protected Button confirmButton;
-  protected Button publishInButton;
-  protected Button publishOutButton;
-  protected Button deliverButton;
-  protected Button redeliveredButton;
+  protected int publishColor;
+  protected int confirmColor;
+  protected int publishInColor;
+  protected int publishOutColor;
+  protected int deliverColor;
+  protected int redeliveredColor;
+
+  @Getter Button publishButton;
+  @Getter Button confirmButton;
+  @Getter Button publishInButton;
+  @Getter Button publishOutButton;
+  @Getter Button deliverButton;
+  @Getter Button redeliveredButton;
 
   public MessageRatesIndicator(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -61,41 +56,23 @@ public class MessageRatesIndicator extends MessagesIndicator {
     TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.MessageRatesIndicator, 0, 0);
 
     try {
-      publishLineColor = array.getColor(R.styleable.MessageRatesIndicator_publish_line_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_publish_color));
+      publishColor = array.getColor(R.styleable.MessageRatesIndicator_publish_color,
+          ContextCompat.getColor(context, R.color.messageRatesPublished));
 
-      publishButtonColor = array.getColor(R.styleable.MessageRatesIndicator_publish_button_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_publish_color));
+      confirmColor = array.getColor(R.styleable.MessageRatesIndicator_confirm_color,
+          ContextCompat.getColor(context, R.color.messagesRatesConfirmed));
 
-      confirmLineColor = array.getColor(R.styleable.MessageRatesIndicator_confirm_line_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_confirm_color));
+      publishInColor = array.getColor(R.styleable.MessageRatesIndicator_publish_in_color,
+          ContextCompat.getColor(context, R.color.messagesRatesPublishedIn));
 
-      confirmButtonColor = array.getColor(R.styleable.MessageRatesIndicator_confirm_button_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_confirm_color));
+      publishOutColor = array.getColor(R.styleable.MessageRatesIndicator_publish_out_color,
+          ContextCompat.getColor(context, R.color.messagesRatesPublishedOut));
 
-      publishInLineColor = array.getColor(R.styleable.MessageRatesIndicator_publish_in_line_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_publish_in_color));
+      deliverColor = array.getColor(R.styleable.MessageRatesIndicator_deliver_color,
+          ContextCompat.getColor(context, R.color.messagesRatesDelivered));
 
-      publishInButtonColor = array.getColor(R.styleable.MessageRatesIndicator_publish_in_button_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_publish_in_color));
-
-      publishOutLineColor = array.getColor(R.styleable.MessageRatesIndicator_publish_out_line_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_publish_out_color));
-
-      publishOutButtonColor = array.getColor(R.styleable.MessageRatesIndicator_publish_out_button_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_publish_out_color));
-
-      deliverLineColor = array.getColor(R.styleable.MessageRatesIndicator_deliver_line_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_deliver_color));
-
-      deliverButtonColor = array.getColor(R.styleable.MessageRatesIndicator_deliver_button_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_deliver_color));
-
-      redeliveredLineColor = array.getColor(R.styleable.MessageRatesIndicator_redelivered_line_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_redelivered_color));
-
-      redeliveredButtonColor = array.getColor(R.styleable.MessageRatesIndicator_redelivered_button_color,
-        ContextCompat.getColor(context, R.color.message_rates_indicator_default_redelivered_color));
+      redeliveredColor = array.getColor(R.styleable.MessageRatesIndicator_redelivered_color,
+          ContextCompat.getColor(context, R.color.messagesRatesRedelivered));
     } finally {
       array.recycle();
     }
@@ -112,42 +89,35 @@ public class MessageRatesIndicator extends MessagesIndicator {
     deliverButton = (Button) findViewById(R.id.deliver_button);
     redeliveredButton = (Button) findViewById(R.id.redelivered_button);
 
-    publishButton.setTextColor(getPublishButtonColor());
-    confirmButton.setTextColor(getConfirmButtonColor());
-    publishInButton.setTextColor(getPublishInButtonColor());
-    publishOutButton.setTextColor(getPublishOutButtonColor());
-    deliverButton.setTextColor(getDeliverButtonColor());
-    redeliveredButton.setTextColor(getRedeliveredButtonColor());
+    publishButton.setTextColor(publishColor);
+    confirmButton.setTextColor(confirmColor);
+    publishInButton.setTextColor(publishInColor);
+    publishOutButton.setTextColor(publishOutColor);
+    deliverButton.setTextColor(deliverColor);
+    redeliveredButton.setTextColor(redeliveredColor);
   }
 
   @Override
   protected void initializeCallbacks() {
     Button[] buttons = new Button[] {
-      publishButton, confirmButton, publishInButton, publishOutButton, deliverButton, redeliveredButton
+        publishButton, confirmButton, publishInButton, publishOutButton, deliverButton, redeliveredButton
     };
 
     final SetIndex[] indices = new SetIndex[] {
-      SetIndex.PUBLISH, SetIndex.CONFIRM, SetIndex.PUBLISH_IN, SetIndex.PUBLISH_OUT, SetIndex.DELIVER,
-      SetIndex.REDELIVERED
+        SetIndex.PUBLISH, SetIndex.CONFIRM, SetIndex.PUBLISH_IN, SetIndex.PUBLISH_OUT, SetIndex.DELIVER,
+        SetIndex.REDELIVERED
     };
 
     for (int i = 0; i < buttons.length; ++i) {
       final int index = i;
-
-      buttons[i].setOnClickListener(new OnClickListener() {
-        @Override
-        public void onClick(View view) {
-          toggleSetVisibility(indices[index].getIndex());
-        }
-      });
+      buttons[i].setOnClickListener(view -> toggleSetVisibility(indices[index].getIndex()));
     }
   }
 
   @Override
   protected int getLineColor(int index) {
     int[] colors = new int[] {
-      getPublishLineColor(), getConfirmLineColor(), getPublishInLineColor(), getPublishOutLineColor(),
-      getDeliverLineColor(), getRedeliveredLineColor()
+        publishColor, confirmColor, publishInColor, publishOutColor, deliverColor, redeliveredColor
     };
 
     if (index < colors.length) {
@@ -155,150 +125,6 @@ public class MessageRatesIndicator extends MessagesIndicator {
     }
 
     return getDefaultColor();
-  }
-
-  public int getPublishLineColor() {
-    return publishLineColor;
-  }
-
-  public void setPublishLineColor(int publishLineColor) {
-    this.publishLineColor = publishLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getPublishButtonColor() {
-    return publishButtonColor;
-  }
-
-  public void setPublishButtonColor(int publishButtonColor) {
-    this.publishButtonColor = publishButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getConfirmLineColor() {
-    return confirmLineColor;
-  }
-
-  public void setConfirmLineColor(int confirmLineColor) {
-    this.confirmLineColor = confirmLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getConfirmButtonColor() {
-    return confirmButtonColor;
-  }
-
-  public void setConfirmButtonColor(int confirmButtonColor) {
-    this.confirmButtonColor = confirmButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getPublishInLineColor() {
-    return publishInLineColor;
-  }
-
-  public void setPublishInLineColor(int publishInLineColor) {
-    this.publishInLineColor = publishInLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getPublishInButtonColor() {
-    return publishInButtonColor;
-  }
-
-  public void setPublishInButtonColor(int publishInButtonColor) {
-    this.publishInButtonColor = publishInButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getPublishOutLineColor() {
-    return publishOutLineColor;
-  }
-
-  public void setPublishOutLineColor(int publishOutLineColor) {
-    this.publishOutLineColor = publishOutLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getPublishOutButtonColor() {
-    return publishOutButtonColor;
-  }
-
-  public void setPublishOutButtonColor(int publishOutButtonColor) {
-    this.publishOutButtonColor = publishOutButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getDeliverLineColor() {
-    return deliverLineColor;
-  }
-
-  public void setDeliverLineColor(int deliverLineColor) {
-    this.deliverLineColor = deliverLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getDeliverButtonColor() {
-    return deliverButtonColor;
-  }
-
-  public void setDeliverButtonColor(int deliverButtonColor) {
-    this.deliverButtonColor = deliverButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getRedeliveredLineColor() {
-    return redeliveredLineColor;
-  }
-
-  public void setRedeliveredLineColor(int redeliveredLineColor) {
-    this.redeliveredLineColor = redeliveredLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getRedeliveredButtonColor() {
-    return redeliveredButtonColor;
-  }
-
-  public void setRedeliveredButtonColor(int redeliveredButtonColor) {
-    this.redeliveredButtonColor = redeliveredButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public void updatePublishButton(String text) {
-    publishButton.setText(text);
-  }
-
-  public void updateConfirmButton(String text) {
-    confirmButton.setText(text);
-  }
-
-  public void updatePublishInButton(String text) {
-    publishInButton.setText(text);
-  }
-
-  public void updatePublishOutButton(String text) {
-    publishOutButton.setText(text);
-  }
-
-  public void updateDeliverButton(String text) {
-    deliverButton.setText(text);
-  }
-
-  public void updateRedeliveredButton(String text) {
-    redeliveredButton.setText(text);
   }
 
   public enum SetIndex {

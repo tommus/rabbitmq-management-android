@@ -9,23 +9,16 @@
   <color name="colorAccent">@color/colorPrimary</color>
   <color name="colorDark">#666666</color>
 
-  <color name="indicator_messages_ready">#EDC240</color>
-  <color name="indicator_messages_unacked">#AFD8F8</color>
-  <color name="indicator_messages_total">#CB4B4B</color>
+  <color name="queuedMessagesReady">#EDC240</color>
+  <color name="queuedMessagesUnacked">#AFD8F8</color>
+  <color name="queuedMessagesTotal">#CB4B4B</color>
 
-  <color name="message_indicator_default_title_color">@color/colorDark</color>
-  <color name="message_indicator_default_icon_color">@color/colorDark</color>
-
-  <color name="queued_messages_indicator_default_ready_color">#EDC240</color>
-  <color name="queued_messages_indicator_default_unacked_color">#AFD8F8</color>
-  <color name="queued_messages_indicator_default_total_color">#CB4B4B</color>
-
-  <color name="message_rates_indicator_default_publish_color">#EDC240</color>
-  <color name="message_rates_indicator_default_confirm_color">#AFD8F8</color>
-  <color name="message_rates_indicator_default_publish_in_color">#CB4B4B</color>
-  <color name="message_rates_indicator_default_publish_out_color">#397F39</color>
-  <color name="message_rates_indicator_default_deliver_color">#9440ED</color>
-  <color name="message_rates_indicator_default_redelivered_color">#666666</color>
+  <color name="messageRatesPublished">#EDC240</color>
+  <color name="messagesRatesConfirmed">#AFD8F8</color>
+  <color name="messagesRatesPublishedIn">#CB4B4B</color>
+  <color name="messagesRatesPublishedOut">#397F39</color>
+  <color name="messagesRatesDelivered">#9440ED</color>
+  <color name="messagesRatesRedelivered">#666666</color>
 
 
 </resources>

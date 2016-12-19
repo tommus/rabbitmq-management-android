@@ -30,7 +30,6 @@
   <string name="activity_login_credentials_invalid">User credentials invalid</string>
   <string name="activity_login_remember">Remember configuration.</string>
 
-  <string name="activity_overview_no_data">No data provided yet.</string>
   <string name="activity_overview_queued_messages_title">Queued Messages</string>
   <string name="activity_overview_message_rates_title">Message Rates</string>
   <string name="activity_overview_button_ready">Ready: %d</string>
@@ -50,30 +49,26 @@
   <string name="dialog_add_service_label_incorrect">Incorrect or already used label</string>
   <string name="dialog_add_service_address_incorrect">Incorrect address</string>
 
-  <string name="dialog_select_range_one_minute">Show messages from last minute</string>
-  <string name="dialog_select_range_ten_minutes">Show messages from last ten minutes</string>
-  <string name="dialog_select_range_one_hour">Show messages from last hour</string>
-  <string name="dialog_select_range_eight_hours">Show messages from last eight hours</string>
-  <string name="dialog_select_range_one_day">Show messages from last day</string>
+  <string name="range_one_minute">Show messages from last minute</string>
+  <string name="range_ten_minutes">Show messages from last ten minutes</string>
+  <string name="range_one_hour">Show messages from last hour</string>
+  <string name="range_eight_hours">Show messages from last eight hours</string>
+  <string name="range_one_day">Show messages from last day</string>
 
-  <string name="queued_messages_indicator_default_title">Queued Messages</string>
-  <string name="queued_messages_indicator_default_ready_text">Ready</string>
-  <string name="queued_messages_indicator_default_unacked_text">Unacked</string>
-  <string name="queued_messages_indicator_default_total_text">Total</string>
-  <string name="queued_messages_indicator_range_button_content_description">Range</string>
+  <string name="chart_no_data">No data provided yet.</string>
 
-  <string name="message_rates_indicator_default_title">Message Rates</string>
-  <string name="message_rates_indicator_default_publish_text">Publish</string>
-  <string name="message_rates_indicator_default_confirm_text">Confirm</string>
-  <string name="message_rates_indicator_default_publish_in_text">P. In</string>
-  <string name="message_rates_indicator_default_publish_out_text">P. Out</string>
-  <string name="message_rates_indicator_default_deliver_text">Delivered</string>
-  <string name="message_rates_indicator_default_redelivered_text">Redelivered</string>
-  <string name="message_rates_indicator_range_button_content_description">Range</string>
+  <string name="queued_messages_title">Queued Messages</string>
+  <string name="queued_messages_ready">Ready</string>
+  <string name="queued_messages_unacked">Unacked</string>
+  <string name="queued_messages_total">Total</string>
+  <string name="queued_messages_range">Range</string>
 
-  <string name="global_counts_indicator_connections">Connections</string>
-  <string name="global_counts_indicator_channels">Channels</string>
-  <string name="global_counts_indicator_exchanges">Exchanges</string>
-  <string name="global_counts_indicator_queues">Queues</string>
-  <string name="global_counts_indicator_consumers">Consumers</string>
+  <string name="message_rates_title">Message Rates</string>
+  <string name="message_rates_publish">Publish</string>
+  <string name="message_rates_confirm">Confirm</string>
+  <string name="message_rates_default_publish_in">P. In</string>
+  <string name="message_rates_publish_out">P. Out</string>
+  <string name="message_rates_delivered">Delivered</string>
+  <string name="message_rates_redelivered">Redelivered</string>
+  <string name="message_rates_range">Range</string>
 </resources>

@@ -31,8 +31,8 @@
           android:paddingLeft="@dimen/size_medium"
           android:paddingRight="@dimen/size_medium"
           android:paddingStart="@dimen/size_medium"
-          android:text="@string/queued_messages_indicator_default_title"
-          android:textColor="@color/message_indicator_default_title_color"
+          android:text="@string/queued_messages_title"
+          android:textColor="@color/colorDark"
           android:textSize="@dimen/font_size_medium"
           android:textStyle="bold"
           />
@@ -76,8 +76,8 @@
             android:layout_width="@dimen/size_none"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/message_rates_indicator_default_publish_text"
-            android:textColor="@color/message_rates_indicator_default_publish_color"
+            android:text="@string/message_rates_publish"
+            android:textColor="@color/messageRatesPublished"
             style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
@@ -86,8 +86,8 @@
             android:layout_width="@dimen/size_none"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/message_rates_indicator_default_publish_out_text"
-            android:textColor="@color/message_rates_indicator_default_publish_out_color"
+            android:text="@string/message_rates_publish_out"
+            android:textColor="@color/messagesRatesPublishedOut"
             style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
@@ -96,8 +96,8 @@
             android:layout_width="@dimen/size_none"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/message_rates_indicator_default_publish_in_text"
-            android:textColor="@color/message_rates_indicator_default_publish_in_color"
+            android:text="@string/message_rates_default_publish_in"
+            android:textColor="@color/messagesRatesPublishedIn"
             style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
@@ -113,8 +113,8 @@
             android:layout_width="@dimen/size_none"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/message_rates_indicator_default_confirm_text"
-            android:textColor="@color/message_rates_indicator_default_confirm_color"
+            android:text="@string/message_rates_confirm"
+            android:textColor="@color/messagesRatesConfirmed"
             style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
@@ -123,8 +123,8 @@
             android:layout_width="@dimen/size_none"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/message_rates_indicator_default_deliver_text"
-            android:textColor="@color/message_rates_indicator_default_deliver_color"
+            android:text="@string/message_rates_delivered"
+            android:textColor="@color/messagesRatesDelivered"
             style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 
@@ -133,8 +133,8 @@
             android:layout_width="@dimen/size_none"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/message_rates_indicator_default_redelivered_text"
-            android:textColor="@color/message_rates_indicator_default_redelivered_color"
+            android:text="@string/message_rates_redelivered"
+            android:textColor="@color/messagesRatesRedelivered"
             style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
             />
 

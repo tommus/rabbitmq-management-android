@@ -29,8 +29,8 @@
           android:paddingLeft="@dimen/size_medium"
           android:paddingRight="@dimen/size_medium"
           android:paddingStart="@dimen/size_medium"
-          android:text="@string/message_rates_indicator_default_title"
-          android:textColor="@color/message_indicator_default_title_color"
+          android:text="@string/message_rates_title"
+          android:textColor="@color/colorDark"
           android:textSize="@dimen/font_size_medium"
           android:textStyle="bold"
           />
@@ -70,8 +70,8 @@
           android:layout_width="@dimen/size_none"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/queued_messages_indicator_default_ready_text"
-          android:textColor="@color/queued_messages_indicator_default_ready_color"
+          android:text="@string/queued_messages_ready"
+          android:textColor="@color/queuedMessagesReady"
           style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
           />
 
@@ -80,8 +80,8 @@
           android:layout_width="@dimen/size_none"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/queued_messages_indicator_default_unacked_text"
-          android:textColor="@color/queued_messages_indicator_default_unacked_color"
+          android:text="@string/queued_messages_unacked"
+          android:textColor="@color/queuedMessagesUnacked"
           style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
           />
 
@@ -90,8 +90,8 @@
           android:layout_width="@dimen/size_none"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="@string/queued_messages_indicator_default_total_text"
-          android:textColor="@color/queued_messages_indicator_default_total_color"
+          android:text="@string/queued_messages_total"
+          android:textColor="@color/queuedMessagesTotal"
           style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
           />
 

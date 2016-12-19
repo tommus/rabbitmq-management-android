@@ -34,6 +34,17 @@ public class OverviewContract {
     void updateMessageRates(Overview overview, Predicate<MessageStats> predicate);
 
     void updateGlobalCounts(Overview overview, Predicate<ObjectTotals> predicate);
+
+    void setOnConnectionsRunnable(Runnable runnable);
+
+    void setOnChannelsRunnable(Runnable runnable);
+
+    void setOnExchangesRunnable(Runnable runnable);
+
+    void setOnQueuesRunnable(Runnable runnable);
+
+    void setOnConsumersRunnable(Runnable runnable);
+
   }
 
   interface Presenter {

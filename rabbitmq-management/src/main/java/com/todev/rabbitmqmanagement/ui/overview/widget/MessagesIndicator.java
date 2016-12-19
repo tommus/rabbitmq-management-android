@@ -35,16 +35,18 @@ import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.todev.rabbitmqmanagement.R;
 import java.util.concurrent.TimeUnit;
+import lombok.Getter;
+import lombok.Setter;
 
 public abstract class MessagesIndicator extends FrameLayout {
-  protected String title;
-  protected int defaultColor;
-  protected boolean valuesVisible;
-  protected String idleText;
-  protected VisibleRange visibleRange;
+  @Getter String title;
+  @Getter int defaultColor;
+  @Getter boolean valuesVisible;
+  @Getter String idleText;
+  @Getter VisibleRange visibleRange;
   protected TextView titleTextView;
   protected ImageButton rangeButton;
-  protected LineChart messagesChart;
+  @Getter @Setter LineChart messagesChart;
 
   public MessagesIndicator(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -56,18 +58,10 @@ public abstract class MessagesIndicator extends FrameLayout {
     initializeCallbacks();
   }
 
-  public String getTitle() {
-    return title;
-  }
-
   public void setTitle(String title) {
     this.title = title;
     invalidate();
     requestLayout();
-  }
-
-  public int getDefaultColor() {
-    return defaultColor;
   }
 
   public void setDefaultColor(int defaultColor) {
@@ -76,36 +70,16 @@ public abstract class MessagesIndicator extends FrameLayout {
     requestLayout();
   }
 
-  public LineChart getMessagesChart() {
-    return messagesChart;
-  }
-
-  public void setMessagesChart(LineChart messagesChart) {
-    this.messagesChart = messagesChart;
-  }
-
-  public boolean isValuesVisible() {
-    return valuesVisible;
-  }
-
   public void setValuesVisible(boolean valuesVisible) {
     this.valuesVisible = valuesVisible;
     invalidate();
     requestLayout();
   }
 
-  public String getIdleText() {
-    return idleText;
-  }
-
   public void setIdleText(String idleText) {
     this.idleText = idleText;
     invalidate();
     requestLayout();
-  }
-
-  public VisibleRange getVisibleRange() {
-    return visibleRange;
   }
 
   public void setVisibleRange(VisibleRange visibleRange) {

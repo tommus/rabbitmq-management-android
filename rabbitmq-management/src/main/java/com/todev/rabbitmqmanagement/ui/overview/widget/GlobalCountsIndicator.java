@@ -19,16 +19,27 @@ package com.todev.rabbitmqmanagement.ui.overview.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.todev.rabbitmqmanagement.R;
+import lombok.Getter;
 
 public class GlobalCountsIndicator extends FrameLayout {
-  protected TextView connections;
-  protected TextView channels;
-  protected TextView exchanges;
-  protected TextView queues;
-  protected TextView consumers;
+  @Getter View connectionsCardView;
+  @Getter TextView connectionsTextView;
+
+  @Getter View channelsCardView;
+  @Getter TextView channelsTextView;
+
+  @Getter View exchangesCardView;
+  @Getter TextView exchangesTextView;
+
+  @Getter View queuesCardView;
+  @Getter TextView queuesTextView;
+
+  @Getter View consumersCardView;
+  @Getter TextView consumersTextView;
 
   public GlobalCountsIndicator(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -37,31 +48,20 @@ public class GlobalCountsIndicator extends FrameLayout {
     initializeWidgets();
   }
 
-  public void setConnections(int count) {
-    connections.setText(String.valueOf(count));
-  }
-
-  public void setChannels(int count) {
-    channels.setText(String.valueOf(count));
-  }
-
-  public void setExchanges(int count) {
-    exchanges.setText(String.valueOf(count));
-  }
-
-  public void setQueues(int count) {
-    queues.setText(String.valueOf(count));
-  }
-
-  public void setConsumers(int count) {
-    consumers.setText(String.valueOf(count));
-  }
-
   protected void initializeWidgets() {
-    connections = (TextView) findViewById(R.id.connections);
-    channels = (TextView) findViewById(R.id.channels);
-    exchanges = (TextView) findViewById(R.id.exchanges);
-    queues = (TextView) findViewById(R.id.queues);
-    consumers = (TextView) findViewById(R.id.consumers);
+    connectionsCardView = findViewById(R.id.connections_card);
+    connectionsTextView = (TextView) findViewById(R.id.connections);
+
+    channelsCardView = findViewById(R.id.channels_card);
+    channelsTextView = (TextView) findViewById(R.id.channels);
+
+    exchangesCardView = findViewById(R.id.exchanges_card);
+    exchangesTextView = (TextView) findViewById(R.id.exchanges);
+
+    queuesCardView = findViewById(R.id.queues_card);
+    queuesTextView = (TextView) findViewById(R.id.queues);
+
+    consumersCardView = findViewById(R.id.consumers_card);
+    consumersTextView = (TextView) findViewById(R.id.consumers);
   }
 }

@@ -130,7 +130,29 @@ public class DrawerActivity extends BaseActivity implements DrawerContract.View 
 
   @Override
   public void showOverviewFragment() {
-    showFragment(new OverviewFragment());
+    OverviewFragment fragment = new OverviewFragment();
+
+    fragment.setOnConnectionsRunnable(() ->{
+      drawerNavigationView.getMenu().getItem(1).setChecked(true);
+      presenter.onConnectionsMenuItemClicked();
+    });
+
+    fragment.setOnChannelsRunnable(() -> {
+      drawerNavigationView.getMenu().getItem(2).setChecked(true);
+      presenter.onChannelsMenuItemClicked();
+    });
+
+    fragment.setOnExchangesRunnable(() -> {
+      drawerNavigationView.getMenu().getItem(3).setChecked(true);
+      presenter.onExchangesMenuItemClicked();
+    });
+
+    fragment.setOnQueuesRunnable(() -> {
+      drawerNavigationView.getMenu().getItem(4).setChecked(true);
+      presenter.onQueuesMenuItemClicked();
+    });
+
+    showFragment(fragment);
   }
 
   @Override

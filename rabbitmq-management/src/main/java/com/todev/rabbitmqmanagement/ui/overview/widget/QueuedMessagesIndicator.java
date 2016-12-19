@@ -21,21 +21,18 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.Button;
 import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.ui.overview.widget.MessagesIndicator;
+import lombok.Getter;
 
 public class QueuedMessagesIndicator extends MessagesIndicator {
-  protected int readyLineColor;
-  protected int readyButtonColor;
-  protected int unackedLineColor;
-  protected int unackedButtonColor;
-  protected int totalLineColor;
-  protected int totalButtonColor;
-  protected Button readyButton;
-  protected Button unackedButton;
-  protected Button totalButton;
+  protected int readyColor;
+  protected int unackedColor;
+  protected int totalColor;
+
+  @Getter Button readyButton;
+  @Getter Button unackedButton;
+  @Getter Button totalButton;
 
   public QueuedMessagesIndicator(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -53,23 +50,14 @@ public class QueuedMessagesIndicator extends MessagesIndicator {
     TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.QueuedMessagesIndicator, 0, 0);
 
     try {
-      readyLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_ready_line_color,
-        ContextCompat.getColor(context, R.color.queued_messages_indicator_default_ready_color));
+      readyColor = array.getColor(R.styleable.QueuedMessagesIndicator_ready_color,
+          ContextCompat.getColor(context, R.color.queuedMessagesReady));
 
-      readyButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_ready_button_color,
-        ContextCompat.getColor(context, R.color.queued_messages_indicator_default_ready_color));
+      unackedColor = array.getColor(R.styleable.QueuedMessagesIndicator_unacked_color,
+          ContextCompat.getColor(context, R.color.queuedMessagesUnacked));
 
-      unackedLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_unacked_line_color,
-        ContextCompat.getColor(context, R.color.queued_messages_indicator_default_unacked_color));
-
-      unackedButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_unacked_button_color,
-        ContextCompat.getColor(context, R.color.queued_messages_indicator_default_unacked_color));
-
-      totalLineColor = array.getColor(R.styleable.QueuedMessagesIndicator_total_line_color,
-        ContextCompat.getColor(context, R.color.queued_messages_indicator_default_total_color));
-
-      totalButtonColor = array.getColor(R.styleable.QueuedMessagesIndicator_total_button_color,
-        ContextCompat.getColor(context, R.color.queued_messages_indicator_default_total_color));
+      totalColor = array.getColor(R.styleable.QueuedMessagesIndicator_total_color,
+          ContextCompat.getColor(context, R.color.queuedMessagesTotal));
     } finally {
       array.recycle();
     }
@@ -83,120 +71,29 @@ public class QueuedMessagesIndicator extends MessagesIndicator {
     unackedButton = (Button) findViewById(R.id.unacked_button);
     totalButton = (Button) findViewById(R.id.total_button);
 
-    readyButton.setTextColor(getReadyButtonColor());
-    unackedButton.setTextColor(getUnackedButtonColor());
-    totalButton.setTextColor(getTotalButtonColor());
+    readyButton.setTextColor(readyColor);
+    unackedButton.setTextColor(unackedColor);
+    totalButton.setTextColor(totalColor);
   }
 
   @Override
   protected void initializeCallbacks() {
-    readyButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        toggleSetVisibility(SetIndex.READY.getIndex());
-      }
-    });
-
-    unackedButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        toggleSetVisibility(SetIndex.UNACKED.getIndex());
-      }
-    });
-
-    totalButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        toggleSetVisibility(SetIndex.TOTAL.getIndex());
-      }
-    });
+    readyButton.setOnClickListener(view -> toggleSetVisibility(SetIndex.READY.getIndex()));
+    unackedButton.setOnClickListener(view -> toggleSetVisibility(SetIndex.UNACKED.getIndex()));
+    totalButton.setOnClickListener(view -> toggleSetVisibility(SetIndex.TOTAL.getIndex()));
   }
 
   @Override
   protected int getLineColor(int index) {
-    switch (index) {
-      case 0:
-        return getReadyLineColor();
+    int[] colors = new int[] {
+        readyColor, unackedColor, totalColor
+    };
 
-      case 1:
-        return getUnackedLineColor();
-
-      case 2:
-        return getTotalLineColor();
-
-      default:
-        return defaultColor;
+    if (index < colors.length) {
+      return colors[index];
     }
-  }
 
-  public int getReadyLineColor() {
-    return readyLineColor;
-  }
-
-  public void setReadyLineColor(int readyLineColor) {
-    this.readyLineColor = readyLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getReadyButtonColor() {
-    return readyButtonColor;
-  }
-
-  public void setReadyButtonColor(int readyButtonColor) {
-    this.readyButtonColor = readyButtonColor;
-  }
-
-  public int getUnackedLineColor() {
-    return unackedLineColor;
-  }
-
-  public void setUnackedLineColor(int unackedLineColor) {
-    this.unackedLineColor = unackedLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getUnackedButtonColor() {
-    return unackedButtonColor;
-  }
-
-  public void setUnackedButtonColor(int unackedButtonColor) {
-    this.unackedButtonColor = unackedButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getTotalLineColor() {
-    return totalLineColor;
-  }
-
-  public void setTotalLineColor(int totalLineColor) {
-    this.totalLineColor = totalLineColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public int getTotalButtonColor() {
-    return totalButtonColor;
-  }
-
-  public void setTotalButtonColor(int totalButtonColor) {
-    this.totalButtonColor = totalButtonColor;
-    invalidate();
-    requestLayout();
-  }
-
-  public void updateReadyButton(String text) {
-    readyButton.setText(text);
-  }
-
-  public void updateUnackedButton(String text) {
-    unackedButton.setText(text);
-  }
-
-  public void updateTotalButton(String text) {
-    totalButton.setText(text);
+    return defaultColor;
   }
 
   public enum SetIndex {

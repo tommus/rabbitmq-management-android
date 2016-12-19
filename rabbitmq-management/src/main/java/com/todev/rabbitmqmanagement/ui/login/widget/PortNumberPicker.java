@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import com.todev.rabbitmqmanagement.R;
 import lombok.Setter;
+import lombok.Getter;
 
 public class PortNumberPicker extends LinearLayout {
   public static final int MAX_PORT = 65535;
@@ -34,7 +35,7 @@ public class PortNumberPicker extends LinearLayout {
   protected NumberPicker part100;
   protected NumberPicker part10;
   protected NumberPicker part1;
-  @Setter int initialPortNumber;
+  @Getter @Setter int initialPortNumber;
 
   public PortNumberPicker(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -43,10 +44,6 @@ public class PortNumberPicker extends LinearLayout {
     initializeAttributes(context, attrs);
     initializeWidgets();
     setPortNumber(getInitialPortNumber());
-  }
-
-  public int getInitialPortNumber() {
-    return initialPortNumber;
   }
 
   public int getPortNumber() {

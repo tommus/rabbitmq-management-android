@@ -17,6 +17,7 @@
       >
 
     <android.support.v7.widget.CardView
+        android:id="@+id/exchanges_card"
         android:layout_width="@dimen/size_none"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -39,7 +40,7 @@
             android:paddingRight="@dimen/size_medium"
             android:paddingStart="@dimen/size_medium"
             android:paddingTop="@dimen/size_medium"
-            android:text="@string/global_counts_indicator_exchanges"
+            android:text="@string/exchanges"
             />
 
         <TextView
@@ -63,6 +64,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:id="@+id/queues_card"
         android:layout_width="@dimen/size_none"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -85,7 +87,7 @@
             android:paddingRight="@dimen/size_medium"
             android:paddingStart="@dimen/size_medium"
             android:paddingTop="@dimen/size_medium"
-            android:text="@string/global_counts_indicator_queues"
+            android:text="@string/queues"
             />
 
         <TextView
@@ -118,6 +120,7 @@
       >
 
     <android.support.v7.widget.CardView
+        android:id="@+id/connections_card"
         android:layout_width="@dimen/size_none"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -140,7 +143,7 @@
             android:paddingRight="@dimen/size_medium"
             android:paddingStart="@dimen/size_medium"
             android:paddingTop="@dimen/size_medium"
-            android:text="@string/global_counts_indicator_connections"
+            android:text="@string/connections"
             />
 
         <TextView
@@ -164,6 +167,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:id="@+id/consumers_card"
         android:layout_width="@dimen/size_none"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -186,7 +190,7 @@
             android:paddingRight="@dimen/size_medium"
             android:paddingStart="@dimen/size_medium"
             android:paddingTop="@dimen/size_medium"
-            android:text="@string/global_counts_indicator_consumers"
+            android:text="@string/consumers"
             />
 
         <TextView
@@ -210,6 +214,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:id="@+id/channels_card"
         android:layout_width="@dimen/size_none"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -232,7 +237,7 @@
             android:paddingRight="@dimen/size_medium"
             android:paddingStart="@dimen/size_medium"
             android:paddingTop="@dimen/size_medium"
-            android:text="@string/global_counts_indicator_channels"
+            android:text="@string/channels"
             />
 
         <TextView
