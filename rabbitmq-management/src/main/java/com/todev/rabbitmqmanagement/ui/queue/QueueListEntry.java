@@ -17,17 +17,25 @@
  */
 package com.todev.rabbitmqmanagement.ui.queue;
 
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import butterknife.BindView;
+import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
-import java.util.List;
+import com.todev.rabbitmqmanagement.ui.BaseViewHolder;
 
-public class QueueContract {
-  interface View {
-    void updateQueues(List<ExtendedQueue> queues);
+public class QueueListEntry extends BaseViewHolder {
+  @BindView(R.id.name) TextView nameView;
+  @BindView(R.id.state) TextView stateView;
 
-    void showNetworkError();
+  public QueueListEntry(ViewGroup parent, @LayoutRes int layoutRes) {
+    super(parent, layoutRes);
   }
 
-  interface Presenter {
-    void loadQueues();
+  public void bind(@NonNull ExtendedQueue queue) {
+    nameView.setText(queue.getName());
+    stateView.setText(queue.getState());
   }
 }

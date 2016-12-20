@@ -17,12 +17,17 @@
  */
 package com.todev.rabbitmqmanagement.ui.exchange;
 
+import com.todev.rabbitmqmanagement.data.network.model.exchange.ExtendedExchange;
+import java.util.List;
+
 public class ExchangeContract {
   interface View {
+    void updateExchanges(List<ExtendedExchange> exchanges);
 
+    void showNetworkError();
   }
 
   interface Presenter {
-
+    void loadExchanges();
   }
 }

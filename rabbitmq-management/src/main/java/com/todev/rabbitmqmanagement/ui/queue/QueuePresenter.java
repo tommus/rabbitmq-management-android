@@ -17,8 +17,24 @@
  */
 package com.todev.rabbitmqmanagement.ui.queue;
 
+import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
+import com.todev.rabbitmqmanagement.ui.BaseRxPresenter;
 import lombok.Setter;
 
-public class QueuePresenter implements QueueContract.Presenter {
+public class QueuePresenter extends BaseRxPresenter implements QueueContract.Presenter {
   @Setter QueueContract.View view;
+
+  private RabbitMqService rabbitMqService;
+
+  public QueuePresenter(RabbitMqService rabbitMqService) {
+    this.rabbitMqService = rabbitMqService;
+  }
+
+  @Override
+  public void loadQueues() {
+    disposable.add(rabbitMqService.getQueues()
+        .subscribeOn(getIoScheduler())
+        .observeOn(getObserveScheduler())
+        .subscribe(queues -> view.updateQueues(queues), error -> view.showNetworkError()));
+  }
 }

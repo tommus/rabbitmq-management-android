@@ -17,8 +17,24 @@
  */
 package com.todev.rabbitmqmanagement.ui.exchange;
 
+import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
+import com.todev.rabbitmqmanagement.ui.BaseRxPresenter;
 import lombok.Setter;
 
-public class ExchangePresenter implements ExchangeContract.Presenter {
+public class ExchangePresenter extends BaseRxPresenter implements ExchangeContract.Presenter {
   @Setter ExchangeContract.View view;
+
+  private RabbitMqService rabbitMqService;
+
+  public ExchangePresenter(RabbitMqService rabbitMqService) {
+    this.rabbitMqService = rabbitMqService;
+  }
+
+  @Override
+  public void loadExchanges() {
+    disposable.add(rabbitMqService.getExchanges()
+        .subscribeOn(getIoScheduler())
+        .observeOn(getObserveScheduler())
+        .subscribe(exchanges -> view.updateExchanges(exchanges), error -> view.showNetworkError()));
+  }
 }

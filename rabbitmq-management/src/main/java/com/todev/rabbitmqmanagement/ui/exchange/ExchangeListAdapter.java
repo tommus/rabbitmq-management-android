@@ -15,37 +15,37 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection;
+package com.todev.rabbitmqmanagement.ui.exchange;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import com.todev.rabbitmqmanagement.data.network.model.exchange.ExtendedExchange;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConnectionListAdapter extends RecyclerView.Adapter<ConnectionListEntry> {
-  private List<Connection> connections = new ArrayList<>();
+public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListEntry> {
+  private List<ExtendedExchange> exchanges = new ArrayList<>();
 
   @Override
-  public ConnectionListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new ConnectionListEntry(parent, R.layout.connection_item);
+  public ExchangeListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
+    return new ExchangeListEntry(parent, R.layout.exchange_item);
   }
 
   @Override
-  public void onBindViewHolder(ConnectionListEntry holder, int position) {
-    final Connection connection = connections.get(position);
-    holder.bind(connection);
+  public void onBindViewHolder(ExchangeListEntry holder, int position) {
+    final ExtendedExchange exchange = exchanges.get(position);
+    holder.bind(exchange);
   }
 
   @Override
   public int getItemCount() {
-    return connections.size();
+    return exchanges.size();
   }
 
-  public void setConnections(List<Connection> connections) {
-    this.connections.clear();
-    this.connections.addAll(connections);
+  public void setExchanges(List<ExtendedExchange> exchanges) {
+    this.exchanges.clear();
+    this.exchanges.addAll(exchanges);
     notifyDataSetChanged();
   }
 }

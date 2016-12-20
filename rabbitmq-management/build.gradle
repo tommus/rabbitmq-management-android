@@ -162,6 +162,9 @@ dependencies {
   // Logger.
   compile 'com.jakewharton.timber:timber:4.4.0'
 
+  // Misc.
+  compile 'org.apache.commons:commons-lang3:3.5'
+
   // Memory leak detection.
   productionCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 

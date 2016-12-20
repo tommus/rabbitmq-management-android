@@ -15,37 +15,37 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection;
+package com.todev.rabbitmqmanagement.ui.queue;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConnectionListAdapter extends RecyclerView.Adapter<ConnectionListEntry> {
-  private List<Connection> connections = new ArrayList<>();
+public class QueueListAdapter extends RecyclerView.Adapter<QueueListEntry> {
+  private List<ExtendedQueue> queues = new ArrayList<>();
 
   @Override
-  public ConnectionListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new ConnectionListEntry(parent, R.layout.connection_item);
+  public QueueListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
+    return new QueueListEntry(parent, R.layout.queue_item);
   }
 
   @Override
-  public void onBindViewHolder(ConnectionListEntry holder, int position) {
-    final Connection connection = connections.get(position);
-    holder.bind(connection);
+  public void onBindViewHolder(QueueListEntry holder, int position) {
+    final ExtendedQueue queue = queues.get(position);
+    holder.bind(queue);
   }
 
   @Override
   public int getItemCount() {
-    return connections.size();
+    return queues.size();
   }
 
-  public void setConnections(List<Connection> connections) {
-    this.connections.clear();
-    this.connections.addAll(connections);
+  public void setQueues(List<ExtendedQueue> queues) {
+    this.queues.clear();
+    this.queues.addAll(queues);
     notifyDataSetChanged();
   }
 }
