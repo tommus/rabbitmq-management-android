@@ -17,6 +17,7 @@
  */
 package com.todev.rabbitmqmanagement.core.dagger;
 
+import com.todev.rabbitmqmanagement.ui.channel.ChannelFragment;
 import com.todev.rabbitmqmanagement.ui.connection.ConnectionFragment;
 import com.todev.rabbitmqmanagement.ui.drawer.DrawerActivity;
 import com.todev.rabbitmqmanagement.ui.login.LoginActivity;
@@ -30,4 +31,6 @@ public interface AppGraph {
   void inject(OverviewFragment fragment);
 
   void inject(ConnectionFragment fragment);
+
+  void inject(ChannelFragment fragment);
 }

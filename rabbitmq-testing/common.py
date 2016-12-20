@@ -50,7 +50,7 @@ def prepare_simple_parser():
 def prepare_extended_parser():
     parser = prepare_simple_parser()
     parser.add_argument(
-        '-d', '--delay', type=int, metavar='DELAY', default=DELAY,
+        '-d', '--delay', type=float, metavar='DELAY', default=DELAY,
         help='Delay (in seconds) between publication of consecutive messages (default: {} sec)'.format(DELAY)
     )
     parser.add_argument(

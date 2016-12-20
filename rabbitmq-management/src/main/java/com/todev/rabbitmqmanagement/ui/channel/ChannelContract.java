@@ -17,12 +17,17 @@
  */
 package com.todev.rabbitmqmanagement.ui.channel;
 
+import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
+import java.util.List;
+
 public class ChannelContract {
   interface View {
+    void updateChannels(List<Channel> channels);
 
+    void showNetworkError();
   }
 
   interface Presenter {
-
+    void loadChannels();
   }
 }

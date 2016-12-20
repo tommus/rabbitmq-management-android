@@ -6,4 +6,12 @@
     android:orientation="vertical"
     >
 
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/channels_list"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingTop="@dimen/size_lower"
+      android:paddingBottom="@dimen/size_lower"
+      />
+
 </LinearLayout>

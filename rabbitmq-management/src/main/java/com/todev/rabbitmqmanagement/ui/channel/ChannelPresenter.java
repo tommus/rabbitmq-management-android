@@ -17,8 +17,24 @@
  */
 package com.todev.rabbitmqmanagement.ui.channel;
 
+import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
+import com.todev.rabbitmqmanagement.ui.BaseRxPresenter;
 import lombok.Setter;
 
-public class ChannelPresenter implements ChannelContract.Presenter {
+public class ChannelPresenter extends BaseRxPresenter implements ChannelContract.Presenter {
   @Setter ChannelContract.View view;
+
+  private RabbitMqService rabbitMqService;
+
+  public ChannelPresenter(RabbitMqService rabbitMqService) {
+    this.rabbitMqService = rabbitMqService;
+  }
+
+  @Override
+  public void loadChannels() {
+    disposable.add(rabbitMqService.getChannels()
+        .subscribeOn(getIoScheduler())
+        .observeOn(getObserveScheduler())
+        .subscribe(channels -> view.updateChannels(channels), errors -> view.showNetworkError()));
+  }
 }
