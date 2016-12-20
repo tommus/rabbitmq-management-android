@@ -15,19 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.core.dagger;
+package com.todev.rabbitmqmanagement.ui.connection;
 
-import com.todev.rabbitmqmanagement.ui.connection.ConnectionFragment;
-import com.todev.rabbitmqmanagement.ui.drawer.DrawerActivity;
-import com.todev.rabbitmqmanagement.ui.login.LoginActivity;
-import com.todev.rabbitmqmanagement.ui.overview.OverviewFragment;
+import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import java.util.List;
 
-public interface AppGraph {
-  void inject(LoginActivity activity);
+public class ConnectionContract {
+  interface View {
+    void updateConnections(List<Connection> connections);
 
-  void inject(DrawerActivity activity);
+    void showNetworkError();
+  }
 
-  void inject(OverviewFragment fragment);
-
-  void inject(ConnectionFragment fragment);
+  interface Presenter {
+    void loadConnections();
+  }
 }

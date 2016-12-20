@@ -15,14 +15,18 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection;
+package com.todev.rabbitmqmanagement.ui;
 
-public class ConectionContract {
-  interface View {
+import android.support.annotation.LayoutRes;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import butterknife.ButterKnife;
 
-  }
+public class BaseViewHolder extends RecyclerView.ViewHolder {
 
-  interface Presenter {
-
+  public BaseViewHolder(ViewGroup parent, @LayoutRes int layoutRes) {
+    super(LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false));
+    ButterKnife.bind(this, itemView);
   }
 }

@@ -17,8 +17,24 @@
  */
 package com.todev.rabbitmqmanagement.ui.connection;
 
+import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
+import com.todev.rabbitmqmanagement.ui.BaseRxPresenter;
 import lombok.Setter;
 
-public class ConnectionPresenter implements ConectionContract.Presenter {
-  @Setter ConectionContract.View view;
+public class ConnectionPresenter extends BaseRxPresenter implements ConnectionContract.Presenter {
+  @Setter ConnectionContract.View view;
+
+  private RabbitMqService rabbitMqService;
+
+  public ConnectionPresenter(RabbitMqService rabbitMqService) {
+    this.rabbitMqService = rabbitMqService;
+  }
+
+  @Override
+  public void loadConnections() {
+    disposable.add(rabbitMqService.getConnections()
+        .subscribeOn(getIoScheduler())
+        .observeOn(getObserveScheduler())
+        .subscribe(connections -> view.updateConnections(connections), errors -> view.showNetworkError()));
+  }
 }

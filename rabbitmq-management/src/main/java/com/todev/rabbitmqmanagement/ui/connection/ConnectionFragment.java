@@ -19,21 +19,33 @@ package com.todev.rabbitmqmanagement.ui.connection;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import butterknife.BindView;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
+import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
+import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
 import com.todev.rabbitmqmanagement.ui.BaseFragment;
+import java.util.List;
+import javax.inject.Inject;
 
-public class ConnectionFragment extends BaseFragment implements ConectionContract.View {
+public class ConnectionFragment extends BaseFragment implements ConnectionContract.View {
+  @Inject RabbitMqService rabbitMqService;
+
+  @BindView(R.id.connections_list) RecyclerView connectionsView;
 
   private ConnectionPresenter presenter;
+  private ConnectionListAdapter adapter;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
+    RabbitMqManagementApplication.get(getContext()).getComponent().inject(this);
     super.onCreate(savedInstanceState);
-
-    presenter = new ConnectionPresenter();
+    presenter = new ConnectionPresenter(rabbitMqService);
     presenter.setView(this);
   }
 
@@ -41,5 +53,36 @@ public class ConnectionFragment extends BaseFragment implements ConectionContrac
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     return inflater.inflate(R.layout.fragment_connection, container, false);
+  }
+
+  @Override
+  public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    adapter = new ConnectionListAdapter();
+    connectionsView.setLayoutManager(new LinearLayoutManager(getContext()));
+    connectionsView.setAdapter(adapter);
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    presenter.loadConnections();
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    presenter.unsubscribe();
+  }
+
+  @Override
+  public void updateConnections(List<Connection> connections) {
+    adapter.setConnections(connections);
+  }
+
+  @Override
+  public void showNetworkError() {
+    // TODO: 20.12.16 Display an error.
   }
 }
