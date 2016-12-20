@@ -123,6 +123,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/remember_configuration_check_box"
+      android:padding="@dimen/size_medium_plus"
       android:text="@string/login"
       android:theme="@style/RabbitmqManagement.Widget.Button"
       />

@@ -33,6 +33,7 @@
     <item name="colorButtonNormal">@color/colorPrimary</item>
     <item name="android:textColor">@android:color/white</item>
     <item name="android:textAllCaps">true</item>
+    <item name="android:padding">@dimen/size_medium</item>
   </style>
 
   <style name="RabbitmqManagement.Widget.Button.Borderless.Colored" parent="Widget.AppCompat.Button.Borderless.Colored">
