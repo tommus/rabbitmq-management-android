@@ -20,15 +20,10 @@ package com.todev.rabbitmqmanagement.ui.connection.list.entry;
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.connection.ClientProperties;
 import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import com.todev.rabbitmqmanagement.ui.BaseListEntryContract;
 
 public interface ConnectionListEntryContract {
-  interface View {
-    boolean areDetailsVisible();
-
-    void expandDetails();
-
-    void collapseDetails();
-
+  interface View extends BaseListEntryContract.View {
     void displayName(String host, int port);
 
     void displayUsername(String username);
@@ -60,9 +55,7 @@ public interface ConnectionListEntryContract {
     void displayConnectedAt(long connectedAt);
   }
 
-  interface Presenter {
-    void onMoreButtonClicked();
-
+  interface Presenter extends BaseListEntryContract.Presenter {
     void bind(@NonNull Connection connection);
   }
 }

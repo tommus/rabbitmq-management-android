@@ -19,15 +19,29 @@ package com.todev.rabbitmqmanagement.ui.channel.list.entry;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
+import com.todev.rabbitmqmanagement.ui.BaseListEntryPresenter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
-public class ChannelListEntryPresenter implements ChannelListEntryContract.Presenter {
+public class ChannelListEntryPresenter extends BaseListEntryPresenter implements ChannelListEntryContract.Presenter {
   @Setter ChannelListEntryContract.View view;
 
   @Override
   public void bind(@NonNull Channel channel) {
-    view.displayName(channel.getChannelDetails().getPeerHost(), channel.getChannelDetails().getPeerPort(),
-        channel.getNumber());
+    view.displayName(channel.getChannelDetails().getPeerHost(), channel.getChannelDetails().getPeerPort(), channel.getNumber());
     view.displayUsername(channel.getUser());
+    view.displayMode(StringUtils.EMPTY);
+    view.displayState(channel.getState());
+    view.displayUnconfirmed(channel.getMessagesUnconfirmed());
+    view.displayPrefetch(StringUtils.EMPTY);
+    view.displayUnacked(channel.getMessagesUnacknowledged());
+    view.displayUncommittedMessages(channel.getMessagesUncommitted());
+    view.displayUncommittedAcks(channel.getAcksUncommitted());
+    view.displayPublish(channel.getMessageStats().getPublishDetails().getRate());
+    view.displayConfirm(channel.getMessageStats().getConfirmDetails().getRate());
+    view.displayReturnMandatory(channel.getMessageStats().getReturnUnroutableDetails().getRate());
+    view.displayDeliverGet(channel.getMessageStats().getDeliverGetDetails().getRate());
+    view.displayRedelivered(channel.getMessageStats().getRedeliverDetails().getRate());
+    view.displayAck(channel.getMessageStats().getAckDetails().getRate());
   }
 }

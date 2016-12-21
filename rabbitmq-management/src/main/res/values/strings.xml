@@ -87,8 +87,23 @@
   <string name="connection_channel_max">Channel max</string>
   <string name="connection_auth_mechanism">Auth mechanism</string>
   <string name="connection_client">Client</string>
-  <string name="connection_client_value" formatted="false">%s / %s (%s)</string>
+  <string formatted="false" name="connection_client_value">%s / %s (%s)</string>
   <string name="connection_heartbeat">Heartbeat</string>
   <string name="connection_heartbeat_value">%ds</string>
   <string name="connection_connected_at">Connected at</string>
+
+  <string name="channel_mode">Mode</string>
+  <string name="channel_state">State</string>
+  <string name="channel_unconfirmed">Unconfirmed</string>
+  <string name="channel_prefetch">Prefetch</string>
+  <string name="channel_unacked">Unacked</string>
+  <string name="channel_uncommitted_msgs">Uncommitted msgs</string>
+  <string name="channel_uncommitted_acks">Uncommitted acks</string>
+  <string name="channel_publish">Publish</string>
+  <string name="channel_confirm">Confirm</string>
+  <string name="channel_return_mandatory">Return (mandatory)</string>
+  <string name="channel_deliver_get">Deliver / get</string>
+  <string name="channel_redelivered">Redelivered</string>
+  <string name="channel_ack">Ack</string>
+  <string name="channel_rate_value">%.2f/s</string>
 </resources>

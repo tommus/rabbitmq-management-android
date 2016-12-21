@@ -24,11 +24,25 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
-import com.todev.rabbitmqmanagement.ui.BaseViewHolder;
+import com.todev.rabbitmqmanagement.ui.BaseListEntry;
 
-public class ChannelListEntry extends BaseViewHolder implements ChannelListEntryContract.View {
+@SuppressWarnings("WeakerAccess")
+public class ChannelListEntry extends BaseListEntry implements ChannelListEntryContract.View {
   @BindView(R.id.name) TextView nameView;
   @BindView(R.id.user) TextView userView;
+  @BindView(R.id.mode) TextView modeView;
+  @BindView(R.id.state) TextView stateView;
+  @BindView(R.id.unconfirmed) TextView unconfirmedView;
+  @BindView(R.id.prefetch) TextView prefetchView;
+  @BindView(R.id.unacked) TextView unackedView;
+  @BindView(R.id.uncommitted_msgs) TextView uncommittedMessagesView;
+  @BindView(R.id.uncommitted_acks) TextView uncommittedAcknowledgesView;
+  @BindView(R.id.publish) TextView publishView;
+  @BindView(R.id.confirm) TextView confirmView;
+  @BindView(R.id.return_mandatory) TextView returnMandatoryView;
+  @BindView(R.id.deliver_get) TextView deliverGetView;
+  @BindView(R.id.redelivered) TextView redeliveredView;
+  @BindView(R.id.ack) TextView ackView;
 
   private ChannelListEntryPresenter presenter;
 
@@ -36,6 +50,7 @@ public class ChannelListEntry extends BaseViewHolder implements ChannelListEntry
     super(parent, layoutRes);
 
     presenter = new ChannelListEntryPresenter();
+    presenter.setBaseView(this);
     presenter.setView(this);
   }
 
@@ -51,5 +66,80 @@ public class ChannelListEntry extends BaseViewHolder implements ChannelListEntry
   @Override
   public void displayUsername(String type) {
     userView.setText(type);
+  }
+
+  @Override
+  public void displayMode(String mode) {
+    modeView.setText(mode);
+  }
+
+  @Override
+  public void displayState(String state) {
+    stateView.setText(state);
+  }
+
+  @Override
+  public void displayUnconfirmed(int details) {
+    String text = String.valueOf(details);
+    unconfirmedView.setText(text);
+  }
+
+  @Override
+  public void displayPrefetch(String details) {
+    prefetchView.setText(details);
+  }
+
+  @Override
+  public void displayUnacked(int details) {
+    String text = String.valueOf(details);
+    unackedView.setText(text);
+  }
+
+  @Override
+  public void displayUncommittedMessages(int transactions) {
+    String text = String.valueOf(transactions);
+    uncommittedMessagesView.setText(text);
+  }
+
+  @Override
+  public void displayUncommittedAcks(int transactions) {
+    String text = String.valueOf(transactions);
+    uncommittedAcknowledgesView.setText(text);
+  }
+
+  @Override
+  public void displayPublish(float rate) {
+    String text = getString(R.string.channel_rate_value, rate);
+    publishView.setText(text);
+  }
+
+  @Override
+  public void displayConfirm(float rate) {
+    String text = getString(R.string.channel_rate_value, rate);
+    confirmView.setText(text);
+  }
+
+  @Override
+  public void displayReturnMandatory(float rate) {
+    String text = getString(R.string.channel_rate_value, rate);
+    returnMandatoryView.setText(text);
+  }
+
+  @Override
+  public void displayDeliverGet(float rate) {
+    String text = getString(R.string.channel_rate_value, rate);
+    deliverGetView.setText(text);
+  }
+
+  @Override
+  public void displayRedelivered(float rate) {
+    String text = getString(R.string.channel_rate_value, rate);
+    redeliveredView.setText(text);
+  }
+
+  @Override
+  public void displayAck(float rate) {
+    String text = getString(R.string.channel_rate_value, rate);
+    ackView.setText(text);
   }
 }

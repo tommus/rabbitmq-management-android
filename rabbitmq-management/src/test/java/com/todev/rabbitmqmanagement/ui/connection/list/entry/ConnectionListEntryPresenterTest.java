@@ -44,30 +44,6 @@ public class ConnectionListEntryPresenterTest extends BaseTest {
   }
 
   @Test
-  public void should_expand_details_on_more_button_click() {
-    // Given
-    doReturn(false).when(view).areDetailsVisible();
-
-    // When
-    presenter.onMoreButtonClicked();
-
-    // Then
-    verify(view).expandDetails();
-  }
-
-  @Test
-  public void should_collapse_details_on_less_button_click() {
-    // Given
-    doReturn(true).when(view).areDetailsVisible();
-
-    // When
-    presenter.onMoreButtonClicked();
-
-    // Then
-    verify(view).collapseDetails();
-  }
-
-  @Test
   public void should_display_all_values_on_bind() {
     // Given
     doReturn("172.17.0.1").when(connection).getPeerHost();

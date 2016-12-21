@@ -17,38 +17,24 @@
  */
 package com.todev.rabbitmqmanagement.ui.connection.list.entry;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import butterknife.BindDrawable;
 import butterknife.BindString;
 import butterknife.BindView;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.connection.ClientProperties;
 import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
-import com.todev.rabbitmqmanagement.ui.BaseViewHolder;
-import java8.util.Optional;
+import com.todev.rabbitmqmanagement.ui.BaseListEntry;
 import org.apache.commons.lang3.BooleanUtils;
 import org.joda.time.LocalDateTime;
 
-public class ConnectionListEntry extends BaseViewHolder implements ConnectionListEntryContract.View {
+public class ConnectionListEntry extends BaseListEntry implements ConnectionListEntryContract.View {
   @BindString(R.string.yes) String yes;
   @BindString(R.string.no) String no;
-  @BindDrawable(R.drawable.ic_expand_less_gray_24dp) Drawable iconLess;
-  @BindDrawable(R.drawable.ic_expand_more_gray_24dp) Drawable iconMore;
   @BindView(R.id.name) TextView nameView;
   @BindView(R.id.user) TextView userView;
-  @BindView(R.id.more) ImageButton moreView;
-  @BindView(R.id.details) View detailsView;
   @BindView(R.id.state) TextView stateView;
   @BindView(R.id.ssl_tls) TextView sslTlsView;
   @BindView(R.id.ssl_details) TextView sslDetailsView;
@@ -64,47 +50,17 @@ public class ConnectionListEntry extends BaseViewHolder implements ConnectionLis
   @BindView(R.id.connected_at) TextView connectedAtView;
 
   private ConnectionListEntryPresenter presenter;
-  private Context context;
 
   public ConnectionListEntry(ViewGroup parent, @LayoutRes int layoutRes) {
     super(parent, layoutRes);
-    context = parent.getContext();
 
     presenter = new ConnectionListEntryPresenter();
+    presenter.setBaseView(this);
     presenter.setView(this);
-    moreView.setOnClickListener(view -> presenter.onMoreButtonClicked());
   }
 
   public void bind(@NonNull Connection connection) {
     presenter.bind(connection);
-  }
-
-  @Override
-  public boolean areDetailsVisible() {
-    return detailsView.getVisibility() == View.VISIBLE;
-  }
-
-  @Override
-  public void expandDetails() {
-    moreView.setImageDrawable(iconLess);
-    detailsView.setVisibility(View.VISIBLE);
-    ScaleAnimation expand = new ScaleAnimation(1, 1, 0, 1);
-    expand.setDuration(225);
-    expand.setInterpolator(new AccelerateDecelerateInterpolator());
-    expand.setAnimationListener(new AnimationEndListener());
-    detailsView.startAnimation(expand);
-  }
-
-  @Override
-  public void collapseDetails() {
-    moreView.setImageDrawable(iconMore);
-    ScaleAnimation collapse = new ScaleAnimation(1, 1, 1, 0);
-    collapse.setDuration(195);
-    collapse.setInterpolator(new AccelerateDecelerateInterpolator());
-    collapse.setAnimationListener(new AnimationEndListener(() -> {
-      detailsView.setVisibility(View.GONE);
-    }));
-    detailsView.startAnimation(collapse);
   }
 
   @Override
@@ -192,42 +148,5 @@ public class ConnectionListEntry extends BaseViewHolder implements ConnectionLis
   public void displayConnectedAt(long connectedAt) {
     String text = new LocalDateTime(connectedAt).toString("HH:mm:ss YYYY-MM-dd");
     connectedAtView.setText(text);
-  }
-
-  protected String getString(@StringRes int resId, Object... formatArgs) {
-    return context.getString(resId, formatArgs);
-  }
-
-  private class AnimationEndListener implements Animation.AnimationListener {
-    private final Runnable NOP_RUNNABLE = () -> {
-      // Null Object Pattern.
-    };
-
-    private Runnable runnable = NOP_RUNNABLE;
-
-    private AnimationEndListener() {
-      this(null);
-    }
-
-    private AnimationEndListener(Runnable runnable) {
-      this.runnable = Optional.ofNullable(runnable).orElse(NOP_RUNNABLE);
-    }
-
-    @Override
-    public void onAnimationStart(Animation animation) {
-      // Do nothing by default.
-    }
-
-    @Override
-    public void onAnimationEnd(Animation animation) {
-      runnable.run();
-      detailsView.clearAnimation();
-      detailsView.setAnimation(null);
-    }
-
-    @Override
-    public void onAnimationRepeat(Animation animation) {
-      // Do nothing by default.
-    }
   }
 }

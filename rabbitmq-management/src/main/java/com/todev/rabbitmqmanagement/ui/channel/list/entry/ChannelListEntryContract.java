@@ -19,15 +19,42 @@ package com.todev.rabbitmqmanagement.ui.channel.list.entry;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
+import com.todev.rabbitmqmanagement.ui.BaseListEntryContract;
 
 public interface ChannelListEntryContract {
-  interface View {
+  interface View extends BaseListEntryContract.View {
     void displayName(String host, int port, int channel);
 
     void displayUsername(String type);
+
+    void displayMode(String mode);
+
+    void displayState(String state);
+
+    void displayUnconfirmed(int details);
+
+    void displayPrefetch(String details);
+
+    void displayUnacked(int details);
+
+    void displayUncommittedMessages(int transactions);
+
+    void displayUncommittedAcks(int transactions);
+
+    void displayPublish(float rate);
+
+    void displayConfirm(float rate);
+
+    void displayReturnMandatory(float rate);
+
+    void displayDeliverGet(float rate);
+
+    void displayRedelivered(float rate);
+
+    void displayAck(float rate);
   }
 
-  interface Presenter {
+  interface Presenter extends BaseListEntryContract.Presenter {
     void bind(@NonNull Channel channel);
   }
 }

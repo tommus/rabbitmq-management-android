@@ -19,20 +19,13 @@ package com.todev.rabbitmqmanagement.ui.connection.list.entry;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import com.todev.rabbitmqmanagement.ui.BaseListEntryPresenter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
-public class ConnectionListEntryPresenter implements ConnectionListEntryContract.Presenter {
+public class ConnectionListEntryPresenter extends BaseListEntryPresenter
+    implements ConnectionListEntryContract.Presenter {
   @Setter ConnectionListEntryContract.View view;
-
-  @Override
-  public void onMoreButtonClicked() {
-    if (view.areDetailsVisible()) {
-      view.collapseDetails();
-    } else {
-      view.expandDetails();
-    }
-  }
 
   @Override
   public void bind(@NonNull Connection connection) {
