@@ -29,7 +29,7 @@ public class ConnectionListAdapter extends RecyclerView.Adapter<ConnectionListEn
 
   @Override
   public ConnectionListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new ConnectionListEntry(parent, R.layout.connection_item);
+    return new ConnectionListEntry(parent, R.layout.item_connection);
   }
 
   @Override

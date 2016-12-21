@@ -29,7 +29,7 @@ public class QueueListAdapter extends RecyclerView.Adapter<QueueListEntry> {
 
   @Override
   public QueueListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new QueueListEntry(parent, R.layout.queue_item);
+    return new QueueListEntry(parent, R.layout.item_queue);
   }
 
   @Override

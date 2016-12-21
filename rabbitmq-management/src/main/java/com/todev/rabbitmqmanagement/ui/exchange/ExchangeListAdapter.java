@@ -29,7 +29,7 @@ public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListEntry>
 
   @Override
   public ExchangeListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new ExchangeListEntry(parent, R.layout.exchange_item);
+    return new ExchangeListEntry(parent, R.layout.item_exchange);
   }
 
   @Override

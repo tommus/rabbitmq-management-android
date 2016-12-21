@@ -36,15 +36,15 @@
           android:layout_height="wrap_content"
           android:padding="@dimen/size_lowest"
           android:textStyle="bold"
-          tools:text="queue.queue"
+          tools:text="(AMQP default)"
           />
 
       <TextView
-          android:id="@+id/state"
+          android:id="@+id/type"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:padding="@dimen/size_lowest"
-          tools:text="running"
+          tools:text="direct"
           />
 
     </LinearLayout>
@@ -58,7 +58,7 @@
         android:layout_centerVertical="true"
         android:contentDescription="@null"
         android:minWidth="@dimen/size_medium"
-        android:src="@drawable/ic_more_gray"
+        android:src="@drawable/ic_expand_more_gray_24dp"
         style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
         />
 

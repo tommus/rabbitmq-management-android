@@ -29,7 +29,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter<ChannelListEntry> {
 
   @Override
   public ChannelListEntry onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new ChannelListEntry(parent, R.layout.channel_item);
+    return new ChannelListEntry(parent, R.layout.item_channel);
   }
 
   @Override
