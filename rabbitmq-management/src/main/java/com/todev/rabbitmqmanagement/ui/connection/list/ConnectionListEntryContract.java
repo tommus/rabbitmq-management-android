@@ -15,14 +15,14 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection.list.entry;
+package com.todev.rabbitmqmanagement.ui.connection.list;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.connection.ClientProperties;
 import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
 import com.todev.rabbitmqmanagement.ui.BaseListEntryContract;
 
-public interface ConnectionListEntryContract {
+interface ConnectionListEntryContract {
   interface View extends BaseListEntryContract.View {
     void displayName(String host, int port);
 

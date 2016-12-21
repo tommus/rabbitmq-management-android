@@ -20,7 +20,7 @@ package com.todev.rabbitmqmanagement.ui.drawer;
 import android.support.annotation.StringRes;
 import android.view.MenuItem;
 
-public interface DrawerContract {
+interface DrawerContract {
   interface View {
     boolean onNavigationMenuItemSelected(MenuItem item);
 

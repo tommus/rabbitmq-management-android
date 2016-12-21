@@ -23,7 +23,7 @@ import com.todev.rabbitmqmanagement.data.network.model.overview.Overview;
 import com.todev.rabbitmqmanagement.data.network.model.overview.QueueTotals;
 import java8.util.function.Predicate;
 
-public interface OverviewContract {
+interface OverviewContract {
   interface View {
     void showQueuedMessagesRangeDialogFragment();
 

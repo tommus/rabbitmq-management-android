@@ -19,6 +19,6 @@ package com.todev.rabbitmqmanagement.ui.admin;
 
 import lombok.Setter;
 
-public class AdminPresenter implements AdminContract.Presenter {
+class AdminPresenter implements AdminContract.Presenter {
   @Setter AdminContract.View view;
 }

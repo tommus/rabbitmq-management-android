@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection.list.entry;
+package com.todev.rabbitmqmanagement.ui.connection.list;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -30,7 +30,7 @@ import com.todev.rabbitmqmanagement.ui.BaseListEntry;
 import org.apache.commons.lang3.BooleanUtils;
 import org.joda.time.LocalDateTime;
 
-public class ConnectionListEntry extends BaseListEntry implements ConnectionListEntryContract.View {
+class ConnectionListEntry extends BaseListEntry implements ConnectionListEntryContract.View {
   @BindString(R.string.yes) String yes;
   @BindString(R.string.no) String no;
   @BindView(R.id.name) TextView nameView;

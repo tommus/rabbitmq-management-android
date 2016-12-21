@@ -28,7 +28,7 @@ import lombok.Setter;
 import retrofit2.Response;
 import timber.log.Timber;
 
-public class LoginPresenter extends BaseRxPresenter implements LoginContract.Presenter {
+class LoginPresenter extends BaseRxPresenter implements LoginContract.Presenter {
   @Setter LoginContract.View view;
   @Setter DataProvider dataProvider;
   @Setter AddressInterceptor addressInterceptor;
@@ -129,10 +129,8 @@ public class LoginPresenter extends BaseRxPresenter implements LoginContract.Pre
   }
 
   protected void processLogin() {
-    disposable.add(rabbitMqService.whoAmI()
-        .subscribeOn(getIoScheduler())
-        .observeOn(getObserveScheduler())
-        .subscribe(response -> {
+    disposable.add(
+        rabbitMqService.whoAmI().subscribeOn(getIoScheduler()).observeOn(getObserveScheduler()).subscribe(response -> {
           if (isSuccessfulLogin(response)) {
             Timber.d(response.body().toString());
             // TODO: 22.11.2016 Save credentials if user has marked 'remember'.

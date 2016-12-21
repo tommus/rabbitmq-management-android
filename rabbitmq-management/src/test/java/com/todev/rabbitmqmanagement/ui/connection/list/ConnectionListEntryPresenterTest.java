@@ -15,12 +15,14 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection.list.entry;
+package com.todev.rabbitmqmanagement.ui.connection.list;
 
 import com.todev.rabbitmqmanagement.BaseTest;
 import com.todev.rabbitmqmanagement.data.network.model.Details;
 import com.todev.rabbitmqmanagement.data.network.model.connection.ClientProperties;
 import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import com.todev.rabbitmqmanagement.ui.connection.list.ConnectionListEntryContract;
+import com.todev.rabbitmqmanagement.ui.connection.list.ConnectionListEntryPresenter;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.mockito.Mock;

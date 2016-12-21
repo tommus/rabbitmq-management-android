@@ -19,7 +19,7 @@ package com.todev.rabbitmqmanagement.core.dagger;
 
 import com.todev.rabbitmqmanagement.DevelopmentRabbitMqManagementApplication;
 
-public interface DevelopmentAppGraph extends AppGraph {
+interface DevelopmentAppGraph extends AppGraph {
 
   void inject(DevelopmentRabbitMqManagementApplication application);
 }

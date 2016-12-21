@@ -28,10 +28,10 @@ import javax.inject.Singleton;
 
 @Singleton
 public class DataProvider {
-  protected SharedPreferences sharedPreferences;
+  private SharedPreferences sharedPreferences;
 
   @Inject
-  public DataProvider(SharedPreferences sharedPreferences) {
+  DataProvider(SharedPreferences sharedPreferences) {
     this.sharedPreferences = sharedPreferences;
   }
 

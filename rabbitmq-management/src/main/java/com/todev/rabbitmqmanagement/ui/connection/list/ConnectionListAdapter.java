@@ -21,11 +21,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
-import com.todev.rabbitmqmanagement.ui.connection.list.entry.ConnectionListEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConnectionListAdapter extends RecyclerView.Adapter<ConnectionListEntry> {
+class ConnectionListAdapter extends RecyclerView.Adapter<ConnectionListEntry> {
   private List<Connection> connections = new ArrayList<>();
 
   @Override

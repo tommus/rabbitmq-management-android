@@ -15,13 +15,15 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.channel.list.entry;
+package com.todev.rabbitmqmanagement.ui.channel.list;
 
 import com.todev.rabbitmqmanagement.BaseTest;
 import com.todev.rabbitmqmanagement.data.network.model.Details;
 import com.todev.rabbitmqmanagement.data.network.model.MessageStats;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
 import com.todev.rabbitmqmanagement.data.network.model.channel.ChannelDetails;
+import com.todev.rabbitmqmanagement.ui.channel.list.ChannelListEntryContract;
+import com.todev.rabbitmqmanagement.ui.channel.list.ChannelListEntryPresenter;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.mockito.Mock;

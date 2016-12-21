@@ -21,12 +21,12 @@ import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
 import com.todev.rabbitmqmanagement.ui.BaseRxPresenter;
 import lombok.Setter;
 
-public class ChannelListPresenter extends BaseRxPresenter implements ChannelListContract.Presenter {
+class ChannelListPresenter extends BaseRxPresenter implements ChannelListContract.Presenter {
   @Setter ChannelListContract.View view;
 
   private RabbitMqService rabbitMqService;
 
-  public ChannelListPresenter(RabbitMqService rabbitMqService) {
+  ChannelListPresenter(RabbitMqService rabbitMqService) {
     this.rabbitMqService = rabbitMqService;
   }
 

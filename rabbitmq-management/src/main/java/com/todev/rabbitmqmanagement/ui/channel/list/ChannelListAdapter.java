@@ -21,11 +21,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
-import com.todev.rabbitmqmanagement.ui.channel.list.entry.ChannelListEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChannelListAdapter extends RecyclerView.Adapter<ChannelListEntry> {
+class ChannelListAdapter extends RecyclerView.Adapter<ChannelListEntry> {
   private List<Channel> channels = new ArrayList<>();
 
   @Override

@@ -15,10 +15,12 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.exchange.list.entry;
+package com.todev.rabbitmqmanagement.ui.exchange.list;
 
 import com.todev.rabbitmqmanagement.BaseTest;
 import com.todev.rabbitmqmanagement.data.network.model.exchange.Exchange;
+import com.todev.rabbitmqmanagement.ui.exchange.list.ExchangeListEntryContract;
+import com.todev.rabbitmqmanagement.ui.exchange.list.ExchangeListEntryPresenter;
 import org.junit.Test;
 import org.mockito.Mock;
 

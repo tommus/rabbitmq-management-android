@@ -25,7 +25,7 @@ import javax.inject.Singleton;
 
 @Singleton
 @Component(modules = { ApplicationModule.class, NetworkModule.class })
-public interface AppComponent extends AppGraph {
+interface AppComponent extends AppGraph {
 
   final class Initializer {
 

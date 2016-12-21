@@ -21,11 +21,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
-import com.todev.rabbitmqmanagement.ui.queue.list.entry.QueueListEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueueListAdapter extends RecyclerView.Adapter<QueueListEntry> {
+class QueueListAdapter extends RecyclerView.Adapter<QueueListEntry> {
   private List<ExtendedQueue> queues = new ArrayList<>();
 
   @Override

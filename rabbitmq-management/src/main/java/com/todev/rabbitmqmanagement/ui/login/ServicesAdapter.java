@@ -28,9 +28,9 @@ import android.widget.TextView;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
 
-public class ServicesAdapter extends ArrayAdapter<Service> {
+class ServicesAdapter extends ArrayAdapter<Service> {
 
-  public ServicesAdapter(Context context) {
+  ServicesAdapter(Context context) {
     super(context, 0);
   }
 

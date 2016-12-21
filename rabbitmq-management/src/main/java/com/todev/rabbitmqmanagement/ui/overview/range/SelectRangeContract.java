@@ -20,7 +20,7 @@ package com.todev.rabbitmqmanagement.ui.overview.range;
 import com.todev.rabbitmqmanagement.ui.overview.widget.MessagesIndicator;
 import java8.util.function.Supplier;
 
-public class SelectRangeContract {
+class SelectRangeContract {
   interface View {
     void setVisibleRange(MessagesIndicator.VisibleRange visibleRange);
 

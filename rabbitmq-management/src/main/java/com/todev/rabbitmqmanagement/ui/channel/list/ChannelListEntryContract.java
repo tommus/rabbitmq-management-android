@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.channel.list.entry;
+package com.todev.rabbitmqmanagement.ui.channel.list;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
 import com.todev.rabbitmqmanagement.ui.BaseListEntryContract;
 
-public interface ChannelListEntryContract {
+interface ChannelListEntryContract {
   interface View extends BaseListEntryContract.View {
     void displayName(String host, int port, int channel);
 

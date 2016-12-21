@@ -20,7 +20,7 @@ package com.todev.rabbitmqmanagement.ui.exchange.list;
 import com.todev.rabbitmqmanagement.data.network.model.exchange.ExtendedExchange;
 import java.util.List;
 
-public interface ExchangeListContract {
+interface ExchangeListContract {
   interface View {
     void updateExchanges(List<ExtendedExchange> exchanges);
 

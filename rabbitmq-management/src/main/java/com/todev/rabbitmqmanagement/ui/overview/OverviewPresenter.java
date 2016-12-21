@@ -30,7 +30,7 @@ import lombok.Setter;
 import retrofit2.Response;
 import timber.log.Timber;
 
-public class OverviewPresenter extends BaseRxPresenter implements OverviewContract.Presenter {
+class OverviewPresenter extends BaseRxPresenter implements OverviewContract.Presenter {
   @Setter OverviewContract.View view;
 
   private RabbitMqService rabbitMqService;
@@ -46,7 +46,7 @@ public class OverviewPresenter extends BaseRxPresenter implements OverviewContra
 
   private Predicate<ObjectTotals> globalCountsPredicate = objectTotals -> objectTotals != null;
 
-  public OverviewPresenter(RabbitMqService rabbitMqService) {
+  OverviewPresenter(RabbitMqService rabbitMqService) {
     this.rabbitMqService = rabbitMqService;
   }
 

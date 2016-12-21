@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.channel.list.entry;
+package com.todev.rabbitmqmanagement.ui.channel.list;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -27,7 +27,7 @@ import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
 import com.todev.rabbitmqmanagement.ui.BaseListEntry;
 
 @SuppressWarnings("WeakerAccess")
-public class ChannelListEntry extends BaseListEntry implements ChannelListEntryContract.View {
+class ChannelListEntry extends BaseListEntry implements ChannelListEntryContract.View {
   @BindView(R.id.name) TextView nameView;
   @BindView(R.id.user) TextView userView;
   @BindView(R.id.mode) TextView modeView;
@@ -46,7 +46,7 @@ public class ChannelListEntry extends BaseListEntry implements ChannelListEntryC
 
   private ChannelListEntryPresenter presenter;
 
-  public ChannelListEntry(ViewGroup parent, @LayoutRes int layoutRes) {
+  ChannelListEntry(ViewGroup parent, @LayoutRes int layoutRes) {
     super(parent, layoutRes);
 
     presenter = new ChannelListEntryPresenter();

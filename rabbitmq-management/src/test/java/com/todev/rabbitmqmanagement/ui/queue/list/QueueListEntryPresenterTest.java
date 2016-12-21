@@ -15,10 +15,12 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.queue.list.entry;
+package com.todev.rabbitmqmanagement.ui.queue.list;
 
 import com.todev.rabbitmqmanagement.BaseTest;
 import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
+import com.todev.rabbitmqmanagement.ui.queue.list.QueueListEntryContract;
+import com.todev.rabbitmqmanagement.ui.queue.list.QueueListEntryPresenter;
 import org.junit.Test;
 import org.mockito.Mock;
 

@@ -21,7 +21,7 @@ import com.todev.rabbitmqmanagement.ui.overview.widget.MessagesIndicator;
 import java8.util.function.Supplier;
 import lombok.Setter;
 
-public class SelectRangePresenter implements SelectRangeContract.Presenter {
+class SelectRangePresenter implements SelectRangeContract.Presenter {
   @Setter SelectRangeContract.View view;
 
   @Override

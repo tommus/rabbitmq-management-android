@@ -25,7 +25,7 @@ import com.todev.rabbitmqmanagement.ui.login.LoginActivity;
 import com.todev.rabbitmqmanagement.ui.overview.OverviewFragment;
 import com.todev.rabbitmqmanagement.ui.queue.list.QueueListFragment;
 
-public interface AppGraph {
+interface AppGraph {
   void inject(LoginActivity activity);
 
   void inject(DrawerActivity activity);

@@ -19,7 +19,7 @@ package com.todev.rabbitmqmanagement.ui.login.addservice;
 
 import java8.util.function.Consumer;
 
-public interface AddServiceContract {
+interface AddServiceContract {
   interface View {
     String getLabel();
 

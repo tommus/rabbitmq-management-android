@@ -20,7 +20,7 @@ package com.todev.rabbitmqmanagement.ui.channel.list;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
 import java.util.List;
 
-public interface ChannelListContract {
+interface ChannelListContract {
   interface View {
     void updateChannels(List<Channel> channels);
 

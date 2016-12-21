@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.channel.list.entry;
+package com.todev.rabbitmqmanagement.ui.channel.list;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
@@ -23,7 +23,7 @@ import com.todev.rabbitmqmanagement.ui.BaseListEntryPresenter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
-public class ChannelListEntryPresenter extends BaseListEntryPresenter implements ChannelListEntryContract.Presenter {
+class ChannelListEntryPresenter extends BaseListEntryPresenter implements ChannelListEntryContract.Presenter {
   @Setter ChannelListEntryContract.View view;
 
   @Override

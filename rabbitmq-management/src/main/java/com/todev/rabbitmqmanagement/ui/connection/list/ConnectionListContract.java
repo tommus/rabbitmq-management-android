@@ -20,7 +20,7 @@ package com.todev.rabbitmqmanagement.ui.connection.list;
 import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
 import java.util.List;
 
-public interface ConnectionListContract {
+interface ConnectionListContract {
   interface View {
     void updateConnections(List<Connection> connections);
 

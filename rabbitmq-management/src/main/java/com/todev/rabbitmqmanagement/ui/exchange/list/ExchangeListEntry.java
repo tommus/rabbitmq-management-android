@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.exchange.list.entry;
+package com.todev.rabbitmqmanagement.ui.exchange.list;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -27,7 +27,7 @@ import com.todev.rabbitmqmanagement.data.network.model.exchange.Exchange;
 import com.todev.rabbitmqmanagement.ui.BaseViewHolder;
 import org.apache.commons.lang3.StringUtils;
 
-public class ExchangeListEntry extends BaseViewHolder implements ExchangeListEntryContract.View {
+class ExchangeListEntry extends BaseViewHolder implements ExchangeListEntryContract.View {
   private static final String DEFAULT_EXCHANGE_NAME = "(AMQP default)";
 
   @BindView(R.id.name) TextView nameView;

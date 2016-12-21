@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.queue.list.entry;
+package com.todev.rabbitmqmanagement.ui.queue.list;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -26,13 +26,13 @@ import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
 import com.todev.rabbitmqmanagement.ui.BaseViewHolder;
 
-public class QueueListEntry extends BaseViewHolder implements QueueListEntryContract.View {
+class QueueListEntry extends BaseViewHolder implements QueueListEntryContract.View {
   @BindView(R.id.name) TextView nameView;
   @BindView(R.id.state) TextView stateView;
 
   private QueueListEntryPresenter presenter;
 
-  public QueueListEntry(ViewGroup parent, @LayoutRes int layoutRes) {
+  QueueListEntry(ViewGroup parent, @LayoutRes int layoutRes) {
     super(parent, layoutRes);
 
     presenter = new QueueListEntryPresenter();

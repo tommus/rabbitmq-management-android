@@ -21,7 +21,7 @@ import com.todev.rabbitmqmanagement.data.app.model.Credentials;
 import com.todev.rabbitmqmanagement.data.database.model.Service;
 import java.util.List;
 
-public interface LoginContract {
+interface LoginContract {
   interface View {
     void showMissingUsernameError();
 

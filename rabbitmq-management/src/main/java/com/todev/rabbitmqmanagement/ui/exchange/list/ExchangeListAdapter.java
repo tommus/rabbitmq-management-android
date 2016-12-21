@@ -21,11 +21,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.data.network.model.exchange.ExtendedExchange;
-import com.todev.rabbitmqmanagement.ui.exchange.list.entry.ExchangeListEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListEntry> {
+class ExchangeListAdapter extends RecyclerView.Adapter<ExchangeListEntry> {
   private List<ExtendedExchange> exchanges = new ArrayList<>();
 
   @Override

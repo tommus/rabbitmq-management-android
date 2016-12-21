@@ -15,19 +15,18 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.exchange.list.entry;
+package com.todev.rabbitmqmanagement.ui.exchange.list;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.exchange.Exchange;
+import lombok.Setter;
 
-public interface ExchangeListEntryContract {
-  interface View {
-    void displayName(String name);
+class ExchangeListEntryPresenter implements ExchangeListEntryContract.Presenter {
+  @Setter ExchangeListEntryContract.View view;
 
-    void displayType(Exchange.Type type);
-  }
-
-  interface Presenter {
-    void bind(@NonNull Exchange exchange);
+  @Override
+  public void bind(@NonNull Exchange exchange) {
+    view.displayName(exchange.getName());
+    view.displayType(exchange.getType());
   }
 }

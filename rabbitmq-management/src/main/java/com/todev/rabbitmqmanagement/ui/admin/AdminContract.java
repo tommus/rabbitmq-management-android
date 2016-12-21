@@ -17,7 +17,7 @@
  */
 package com.todev.rabbitmqmanagement.ui.admin;
 
-public interface AdminContract {
+interface AdminContract {
   interface View {
 
   }

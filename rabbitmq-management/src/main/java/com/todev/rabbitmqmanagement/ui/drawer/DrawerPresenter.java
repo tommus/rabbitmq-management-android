@@ -20,7 +20,7 @@ package com.todev.rabbitmqmanagement.ui.drawer;
 import com.todev.rabbitmqmanagement.R;
 import lombok.Setter;
 
-public class DrawerPresenter implements DrawerContract.Presenter {
+class DrawerPresenter implements DrawerContract.Presenter {
   @Setter DrawerContract.View view;
 
   @Override

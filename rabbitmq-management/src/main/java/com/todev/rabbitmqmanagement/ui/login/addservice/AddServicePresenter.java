@@ -23,7 +23,7 @@ import java8.util.Optional;
 import java8.util.function.Consumer;
 import lombok.Setter;
 
-public class AddServicePresenter implements AddServiceContract.Presenter {
+class AddServicePresenter implements AddServiceContract.Presenter {
   private static final Consumer<Integer> NOP_SUCCESS_CONSUMER = id -> {
     // Null Object Pattern.
   };

@@ -15,19 +15,18 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.queue.list.entry;
+package com.todev.rabbitmqmanagement.ui.queue.list;
 
 import android.support.annotation.NonNull;
 import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
+import lombok.Setter;
 
-public interface QueueListEntryContract {
-  interface View {
-    void displayName(String name);
+class QueueListEntryPresenter implements QueueListEntryContract.Presenter {
+  @Setter QueueListEntryContract.View view;
 
-    void displayState(String state);
-  }
-
-  interface Presenter {
-    void bind(@NonNull ExtendedQueue queue);
+  @Override
+  public void bind(@NonNull ExtendedQueue queue) {
+    view.displayName(queue.getName());
+    view.displayState(queue.getState());
   }
 }

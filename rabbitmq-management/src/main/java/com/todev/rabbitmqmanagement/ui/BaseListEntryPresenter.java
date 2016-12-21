@@ -21,7 +21,7 @@ import lombok.Setter;
 
 public class BaseListEntryPresenter implements BaseListEntryContract.Presenter {
   @Setter BaseListEntryContract.View baseView;
-  
+
   @Override
   public void onMoreButtonClicked() {
     if (baseView.areDetailsVisible()) {
