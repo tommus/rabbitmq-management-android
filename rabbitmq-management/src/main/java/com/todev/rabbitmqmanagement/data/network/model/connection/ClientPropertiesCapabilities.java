@@ -25,20 +25,20 @@ import lombok.Getter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @Getter
-public class ClientProperties {
+public class ClientPropertiesCapabilities {
 
-  @JsonProperty(value = "capabilities")
-  protected ClientPropertiesCapabilities capabilities;
+  @JsonProperty(value = "authentication_failure_close")
+  protected boolean authenticationFailureClose;
 
-  @JsonProperty(value = "information")
-  protected String information;
+  @JsonProperty(value = "basic.nack")
+  protected boolean basicNack;
 
-  @JsonProperty(value = "platform")
-  protected String platform;
+  @JsonProperty(value = "connection.blocked")
+  protected boolean connectionBlocked;
 
-  @JsonProperty(value = "product")
-  protected String product;
+  @JsonProperty(value = "consumer_cancel_notify")
+  protected boolean consumerCancelNotify;
 
-  @JsonProperty(value = "version")
-  protected String version;
+  @JsonProperty(value = "publisher_confirms")
+  protected boolean publisherConfirms;
 }

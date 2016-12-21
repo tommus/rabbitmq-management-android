@@ -6,6 +6,9 @@
 
   <string name="app_name_main" translatable="false">RabbitMQ Management</string>
 
+  <string name="yes">Yes</string>
+  <string name="no">No</string>
+
   <string name="login">Login</string>
   <string name="password">Password</string>
   <string name="delete">Delete</string>
@@ -71,4 +74,21 @@
   <string name="message_rates_delivered">Delivered</string>
   <string name="message_rates_redelivered">Redelivered</string>
   <string name="message_rates_range">Range</string>
+
+  <string name="connection_state">State</string>
+  <string name="connection_ssl_tls">SSL / TLS</string>
+  <string name="connection_ssl_details">SSL Details</string>
+  <string name="connection_protocol">Protocol</string>
+  <string name="connection_channels">Channels</string>
+  <string name="connection_from_client">From client</string>
+  <string name="connection_from_client_value">%.0fB/s</string>
+  <string name="connection_to_client">To client</string>
+  <string name="connection_to_client_value">%.0fB/s</string>
+  <string name="connection_channel_max">Channel max</string>
+  <string name="connection_auth_mechanism">Auth mechanism</string>
+  <string name="connection_client">Client</string>
+  <string name="connection_client_value" formatted="false">%s / %s (%s)</string>
+  <string name="connection_heartbeat">Heartbeat</string>
+  <string name="connection_heartbeat_value">%ds</string>
+  <string name="connection_connected_at">Connected at</string>
 </resources>

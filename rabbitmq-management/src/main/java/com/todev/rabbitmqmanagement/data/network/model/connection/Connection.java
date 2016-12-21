@@ -85,6 +85,12 @@ public class Connection {
   @JsonProperty(value = "recv_oct_details")
   protected Details recvOctDetails;
 
+  @JsonProperty(value = "reductions")
+  protected long reductions;
+
+  @JsonProperty(value = "reductions_details")
+  protected Details reductionsDetails;
+
   @JsonProperty(value = "send_cnt")
   protected int sendCnt;
 

@@ -27,7 +27,7 @@ Constantly consumes messages from the RabbitMQ queue.
 An example execution:
 
 ```bash
-python publisher.py \
+python consumer.py \
     --username=test \
     --password=test \
     --address=127.0.0.1 \

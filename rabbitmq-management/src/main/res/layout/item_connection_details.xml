@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card:contentPadding="@dimen/size_medium"
+    >
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <!-- State. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/state"
+        android:layout_toStartOf="@id/state"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_state"
+        />
+
+    <TextView
+        android:id="@id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/size_lowest"
+        tools:text="running"
+        />
+
+    <!-- SSL/TLS. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/state"
+        android:layout_toLeftOf="@+id/ssl_tls"
+        android:layout_toStartOf="@id/ssl_tls"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_ssl_tls"
+        />
+
+    <TextView
+        android:id="@id/ssl_tls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/state"
+        android:padding="@dimen/size_lowest"
+        tools:text="no"
+        />
+
+    <!-- SSL Details. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/ssl_tls"
+        android:layout_toLeftOf="@+id/ssl_details"
+        android:layout_toStartOf="@id/ssl_details"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_ssl_details"
+        />
+
+    <TextView
+        android:id="@id/ssl_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/ssl_tls"
+        android:padding="@dimen/size_lowest"
+        tools:text=""
+        />
+
+    <!-- Protocol. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/ssl_details"
+        android:layout_toLeftOf="@+id/protocol"
+        android:layout_toStartOf="@id/protocol"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_protocol"
+        />
+
+    <TextView
+        android:id="@id/protocol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/ssl_details"
+        android:padding="@dimen/size_lowest"
+        tools:text="AMQP 0-9-1"
+        />
+
+    <!-- Channels. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/protocol"
+        android:layout_toLeftOf="@+id/channels"
+        android:layout_toStartOf="@id/channels"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_channels"
+        />
+
+    <TextView
+        android:id="@id/channels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/protocol"
+        android:padding="@dimen/size_lowest"
+        tools:text="1"
+        />
+
+    <!-- Channels max. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/channels"
+        android:layout_toLeftOf="@+id/channel_max"
+        android:layout_toStartOf="@id/channel_max"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_channel_max"
+        />
+
+    <TextView
+        android:id="@id/channel_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/channels"
+        android:padding="@dimen/size_lowest"
+        tools:text="65535"
+        />
+
+    <!-- Frame max. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/channel_max"
+        android:layout_toLeftOf="@+id/frame_max"
+        android:layout_toStartOf="@id/frame_max"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_channel_max"
+        />
+
+    <TextView
+        android:id="@id/frame_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/channel_max"
+        android:padding="@dimen/size_lowest"
+        tools:text="131072"
+        />
+
+    <!-- Auth mechanism. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/frame_max"
+        android:layout_toLeftOf="@+id/auth_mechanism"
+        android:layout_toStartOf="@id/auth_mechanism"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_auth_mechanism"
+        />
+
+    <TextView
+        android:id="@id/auth_mechanism"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/frame_max"
+        android:padding="@dimen/size_lowest"
+        tools:text="PLAIN"
+        />
+
+    <!-- Client. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/auth_mechanism"
+        android:layout_toLeftOf="@+id/client"
+        android:layout_toStartOf="@id/client"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_client"
+        />
+
+    <TextView
+        android:id="@id/client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/auth_mechanism"
+        android:padding="@dimen/size_lowest"
+        tools:text="rabbitpy / Python 3.5.2"
+        />
+
+    <!-- Client from. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/client"
+        android:layout_toLeftOf="@+id/client_from"
+        android:layout_toStartOf="@id/client_from"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_from_client"
+        />
+
+    <TextView
+        android:id="@id/client_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/client"
+        android:padding="@dimen/size_lowest"
+        tools:text="105B/s"
+        />
+
+    <!-- Client to. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/client_from"
+        android:layout_toLeftOf="@+id/client_to"
+        android:layout_toStartOf="@id/client_to"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_to_client"
+        />
+
+    <TextView
+        android:id="@id/client_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/client_from"
+        android:padding="@dimen/size_lowest"
+        tools:text="0B/s"
+        />
+
+    <!-- Heartbeat. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/client_to"
+        android:layout_toLeftOf="@+id/heartbeat"
+        android:layout_toStartOf="@id/heartbeat"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_heartbeat"
+        />
+
+    <TextView
+        android:id="@id/heartbeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/client_to"
+        android:padding="@dimen/size_lowest"
+        tools:text="60s"
+        />
+
+    <!-- Connected at. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/heartbeat"
+        android:layout_toLeftOf="@+id/connected_at"
+        android:layout_toStartOf="@id/connected_at"
+        android:padding="@dimen/size_lowest"
+        android:text="@string/connection_connected_at"
+        />
+
+    <TextView
+        android:id="@id/connected_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/heartbeat"
+        android:padding="@dimen/size_lowest"
+        tools:text="08:30:09 2016-12-21"
+        />
+
+  </RelativeLayout>
+
+</android.support.v7.widget.CardView>
