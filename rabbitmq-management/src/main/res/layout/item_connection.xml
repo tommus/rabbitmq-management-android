@@ -58,7 +58,7 @@
         android:layout_centerVertical="true"
         android:contentDescription="@null"
         android:minWidth="@dimen/size_medium"
-        android:src="@drawable/ic_more_gray"
+        android:src="@drawable/ic_expand_more_gray_24dp"
         style="@style/RabbitmqManagement.Widget.Button.Borderless.Colored"
         />
 
