@@ -35,11 +35,11 @@ import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
 import com.todev.rabbitmqmanagement.ui.BaseActivity;
 import com.todev.rabbitmqmanagement.ui.admin.AdminFragment;
-import com.todev.rabbitmqmanagement.ui.channel.ChannelListFragment;
-import com.todev.rabbitmqmanagement.ui.connection.ConnectionListFragment;
-import com.todev.rabbitmqmanagement.ui.exchange.ExchangeListFragment;
+import com.todev.rabbitmqmanagement.ui.channel.list.ChannelListFragment;
+import com.todev.rabbitmqmanagement.ui.connection.list.ConnectionListFragment;
+import com.todev.rabbitmqmanagement.ui.exchange.list.ExchangeListFragment;
 import com.todev.rabbitmqmanagement.ui.overview.OverviewFragment;
-import com.todev.rabbitmqmanagement.ui.queue.QueueListFragment;
+import com.todev.rabbitmqmanagement.ui.queue.list.QueueListFragment;
 
 public class DrawerActivity extends BaseActivity implements DrawerContract.View {
   @BindView(R.id.drawer_layout) DrawerLayout drawerLayoutView;

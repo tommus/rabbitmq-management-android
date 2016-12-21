@@ -35,7 +35,7 @@ public class Channel {
   protected boolean confirm;
 
   @JsonProperty(value = "connection_details")
-  protected ChannelDetails connectionDetails;
+  protected ChannelDetails channelDetails;
 
   @JsonProperty(value = "consumer_count")
   protected int consumerCount;

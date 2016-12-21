@@ -15,14 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.admin;
+package com.todev.rabbitmqmanagement.ui.connection.list;
 
-public interface AdminContract {
+import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import java.util.List;
+
+public interface ConnectionListContract {
   interface View {
+    void updateConnections(List<Connection> connections);
 
+    void showNetworkError();
   }
 
   interface Presenter {
-
+    void loadConnections();
   }
 }

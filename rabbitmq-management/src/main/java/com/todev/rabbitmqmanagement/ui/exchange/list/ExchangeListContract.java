@@ -15,14 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.admin;
+package com.todev.rabbitmqmanagement.ui.exchange.list;
 
-public interface AdminContract {
+import com.todev.rabbitmqmanagement.data.network.model.exchange.ExtendedExchange;
+import java.util.List;
+
+public interface ExchangeListContract {
   interface View {
+    void updateExchanges(List<ExtendedExchange> exchanges);
 
+    void showNetworkError();
   }
 
   interface Presenter {
-
+    void loadExchanges();
   }
 }

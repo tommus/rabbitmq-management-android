@@ -15,14 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.admin;
+package com.todev.rabbitmqmanagement.ui.exchange.list.entry;
 
-public interface AdminContract {
+import android.support.annotation.NonNull;
+import com.todev.rabbitmqmanagement.data.network.model.exchange.Exchange;
+
+public interface ExchangeListEntryContract {
   interface View {
+    void displayName(String name);
 
+    void displayType(Exchange.Type type);
   }
 
   interface Presenter {
-
+    void bind(@NonNull Exchange exchange);
   }
 }

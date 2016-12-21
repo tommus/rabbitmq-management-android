@@ -15,14 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.admin;
+package com.todev.rabbitmqmanagement.ui.channel.list.entry;
 
-public interface AdminContract {
+import android.support.annotation.NonNull;
+import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
+
+public interface ChannelListEntryContract {
   interface View {
+    void displayName(String host, int port, int channel);
 
+    void displayUsername(String type);
   }
 
   interface Presenter {
-
+    void bind(@NonNull Channel channel);
   }
 }

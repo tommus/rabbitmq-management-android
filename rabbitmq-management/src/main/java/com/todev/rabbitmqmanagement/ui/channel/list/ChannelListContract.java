@@ -15,14 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.admin;
+package com.todev.rabbitmqmanagement.ui.channel.list;
 
-public interface AdminContract {
+import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
+import java.util.List;
+
+public interface ChannelListContract {
   interface View {
+    void updateChannels(List<Channel> channels);
 
+    void showNetworkError();
   }
 
   interface Presenter {
-
+    void loadChannels();
   }
 }

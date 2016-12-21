@@ -15,14 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.admin;
+package com.todev.rabbitmqmanagement.ui.queue.list;
 
-public interface AdminContract {
+import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
+import java.util.List;
+
+public interface QueueListContract {
   interface View {
+    void updateQueues(List<ExtendedQueue> queues);
 
+    void showNetworkError();
   }
 
   interface Presenter {
-
+    void loadQueues();
   }
 }
