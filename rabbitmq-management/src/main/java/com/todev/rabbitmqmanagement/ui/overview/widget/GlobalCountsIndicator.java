@@ -44,7 +44,7 @@ public class GlobalCountsIndicator extends FrameLayout {
   public GlobalCountsIndicator(Context context, AttributeSet attrs) {
     super(context, attrs);
 
-    inflate(context, R.layout.view_global_counts_indicator, this);
+    inflate(context, R.layout.view_global_counts, this);
     initializeWidgets();
   }
 

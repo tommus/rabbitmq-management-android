@@ -46,7 +46,7 @@ public class MessageRatesIndicator extends MessagesIndicator {
 
   @Override
   protected int getLayout() {
-    return R.layout.view_message_rates_indicator;
+    return R.layout.view_message_rates;
   }
 
   @Override

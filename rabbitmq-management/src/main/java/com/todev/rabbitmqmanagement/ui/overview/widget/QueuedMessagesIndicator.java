@@ -40,7 +40,7 @@ public class QueuedMessagesIndicator extends MessagesIndicator {
 
   @Override
   protected int getLayout() {
-    return R.layout.view_queued_messages_indicator;
+    return R.layout.view_queued_messages;
   }
 
   @Override
