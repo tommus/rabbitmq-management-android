@@ -115,7 +115,7 @@ public class ConnectionListEntry extends BaseViewHolder {
     ScaleAnimation expand = new ScaleAnimation(1, 1, 0, 1);
     expand.setDuration(225);
     expand.setInterpolator(new AccelerateDecelerateInterpolator());
-    expand.setAnimationListener(new EndAnimationListener());
+    expand.setAnimationListener(new AnimationEndListener());
     detailsView.startAnimation(expand);
   }
 
@@ -124,7 +124,7 @@ public class ConnectionListEntry extends BaseViewHolder {
     ScaleAnimation collapse = new ScaleAnimation(1, 1, 1, 0);
     collapse.setDuration(195);
     collapse.setInterpolator(new AccelerateDecelerateInterpolator());
-    collapse.setAnimationListener(new EndAnimationListener(() -> {
+    collapse.setAnimationListener(new AnimationEndListener(() -> {
       detailsView.setVisibility(View.GONE);
     }));
     detailsView.startAnimation(collapse);
@@ -134,18 +134,18 @@ public class ConnectionListEntry extends BaseViewHolder {
     return context.getString(resId, formatArgs);
   }
 
-  private class EndAnimationListener implements Animation.AnimationListener {
+  private class AnimationEndListener implements Animation.AnimationListener {
     private final Runnable NOP_RUNNABLE = () -> {
       // Null Object Pattern.
     };
 
     private Runnable runnable = NOP_RUNNABLE;
 
-    private EndAnimationListener() {
+    private AnimationEndListener() {
       this(null);
     }
 
-    private EndAnimationListener(Runnable runnable) {
+    private AnimationEndListener(Runnable runnable) {
       this.runnable = Optional.ofNullable(runnable).orElse(NOP_RUNNABLE);
     }
 

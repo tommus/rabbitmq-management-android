@@ -17,13 +17,13 @@
  */
 package com.todev.rabbitmqmanagement.core.dagger;
 
-import com.todev.rabbitmqmanagement.ui.channel.ChannelFragment;
-import com.todev.rabbitmqmanagement.ui.connection.ConnectionFragment;
+import com.todev.rabbitmqmanagement.ui.channel.ChannelListFragment;
+import com.todev.rabbitmqmanagement.ui.connection.ConnectionListFragment;
 import com.todev.rabbitmqmanagement.ui.drawer.DrawerActivity;
-import com.todev.rabbitmqmanagement.ui.exchange.ExchangeFragment;
+import com.todev.rabbitmqmanagement.ui.exchange.ExchangeListFragment;
 import com.todev.rabbitmqmanagement.ui.login.LoginActivity;
 import com.todev.rabbitmqmanagement.ui.overview.OverviewFragment;
-import com.todev.rabbitmqmanagement.ui.queue.QueueFragment;
+import com.todev.rabbitmqmanagement.ui.queue.QueueListFragment;
 
 public interface AppGraph {
   void inject(LoginActivity activity);
@@ -32,11 +32,11 @@ public interface AppGraph {
 
   void inject(OverviewFragment fragment);
 
-  void inject(ConnectionFragment fragment);
+  void inject(ConnectionListFragment fragment);
 
-  void inject(ChannelFragment fragment);
+  void inject(ChannelListFragment fragment);
 
-  void inject(ExchangeFragment fragment);
+  void inject(ExchangeListFragment fragment);
 
-  void inject(QueueFragment fragment);
+  void inject(QueueListFragment fragment);
 }

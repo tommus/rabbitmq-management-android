@@ -33,19 +33,19 @@ import com.todev.rabbitmqmanagement.ui.BaseFragment;
 import java.util.List;
 import javax.inject.Inject;
 
-public class ExchangeFragment extends BaseFragment implements ExchangeContract.View {
+public class ExchangeListFragment extends BaseFragment implements ExchangeListContract.View {
   @Inject RabbitMqService rabbitMqService;
 
   @BindView(R.id.exchanges_list) RecyclerView exchangesView;
 
-  private ExchangePresenter presenter;
+  private ExchangeListPresenter presenter;
   private ExchangeListAdapter adapter;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     RabbitMqManagementApplication.get(getContext()).getComponent().inject(this);
     super.onCreate(savedInstanceState);
-    presenter = new ExchangePresenter(rabbitMqService);
+    presenter = new ExchangeListPresenter(rabbitMqService);
     presenter.setView(this);
   }
 

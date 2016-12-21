@@ -35,11 +35,11 @@ import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
 import com.todev.rabbitmqmanagement.ui.BaseActivity;
 import com.todev.rabbitmqmanagement.ui.admin.AdminFragment;
-import com.todev.rabbitmqmanagement.ui.channel.ChannelFragment;
-import com.todev.rabbitmqmanagement.ui.connection.ConnectionFragment;
-import com.todev.rabbitmqmanagement.ui.exchange.ExchangeFragment;
+import com.todev.rabbitmqmanagement.ui.channel.ChannelListFragment;
+import com.todev.rabbitmqmanagement.ui.connection.ConnectionListFragment;
+import com.todev.rabbitmqmanagement.ui.exchange.ExchangeListFragment;
 import com.todev.rabbitmqmanagement.ui.overview.OverviewFragment;
-import com.todev.rabbitmqmanagement.ui.queue.QueueFragment;
+import com.todev.rabbitmqmanagement.ui.queue.QueueListFragment;
 
 public class DrawerActivity extends BaseActivity implements DrawerContract.View {
   @BindView(R.id.drawer_layout) DrawerLayout drawerLayoutView;
@@ -157,22 +157,22 @@ public class DrawerActivity extends BaseActivity implements DrawerContract.View 
 
   @Override
   public void showConnectionsFragment() {
-    showFragment(new ConnectionFragment());
+    showFragment(new ConnectionListFragment());
   }
 
   @Override
   public void showChannelsFragment() {
-    showFragment(new ChannelFragment());
+    showFragment(new ChannelListFragment());
   }
 
   @Override
   public void showExchangesFragment() {
-    showFragment(new ExchangeFragment());
+    showFragment(new ExchangeListFragment());
   }
 
   @Override
   public void showQueuesFragment() {
-    showFragment(new QueueFragment());
+    showFragment(new QueueListFragment());
   }
 
   @Override

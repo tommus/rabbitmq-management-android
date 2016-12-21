@@ -33,19 +33,19 @@ import com.todev.rabbitmqmanagement.ui.BaseFragment;
 import java.util.List;
 import javax.inject.Inject;
 
-public class QueueFragment extends BaseFragment implements QueueContract.View {
+public class QueueListFragment extends BaseFragment implements QueueListContract.View {
   @Inject RabbitMqService rabbitMqService;
 
   @BindView(R.id.queues_list) RecyclerView queuesView;
 
-  private QueuePresenter presenter;
+  private QueueListPresenter presenter;
   private QueueListAdapter adapter;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     RabbitMqManagementApplication.get(getContext()).getComponent().inject(this);
     super.onCreate(savedInstanceState);
-    presenter = new QueuePresenter(rabbitMqService);
+    presenter = new QueueListPresenter(rabbitMqService);
     presenter.setView(this);
   }
 

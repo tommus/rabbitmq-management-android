@@ -20,7 +20,7 @@ package com.todev.rabbitmqmanagement.ui.queue;
 import com.todev.rabbitmqmanagement.data.network.model.queue.ExtendedQueue;
 import java.util.List;
 
-public class QueueContract {
+public class QueueListContract {
   interface View {
     void updateQueues(List<ExtendedQueue> queues);
 

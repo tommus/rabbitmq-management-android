@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection;
+package com.todev.rabbitmqmanagement.ui.channel;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,46 +28,46 @@ import butterknife.BindView;
 import com.todev.rabbitmqmanagement.R;
 import com.todev.rabbitmqmanagement.RabbitMqManagementApplication;
 import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
-import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import com.todev.rabbitmqmanagement.data.network.model.channel.Channel;
 import com.todev.rabbitmqmanagement.ui.BaseFragment;
 import java.util.List;
 import javax.inject.Inject;
 
-public class ConnectionFragment extends BaseFragment implements ConnectionContract.View {
+public class ChannelListFragment extends BaseFragment implements ChannelListContract.View {
   @Inject RabbitMqService rabbitMqService;
 
-  @BindView(R.id.connections_list) RecyclerView connectionsView;
+  @BindView(R.id.channels_list) RecyclerView channelsView;
 
-  private ConnectionPresenter presenter;
-  private ConnectionListAdapter adapter;
+  private ChannelListPresenter presenter;
+  private ChannelListAdapter adapter;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     RabbitMqManagementApplication.get(getContext()).getComponent().inject(this);
     super.onCreate(savedInstanceState);
-    presenter = new ConnectionPresenter(rabbitMqService);
+    presenter = new ChannelListPresenter(rabbitMqService);
     presenter.setView(this);
   }
 
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.fragment_connection, container, false);
+    return inflater.inflate(R.layout.fragment_channel, container, false);
   }
 
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    adapter = new ConnectionListAdapter();
-    connectionsView.setLayoutManager(new LinearLayoutManager(getContext()));
-    connectionsView.setAdapter(adapter);
+    adapter = new ChannelListAdapter();
+    channelsView.setLayoutManager(new LinearLayoutManager(getContext()));
+    channelsView.setAdapter(adapter);
   }
 
   @Override
   public void onStart() {
     super.onStart();
-    presenter.loadConnections();
+    presenter.loadChannels();
   }
 
   @Override
@@ -77,8 +77,8 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
   }
 
   @Override
-  public void updateConnections(List<Connection> connections) {
-    adapter.setConnections(connections);
+  public void updateChannels(List<Channel> channels) {
+    adapter.setChannels(channels);
   }
 
   @Override

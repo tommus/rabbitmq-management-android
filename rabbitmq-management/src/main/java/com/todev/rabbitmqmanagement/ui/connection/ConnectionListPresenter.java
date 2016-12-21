@@ -15,26 +15,26 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.channel;
+package com.todev.rabbitmqmanagement.ui.connection;
 
 import com.todev.rabbitmqmanagement.data.network.RabbitMqService;
 import com.todev.rabbitmqmanagement.ui.BaseRxPresenter;
 import lombok.Setter;
 
-public class ChannelPresenter extends BaseRxPresenter implements ChannelContract.Presenter {
-  @Setter ChannelContract.View view;
+public class ConnectionListPresenter extends BaseRxPresenter implements ConnectionListContract.Presenter {
+  @Setter ConnectionListContract.View view;
 
   private RabbitMqService rabbitMqService;
 
-  public ChannelPresenter(RabbitMqService rabbitMqService) {
+  public ConnectionListPresenter(RabbitMqService rabbitMqService) {
     this.rabbitMqService = rabbitMqService;
   }
 
   @Override
-  public void loadChannels() {
-    disposable.add(rabbitMqService.getChannels()
+  public void loadConnections() {
+    disposable.add(rabbitMqService.getConnections()
         .subscribeOn(getIoScheduler())
         .observeOn(getObserveScheduler())
-        .subscribe(channels -> view.updateChannels(channels), errors -> view.showNetworkError()));
+        .subscribe(connections -> view.updateConnections(connections), errors -> view.showNetworkError()));
   }
 }

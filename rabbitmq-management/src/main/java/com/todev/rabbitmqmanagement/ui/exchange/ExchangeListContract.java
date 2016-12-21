@@ -15,19 +15,19 @@
  * See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.todev.rabbitmqmanagement.ui.connection;
+package com.todev.rabbitmqmanagement.ui.exchange;
 
-import com.todev.rabbitmqmanagement.data.network.model.connection.Connection;
+import com.todev.rabbitmqmanagement.data.network.model.exchange.ExtendedExchange;
 import java.util.List;
 
-public class ConnectionContract {
+public class ExchangeListContract {
   interface View {
-    void updateConnections(List<Connection> connections);
+    void updateExchanges(List<ExtendedExchange> exchanges);
 
     void showNetworkError();
   }
 
   interface Presenter {
-    void loadConnections();
+    void loadExchanges();
   }
 }
