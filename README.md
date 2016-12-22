@@ -4,7 +4,7 @@ The main purpose of this projects is to allow view and manage data provided by R
 
 ## Requirements
 
-This application targets Android (4.0) Ice Cream Sandwich and newer.
+This application targets Android (4.1) Jelly Bean and newer.
 
 ## Dependencies
 
