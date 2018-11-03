@@ -1,192 +1,176 @@
-buildscript {
-  repositories {
-    mavenCentral()
-    maven {
-      url 'https://plugins.gradle.org/m2/'
-    }
-  }
+//region Startup Plugins
 
-  dependencies {
-    classpath 'me.tatarka:gradle-retrolambda:3.3.1'
-    classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
-    classpath 'com.frogermcs.androiddevmetrics:androiddevmetrics-plugin:0.3.1'
-    classpath 'com.google.gms:google-services:3.0.0'
-  }
-}
+apply plugin: "com.android.application"
 
-repositories {
-  mavenCentral()
-  maven { url "https://jitpack.io" }
-}
+//endregion
 
-apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.jakewharton.hugo'
-apply plugin: 'com.frogermcs.androiddevmetrics'
+//region Android
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.2"
 
-  defaultConfig {
-    applicationId "com.todev.rabbitmqmanagement"
-    versionCode 1
-    versionName "0.0.5"
-
-    minSdkVersion 16
-    targetSdkVersion 25
-
-    multiDexEnabled true
-  }
+  //region Build Configuration
 
   buildTypes {
     debug {
-      versionNameSuffix '-todev'
-      debuggable true
-      testCoverageEnabled true
+      useProguard false
+      minifyEnabled false
+      shrinkResources false
     }
-
     release {
+      useProguard true
       minifyEnabled true
       shrinkResources true
-
-      proguardFile rootProject.file('settings/proguard/dbflow.pro')
-      proguardFile rootProject.file('settings/proguard/fragmentargs.pro')
-      proguardFile rootProject.file('settings/proguard/icepick.pro')
-      proguardFile rootProject.file('settings/proguard/lombok.pro')
-      proguardFile rootProject.file('settings/proguard/okhttp3.pro')
-      proguardFile rootProject.file('settings/proguard/okio.pro')
-      proguardFile rootProject.file('settings/proguard/joda-time.pro')
-      proguardFile rootProject.file('settings/proguard/jackson.pro')
-      proguardFile rootProject.file('settings/proguard/picasso.pro')
-      proguardFile rootProject.file('settings/proguard/retrofit2.pro')
-      proguardFile rootProject.file('settings/proguard/retrolambda.pro')
-      proguardFile rootProject.file('settings/proguard/streamsupport.pro')
-      proguardFile rootProject.file('settings/proguard/support-design.pro')
-      proguardFile rootProject.file('settings/proguard/support-v4.pro')
-      proguardFile rootProject.file('settings/proguard/support-v7-appcompat.pro')
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+          "proguard-rules.pro"
     }
   }
 
-  productFlavors {
-    development {
-      buildConfigField 'Boolean', 'IS_DEVELOPMENT', 'true'
-    }
+  //endregion
 
-    production {
-      buildConfigField 'Boolean', 'IS_DEVELOPMENT', 'false'
-    }
-  }
+  //region Compile Options
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
 
-  packagingOptions {
-    exclude 'META-INF/LICENSE.txt'
-    exclude 'META-INF/license.txt'
-    exclude 'META-INF/LICENSE'
-    exclude 'META-INF/NOTICE.txt'
-    exclude 'META-INF/notice.txt'
+  compileSdkVersion deps.build_versions.compile_sdk
+
+  //endregion
+
+  //region Default Config
+
+  defaultConfig {
+    minSdkVersion deps.build_versions.min_sdk
+    targetSdkVersion deps.build_versions.target_sdk
+    multiDexEnabled true
+    applicationId "com.todev.rabbitmqmanagement"
+    dimension "irrelevant"
   }
 
-  lintOptions {
-    disable 'InvalidPackage'
+  //endregion
+
+  //region Flavor Dimensions
+
+  flavorDimensions "irrelevant"
+
+  //endregion
+
+  //region Product Flavors
+
+  productFlavors {
+    dev {
+      applicationIdSuffix ".dev"
+      versionCode = getAutoVersionCode()
+      versionName = getAutoVersionName() + " (dev)"
+      resValue "string", "app_name", getProjectName() + " Development"
+    }
+    prod {
+      versionCode = getAutoVersionCode()
+      versionName = getAutoVersionName()
+      resValue "string", "app_name", getProjectName()
+    }
   }
+
+  //endregion
 }
 
-ext.supportVersion = '25.1.0'
-ext.daggerVersion = '2.8'
-ext.butterknifeVersion = '8.4.0'
-ext.icepickVersion = '3.2.0'
-ext.intentbuilderVersion = '0.14.0'
-ext.fragmentargsVersion = '3.0.2'
-ext.dbflowVersion = '4.0.0-beta3'
-ext.retrofitVersion = '2.1.0'
-ext.stethoVersion = '1.4.2'
+//endregion
 
-dependencies {
-  compile "com.android.support:appcompat-v7:$supportVersion"
-  compile "com.android.support:design:$supportVersion"
-  compile "com.android.support:recyclerview-v7:$supportVersion"
-  compile "com.android.support:cardview-v7:$supportVersion"
-  compile 'com.android.support:multidex:1.0.1'
+//ext.supportVersion = "25.1.0"
+//ext.daggerVersion = "2.8"
+//ext.butterknifeVersion = "8.4.0"
+//ext.icepickVersion = "3.2.0"
+//ext.intentbuilderVersion = "0.14.0"
+//ext.fragmentargsVersion = "3.0.2"
+//ext.dbflowVersion = "4.0.0-beta3"
+//ext.retrofitVersion = "2.1.0"
+//ext.stethoVersion = "1.4.2"
 
-  // Reactive extensions.
-  compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-  compile 'io.reactivex.rxjava2:rxjava:2.0.2'
+//region Dependencies
 
-  // Support.
-  provided 'org.projectlombok:lombok:1.16.12'
-  compile 'net.sourceforge.streamsupport:streamsupport:1.5.2'
+//dependencies {
+//  compile "com.android.support:appcompat-v7:$supportVersion"
+//  compile "com.android.support:design:$supportVersion"
+//  compile "com.android.support:recyclerview-v7:$supportVersion"
+//  compile "com.android.support:cardview-v7:$supportVersion"
+//  compile "com.android.support:multidex:1.0.1"
+//
+//  // Reactive extensions.
+//  compile "io.reactivex.rxjava2:rxandroid:2.0.1"
+//  compile "io.reactivex.rxjava2:rxjava:2.0.2"
+//
+//  // Support.
+//  provided "org.projectlombok:lombok:1.16.12"
+//  compile "net.sourceforge.streamsupport:streamsupport:1.5.2"
+//
+//  // Dependency injection.
+//  compile "com.google.dagger:dagger:$daggerVersion"
+//  annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+//
+//  // View injection.
+//  compile "com.jakewharton:butterknife:$butterknifeVersion"
+//  annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+//
+//  // Persistence of instance states.
+//  compile "frankiesardo:icepick:$icepickVersion"
+//  provided "frankiesardo:icepick-processor:$icepickVersion"
+//
+//  // Intents handling.
+//  compile "se.emilsjolander:intentbuilder-api:$intentbuilderVersion"
+//  annotationProcessor "se.emilsjolander:intentbuilder-compiler:$intentbuilderVersion"
+//
+//  // Fragments handling.
+//  compile "com.hannesdorfmann.fragmentargs:annotation:$fragmentargsVersion"
+//  annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$fragmentargsVersion"
+//
+//  // Database ORM.
+//  compile "com.github.Raizlabs.DBFlow:dbflow-core:$dbflowVersion"
+//  compile "com.github.Raizlabs.DBFlow:dbflow:$dbflowVersion"
+//  annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflowVersion"
+//
+//  // Networking.
+//  compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+//  compile "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
+//  compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
+//  compile "com.squareup.picasso:picasso:2.5.2"
+//
+//  // Time handling.
+//  compile "joda-time:joda-time:2.9.6"
+//
+//  // Charts.
+//  compile "com.github.philjay:mpandroidchart:v3.0.1"
+//
+//  // Logger.
+//  compile "com.jakewharton.timber:timber:4.4.0"
+//
+//  // Misc.
+//  compile "org.apache.commons:commons-lang3:3.5"
+//
+//  // Memory leak detection.
+//  productionCompile "com.squareup.leakcanary:leakcanary-android-no-op:1.5"
+//
+//  // -- Development flavor only. --
+//
+//  // FPS measurement.
+//  developmentCompile "jp.wasabeef:takt:1.0.3"
+//
+//  // Browser debugging.
+//  developmentCompile "com.facebook.stetho:stetho:$stethoVersion"
+//  developmentCompile "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+//
+//  // Memory leak detection
+//  developmentCompile "com.squareup.leakcanary:leakcanary-android:1.5"
+//
+//  // -- Test flavor only. --
+//
+//  // Unit tests.
+//  testCompile "junit:junit:4.12"
+//  testCompile "com.google.truth:truth:0.30"
+//  testCompile "org.mockito:mockito-core:2.3.5"
+//  testCompile "org.robolectric:robolectric:3.1.4"
+//  testCompile "org.robolectric:shadows-multidex:3.1.4"
+//  testCompile "com.squareup.leakcanary:leakcanary-android-no-op:1.5"
+//}
 
-  // Dependency injection.
-  compile "com.google.dagger:dagger:$daggerVersion"
-  annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
-
-  // View injection.
-  compile "com.jakewharton:butterknife:$butterknifeVersion"
-  annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
-
-  // Persistence of instance states.
-  compile "frankiesardo:icepick:$icepickVersion"
-  provided "frankiesardo:icepick-processor:$icepickVersion"
-
-  // Intents handling.
-  compile "se.emilsjolander:intentbuilder-api:$intentbuilderVersion"
-  annotationProcessor "se.emilsjolander:intentbuilder-compiler:$intentbuilderVersion"
-
-  // Fragments handling.
-  compile "com.hannesdorfmann.fragmentargs:annotation:$fragmentargsVersion"
-  annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$fragmentargsVersion"
-
-  // Database ORM.
-  compile "com.github.Raizlabs.DBFlow:dbflow-core:$dbflowVersion"
-  compile "com.github.Raizlabs.DBFlow:dbflow:$dbflowVersion"
-  annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflowVersion"
-
-  // Networking.
-  compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
-  compile "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
-  compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-  compile 'com.squareup.picasso:picasso:2.5.2'
-
-  // Time handling.
-  compile 'joda-time:joda-time:2.9.6'
-
-  // Charts.
-  compile "com.github.philjay:mpandroidchart:v3.0.1"
-
-  // Logger.
-  compile 'com.jakewharton.timber:timber:4.4.0'
-
-  // Misc.
-  compile 'org.apache.commons:commons-lang3:3.5'
-
-  // Memory leak detection.
-  productionCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-
-  // -- Development flavor only. --
-
-  // FPS measurement.
-  developmentCompile 'jp.wasabeef:takt:1.0.3'
-
-  // Browser debugging.
-  developmentCompile "com.facebook.stetho:stetho:$stethoVersion"
-  developmentCompile "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
-
-  // Memory leak detection
-  developmentCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-
-  // -- Test flavor only. --
-
-  // Unit tests.
-  testCompile 'junit:junit:4.12'
-  testCompile 'com.google.truth:truth:0.30'
-  testCompile 'org.mockito:mockito-core:2.3.5'
-  testCompile 'org.robolectric:robolectric:3.1.4'
-  testCompile "org.robolectric:shadows-multidex:3.1.4"
-  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-}
+//endregion

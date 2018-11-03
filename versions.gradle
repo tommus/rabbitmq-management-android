@@ -1,0 +1,41 @@
+//region Dependencies
+
+def deps = [:]
+ext.deps = deps
+
+//endregion
+
+//region Versions
+
+def versions = [:]
+versions.android_gradle_plugin = "3.2.1"
+deps.versions = versions
+
+//endregion
+
+//region Build
+
+def build = [:]
+build.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.build = build
+
+def build_versions = [:]
+build_versions.compile_sdk = 28
+build_versions.min_sdk = 21
+build_versions.target_sdk = 28
+deps.build_versions = build_versions
+
+//endregion
+
+//region Repositories
+
+static def addRepos(RepositoryHandler handler) {
+  handler.google()
+  handler.jcenter()
+  handler.mavenCentral()
+  handler.maven { url "https://jitpack.io" }
+}
+
+ext.addRepos = this.&addRepos
+
+//endregion
