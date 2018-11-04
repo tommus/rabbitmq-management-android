@@ -1,11 +1,11 @@
-package com.todev.rabbitmqmanagement.presentation.splash;
+package co.windly.rabbitmqmanagement.presentation.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import co.windly.limbo.activity.base.LimboActivity;
-import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.presentation.configure.ConfigureActivity;
+import co.windly.rabbitmqmanagement.R;
+import co.windly.rabbitmqmanagement.presentation.configure.ConfigureActivity;
 
 public class SplashActivity extends LimboActivity<SplashView, SplashPresenter> implements SplashView {
 

@@ -1,4 +1,4 @@
-package com.todev.rabbitmqmanagement.presentation.configure.login;
+package co.windly.rabbitmqmanagement.presentation.configure.login;
 
 import co.windly.limbo.fragment.base.LimboFragmentView;
 

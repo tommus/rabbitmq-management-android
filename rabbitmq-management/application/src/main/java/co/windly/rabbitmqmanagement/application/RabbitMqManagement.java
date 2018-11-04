@@ -1,4 +1,4 @@
-package com.todev.rabbitmqmanagement.application;
+package co.windly.rabbitmqmanagement.application;
 
 import android.app.Application;
 import co.windly.rabbitmqmanagement.domain.DomainComponent;

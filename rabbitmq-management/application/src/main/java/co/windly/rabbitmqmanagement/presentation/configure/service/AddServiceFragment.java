@@ -1,9 +1,9 @@
-package com.todev.rabbitmqmanagement.presentation.configure.service;
+package co.windly.rabbitmqmanagement.presentation.configure.service;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import co.windly.limbo.fragment.base.LimboFragment;
-import com.todev.rabbitmqmanagement.R;
+import co.windly.rabbitmqmanagement.R;
 
 public class AddServiceFragment extends LimboFragment<AddServiceView, AddServicePresenter> implements AddServiceView {
 

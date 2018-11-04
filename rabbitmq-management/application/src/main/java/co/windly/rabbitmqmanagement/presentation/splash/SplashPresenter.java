@@ -1,4 +1,4 @@
-package com.todev.rabbitmqmanagement.presentation.splash;
+package co.windly.rabbitmqmanagement.presentation.splash;
 
 import androidx.annotation.NonNull;
 import co.windly.limbo.activity.base.LimboActivityPresenter;

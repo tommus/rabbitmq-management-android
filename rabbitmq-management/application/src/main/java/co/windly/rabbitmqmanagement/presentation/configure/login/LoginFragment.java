@@ -1,11 +1,11 @@
-package com.todev.rabbitmqmanagement.presentation.configure.login;
+package co.windly.rabbitmqmanagement.presentation.configure.login;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import butterknife.OnClick;
 import co.windly.limbo.fragment.base.LimboFragment;
-import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.presentation.configure.service.AddServiceFragment;
+import co.windly.rabbitmqmanagement.R;
+import co.windly.rabbitmqmanagement.presentation.configure.service.AddServiceFragment;
 
 public class LoginFragment extends LimboFragment<LoginView, LoginPresenter> implements LoginView {
 

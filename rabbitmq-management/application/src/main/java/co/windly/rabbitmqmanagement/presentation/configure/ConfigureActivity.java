@@ -1,12 +1,12 @@
-package com.todev.rabbitmqmanagement.presentation.configure;
+package co.windly.rabbitmqmanagement.presentation.configure;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import co.windly.limbo.activity.fragment.LimboFragmentActivity;
 import co.windly.limbo.fragment.base.LimboFragment;
-import com.todev.rabbitmqmanagement.R;
-import com.todev.rabbitmqmanagement.presentation.configure.login.LoginFragment;
-import com.todev.rabbitmqmanagement.presentation.configure.service.AddServiceFragment;
+import co.windly.rabbitmqmanagement.R;
+import co.windly.rabbitmqmanagement.presentation.configure.login.LoginFragment;
+import co.windly.rabbitmqmanagement.presentation.configure.service.AddServiceFragment;
 
 public class ConfigureActivity extends LimboFragmentActivity<ConfigureView, ConfigurePresenter> {
 

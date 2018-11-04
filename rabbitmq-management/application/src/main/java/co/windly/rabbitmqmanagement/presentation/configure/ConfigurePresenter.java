@@ -1,4 +1,4 @@
-package com.todev.rabbitmqmanagement.presentation.configure;
+package co.windly.rabbitmqmanagement.presentation.configure;
 
 import co.windly.limbo.activity.fragment.LimboFragmentActivityPresenter;
 

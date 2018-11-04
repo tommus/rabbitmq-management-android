@@ -1,4 +1,4 @@
-package com.todev.rabbitmqmanagement.presentation.splash;
+package co.windly.rabbitmqmanagement.presentation.splash;
 
 import co.windly.limbo.activity.base.LimboActivityView;
 
