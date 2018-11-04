@@ -83,6 +83,12 @@ dependencies {
 
   //endregion
 
+  //region Dependency Injection
+
+  annotationProcessor deps.dagger.compiler
+
+  //endregion
+
   //region Networking
 
   implementation deps.retrofit.jackson

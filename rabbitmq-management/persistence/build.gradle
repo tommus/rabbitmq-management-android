@@ -91,6 +91,12 @@ dependencies {
 
   //endregion
 
+  //region Dependency Injection
+
+  annotationProcessor deps.dagger.compiler
+
+  //endregion
+
   //region Shared Preferences
 
   //  api deps.androidx_preferences

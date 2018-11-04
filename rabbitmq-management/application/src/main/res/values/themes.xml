@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <eat-comment/>
+
+  <!-- region Theme -->
+
+  <style name="RabbitMqManagement.Theme" parent="Theme.MaterialComponents.Light">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorPrimary</item>
+  </style>
+
+  <!-- endregion -->
+
+  <!-- region Theme - Fullscreen -->
+
+  <style name="RabbitMqManagement.Theme.Fullscreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorPrimary</item>
+  </style>
+
+  <!-- endregion -->
+
+</resources>

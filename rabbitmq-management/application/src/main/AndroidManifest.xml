@@ -20,7 +20,7 @@
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
       android:supportsRtl="true"
-      android:theme="@style/RabbitmqManagement"
+      android:theme="@style/RabbitMqManagement.Theme"
       tools:ignore="GoogleAppIndexingWarning">
 
     <!-- region Activities -->

@@ -4,8 +4,6 @@
 
   <eat-comment/>
 
-  <string name="app_name_main" translatable="false">RabbitMQ Management</string>
-
   <string name="yes">Yes</string>
   <string name="no">No</string>
 
