@@ -9,7 +9,32 @@ ext.deps = deps
 
 def versions = [:]
 versions.android_gradle_plugin = "3.2.1"
+versions.butter_knife = "9.0.0-rc1"
+versions.commons_lang3 = "3.8.1"
+versions.constraint = "1.1.2"
+versions.dagger = "2.19"
+versions.javax = "10.0-b28"
+versions.joda_time = "2.10"
+versions.limbo = "0.5.4"
+versions.material = "1.0.0"
+versions.model_mapper = "2.3.0"
+versions.multidex = "2.0.0"
+versions.okhttp_logging_interceptor = "3.11.0"
+versions.retrofit = "2.4.0"
+versions.rx_android = "2.1.0"
+versions.rx_java = "2.2.2"
+versions.stetho = "1.5.0"
+versions.timber = "4.7.1"
 deps.versions = versions
+
+//endregion
+
+//region AndroidX
+
+def androidx = [:]
+androidx.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint"
+androidx.multidex = "androidx.multidex:multidex:$versions.multidex"
+deps.androidx = androidx
 
 //endregion
 
@@ -17,6 +42,7 @@ deps.versions = versions
 
 def build = [:]
 build.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+build.butterknife_plugin = "com.jakewharton:butterknife-gradle-plugin:$versions.butter_knife"
 deps.build = build
 
 def build_versions = [:]
@@ -24,6 +50,67 @@ build_versions.compile_sdk = 28
 build_versions.min_sdk = 21
 build_versions.target_sdk = 28
 deps.build_versions = build_versions
+
+//endregion
+
+//region Dagger
+
+def dagger = [:]
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+deps.dagger = dagger
+
+//endregion
+
+//region Facebook
+
+def facebook = [:]
+facebook.stetho = "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
+deps.facebook = facebook
+
+//endregion
+
+//region Miscellaneous
+
+def misc = [:]
+misc.butter_knife = "com.jakewharton:butterknife:$versions.butter_knife"
+misc.butter_knife_compiler = "com.jakewharton:butterknife-compiler:$versions.butter_knife"
+misc.commons_lang = "org.apache.commons:commons-lang3:$versions.commons_lang3"
+misc.javax = "org.glassfish:javax.annotation:$versions.javax"
+misc.joda_time = "joda-time:joda-time:$versions.joda_time"
+misc.limbo = "com.github.tommus:limbo:$versions.limbo"
+misc.model_mapper = "org.modelmapper:modelmapper:$versions.model_mapper"
+misc.timber = "com.jakewharton.timber:timber:$versions.timber"
+deps.misc = misc
+
+//endregion
+
+//region Reactive extensions
+
+def rx = [:]
+rx.android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+rx.java = "io.reactivex.rxjava2:rxjava:$versions.rx_java"
+deps.rx = rx
+
+//endregion
+
+//region Retrofit
+
+def retrofit = [:]
+retrofit.jackson = "com.squareup.retrofit2:converter-jackson:$versions.retrofit"
+retrofit.logging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_logging_interceptor"
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+deps.retrofit = retrofit
+
+//endregion
+
+//region Ui
+
+def ui = [:]
+ui.material = "com.google.android.material:material:$versions.material"
+deps.ui = ui
 
 //endregion
 

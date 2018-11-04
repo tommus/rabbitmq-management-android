@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.todev.rabbitmqmanagement">
+
+  <!-- region Permissions -->
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+
+  <!-- endregion -->
+
+  <!-- region Application -->
+
+  <application
+      android:name=".application.RabbitMqManagement"
+      android:allowBackup="true"
+      android:fullBackupContent="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:supportsRtl="true"
+      android:theme="@style/RabbitmqManagement"
+      tools:ignore="GoogleAppIndexingWarning">
+
+    <!-- region Activities -->
+
+    <activity
+        android:name=".presentation.splash.SplashActivity"
+        android:screenOrientation="portrait">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+
+    <!-- endregion -->
+
+  </application>
+
+  <!-- endregion -->
+
+</manifest>

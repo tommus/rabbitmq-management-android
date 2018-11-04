@@ -9,6 +9,7 @@ buildscript {
   }
   dependencies {
     classpath deps.build.android_gradle_plugin
+    classpath deps.build.butterknife_plugin
   }
 }
 
@@ -36,7 +37,7 @@ task clean(type: Delete) {
 
 @SuppressWarnings("GroovyUnusedDeclaration")
 static def getProjectName() {
-  return "Bookstore"
+  return "RabbitMQ Management"
 }
 
 //endregion

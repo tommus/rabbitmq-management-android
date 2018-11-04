@@ -1,0 +1,95 @@
+//region Startup Plugins
+
+apply plugin: "com.android.library"
+
+//endregion
+
+//region Android
+
+android {
+
+  //region Build Configuration
+
+  buildTypes {
+    debug {
+      useProguard false
+      minifyEnabled false
+      shrinkResources false
+    }
+    release {
+      useProguard true
+      minifyEnabled true
+      shrinkResources false
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+          "proguard-rules.pro"
+    }
+  }
+
+  //endregion
+
+  //region Compile Options
+
+  compileSdkVersion deps.build_versions.compile_sdk
+
+  //endregion
+
+  //region Flavor Dimensions
+
+  flavorDimensions "irrelevant"
+
+  //endregion
+
+  //region Default Config
+
+  defaultConfig {
+    minSdkVersion deps.build_versions.min_sdk
+    targetSdkVersion deps.build_versions.target_sdk
+    versionCode getAutoVersionCode()
+    versionName getAutoVersionName()
+    dimension "irrelevant"
+  }
+
+  //endregion
+
+  //region Product Flavors
+
+  productFlavors {
+    dev {
+      // Do not remove empty configuration.
+    }
+    prod {
+      // Do not remove empty configuration.
+    }
+  }
+
+  //endregion
+}
+
+//endregion
+
+//region Dependencies
+
+dependencies {
+
+  //region Application Files
+
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+
+  //endregion
+
+  //region Application Modules
+
+  api project(":utility")
+  implementation project(":network")
+  implementation project(":persistence")
+
+  //endregion
+
+  //region Mapping
+
+  implementation deps.misc.model_mapper
+
+  //endregion
+}
+
+//endregion

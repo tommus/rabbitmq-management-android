@@ -1,1 +1,11 @@
-include "rabbitmq-management"
+include ":application"
+include ":domain"
+include ":network"
+include ":persistence"
+include ":utility"
+
+project(":application").projectDir = new File(rootDir, "rabbitmq-management/application")
+project(":domain").projectDir = new File(rootDir, "rabbitmq-management/domain")
+project(":network").projectDir = new File(rootDir, "rabbitmq-management/network")
+project(":persistence").projectDir = new File(rootDir, "rabbitmq-management/persistence")
+project(":utility").projectDir = new File(rootDir, "rabbitmq-management/utility")
