@@ -4,7 +4,7 @@ The main purpose of this projects is to allow view and manage data provided by R
 
 ## Requirements
 
-This application targets Android (4.1) Jelly Bean and newer.
+This application targets Android (5.0) Lollipop and newer.
 
 ## Dependencies
 
@@ -15,9 +15,8 @@ This application takes advantage of the fantastic work of the authors of such li
 3. [RxJava 2](https://github.com/ReactiveX/RxJava/tree/2.x) by Netflix
 4. [Joda-Time](https://github.com/JodaOrg/joda-time) by Joda.org
 5. [Jackson](https://github.com/FasterXML/jackson) by FasterXML
-6. [DBFlow](https://github.com/Raizlabs/DBFlow) by Andrew Grosner
-7. [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) by Philipp Jahoda
-8. [Stetho](https://github.com/facebook/stetho) by Facebook
+6. [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) by Philipp Jahoda
+7. [Stetho](https://github.com/facebook/stetho) by Facebook
 
 Along with above mentioned tools, in this project has also been used other dependencies. Please do not hesitate to take a look at modules `build.gradle` files for more information.
 
