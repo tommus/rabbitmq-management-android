@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import co.windly.limbo.activity.fragment.LimboFragmentActivity;
 import co.windly.limbo.fragment.base.LimboFragment;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.presentation.configure.login.LoginFragment;
 import com.todev.rabbitmqmanagement.presentation.configure.service.AddServiceFragment;
 
 public class ConfigureActivity extends LimboFragmentActivity<ConfigureView, ConfigurePresenter> {
@@ -49,7 +50,7 @@ public class ConfigureActivity extends LimboFragmentActivity<ConfigureView, Conf
 
     // In case if not added - load.
     if (fragment == null) {
-      loadRootFragment(R.id.fragmentContainer, AddServiceFragment.createInstance());
+      loadRootFragment(R.id.fragmentContainer, LoginFragment.createInstance());
     }
   }
 

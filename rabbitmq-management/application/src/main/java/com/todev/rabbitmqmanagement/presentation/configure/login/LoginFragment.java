@@ -2,8 +2,10 @@ package com.todev.rabbitmqmanagement.presentation.configure.login;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import butterknife.OnClick;
 import co.windly.limbo.fragment.base.LimboFragment;
 import com.todev.rabbitmqmanagement.R;
+import com.todev.rabbitmqmanagement.presentation.configure.service.AddServiceFragment;
 
 public class LoginFragment extends LimboFragment<LoginView, LoginPresenter> implements LoginView {
 
@@ -37,6 +39,38 @@ public class LoginFragment extends LimboFragment<LoginView, LoginPresenter> impl
   @Override
   public LoginPresenter createPresenter() {
     return new LoginPresenter();
+  }
+
+  //endregion
+
+  //region Navigation
+
+  @Override
+  public void navigateToAddServiceView() {
+
+    // Prepare target fragment.
+    final AddServiceFragment fragment = AddServiceFragment.createInstance();
+
+    // Navigate to target fragment.
+    start(fragment);
+  }
+
+  //endregion
+
+  //region Add Service
+
+  @OnClick(R.id.serviceAddButton)
+  void onServiceAddButtonClicked() {
+    getPresenter().onServiceAddButtonClicked();
+  }
+
+  //endregion
+
+  //region Sign In
+
+  @OnClick(R.id.loginButton)
+  void onLoginButtonClicked() {
+    getPresenter().onLoginButtonClicked();
   }
 
   //endregion

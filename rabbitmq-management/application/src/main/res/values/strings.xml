@@ -4,104 +4,21 @@
 
   <eat-comment/>
 
+  <!-- region Common -->
+
   <string name="yes">Yes</string>
   <string name="no">No</string>
+  <string name="cancel">Cancel</string>
 
-  <string name="login">Login</string>
-  <string name="password">Password</string>
-  <string name="delete">Delete</string>
-  <string name="add">Add</string>
-  <string name="find">Find</string>
+  <!-- endregion -->
 
-  <string name="overview">Overview</string>
-  <string name="exchanges">Exchanges</string>
-  <string name="queues">Queues</string>
-  <string name="channels">Channels</string>
-  <string name="consumers">Consumers</string>
-  <string name="connections">Connections</string>
-  <string name="admin">Admin</string>
+  <!-- region Login View -->
 
-  <string name="drawer_open">Open navigation drawer</string>
-  <string name="drawer_close">Close navigation drawer</string>
+  <string name="login_view_login">Login</string>
+  <string name="login_view_password">Password</string>
+  <string name="login_view_add">Add</string>
+  <string name="login_view_sign_in">Sign In</string>
 
-  <string name="service_unreachable">The service is unreachable</string>
+  <!-- endregion -->
 
-  <string name="activity_login_login_missing">Enter user login</string>
-  <string name="activity_login_password_missing">Enter user password</string>
-  <string name="activity_login_credentials_invalid">User credentials invalid</string>
-  <string name="activity_login_remember">Remember configuration.</string>
-
-  <string name="activity_overview_queued_messages_title">Queued Messages</string>
-  <string name="activity_overview_message_rates_title">Message Rates</string>
-  <string name="activity_overview_button_ready">Ready: %d</string>
-  <string name="activity_overview_button_unacked">Unacked: %d</string>
-  <string name="activity_overview_button_total">Total: %d</string>
-  <string name="activity_overview_button_publish">Publish:\n%.2f/s</string>
-  <string name="activity_overview_button_publish_in">Publish in:\n%.2f/s</string>
-  <string name="activity_overview_button_publish_out">Publish out:\n%.2f/s</string>
-  <string name="activity_overview_button_confirm">Confirm:\n%.2f/s</string>
-  <string name="activity_overview_button_deliver">Deliver:\n%.2f/s</string>
-  <string name="activity_overview_button_redelivered">Redelivered:\n%.2f/s</string>
-
-  <string name="dialog_add_service_title">Provide RabbitMQ service details</string>
-  <string name="dialog_add_service_address">Address</string>
-  <string name="dialog_add_service_label">Label</string>
-  <string name="dialog_add_service_port">Select service port number:</string>
-  <string name="dialog_add_service_label_incorrect">Incorrect or already used label</string>
-  <string name="dialog_add_service_address_incorrect">Incorrect address</string>
-
-  <string name="range_one_minute">Show messages from last minute</string>
-  <string name="range_ten_minutes">Show messages from last ten minutes</string>
-  <string name="range_one_hour">Show messages from last hour</string>
-  <string name="range_eight_hours">Show messages from last eight hours</string>
-  <string name="range_one_day">Show messages from last day</string>
-
-  <string name="chart_no_data">No data provided yet.</string>
-
-  <string name="queued_messages_title">Queued Messages</string>
-  <string name="queued_messages_ready">Ready</string>
-  <string name="queued_messages_unacked">Unacked</string>
-  <string name="queued_messages_total">Total</string>
-  <string name="queued_messages_range">Range</string>
-
-  <string name="message_rates_title">Message Rates</string>
-  <string name="message_rates_publish">Publish</string>
-  <string name="message_rates_confirm">Confirm</string>
-  <string name="message_rates_default_publish_in">P. In</string>
-  <string name="message_rates_publish_out">P. Out</string>
-  <string name="message_rates_delivered">Delivered</string>
-  <string name="message_rates_redelivered">Redelivered</string>
-  <string name="message_rates_range">Range</string>
-
-  <string name="connection_state">State</string>
-  <string name="connection_ssl_tls">SSL / TLS</string>
-  <string name="connection_ssl_details">SSL Details</string>
-  <string name="connection_protocol">Protocol</string>
-  <string name="connection_channels">Channels</string>
-  <string name="connection_from_client">From client</string>
-  <string name="connection_from_client_value">%.0fB/s</string>
-  <string name="connection_to_client">To client</string>
-  <string name="connection_to_client_value">%.0fB/s</string>
-  <string name="connection_channel_max">Channel max</string>
-  <string name="connection_auth_mechanism">Auth mechanism</string>
-  <string name="connection_client">Client</string>
-  <string formatted="false" name="connection_client_value">%s / %s (%s)</string>
-  <string name="connection_heartbeat">Heartbeat</string>
-  <string name="connection_heartbeat_value">%ds</string>
-  <string name="connection_connected_at">Connected at</string>
-
-  <string name="channel_mode">Mode</string>
-  <string name="channel_state">State</string>
-  <string name="channel_unconfirmed">Unconfirmed</string>
-  <string name="channel_prefetch">Prefetch</string>
-  <string name="channel_unacked">Unacked</string>
-  <string name="channel_uncommitted_msgs">Uncommitted msgs</string>
-  <string name="channel_uncommitted_acks">Uncommitted acks</string>
-  <string name="channel_publish">Publish</string>
-  <string name="channel_confirm">Confirm</string>
-  <string name="channel_return_mandatory">Return (mandatory)</string>
-  <string name="channel_deliver_get">Deliver / get</string>
-  <string name="channel_redelivered">Redelivered</string>
-  <string name="channel_ack">Ack</string>
-  <string name="channel_rate_value">%.2f/s</string>
 </resources>

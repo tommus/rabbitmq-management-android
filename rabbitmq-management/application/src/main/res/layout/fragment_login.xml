@@ -3,18 +3,145 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/size_p16">
 
-  <TextView
+  <!-- region Logo -->
+
+  <ImageView
+      android:id="@+id/logo"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="TODO:\nLogin View"
+      android:src="@drawable/logo"
       android:textAlignment="center"
+      app:layout_constraintBottom_toTopOf="@+id/fieldsContainer"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="ContentDescription"/>
+
+  <!-- endregion -->
+
+  <!-- region Fields Container -->
+
+  <LinearLayout
+      android:id="@+id/fieldsContainer"
+      android:layout_width="@dimen/size_auto"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      app:layout_constraintTop_toBottomOf="@+id/logo">
+
+    <!-- region Login -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_p16"
+        android:hint="@string/login_view_login"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/loginField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionNext"
+          android:inputType="text"
+          android:lines="1"
+          style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- endregion -->
+
+    <!-- region Password -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/login_view_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/passwordField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionDone"
+          android:inputType="textPassword"
+          android:lines="1"
+          style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- endregion -->
+
+    <!-- region Services Container -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <!-- region Services List -->
+
+      <androidx.appcompat.widget.AppCompatSpinner
+          android:id="@+id/serviceSpinner"
+          android:layout_width="@dimen/size_auto"
+          android:layout_height="wrap_content"
+          android:minHeight="@dimen/size_p48"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/serviceAddButton"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+      <!-- endregion -->
+
+      <!-- region Add Service -->
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/serviceAddButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/login_view_add"
+          app:icon="@drawable/ic_add_white_24dp"
+          app:iconGravity="textStart"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/serviceSpinner"
+          app:layout_constraintTop_toTopOf="parent"
+          style="@style/Widget.MaterialComponents.Button.Icon"/>
+
+      <!-- endregion -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- endregion -->
+
+    <!-- region Sign In -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_p8"
+        android:layout_marginTop="@dimen/size_p8"
+        android:paddingBottom="@dimen/size_p12"
+        android:paddingTop="@dimen/size_p12"
+        android:text="@string/login_view_sign_in"
+        app:icon="@drawable/ic_sign_in_white_24dp"
+        app:iconGravity="textStart"
+        style="@style/Widget.MaterialComponents.Button.Icon"/>
+
+    <!-- endregion -->
+
+  </LinearLayout>
+
+  <!-- endregion -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
