@@ -11,7 +11,7 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class User {
+public class UserDto {
 
   //region Name
 
@@ -33,21 +33,15 @@ public class User {
   @JsonDeserialize(using = UserTagsDeserializer.class)
   @JsonProperty(value = "tags")
   @JsonSerialize(using = UserTagsSerializer.class)
-  private List<Tag> tags;
+  private List<String> tags;
 
-  public List<Tag> getTags() {
+  public List<String> getTags() {
     return tags;
   }
 
-  public void setTags(List<Tag> tags) {
+  public void setTags(List<String> tags) {
     this.tags = tags;
   }
 
   //endregion
-
-  // TODO: Replace enum with StringDef
-
-  public enum Tag {
-    ADMINISTRATOR, MONITORING, POLICYMAKER, MANAGEMENT, NONE
-  }
 }

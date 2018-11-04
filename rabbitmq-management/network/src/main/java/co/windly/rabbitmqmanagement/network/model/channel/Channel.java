@@ -249,7 +249,7 @@ public class Channel {
 
   //endregion
 
-  //region User
+  //region UserDto
 
   @JsonProperty(value = "user")
   private String user;

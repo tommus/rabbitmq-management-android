@@ -5,7 +5,7 @@ import co.windly.rabbitmqmanagement.network.model.exchange.Exchange;
 import co.windly.rabbitmqmanagement.network.model.permission.Permission;
 import co.windly.rabbitmqmanagement.network.model.policy.Policy;
 import co.windly.rabbitmqmanagement.network.model.queue.Queue;
-import co.windly.rabbitmqmanagement.network.model.user.ExtendedUser;
+import co.windly.rabbitmqmanagement.network.model.user.ExtendedUserDto;
 import co.windly.rabbitmqmanagement.network.model.vhost.Vhost;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -127,13 +127,13 @@ public class Definitions {
   //region Users
 
   @JsonProperty(value = "users")
-  private List<ExtendedUser> users = new ArrayList<>();
+  private List<ExtendedUserDto> users = new ArrayList<>();
 
-  public List<ExtendedUser> getUsers() {
+  public List<ExtendedUserDto> getUsers() {
     return users;
   }
 
-  public void setUsers(List<ExtendedUser> users) {
+  public void setUsers(List<ExtendedUserDto> users) {
     this.users = users;
   }
 

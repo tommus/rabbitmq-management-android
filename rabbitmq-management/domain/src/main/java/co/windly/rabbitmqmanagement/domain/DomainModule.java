@@ -11,8 +11,8 @@ public class DomainModule {
 
   //region Model Mapper
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   ModelMapper provideModelMapper() {
     final ModelMapper mapper = new ModelMapper();

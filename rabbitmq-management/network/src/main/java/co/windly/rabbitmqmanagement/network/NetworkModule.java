@@ -1,5 +1,8 @@
 package co.windly.rabbitmqmanagement.network;
 
+import co.windly.rabbitmqmanagement.network.interceptor.HeaderAuthorizationInterceptor;
+import co.windly.rabbitmqmanagement.network.interceptor.HeaderUserAgentInterceptor;
+import co.windly.rabbitmqmanagement.network.service.UserApi;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.annotations.NonNull;
@@ -23,14 +26,19 @@ public class NetworkModule {
 
   //region Api
 
-  // TODO:
+  @NonNull
+  @Provides
+  @Singleton
+  UserApi provideUserApi(Retrofit retrofit) {
+    return retrofit.create(UserApi.class);
+  }
 
   //endregion
 
   //region Retrofit
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   Retrofit provideServerRetrofit(Retrofit.Builder builder, String url) {
     return builder
@@ -38,21 +46,21 @@ public class NetworkModule {
       .build();
   }
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   String provideServerUrl() {
     // TODO: Change url scope.
     // TODO: Use url provided by configuration.
-    return "http://";
+    return "http://192.168.1.102:15672/";
   }
 
   //endregion
 
   //region Retrofit - Builder
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   Retrofit.Builder provideRetrofitBuilder(
     OkHttpClient client,
@@ -68,15 +76,15 @@ public class NetworkModule {
 
   //region Retrofit - Factories
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   Converter.Factory provideConverterFactory() {
     return JacksonConverterFactory.create();
   }
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   CallAdapter.Factory provideCallAdapterFactory() {
     return RxJava2CallAdapterFactory.create();
@@ -86,28 +94,29 @@ public class NetworkModule {
 
   //region Retrofit - Http
 
+  @NonNull
   @Provides
   @Singleton
   OkHttpClient provideOkHttpClient(OkHttpClient.Builder builder) {
     return builder
-      // TODO: Add authorization interceptor.
+      .addInterceptor(new HeaderAuthorizationInterceptor())
       .build();
   }
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   OkHttpClient.Builder provideOkHttpClientBuilder(HttpLoggingInterceptor.Level networkLogLevel) {
     return new OkHttpClient.Builder()
       .connectTimeout(SERVER_CONNECTION_TIMEOUT, SECONDS)
       .readTimeout(SERVER_READ_TIMEOUT, SECONDS)
       .writeTimeout(SERVER_WRITE_TIMEOUT, SECONDS)
-      // TODO: Add header user agent interceptor.
+      .addInterceptor(new HeaderUserAgentInterceptor())
       .addInterceptor(new HttpLoggingInterceptor().setLevel(networkLogLevel));
   }
 
-  @Provides
   @NonNull
+  @Provides
   @Singleton
   HttpLoggingInterceptor.Level provideLogLevel() {
     return HttpLoggingInterceptor.Level.valueOf(SERVER_LOGGING_LEVEL.trim().toUpperCase());

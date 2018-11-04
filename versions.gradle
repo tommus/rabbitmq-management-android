@@ -9,6 +9,8 @@ ext.deps = deps
 
 def versions = [:]
 versions.android_gradle_plugin = "3.2.1"
+versions.androidx = "1.0.0"
+versions.androidx_preferences = "1.0.4"
 versions.butter_knife = "9.0.0-rc1"
 versions.commons_lang3 = "3.8.1"
 versions.constraint = "1.1.2"
@@ -21,6 +23,7 @@ versions.model_mapper = "2.3.0"
 versions.multidex = "2.0.0"
 versions.okhttp_logging_interceptor = "3.11.0"
 versions.retrofit = "2.4.0"
+versions.room = "1.1.1"
 versions.rx_android = "2.1.0"
 versions.rx_java = "2.2.2"
 versions.stetho = "1.5.0"
@@ -29,9 +32,10 @@ deps.versions = versions
 
 //endregion
 
-//region AndroidX
+//region Androidx
 
 def androidx = [:]
+androidx.annotation = "androidx.annotation:annotation:$versions.androidx"
 androidx.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint"
 androidx.multidex = "androidx.multidex:multidex:$versions.multidex"
 deps.androidx = androidx
@@ -74,6 +78,9 @@ deps.facebook = facebook
 //region Miscellaneous
 
 def misc = [:]
+misc.androidx_preferences = "com.github.tommus.androidx-prefs:androidx-preferences:$versions.androidx_preferences"
+misc.androidx_preferences_compiler =
+    "com.github.tommus.androidx-prefs:androidx-preferences-compiler:$versions.androidx_preferences"
 misc.butter_knife = "com.jakewharton:butterknife:$versions.butter_knife"
 misc.butter_knife_compiler = "com.jakewharton:butterknife-compiler:$versions.butter_knife"
 misc.commons_lang = "org.apache.commons:commons-lang3:$versions.commons_lang3"
@@ -103,6 +110,16 @@ retrofit.logging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_lo
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 deps.retrofit = retrofit
+
+//endregion
+
+//region Room
+
+def room = [:]
+room.compiler = "android.arch.persistence.room:compiler:$versions.room"
+room.runtime = "android.arch.persistence.room:runtime:$versions.room"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$versions.room"
+deps.room = room
 
 //endregion
 

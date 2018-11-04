@@ -29,6 +29,11 @@ android {
 
   //region Compile Options
 
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
   compileSdkVersion deps.build_versions.compile_sdk
 
   //endregion
@@ -85,9 +90,9 @@ dependencies {
 
   //region Database
 
-  //  api deps.room.runtime
-  //  api deps.room.rxjava2
-  //  kapt deps.room.compiler
+    api deps.room.runtime
+    api deps.room.rxjava2
+    annotationProcessor deps.room.compiler
 
   //endregion
 
@@ -99,8 +104,8 @@ dependencies {
 
   //region Shared Preferences
 
-  //  api deps.androidx_preferences
-  //  kapt deps.androidx_preferences_compiler
+    api deps.misc.androidx_preferences
+    annotationProcessor deps.misc.androidx_preferences_compiler
 
   //endregion
 }

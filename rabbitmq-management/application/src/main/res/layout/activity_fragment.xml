@@ -4,16 +4,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-  <ImageView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:src="@drawable/logo"
+  <!-- region Fragment Container -->
+
+  <FrameLayout
+      android:id="@+id/fragmentContainer"
+      android:layout_width="@dimen/size_auto"
+      android:layout_height="@dimen/size_auto"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
+
+  <!-- endregion -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

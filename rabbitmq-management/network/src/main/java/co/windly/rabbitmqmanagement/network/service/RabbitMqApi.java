@@ -24,8 +24,7 @@ import co.windly.rabbitmqmanagement.network.model.policy.Policy;
 import co.windly.rabbitmqmanagement.network.model.queue.Action;
 import co.windly.rabbitmqmanagement.network.model.queue.ExtendedQueue;
 import co.windly.rabbitmqmanagement.network.model.queue.PutQueue;
-import co.windly.rabbitmqmanagement.network.model.user.ExtendedUser;
-import co.windly.rabbitmqmanagement.network.model.user.User;
+import co.windly.rabbitmqmanagement.network.model.user.ExtendedUserDto;
 import co.windly.rabbitmqmanagement.network.model.vhost.ExtendedVhost;
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -42,7 +41,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface RabbitMqService {
+public interface RabbitMqApi {
 
   @GET("api/overview")
   Single<Response<Overview>> getOverview();
@@ -230,22 +229,19 @@ public interface RabbitMqService {
   Single<List<Permission>> getVhostPermissions(@Path("vhost") @NonNull String vhost);
 
   @GET("api/users")
-  Single<List<ExtendedUser>> getUsers();
+  Single<List<ExtendedUserDto>> getUsers();
 
   @GET("api/users/{name}")
-  Single<ExtendedUser> getUser(@Path("name") @NonNull String name);
+  Single<ExtendedUserDto> getUser(@Path("name") @NonNull String name);
 
   @PUT("api/users/{name}")
-  Completable putUser(@Path("name") @NonNull String name, @NonNull @Body ExtendedUser body);
+  Completable putUser(@Path("name") @NonNull String name, @NonNull @Body ExtendedUserDto body);
 
   @DELETE("api/users/{name}")
   Completable deleteUser(@Path("name") @NonNull String name);
 
   @GET("api/users/{user}/permissions")
   Single<List<Permission>> getUserPermissions(@Path("user") @NonNull String user);
-
-  @GET("api/whoami")
-  Single<Response<User>> whoAmI();
 
   @GET("api/permissions")
   Single<List<Permission>> getPermissions();

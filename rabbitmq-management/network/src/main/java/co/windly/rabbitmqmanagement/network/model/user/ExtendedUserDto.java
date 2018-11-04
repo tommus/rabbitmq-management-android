@@ -8,15 +8,15 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class ExtendedUser extends User {
+public class ExtendedUserDto extends UserDto {
 
   //region Constructor
 
-  private ExtendedUser() {
+  private ExtendedUserDto() {
     // Jackson requires presence of empty constructor.
   }
 
-  public ExtendedUser(@NonNull String password, @NonNull List<Tag> tags) {
+  public ExtendedUserDto(@NonNull String password, @NonNull List<String> tags) {
     setPassword(password);
     setTags(tags);
   }

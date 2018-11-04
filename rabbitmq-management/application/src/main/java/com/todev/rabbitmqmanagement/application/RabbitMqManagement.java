@@ -1,9 +1,7 @@
 package com.todev.rabbitmqmanagement.application;
 
 import android.app.Application;
-import co.windly.rabbitmqmanagement.domain.DaggerDomainComponent;
 import co.windly.rabbitmqmanagement.domain.DomainComponent;
-import co.windly.rabbitmqmanagement.domain.DomainModule;
 import co.windly.rabbitmqmanagement.utility.BuildConfig;
 import co.windly.rabbitmqmanagement.utility.debug.DebugBridge;
 import co.windly.rabbitmqmanagement.utility.log.WiLogger;
@@ -42,15 +40,9 @@ public class RabbitMqManagement extends Application {
 
   private void initializeDependencyInjection() {
 
-    // Initialize network module.
-    final DomainModule domainModule = new DomainModule();
-
     // Initialize domain component.
     component =
-      DaggerDomainComponent
-        .builder()
-        .domainModule(domainModule)
-        .build();
+      DomainComponent.Initializer.initialize(this);
   }
 
   public DomainComponent getDomainInjector() {

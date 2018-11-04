@@ -504,7 +504,7 @@ public class Connection {
 
   //endregion
 
-  //region User
+  //region UserDto
 
   @JsonProperty(value = "user")
   private String user;

@@ -38,7 +38,7 @@ public class Permission {
 
   //endregion
 
-  //region User
+  //region UserDto
 
   @JsonProperty(value = "user")
   private String user;

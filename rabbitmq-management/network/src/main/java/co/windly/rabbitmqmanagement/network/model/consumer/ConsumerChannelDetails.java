@@ -39,7 +39,7 @@ public class ConsumerChannelDetails extends ChannelDetails {
 
   //endregion
 
-  //region User
+  //region UserDto
 
   @JsonProperty(value = "user")
   private String user;

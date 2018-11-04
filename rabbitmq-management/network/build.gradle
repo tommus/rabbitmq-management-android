@@ -29,6 +29,11 @@ android {
 
   //region Compile Options
 
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
   compileSdkVersion deps.build_versions.compile_sdk
 
   //endregion
@@ -91,10 +96,10 @@ dependencies {
 
   //region Networking
 
-  implementation deps.retrofit.jackson
-  implementation deps.retrofit.logging
-  implementation deps.retrofit.runtime
-  implementation deps.retrofit.rxjava2
+  api deps.retrofit.jackson
+  api deps.retrofit.logging
+  api deps.retrofit.runtime
+  api deps.retrofit.rxjava2
 
   //endregion
 }
