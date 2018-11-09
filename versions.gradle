@@ -10,14 +10,14 @@ ext.deps = deps
 def versions = [:]
 versions.android_gradle_plugin = "3.2.1"
 versions.androidx = "1.0.0"
-versions.androidx_preferences = "1.0.4"
+versions.androidx_preferences = "1.0.6"
 versions.butter_knife = "9.0.0-rc1"
 versions.commons_lang3 = "3.8.1"
 versions.constraint = "1.1.2"
 versions.dagger = "2.19"
 versions.javax = "10.0-b28"
 versions.joda_time = "2.10"
-versions.limbo = "0.5.4"
+versions.limbo = "0.5.5"
 versions.material = "1.0.0"
 versions.model_mapper = "2.3.0"
 versions.multidex = "2.0.0"
@@ -78,15 +78,14 @@ deps.facebook = facebook
 //region Miscellaneous
 
 def misc = [:]
-misc.androidx_preferences = "com.github.tommus.androidx-prefs:androidx-preferences:$versions.androidx_preferences"
-misc.androidx_preferences_compiler =
-    "com.github.tommus.androidx-prefs:androidx-preferences-compiler:$versions.androidx_preferences"
+misc.androidx_preferences = "co.windly:androidxpreferences:$versions.androidx_preferences"
+misc.androidx_preferences_compiler = "co.windly:androidxpreferences-compiler:$versions.androidx_preferences"
 misc.butter_knife = "com.jakewharton:butterknife:$versions.butter_knife"
 misc.butter_knife_compiler = "com.jakewharton:butterknife-compiler:$versions.butter_knife"
 misc.commons_lang = "org.apache.commons:commons-lang3:$versions.commons_lang3"
 misc.javax = "org.glassfish:javax.annotation:$versions.javax"
 misc.joda_time = "joda-time:joda-time:$versions.joda_time"
-misc.limbo = "com.github.tommus:limbo:$versions.limbo"
+misc.limbo = "co.windly:limbo:$versions.limbo"
 misc.model_mapper = "org.modelmapper:modelmapper:$versions.model_mapper"
 misc.timber = "com.jakewharton.timber:timber:$versions.timber"
 deps.misc = misc
@@ -138,6 +137,7 @@ static def addRepos(RepositoryHandler handler) {
   handler.jcenter()
   handler.mavenCentral()
   handler.maven { url "https://jitpack.io" }
+  handler.maven { url "https://oss.sonatype.org/content/repositories/releases" }
 }
 
 ext.addRepos = this.&addRepos
